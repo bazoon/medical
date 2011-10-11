@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  actual_date: 2011-10-07
+  htm_help_type_id: 1
+  note: MyText
+  client_id: 1
+
+two:
+  actual_date: 2011-10-07
+  htm_help_type_id: 1
+  note: MyText
+  client_id: 1

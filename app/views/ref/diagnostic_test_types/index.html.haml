@@ -1,0 +1,23 @@
+%h2 Типы диагностики
+%br
+
+-unless flash.empty?
+  %p#notice= notice
+
+%table#newspaper-a
+  %tr
+    %th Наименование
+    %th
+    %th
+
+  - @ref_diagnostic_test_types.each do |ref_diagnostic_test_type|
+    %tr
+      %td= ref_diagnostic_test_type.name
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_ref_diagnostic_test_type_path(ref_diagnostic_test_type)
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,ref_diagnostic_test_type, :confirm => 'Are you sure?', :method => :delete if ref_diagnostic_test_type.can_be_deleted
+
+%br
+
+= link_to 'Новый', new_ref_diagnostic_test_type_path
+
+

@@ -1,0 +1,22 @@
+%h4= link_to "Все пациенты",clients_path
+%br
+%h1= @client.fio
+%br
+
+
+
+#accordion
+  -if @client.has_some_records?(:lab_tests) 
+    =render :partial => "client_records",:locals => {:render_name => @client.lab_tests,:tab_name =>"Лабораторные исследования",:items => @client.lab_tests}
+  -if @client.has_some_records?(:diagnostic_tests) 
+    =render :partial => "client_records",:locals => {:render_name => @client.diagnostic_tests,:tab_name =>"Диагностические исследования",:items => @client.diagnostic_tests}
+  -if @client.has_some_records?(:hospitalizations) 
+    =render :partial => "client_records",:locals => {:render_name => @client.hospitalizations,:tab_name =>"Госпитализация",:items => @client.hospitalizations}
+  -if @client.has_some_records?(:htm_help_notes) 
+    =render :partial => "client_records",:locals => {:render_name => @client.htm_help_notes,:tab_name =>"Высокотехнологичная помощь",:items => @client.htm_help_notes}
+  -if @client.has_some_records?(:sanatorium_notes) 
+    =render :partial => "client_records",:locals => {:render_name => @client.sanatorium_notes,:tab_name =>"Санаторно-курортное лечение",:items => @client.sanatorium_notes}
+  -if @client.has_some_records?(:med_diagnostic_tests) 
+    =render :partial => "client_records",:locals => {:render_name => @client.med_diagnostic_tests,:tab_name =>"Лечебно-диагностическая работа",:items => @client.med_diagnostic_tests}
+  -if @client.has_some_records?(:prof_inspections) 
+    =render :partial => "client_records",:locals => {:render_name => @client.prof_inspections,:tab_name =>"Профосмотры",:items => @client.prof_inspections}

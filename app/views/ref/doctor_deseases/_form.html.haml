@@ -1,0 +1,5 @@
+=simple_form_for(@ref_doctor_desease) do |f|
+  =f.error_notification
+  =f.association :doctor_type, :include_blank => false
+  =f.association :desease_type, :include_blank => false
+  = f.submit "Сохранить"

@@ -1,0 +1,2 @@
+module ProfInspectionsHelper
+end

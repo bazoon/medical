@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Test date:
+  = @diagnostic_test.test_date
+%p
+  %b Diagnostic test type:
+  = @diagnostic_test.diagnostic_test_type
+%p
+  %b Result:
+  = @diagnostic_test.result
+%p
+  %b Client:
+  = @diagnostic_test.client_id
+
+= link_to 'Edit', edit_diagnostic_test_path(@diagnostic_test)
+\|
+= link_to 'Back', diagnostic_tests_path

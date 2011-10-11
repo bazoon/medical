@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  actual_date: 2011-10-07
+  client_id: 1
+  hospitalization_type_id: 1
+
+two:
+  actual_date: 2011-10-07
+  client_id: 1
+  hospitalization_type_id: 1

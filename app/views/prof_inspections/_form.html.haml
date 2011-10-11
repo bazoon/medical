@@ -1,0 +1,7 @@
+=simple_form_for [@client,@prof_inspection] do |f|
+  =f.error_notification
+  =f.input :actual_date, :label => "Дата"
+  = f.input :user,:label =>"Врач" do 
+    = f.select :user_id, User.all.map { |u| [u.short_fio_with_doctor_type, u.id] }, :include_blank => false
+  =f.input :conclusion, :label => "Заключение"
+  = f.submit "Сохранить"

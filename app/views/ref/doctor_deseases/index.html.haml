@@ -1,0 +1,27 @@
+%h1 Список врач - заболевание
+%br
+
+-unless flash.empty?
+  %p#notice= notice
+
+
+%br
+= paginate @ref_doctor_deseases
+%br
+
+%table#newspaper-a
+  %tr
+    %th Врач
+    %th Заболевание
+    %th
+    %th
+
+  - @ref_doctor_deseases.each do |ref_doctor_desease|
+    %tr
+      %td= ref_doctor_desease.doctor_type.name
+      %td= ref_doctor_desease.desease_type.name
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_doctor_desease_path(ref_doctor_desease)
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , ref_doctor_desease, :confirm => 'Are you sure?', :method => :delete
+%br
+
+= link_to 'Новый', new_ref_doctor_desease_path

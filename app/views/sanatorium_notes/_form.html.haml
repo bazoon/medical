@@ -1,0 +1,6 @@
+=simple_form_for [@client,@sanatorium_note] do |f|
+  =f.error_notification
+  =f.input :actual_date, :label => "Дата внесения записи"
+  =f.input :neediness_reference, :label => "Справка о нуждаемости"
+  =f.input :sanatorium_card, :label => "Санаторно-курортная карта"
+  = f.submit "Сохранить"

@@ -1,0 +1,2 @@
+module SanatoriumNotesHelper
+end

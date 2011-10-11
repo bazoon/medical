@@ -1,0 +1,30 @@
+= link_to content_tag(:span,"",class: "ui-icon ui-icon-triangle-1-w"), operations_client_path(@client)
+%br
+%h1= @client.fio unless @client.nil?
+%br
+%h2 ВТМП
+%br
+
+-unless flash.empty?
+  %p#notice= notice
+-if @htm_help_notes.count > 0
+  %table#newspaper-a
+    %tr
+      %th Дата
+      %th Тип ВТМП
+      %th Комментарий
+      %th
+      %th
+
+    - @htm_help_notes.each do |htm_help_note|
+      %tr
+        %td= l htm_help_note.actual_date
+        %td= htm_help_note.htm_help_type.name
+        %td= htm_help_note.note
+        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_htm_help_note_path(@client,htm_help_note)
+        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,client_htm_help_note_path(@client,htm_help_note), :confirm => 'Are you sure?', :method => :delete
+-else  
+  =render "clients/empty"
+%br
+
+= link_to t(:new_record), new_client_htm_help_note_path(@client)

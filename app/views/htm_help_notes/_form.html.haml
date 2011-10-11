@@ -1,0 +1,6 @@
+=simple_form_for [@client,@htm_help_note] do |f|
+  =f.error_notification
+  =f.input :actual_date, :label => 'Дата'
+  =f.association :htm_help_type, :label => 'Тип ВТМП'
+  =f.input :note, :label => 'Комментарий'
+  =f.submit "Сохранить"

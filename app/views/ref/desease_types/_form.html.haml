@@ -1,0 +1,10 @@
+= simple_form_for @ref_desease_type do |f|
+  -if @ref_desease_type.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@ref_desease_type.errors.count, "error")} prohibited this ref_desease_type from being saved:"
+      %ul
+        - @ref_desease_type.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.input :name,:label => "Тип заболевания"
+  = f.submit 'Сохранить'

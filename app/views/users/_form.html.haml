@@ -1,0 +1,13 @@
+= simple_form_for [@user] do |form|
+  -if @user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+
+  = form.input :surname,:label => "Фамилия"
+  = form.input :name,:label => "Имя"
+  = form.input :father_name,:label => "Отчество"
+  = form.association :doctor_type, :label => "Врач"
+  = form.submit "Сохранить" 

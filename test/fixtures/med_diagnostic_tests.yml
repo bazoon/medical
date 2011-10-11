@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  test_date: 2011-10-07
+  med_diagnostic_test_type_id: 1
+  client_id: 1
+  result: MyText
+
+two:
+  test_date: 2011-10-07
+  med_diagnostic_test_type_id: 1
+  client_id: 1
+  result: MyText

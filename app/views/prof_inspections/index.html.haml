@@ -1,0 +1,33 @@
+= link_to content_tag(:span,"",class: "ui-icon ui-icon-triangle-1-w"), operations_client_path(@client)
+%br
+%h1= @client.fio unless @client.nil?
+%br
+%h2 Данные о профосмотрах
+%br
+
+-unless flash.empty?
+  %p#notice= notice
+
+-if @prof_inspections.count > 0
+
+  %table#newspaper-a
+    %tr
+      %th Дата
+      %th Врач
+      %th Заключение
+      %th
+      %th
+
+    - @prof_inspections.each do |prof_inspection|
+      %tr
+        %td= l prof_inspection.actual_date
+        %td= prof_inspection.user.short_fio_with_doctor_type
+        %td= prof_inspection.conclusion
+        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_client_prof_inspection_path(@client,prof_inspection)
+        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , client_prof_inspection_path(@client,prof_inspection), :confirm => 'Are you sure?', :method => :delete
+-else
+  =render "clients/empty"
+%br
+= link_to t(:new_record), new_client_prof_inspection_path
+
+

@@ -1,0 +1,2 @@
+module Ref::InsCompaniesHelper
+end

@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Hospitalization type:
+  = @hospitalization.hospitalization_type
+%p
+  %b Actual date:
+  = @hospitalization.actual_date
+%p
+  %b Client:
+  = @hospitalization.client_id
+
+= link_to 'Edit', edit_hospitalization_path(@hospitalization)
+\|
+= link_to 'Back', hospitalizations_path

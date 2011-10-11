@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Actual date:
+  = @sanatorium_note.actual_date
+%p
+  %b Client:
+  = @sanatorium_note.client_id
+%p
+  %b Neediness reference:
+  = @sanatorium_note.neediness_reference
+%p
+  %b Sanatorium card:
+  = @sanatorium_note.sanatorium_card
+
+= link_to 'Edit', edit_sanatorium_note_path(@sanatorium_note)
+\|
+= link_to 'Back', sanatorium_notes_path

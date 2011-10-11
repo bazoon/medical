@@ -1,0 +1,18 @@
+%h2 Типы госпитализации
+%br
+
+
+%table#newspaper-a
+  %tr
+    %th Тип
+    %th
+    %th
+
+  - @ref_hospitalization_types.each do |ref_hospitalization_type|
+    %tr
+      %td= ref_hospitalization_type.name
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_ref_hospitalization_type_path(ref_hospitalization_type)
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , ref_hospitalization_type, :confirm => 'Are you sure?', :method => :delete if ref_hospitalization_type.can_be_deleted
+%br
+
+= link_to 'Новый тип госпитализации', new_ref_hospitalization_type_path

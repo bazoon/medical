@@ -1,0 +1,24 @@
+%h2 Типы заболеваний
+%br
+
+-unless flash.empty?
+  %p#notice= notice
+
+%br
+=paginate @ref_desease_types
+%br
+
+%table#newspaper-a
+  %tr
+    %th Тип
+    %th
+    %th
+
+  - @ref_desease_types.each do |ref_desease_type|
+    %tr
+      %td= ref_desease_type.name
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_desease_type_path(ref_desease_type)
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , ref_desease_type, :confirm => 'Are you sure?', :method => :delete if ref_desease_type.can_be_deleted
+%br
+
+= link_to 'Добавить новый тип заболевания', new_ref_desease_type_path

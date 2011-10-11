@@ -1,0 +1,18 @@
+%h2 Страховые компании
+%br
+
+
+%table#newspaper-a
+  %tr
+    %th Наименование
+    %th
+    %th
+
+  - @ref_ins_companies.each do |ref_ins_company|
+    %tr
+      %td= ref_ins_company.name
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_ins_company_path(ref_ins_company)
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,ref_ins_company, :confirm => 'Are you sure?', :method => :delete if ref_ins_company.can_be_deleted
+%br
+
+= link_to 'Новая страховая компания', new_ref_ins_company_path

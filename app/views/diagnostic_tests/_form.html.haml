@@ -1,0 +1,6 @@
+=simple_form_for [@client,@diagnostic_test] do |f|
+  =f.error_notification
+  =f.input :test_date,:label=>"Дата"
+  =f.association :diagnostic_test_type,:label =>"Тип"
+  =f.input :result,:label=>"Результат"
+  =f.submit "Сохранить"

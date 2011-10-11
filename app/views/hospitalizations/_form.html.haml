@@ -1,0 +1,5 @@
+=simple_form_for [@client,@hospitalization] do |f|
+   =f.error_notification
+   =f.association :hospitalization_type, :label => "Тип госпитализации"
+   =f.input :actual_date, :label => "Дата госпитализации"
+   =f.submit "Сохранить"

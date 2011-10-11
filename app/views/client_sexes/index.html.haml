@@ -1,0 +1,19 @@
+%h1 Listing client_sexes
+
+%table
+  %tr
+    %th Sex
+    %th
+    %th
+    %th
+
+  - @client_sexes.each do |client_sex|
+    %tr
+      %td= client_sex.sex
+      %td= link_to 'Show', client_sex
+      %td= link_to 'Edit', edit_client_sex_path(client_sex)
+      %td= link_to 'Destroy', client_sex, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Client sex', new_client_sex_path

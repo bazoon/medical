@@ -1,0 +1,17 @@
+%h2 Типы анализов
+%br
+
+%table#newspaper-a
+  %tr
+    %th Тип
+    %th
+    %th
+
+  - @ref_lab_test_types.each do |ref_lab_test_type|
+    %tr
+      %td= ref_lab_test_type.name
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_lab_test_type_path(ref_lab_test_type)
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , ref_lab_test_type_path(ref_lab_test_type), :confirm => 'Are you sure?', :method => :delete if ref_lab_test_type.can_be_deleted
+%br
+
+= link_to 'Добавить новый тип анализа', new_ref_lab_test_type_path

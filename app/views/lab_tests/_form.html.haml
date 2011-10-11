@@ -1,0 +1,6 @@
+=simple_form_for [@client,@lab_test] do |f|
+  =f.input :test_date,:label=>"Дата"
+  =f.association :lab_test_type,:label=>"Тип анализа"
+  =f.input :result, :label => "Результат"
+  =f.submit "Сохранить"
+

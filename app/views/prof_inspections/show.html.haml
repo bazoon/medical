@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Client:
+  = @prof_inspection.client_id
+%p
+  %b Actual date:
+  = @prof_inspection.actual_date
+%p
+  %b User:
+  = @prof_inspection.user_id
+%p
+  %b Conclusion:
+  = @prof_inspection.conclusion
+
+= link_to 'Edit', edit_prof_inspection_path(@prof_inspection)
+\|
+= link_to 'Back', prof_inspections_path

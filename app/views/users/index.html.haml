@@ -1,0 +1,36 @@
+%h2 Врачи
+%br
+
+-unless flash.empty?
+  %p#notice= notice
+
+
+%table#newspaper-a
+  
+  %thead
+    %tr
+      %th{:scope =>"col"} Фамилия
+      %th Имя
+      %th Отчество
+      %th Тип
+      %th .
+      %th .
+      %th .
+    
+  %tbody      
+    - @users.each do |user|
+      %tr
+        %td=user.surname
+        %td=user.name
+        %td=user.father_name
+        %td= user.doctor_type.name unless user.doctor_type.nil?
+        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-folder-open"), user_path(user)
+        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil") , edit_user_path(user)
+        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus")  , user, :confirm => 'Are you sure?', :method => :delete
+
+
+
+
+%br
+
+= link_to 'Новый врач', new_user_path

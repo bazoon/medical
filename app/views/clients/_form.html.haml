@@ -1,0 +1,33 @@
+= simple_form_for [@client] do |form|
+  -if @client.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@client.errors.count, "error")} prohibited this client from being saved:"
+      %ul
+        - @client.errors.full_messages.each do |msg|
+          %li= msg
+
+  = form.association :client_sex,:label => "Пол",:default => "М"
+  = form.input :surname,:label => "Фамилия"
+  = form.input :name,:label => "Имя"
+  = form.input :father_name,:label => "Отчество"
+  = form.input :num_card,:label => "Номер карты"
+  = form.input :birth_date,:label => "Дата рождения",:start_year => Time.now.year-100,:end_year => Time.now.year+100,:use_month_numbers => true,:order => [:day,:month,:year]
+  = form.input :address,:label => "Адрес"
+  = form.input :pasp_seria,:label => "Серия паспорта"
+  = form.input :pasp_num,:label => "Номер паспорта"
+  = form.input :work_place,:label => "Место работы"
+  = form.input :work_position,:label => "Должность"
+  = form.input :snils,:label => "Снилс"
+  = form.input :benefit_id,:label => "Ид. бенефициара", :hint => "Идентификатор бенефициара"
+  = form.input :veteran_id,:label => "Ид. ветерана", :hint => "Идентификатор ветерана"
+  = form.input :indiv_reab_programm,:label => "Реабилитация", :hint => "Индивидуальная программа реабилитации"
+  = form.input :mse_note,:label => "МСЕ"
+  = form.input :attach_date,:label => "Дата прикрепления",:start_year => Time.now.year-100,:end_year => Time.now.year+100,:use_month_numbers => true,:order => [:day,:month,:year]
+  = form.input :dlo, :label => "ДЛО"
+  = form.input :decease_mkb_10, :label =>:"МКБ 10", :hint => "Заболевания подходящие для наблюдения по МКБ 10"
+  = form.input :special_note, :label => "Особые заметки"
+  = form.input :detach_date, :label => "Дата открепления",:start_year => Time.now.year-100,:end_year => Time.now.year+100,:use_month_numbers => true,:order => [:day,:month,:year]
+  = form.input :notes, :label => "Примечания"
+  = form.input :phones,:label => "Телефоны"
+  = form.association :ins_company, :label => "Застрахован", :hint => "Страховая компания"
+  = form.submit "Сохранить" 

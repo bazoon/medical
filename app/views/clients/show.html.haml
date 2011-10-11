@@ -1,0 +1,8 @@
+%h2= @client.fio
+%br
+%p#notice= notice
+
+
+= link_to 'Редактировать', edit_client_path(@client)
+|
+= link_to 'Назад', clients_path

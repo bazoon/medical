@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Actual date:
+  = @htm_help_note.actual_date
+%p
+  %b Htm help type:
+  = @htm_help_note.htm_help_type_id
+%p
+  %b Note:
+  = @htm_help_note.note
+%p
+  %b Client:
+  = @htm_help_note.client_id
+
+= link_to 'Edit', edit_htm_help_note_path(@htm_help_note)
+\|
+= link_to 'Back', htm_help_notes_path

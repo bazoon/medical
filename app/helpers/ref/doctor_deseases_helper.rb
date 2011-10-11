@@ -1,0 +1,2 @@
+module Ref::DoctorDeseasesHelper
+end
