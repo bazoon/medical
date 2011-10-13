@@ -8,3 +8,10 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require_tree .
+//
+
+$(document).ready(function() {
+  return $('#search').autocomplete({
+    source: "/ajax/clients"
+  });
+});

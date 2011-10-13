@@ -12,12 +12,42 @@ class Client < ActiveRecord::Base
   validates :name,:surname,:birth_date,:ins_company_id,:client_sex_id, :presence=>true
 
 
- def self.search(surname)  
-  if surname
-    where('surname LIKE ?', "%#{surname}%")  
+def client_name=(name)
+  client = Client.find_by_surname(name)
+  if client
+    self.user_id = client.id
   else
-    scoped
-  end 
+    errors[:user_name] << "Invalid name entered"
+  end
+end
+
+def client_name
+  Client.find(client_id).name if client_id
+end
+
+
+ def self.search(search)
+  if search
+    s=search.scan(/\S+/)
+    case s.size
+    when 1  
+      if s[0]
+        where('surname LIKE ?', "%#{s[0]}%")  
+      else
+        scoped
+      end 
+    when 3
+      where('surname LIKE ? and name LIKE ? and father_name LIKE ?',"#{s[0]}","#{s[1]}","#{s[2]}")  
+#      find_by_surname_and_name_and_father_name(s[0],s[1],s[2])
+    else
+      scoped
+    end  
+  else
+   scoped
+  end  
+ 
+
+   
  end 
 
 
@@ -29,6 +59,7 @@ def fio
   "#{surname} #{name} #{father_name}"
 end
  
+
 def short_fio
  res=name 
  unless (surname.nil? or name.nil? or father_name.nil?)

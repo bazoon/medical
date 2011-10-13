@@ -23,6 +23,7 @@ class ClientsController < ApplicationController
  #   render :text => params[:search]
     
 #    @clients =Client.search(params[:search]).order("surname").page(params[:page])
+    
     @clients =Client.search(params[:search]).page(params[:page])
 
 
