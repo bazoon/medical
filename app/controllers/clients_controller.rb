@@ -1,35 +1,24 @@
 class ClientsController < ApplicationController
 
 
-
-
   def operations
     @client = Client.find(params[:id])
+    session[:client_id] = @client.id
   end
 
   
   # GET /clients
   # GET /clients.json
   def index
-    
-#    if params[:search].nil?
-#     @clients = Client.order("surname").page(params[:page])
-#    else
-#     @clients = Client.where("surname like ?",params[:search])
-#    end 
-
- #   @clients = Client.where("surname like ?",params[:search])
-
- #   render :text => params[:search]
-    
-#    @clients =Client.search(params[:search]).order("surname").page(params[:page])
-    
     @clients =Client.search(params[:search]).page(params[:page])
-
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @clients }
+    
+    if @clients && @clients.size == 1
+      redirect_to operations_client_path(@clients[0])
+    else
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @clients }
+      end
     end
   end
 
@@ -92,7 +81,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.update_attributes(params[:client])
-        format.html { redirect_to @client, notice: I18n.t(:record_updated) }
+        format.html { redirect_to operations_client_path(@client), notice: I18n.t(:record_updated) }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

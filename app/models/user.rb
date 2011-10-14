@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :surname,:father_name, :doctor_type_id
+  #has_secure_password
 
 def to_s
   short_fio_with_doctor_type

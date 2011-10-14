@@ -15,7 +15,8 @@
         %a{:href => "/", :title => "Go to homepage"} Госпиталь для ветеранов войн
       %p{:class => "title"} ГЛПУ ТО
       #header-in
-        %p &hellip;the best solution
+        %div{:class => "ct"}
+          =render :partial => "current_client", :locals => {:current_client => current_client}
       %a{:href => "#skip-menu", :class => "hidden"} Skip menu
       %ul{:id => "menu"}
         %li

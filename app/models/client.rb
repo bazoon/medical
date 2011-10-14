@@ -11,6 +11,17 @@ class Client < ActiveRecord::Base
 
   validates :name,:surname,:birth_date,:ins_company_id,:client_sex_id, :presence=>true
 
+def local_date(field)
+ I18n.l(self.send(field)) unless self.send(field).nil?
+end
+
+def passport
+  "#{pasp_seria} #{pasp_num}"
+end
+
+def work_info
+ "#{work_place} / #{work_position}"
+end
 
 def client_name=(name)
   client = Client.find_by_surname(name)

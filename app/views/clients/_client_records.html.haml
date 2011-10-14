@@ -1,5 +1,3 @@
-%h3
-  %a{:href => "#"} 
-    = tab_name
-%div 
+%div{:id => tab_id}
+  = link_to content_tag(:span,"",class: "ui-icon ui-icon-plus"), add_path
   =render :partial => render_name,:collection => items,:as => :item

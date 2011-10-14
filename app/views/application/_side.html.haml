@@ -1,11 +1,8 @@
 %ul
   %li
     %h2 Искать
-    %form#searchform
-      %div
-        %input#searchfield{:type => "text"}
-        %input{:type => "hidden",:id =>"searchsbumit"}  
-
+    %div
+      =render :partial => "clients/search_form"
   -unless @client.nil? or @client.id.nil?
     %li
       %h2 

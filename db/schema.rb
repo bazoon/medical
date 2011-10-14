@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111007083516) do
+ActiveRecord::Schema.define(:version => 20111014075849) do
 
   create_table "client_sexes", :force => true do |t|
     t.string   "sex"
@@ -46,7 +46,16 @@ ActiveRecord::Schema.define(:version => 20111007083516) do
     t.datetime "updated_at"
     t.integer  "client_sex_id"
     t.text     "phones"
+    t.integer  "lab_tests_count",            :default => 0
+    t.integer  "diagnostic_tests_count",     :default => 0
+    t.integer  "htm_help_notes_count",       :default => 0
+    t.integer  "med_diagnostic_tests_count", :default => 0
+    t.integer  "hospitalizations_count",     :default => 0
+    t.integer  "prof_inspections_count",     :default => 0
+    t.integer  "sanatorium_notes_count",     :default => 0
   end
+
+  add_index "clients", ["id"], :name => "clients_id_idx"
 
   create_table "diagnostic_tests", :force => true do |t|
     t.date     "test_date"
@@ -182,6 +191,8 @@ ActiveRecord::Schema.define(:version => 20111007083516) do
     t.string   "father_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "pass"
+    t.string   "password_digest"
   end
 
 end
