@@ -1,0 +1,2 @@
+module Ref::BenefitCategoriesHelper
+end

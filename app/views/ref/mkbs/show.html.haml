@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @ref_mkb.name
+%p
+  %b Code:
+  = @ref_mkb.code
+
+= link_to 'Edit', edit_ref_mkb_path(@ref_mkb)
+\|
+= link_to 'Back', ref_mkbs_path

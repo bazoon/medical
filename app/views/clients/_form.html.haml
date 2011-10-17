@@ -6,28 +6,37 @@
         - @client.errors.full_messages.each do |msg|
           %li= msg
 
-  = form.association :client_sex,:label => "Пол",:default => "М"
+  = form.input :num_card,:label => "Номер карты"
+  = form.input :snils,:label => "СНИЛС"
+  = form.association :ins_company, :label => "Застрахован", :hint => "Страховая компания", :include_blank => false
+  = form.input :ins_seria,:label => "Серия полиса"
+  = form.input :ins_num,:label => "Номер полиса"
+  %hr
+  %br
   = form.input :surname,:label => "Фамилия"
   = form.input :name,:label => "Имя"
   = form.input :father_name,:label => "Отчество"
-  = form.input :num_card,:label => "Номер карты"
+  = form.association :client_sex,:label => "Пол",:default => "М"
   = form.input :birth_date,:label => "Дата рождения",:start_year => Time.now.year-100,:end_year => Time.now.year+100,:use_month_numbers => true,:order => [:day,:month,:year]
-  = form.input :address,:label => "Адрес"
+  %hr
+  %br
+  = form.input :reg_address,:label => "Адрес регистрации"
+  = form.input :real_address,:label => "Адрес местанахождения"
+  = form.input :mobile_phone,:label => "Телефон сотовый"
+  = form.input :home_phone,:label => "Телефон домашний"
+  = form.input :work_phone,:label => "Телефон рабочий"
+  = form.input :relative_phone,:label => "Телефоны родственников"
   = form.input :pasp_seria,:label => "Серия паспорта"
   = form.input :pasp_num,:label => "Номер паспорта"
   = form.input :work_place,:label => "Место работы"
   = form.input :work_position,:label => "Должность"
-  = form.input :snils,:label => "Снилс"
-  = form.input :benefit_id,:label => "Ид. бенефициара", :hint => "Идентификатор бенефициара"
-  = form.input :veteran_id,:label => "Ид. ветерана", :hint => "Идентификатор ветерана"
-  = form.input :indiv_reab_programm,:label => "Реабилитация", :hint => "Индивидуальная программа реабилитации"
-  = form.input :mse_note,:label => "МСЕ"
-  = form.input :attach_date,:label => "Дата прикрепления",:start_year => Time.now.year-100,:end_year => Time.now.year+100,:use_month_numbers => true,:order => [:day,:month,:year]
-  = form.input :dlo, :label => "ДЛО"
-  = form.input :decease_mkb_10, :label =>:"МКБ 10", :hint => "Заболевания подходящие для наблюдения по МКБ 10"
+  = form.input :pensioner,:label => "Пенсионер ?"
+  = form.input :benefit_refuse,:label => "Отказался от льгот ?"
+  = form.input :drug_intolerance, :label => "Лекарственная непереносимость"
+  = form.input :blood_group ,:label => "Группа крови" do
+    =form.select :blood_group, [["I+",1],["I-",2],["II+",3],["II-",4],["III+",5],["III-",6],["VI+",7],["VI-",8]],:include_blank => false
   = form.input :special_note, :label => "Особые заметки"
+  = form.input :attach_date,:label => "Дата прикрепления",:start_year => Time.now.year-100,:end_year => Time.now.year+100,:use_month_numbers => true,:order => [:day,:month,:year]
   = form.input :detach_date, :label => "Дата открепления",:start_year => Time.now.year-100,:end_year => Time.now.year+100,:use_month_numbers => true,:order => [:day,:month,:year]
   = form.input :notes, :label => "Примечания"
-  = form.input :phones,:label => "Телефоны"
-  = form.association :ins_company, :label => "Застрахован", :hint => "Страховая компания"
   = form.submit "Сохранить" 

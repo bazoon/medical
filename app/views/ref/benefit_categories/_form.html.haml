@@ -1,0 +1,14 @@
+= simple_form_for @ref_benefit_category do |f|
+  -if @ref_benefit_category.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@ref_benefit_catagory.errors.count, "error")} Сохранение невозможно! Есть ошибки.:"
+      %ul
+        - @ref_benefit_category.errors.full_messages.each do |msg|
+          %li= msg
+  =f.input :code,:label =>"Код"
+  =f.input :short_name,:label =>"Краткое наименование"
+  =f.input :full_name,:label =>"Полное наименование"
+  =f.input :percent,:label =>"Процент оплаты"
+  =f.input :source,:label =>"Краткое наименование" do
+    =f.select :source,[["Ф",1],["Т",2]]
+  =f.submit "Сохранить"

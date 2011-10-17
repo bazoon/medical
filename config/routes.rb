@@ -1,4 +1,8 @@
 Medical::Application.routes.draw do
+  namespace :ref do resources :mkbs end
+
+  namespace :ref do resources :benefit_categories end
+
   resources :users
 
   namespace :ref do 

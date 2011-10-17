@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111014075849) do
+ActiveRecord::Schema.define(:version => 20111017105645) do
 
   create_table "client_sexes", :force => true do |t|
     t.string   "sex"
@@ -27,17 +27,10 @@ ActiveRecord::Schema.define(:version => 20111014075849) do
     t.date     "birth_date"
     t.string   "pasp_num"
     t.string   "pasp_seria"
-    t.string   "address"
     t.string   "snils"
     t.string   "work_place"
     t.string   "work_position"
-    t.string   "benefit_id"
-    t.string   "veteran_id"
-    t.string   "indiv_reab_programm"
-    t.string   "mse_note"
     t.date     "attach_date"
-    t.string   "dlo"
-    t.string   "decease_mkb_10"
     t.string   "special_note"
     t.date     "detach_date"
     t.string   "notes"
@@ -45,7 +38,6 @@ ActiveRecord::Schema.define(:version => 20111014075849) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "client_sex_id"
-    t.text     "phones"
     t.integer  "lab_tests_count",            :default => 0
     t.integer  "diagnostic_tests_count",     :default => 0
     t.integer  "htm_help_notes_count",       :default => 0
@@ -53,6 +45,18 @@ ActiveRecord::Schema.define(:version => 20111014075849) do
     t.integer  "hospitalizations_count",     :default => 0
     t.integer  "prof_inspections_count",     :default => 0
     t.integer  "sanatorium_notes_count",     :default => 0
+    t.string   "mobile_phone"
+    t.string   "home_phone"
+    t.string   "work_phone"
+    t.string   "relative_phone"
+    t.boolean  "pensioner",                  :default => false
+    t.integer  "blood_group"
+    t.boolean  "benefit_refuse",             :default => false
+    t.text     "drug_intolerance"
+    t.string   "ins_seria"
+    t.string   "ins_num"
+    t.string   "real_address"
+    t.string   "reg_address"
   end
 
   add_index "clients", ["id"], :name => "clients_id_idx"
@@ -110,6 +114,16 @@ ActiveRecord::Schema.define(:version => 20111014075849) do
     t.datetime "updated_at"
   end
 
+  create_table "ref_benefit_categories", :force => true do |t|
+    t.string   "code"
+    t.string   "short_name"
+    t.string   "full_name"
+    t.integer  "percent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "source"
+  end
+
   create_table "ref_desease_types", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -161,6 +175,13 @@ ActiveRecord::Schema.define(:version => 20111014075849) do
 
   create_table "ref_med_diagnostic_test_types", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ref_mkbs", :force => true do |t|
+    t.string   "name"
+    t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

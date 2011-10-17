@@ -1,6 +1,5 @@
-%div.client_info
-  %span{:class => "client_field"} 
-    ="#{field_name} : "
-  %span
+%tr
+  %td.underlined.caption_field
+    ="#{field_name}"
+  %td.underlined.client_field
     =field_value
-%hr    

@@ -11,6 +11,21 @@ class Client < ActiveRecord::Base
 
   validates :name,:surname,:birth_date,:ins_company_id,:client_sex_id, :presence=>true
 
+def blood
+ g={1 => "O(I) Rh+",2 => "O(I) Rh-",3 => "A(II) Rh+",4 => "A(II) Rh-",5 => "B(III) Rh+",6 => "B(III) Rh-",7 => "AB(VI) Rh+",8 => "AB(VI) Rh-"}
+ g[blood_group]
+end
+
+
+def boolean_to_yes_no(field)
+  if send(field)
+    I18n.t(:y) 
+  else
+    I18n.t(:n)
+  end
+end
+
+
 def local_date(field)
  I18n.l(self.send(field)) unless self.send(field).nil?
 end
@@ -114,9 +129,9 @@ end
      sex=row[11]
      @client.client_sex_id=sex
      @client.birth_date=convert_d(row[5])
-     @client.pasp_seria=row[6]
-     @client.pasp_num=row[7]
-     @client.address=row[9]
+     @client.ins_seria=row[6]
+     @client.ins_num=row[7]
+     @client.reg_address=row[9]
      @client.snils=row[10]
 
      @client.ins_company_id=1

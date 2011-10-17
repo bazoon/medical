@@ -101,3 +101,34 @@ input:focus, textarea:focus {
  width: 200px;
 }
 
+.underlined {
+ border-bottom: 1px solid silver;
+ background-color: #eeeeee;
+}
+
+.ct {
+  color: white;
+  position: absolute;
+  bottom: 0;
+}
+
+.client_field {
+  font-weight: bold;
+}
+
+.caption_field {
+  width: 40%;
+}
+
+
+.client_info {
+ padding: 2px;
+}
+
+#client_table {
+ width: 100%;
+}
+
+#client_table td {
+ padding: 7px;
+}

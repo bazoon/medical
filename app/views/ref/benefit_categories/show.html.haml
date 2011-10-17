@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Code:
+  = @ref_benefit_category.code
+%p
+  %b Short name:
+  = @ref_benefit_category.short_name
+%p
+  %b Full name:
+  = @ref_benefit_category.full_name
+%p
+  %b Percent:
+  = @ref_benefit_category.percent
+%p
+  %b Source:
+  = @ref_benefit_category.source
+
+= link_to 'Edit', edit_ref_benefit_category_path(@ref_benefit_category)
+\|
+= link_to 'Back', ref_benefit_categories_path

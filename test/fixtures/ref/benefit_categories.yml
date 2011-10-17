@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  code: MyString
+  short_name: MyString
+  full_name: MyString
+  percent: 1
+  source: MyString
+
+two:
+  code: MyString
+  short_name: MyString
+  full_name: MyString
+  percent: 1
+  source: MyString

@@ -1,0 +1,21 @@
+%h1 Listing ref_mkbs
+
+%table
+  %tr
+    %th Name
+    %th Code
+    %th
+    %th
+    %th
+
+  - @ref_mkbs.each do |ref_mkb|
+    %tr
+      %td= ref_mkb.name
+      %td= ref_mkb.code
+      %td= link_to 'Show', ref_mkb
+      %td= link_to 'Edit', edit_ref_mkb_path(ref_mkb)
+      %td= link_to 'Destroy', ref_mkb, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Mkb', new_ref_mkb_path

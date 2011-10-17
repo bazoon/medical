@@ -22,7 +22,12 @@ ru:
   sex_m: "М"
   sex_w: "Ж"
   new_record: "Новая запись"
-
+  y: "Да"
+  n: "Нет"
+  false: "Нет"
+  true: "Да"
+  federal: "Федеральный"
+  regional: "Областной"
 
   views:
     pagination:

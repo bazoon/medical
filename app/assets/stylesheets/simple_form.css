@@ -1,7 +1,5 @@
-
-form.simple_form, form.simple_form ul, form.simple_form ol, form.simple_form li, form.simple_form fieldset, form.simple_form legend, form.simple_form input, form.simple_form textarea, form.simple_form select, form.simple_form p { margin:1px; padding:1px; }
-
-
+/* ----- SimpleForm Styles ----- */
+/* ----- SimpleForm Styles ----- */
 form.simple_form {
  border: solid 1px #cccccc;
  padding: 15px;
@@ -11,58 +9,36 @@ form.simple_form {
 }
 
 
-form.simple_form select,input,textarea {
-  width: 300px;
-}
-.simple_form select.date {
-  width: 100px;
-}
-
 .simple_form div.input {
-  margin-bottom: 15px;
-  font-size: small;
-
+  margin-bottom: 10px;
 }
 
 .simple_form label {
   float: left;
   width: 140px;
-  text-align: left;
+  text-align: right;
   margin: 2px 10px;
-  clear: both;
-}
-
-div.boolean, .simple_form input[type='submit'] {
-  margin-left: 22px;
-
-}
-
-.simple_form input[type='submit'] {
-  width: 300px;
-  height: 50px;
-  margin-left: 160px;
-  border: solid 1px #aa5555;
-}
-
-.simple_form input[type='submit']:hover {
-  width: 300px;
-  height: 50px;
-  margin-left: 160px;
-  border: solid 4px #aa5555;
 }
 
 
+div.boolean {
+ margin-left: 15px;
+
+}
 
 
-div.boolean label, label.collection_radio {
-  float: left;
-  margin: 2px 10px;
-  text-align: left;
+div.boolean label {
+  float: none;
+  margin: -25px;
+}
+
+label.collection_radio {
+  float: none;
+  margin: 0;
 }
 
 label.collection_radio {
   margin-right: 10px;
-  vertical-align: -2px;
   margin-left:   2px;
 }
 
@@ -74,7 +50,7 @@ label.collection_radio {
   clear:   left;
   color:   black;
   display: block;
-  margin-left: 120px;
+  margin-left: 160px;
   font-size:    12px;
 }
 
@@ -92,25 +68,39 @@ input.radio {
   vertical-align: -3px;
 }
 
-.check_boxes {
+input.check_boxes {
   margin-left: 3px;
   vertical-align: -3px;
-  background-color: red;
-}
-
-.simple_form.checkbox {
-  width: 40px;
-  margin-left: 200px;
 }
 
 label.collection_check_boxes {
   float: none;
   margin: 0;
   vertical-align: -2px;
-  margin-left:   -140px;
+  margin-left:   2px;
 }
 
 
-form#searchform input {
- width: 200px;
+.simple_form select.date {
+  width: 100px;
 }
+
+form.simple_form input,textarea {
+  width: 300px;
+}
+form.simple_form select {
+  width: 320px;
+}
+
+
+.simple_form input[type='submit'] {
+  width: 320px;
+  height: 50px;
+  margin-left: 160px;
+  border: solid 1px #aa5555;
+}
+
+.simple_form input[type='submit']:hover {
+  border: solid 4px #aa5555;
+}
+
