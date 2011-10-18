@@ -8,6 +8,7 @@ class Client < ActiveRecord::Base
   has_many :sanatorium_notes,:dependent => :delete_all,:order =>"actual_date DESC"
   has_many :med_diagnostic_tests,:dependent => :delete_all,:order =>"test_date DESC"
   has_many :prof_inspections,:dependent => :delete_all,:order =>"actual_date DESC"
+  has_many :benefits,:dependent => :delete_all,:order => "prim DESC"
 
   validates :name,:surname,:birth_date,:ins_company_id,:client_sex_id, :presence=>true
 
@@ -16,6 +17,14 @@ def blood
  g[blood_group]
 end
 
+def primary_benefit
+ benefits.each do |b|
+  
+
+
+ end
+
+end
 
 def boolean_to_yes_no(field)
   if send(field)

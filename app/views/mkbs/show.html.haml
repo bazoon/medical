@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Client:
+  = @mkb.client_id
+%p
+  %b Mkb type:
+  = @mkb.mkb_type_id
+%p
+  %b Actual date:
+  = @mkb.actual_date
+
+= link_to 'Edit', edit_mkb_path(@mkb)
+\|
+= link_to 'Back', mkbs_path

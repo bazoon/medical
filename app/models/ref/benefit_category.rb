@@ -2,6 +2,10 @@ class Ref::BenefitCategory < ActiveRecord::Base
   has_many :users
 
 
+def to_s
+ "#{code}: #{short_name} "
+end  
+
 def can_be_deleted
   true
 end

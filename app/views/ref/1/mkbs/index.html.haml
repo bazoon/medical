@@ -1,0 +1,21 @@
+%h2 Медицинский классификатор болезней
+%br
+
+= link_to 'Новая категория', new_ref_mkb_path
+%br
+
+%table#newspaper-a
+  %tr
+    %th Наименование
+    %th Код
+    %th .
+    %th .
+  - @ref_mkbs.each do |ref_mkb|
+    %tr
+      %td= ref_mkb.name
+      %td= ref_mkb.code
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_mkb_path(ref_mkb)
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,ref_mkb, :confirm => 'Are you sure?', :method => :delete if ref_mkb.can_be_deleted
+%br
+
+= link_to 'Новая категория', new_ref_mkb_path,:accesskey => "n"

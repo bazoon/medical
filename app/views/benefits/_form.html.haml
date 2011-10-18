@@ -1,0 +1,10 @@
+=simple_form_for [@client,@benefit] do |f|
+  =f.association :benefit_category,:label=>"Льготная категория", :include_blank => false
+  =f.input :doc_name, :label => "Документ"
+  =f.input :doc_seria, :label => "Серия"
+  =f.input :doc_num, :label => "Номер"
+  =f.input :doc_given_by, :label => "Кем выдан"
+  =f.input :doc_date, :label => "Дата выдачи"
+  =f.input :prim,:label => "Основная льгота"
+  =f.submit "Сохранить"
+

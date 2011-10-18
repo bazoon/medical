@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111017105645) do
+ActiveRecord::Schema.define(:version => 20111018101913) do
+
+  create_table "benefits", :force => true do |t|
+    t.integer  "client_id"
+    t.string   "doc_name"
+    t.string   "doc_seria"
+    t.string   "doc_num"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "doc_date"
+    t.integer  "benefit_category_id"
+    t.string   "doc_given_by"
+    t.boolean  "prim"
+  end
 
   create_table "client_sexes", :force => true do |t|
     t.string   "sex"
@@ -57,6 +70,8 @@ ActiveRecord::Schema.define(:version => 20111017105645) do
     t.string   "ins_num"
     t.string   "real_address"
     t.string   "reg_address"
+    t.integer  "benefits_count",             :default => 0
+    t.integer  "mkbs_count",                 :default => 0
   end
 
   add_index "clients", ["id"], :name => "clients_id_idx"
@@ -101,6 +116,14 @@ ActiveRecord::Schema.define(:version => 20111017105645) do
     t.integer  "med_diagnostic_test_type_id"
     t.integer  "client_id"
     t.text     "result"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mkbs", :force => true do |t|
+    t.integer  "client_id"
+    t.integer  "mkb_type_id"
+    t.date     "actual_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -179,9 +202,9 @@ ActiveRecord::Schema.define(:version => 20111017105645) do
     t.datetime "updated_at"
   end
 
-  create_table "ref_mkbs", :force => true do |t|
-    t.string   "name"
+  create_table "ref_mkb_types", :force => true do |t|
     t.string   "code"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

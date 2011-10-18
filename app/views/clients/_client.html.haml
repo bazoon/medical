@@ -1,5 +1,7 @@
 %div{:id => tab_id}
   = link_to content_tag(:div,"",class: "ui-icon ui-icon-pencil size_32x32"), edit_client_path(client)
+  %h2
+    Личные данные
   %table#client_table
     = render :partial => "client_field", :locals => {:field_name =>"Номер амбулаторной карты", :field_value => client.num_card}
     = render :partial => "client_field", :locals => {:field_name =>"СНИЛС", :field_value => client.snils}
@@ -9,12 +11,22 @@
     = render :partial => "client_field", :locals => {:field_name =>"ФИО", :field_value => client.fio}
     = render :partial => "client_field", :locals => {:field_name =>"Дата рождения", :field_value => client.local_date(:birth_date)}
     = render :partial => "client_field", :locals => {:field_name =>"Пол", :field_value => client.client_sex.sex}
+  %h2
+    Контактная информация
+  %table#client_table
     = render :partial => "client_field", :locals => {:field_name =>"Адрес регистрации", :field_value => client.reg_address}
     = render :partial => "client_field", :locals => {:field_name =>"Адрес места жительства", :field_value => client.real_address}
     = render :partial => "client_field", :locals => {:field_name =>"Телефон сотовый", :field_value => client.mobile_phone}
     = render :partial => "client_field", :locals => {:field_name =>"Телефон домашний", :field_value => client.home_phone}
     = render :partial => "client_field", :locals => {:field_name =>"Телефон рабочий", :field_value => client.work_phone}
     = render :partial => "client_field", :locals => {:field_name =>"Телефоны родственников", :field_value => client.relative_phone}
+  %h2
+    Льготы
+  %table#client_table
+    = render :partial => "benefits",:collection => client.benefits, :as => :benefit
+  %h2
+    Прочие данные
+  %table#client_table
     = render :partial => "client_field", :locals => {:field_name =>"Паспорт", :field_value => client.passport}
     = render :partial => "client_field", :locals => {:field_name =>"Место работы", :field_value => client.work_info}
     = render :partial => "client_field", :locals => {:field_name =>"Пенсионер ?", :field_value => client.boolean_to_yes_no(:pensioner)}

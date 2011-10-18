@@ -1,7 +1,7 @@
 = simple_form_for @ref_benefit_category do |f|
   -if @ref_benefit_category.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@ref_benefit_catagory.errors.count, "error")} Сохранение невозможно! Есть ошибки.:"
+      %h2= "#{pluralize(@ref_benefit_category.errors.count, "error")} Сохранение невозможно! Есть ошибки.:"
       %ul
         - @ref_benefit_category.errors.full_messages.each do |msg|
           %li= msg

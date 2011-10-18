@@ -1,5 +1,7 @@
 Medical::Application.routes.draw do
-  namespace :ref do resources :mkbs end
+
+
+  namespace :ref do resources :mkb_types end
 
   namespace :ref do resources :benefit_categories end
 
@@ -32,6 +34,8 @@ Medical::Application.routes.draw do
       resources :hospitalizations
       resources :diagnostic_tests
       resources :lab_tests
+      resources :benefits
+      resources :mkbs
   end
 
   resources :client_sexes

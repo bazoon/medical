@@ -10,7 +10,11 @@ end
 private
 
   def current_client
-    @current_client ||= Client.find(session[:client_id]) if session[:client_id]  
+    begin
+     @current_client ||= Client.find(session[:client_id]) if session[:client_id]  
+    rescue ActiveRecord::RecordNotFound   
+      return nil
+    end  
   end  
  
 

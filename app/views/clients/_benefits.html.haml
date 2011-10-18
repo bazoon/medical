@@ -1,0 +1,12 @@
+%tr
+  -if benefit.prim
+    %td{:class =>"underlined"}
+      ="Основная категория" 
+      =content_tag(:span,"",class: "ui-icon ui-icon-flag flag")
+  -else    
+    %td{:class =>"underlined caption_field"}
+      ="Дополнительная категория" 
+    
+  %td.underlined.client_field
+    ="#{benefit.benefit_category.short_name}"
+

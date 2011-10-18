@@ -1,0 +1,8 @@
+=simple_form_for [@client,@mkb] do |f|
+  =f.input :mkb_type,:label => "Заболевание" do
+    =f.select :mkb_type, Ref::MkbType.find(:all,:order => :code).map {|m| ["#{m.code}. #{m.name}",m.id]}
+
+
+  =f.input :actual_date,:label => "Дата"
+  =f.submit "Сохранить"
+

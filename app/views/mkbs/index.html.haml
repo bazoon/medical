@@ -1,0 +1,37 @@
+= link_to content_tag(:span,"",class: "ui-icon ui-icon-triangle-1-w"), operations_client_path(@client)
+%br
+%h1= @client.fio unless @client.nil?
+%br
+%h2 Заболевания (МКБ 10)
+%br
+
+-unless flash.empty?
+  %p#notice= notice
+
+
+-if @mkbs.count > 0 
+  %table#newspaper-a
+    %tr
+      %th Код
+      %th Наименование
+      %th Дата
+      %th
+      %th
+
+    - @mkbs.each do |mkb|
+      %tr
+        %td= mkb.mkb_type.code
+        %td= mkb.mkb_type.name
+        %td= I18n.l(mkb.actual_date)
+
+        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_mkb_path(@client,mkb)
+        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , client_mkb_path(@client,mkb), :confirm => 'Are you sure?', :method => :delete
+-else
+  =render "clients/empty"
+
+%br
+
+= link_to t(:new_record), new_client_mkb_path 
+
+
+

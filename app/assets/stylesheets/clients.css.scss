@@ -71,6 +71,7 @@ input:focus, textarea:focus {
 	text-align: left;
 	border-collapse: collapse;
 	border: 1px solid #69c;
+        margin-top: 5px;
 }
 #newspaper-a th
 {
@@ -132,3 +133,9 @@ input:focus, textarea:focus {
 #client_table td {
  padding: 7px;
 }
+
+.flag {
+ float: right;
+}
+
+

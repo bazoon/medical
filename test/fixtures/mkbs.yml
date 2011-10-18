@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  client_id: 1
+  mkb_type_id: 1
+  actual_date: 2011-10-18
+
+two:
+  client_id: 1
+  mkb_type_id: 1
+  actual_date: 2011-10-18

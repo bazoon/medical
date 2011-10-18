@@ -2,8 +2,12 @@ class ClientsController < ApplicationController
 
 
   def operations
-    @client = Client.find(params[:id])
-    session[:client_id] = @client.id
+    begin
+     @client = Client.find(params[:id])
+     session[:client_id] = @client.id
+    rescue ActiveRecord::RecordNotFound
+      redirect_to clients_path
+    end
   end
 
   

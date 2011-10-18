@@ -15,6 +15,8 @@
         %li= link_to "ВТМП",client_htm_help_notes_path(@client) , :class => "#{"active" if request.path=~/htm_help_notes/}"
         %li= link_to "СКЛ",client_sanatorium_notes_path(@client) , :class => "#{"active" if request.path=~/sanatorium_notes/}"
         %li= link_to "Леч. диагн. работа",client_med_diagnostic_tests_path(@client), :class => "#{"active" if request.path=~/med_diagnostic_tests/}"
+        %li= link_to "Льготы",client_benefits_path(@client), :class => "#{"active" if request.path=~/benefit/}"
+        %li= link_to "МКБ 10",client_mkbs_path(@client), :class => "#{"active" if request.path=~/mkb/}"
   %li
     %h2 
       Разделы
@@ -34,4 +36,6 @@
       %li= link_to "Типы врачей",ref_doctor_types_path
       %li= link_to "Типы заболеваний",ref_desease_types_path
       %li= link_to "Врач - заболевание ",ref_doctor_deseases_path
- 
+      %li= link_to "Категории льгот",ref_benefit_categories_path
+      %li= link_to "МКБ",ref_mkb_types_path
+

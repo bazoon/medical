@@ -28,6 +28,11 @@ ru:
   true: "Да"
   federal: "Федеральный"
   regional: "Областной"
+  seria: "серия"
+  num: "номер"
+  given_by: "выдан"
+  document: "документ"
+
 
   views:
     pagination:

@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Client:
+  = @benefit.client_id
+%p
+  %b Ref benefit category:
+  = @benefit.ref_benefit_category_id
+%p
+  %b Doc name:
+  = @benefit.doc_name
+%p
+  %b Doc seria:
+  = @benefit.doc_seria
+%p
+  %b Doc num:
+  = @benefit.doc_num
+%p
+  %b Dog given by:
+  = @benefit.dog_given_by
+
+= link_to 'Edit', edit_benefit_path(@benefit)
+\|
+= link_to 'Back', benefits_path
