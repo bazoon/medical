@@ -3,5 +3,6 @@
   =f.input :actual_date, :label => "Дата"
   = f.input :user,:label =>"Врач" do 
     = f.select :user_id, User.all.map { |u| [u.short_fio_with_doctor_type, u.id] }, :include_blank => false, :selected => 5
-  =f.input :conclusion, :label => "Заключение"
+  = f.input :stat_card, :label => "Стат. талон выдан ?"
+  = f.input :conclusion, :label => "Примечания"
   = f.submit "Сохранить"

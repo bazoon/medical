@@ -1,7 +1,9 @@
 =simple_form_for [@client,@mkb] do |f|
-  =f.input :mkb_type,:label => "Заболевание" do
-    =f.select :mkb_type, Ref::MkbType.find(:all,:order => :code).map {|m| ["#{m.code}. #{m.name}",m.id]}
+  =f.input :mkb_type_id,:label => "Заболевание" do
+    =f.select :mkb_type_id, Ref::MkbType.find(:all,:order => :code).map {|m| ["#{m.code}. #{m.name}",m.id]}
 
+  =f.input :user_id, :label => "Врач" do
+    =f.select :user_id, User.find(:all,:order => :father_name).map {|u| ["#{u.short_fio} #{u.doctor_type.name}",u.id] }
 
   =f.input :actual_date,:label => "Дата"
   =f.submit "Сохранить"

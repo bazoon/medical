@@ -9,6 +9,7 @@ class Client < ActiveRecord::Base
   has_many :med_diagnostic_tests,:dependent => :delete_all,:order =>"test_date DESC"
   has_many :prof_inspections,:dependent => :delete_all,:order =>"actual_date DESC"
   has_many :benefits,:dependent => :delete_all,:order => "prim DESC"
+  has_many :mkbs,:dependent => :delete_all,:order => "actual_date DESC"
 
   validates :name,:surname,:birth_date,:ins_company_id,:client_sex_id, :presence=>true
 

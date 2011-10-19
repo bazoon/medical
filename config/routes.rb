@@ -1,6 +1,5 @@
 Medical::Application.routes.draw do
 
-
   namespace :ref do resources :mkb_types end
 
   namespace :ref do resources :benefit_categories end
@@ -27,8 +26,13 @@ Medical::Application.routes.draw do
     member do
       get :operations,:search
     end 
+
       resources :sanatorium_notes
-      resources :prof_inspections
+
+      resources :prof_inspections do
+        resources :diagnoses
+      end 
+
       resources :htm_help_notes
       resources :med_diagnostic_tests
       resources :hospitalizations

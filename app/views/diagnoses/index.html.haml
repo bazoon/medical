@@ -1,0 +1,23 @@
+%h1 Listing diagnoses
+
+%table
+  %tr
+    %th Prof inspection
+    %th Mkb type
+    %th First detected
+    %th
+    %th
+    %th
+
+  - @diagnoses.each do |diagnosis|
+    %tr
+      %td= diagnosis.prof_inspection_id
+      %td= diagnosis.mkb_type_id
+      %td= diagnosis.first_detected
+      %td= link_to 'Show', diagnosis
+      %td= link_to 'Edit', edit_client_prof_inspection_diagnosis_path(@prof_inspection.client,@prof_inspection,diagnosis)
+      %td= link_to 'Destroy', client_prof_inspection_diagnosis_path(@prof_inspection.client,@prof_inspection,diagnosis), :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Diagnosis', new_client_prof_inspection_diagnosis_path(@prof_inspection.client,@prof_inspection)

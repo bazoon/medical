@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Prof inspection:
+  = @diagnosis.prof_inspection_id
+%p
+  %b Mkb type:
+  = @diagnosis.mkb_type_id
+%p
+  %b First detected:
+  = @diagnosis.first_detected
+
+= link_to 'Edit', edit_diagnosis_path(@diagnosis)
+\|
+= link_to 'Back', diagnoses_path

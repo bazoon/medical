@@ -85,7 +85,7 @@ class MkbsController < ApplicationController
     @mkb.destroy
 
     respond_to do |format|
-      format.html { redirect_to mkbs_url }
+      format.html { redirect_to client_mkbs_path(@client) }
       format.json { head :ok }
     end
   end

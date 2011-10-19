@@ -1,0 +1,8 @@
+%tr
+  %td{:class =>"underlined"}
+    %span.small
+      = l mkb.actual_date
+    %span
+      = "#{mkb.user.short_fio} / #{mkb.user.doctor_type.name}"
+  %td.underlined.client_field
+    ="#{mkb.mkb_type.code} - #{mkb.mkb_type.name}"

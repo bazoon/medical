@@ -31,4 +31,4 @@
   -if @client.has_some_records?(:med_diagnostic_tests) 
     =render :partial => "client_records",:locals => {:tab_id => "tab-6",:render_name => @client.med_diagnostic_tests,:tab_name =>"Лечебно-диагностическая работа",:items => @client.med_diagnostic_tests,:add_path => new_client_med_diagnostic_test_path(@client)}
   -if @client.has_some_records?(:prof_inspections) 
-    =render :partial => "client_records",:locals => {:tab_id => "tab-7",:render_name => @client.prof_inspections,:tab_name =>"Профосмотры",:items => @client.prof_inspections,:add_path => new_client_prof_inspection_path(@client)}
+    =render :partial => "client_record",:locals => {:tab_id => "tab-7",:render_name => 'prof_inspections/prof_inspections',:tab_name =>"Профосмотры",:items => @client.prof_inspections,:add_path => new_client_prof_inspection_path(@client)}

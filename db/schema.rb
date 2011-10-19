@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111018101913) do
+ActiveRecord::Schema.define(:version => 20111019074829) do
 
   create_table "benefits", :force => true do |t|
     t.integer  "client_id"
@@ -76,6 +76,14 @@ ActiveRecord::Schema.define(:version => 20111018101913) do
 
   add_index "clients", ["id"], :name => "clients_id_idx"
 
+  create_table "diagnoses", :force => true do |t|
+    t.integer  "prof_inspection_id"
+    t.integer  "mkb_type_id"
+    t.boolean  "first_detected",     :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "diagnostic_tests", :force => true do |t|
     t.date     "test_date"
     t.integer  "diagnostic_test_type_id"
@@ -126,6 +134,7 @@ ActiveRecord::Schema.define(:version => 20111018101913) do
     t.date     "actual_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "prof_inspections", :force => true do |t|
@@ -135,6 +144,9 @@ ActiveRecord::Schema.define(:version => 20111018101913) do
     t.text     "conclusion"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "mkb_type_id"
+    t.boolean  "stat_card",      :default => false
+    t.boolean  "first_detected", :default => false
   end
 
   create_table "ref_benefit_categories", :force => true do |t|

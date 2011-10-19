@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  prof_inspection_id: 1
+  mkb_type_id: 1
+  first_detected: false
+
+two:
+  prof_inspection_id: 1
+  mkb_type_id: 1
+  first_detected: false

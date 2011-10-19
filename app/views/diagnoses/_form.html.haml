@@ -1,0 +1,7 @@
+= simple_form_for [@prof_inspection.client,@prof_inspection,@diagnosis] do |f|
+  =f.error_notification
+  =f.input :mkb_type_id,:label => "Заболевание" do
+    =f.select :mkb_type_id, Ref::MkbType.find(:all,:order => :code).map {|m| ["#{m.code}. #{m.name}",m.id]}
+  =f.input :first_detected,:label => "Выявлено впервые ?"
+  =f.submit "Сохранить"
+

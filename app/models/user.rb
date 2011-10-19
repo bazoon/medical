@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   belongs_to :doctor_type, :class_name => 'Ref::DoctorType'
   has_many :prof_inspections,:dependent => :delete_all,:order =>"actual_date DESC"
   validates :name,:surname,:doctor_type_id, :presence => true
-
+  has_many :mkbs
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :surname,:father_name, :doctor_type_id

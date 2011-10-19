@@ -70,7 +70,7 @@ class ProfInspectionsController < ApplicationController
 
     respond_to do |format|
       if @prof_inspection.update_attributes(params[:prof_inspection])
-        format.html { redirect_to client_prof_inspections_path, notice: I18n.t(:record_updated)}
+        format.html { redirect_to client_prof_inspections_path(@client), notice: I18n.t(:record_updated)}
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -86,7 +86,7 @@ class ProfInspectionsController < ApplicationController
     @prof_inspection.destroy
 
     respond_to do |format|
-      format.html { redirect_to client_prof_inspections_url }
+      format.html { redirect_to client_prof_inspections_path(@client) }
       format.json { head :ok }
     end
   end
