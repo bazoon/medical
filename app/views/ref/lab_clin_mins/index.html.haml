@@ -1,0 +1,19 @@
+%h2 Лабораторный минимум
+%br
+
+
+%table#newspaper-a
+  %tr
+    %th Тип анализа
+    %th
+    %th
+
+  - @ref_lab_clin_mins.each do |ref_lab_clin_min|
+    %tr
+      %td= ref_lab_clin_min.lab_test_type.name
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_ref_lab_clin_min_path(ref_lab_clin_min)
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , ref_lab_clin_min, :confirm => 'Are you sure?', :method => :delete if ref_lab_clin_min.can_be_deleted
+
+%br
+
+=link_to 'Новая запись', new_ref_lab_clin_min_path

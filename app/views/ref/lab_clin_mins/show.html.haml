@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Lab test type:
+  = @ref_lab_clin_min.lab_test_type_id
+
+= link_to 'Edit', edit_ref_lab_clin_min_path(@ref_lab_clin_min)
+\|
+= link_to 'Back', ref_lab_clin_mins_path

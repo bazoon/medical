@@ -13,6 +13,11 @@ class Client < ActiveRecord::Base
 
   validates :name,:surname,:birth_date,:ins_company_id,:client_sex_id, :presence=>true
 
+
+def prof_inspection_years
+  years=prof_inspections.group_by {|p| p.actual_date.year}
+end
+
 def blood
  g={1 => "O(I) Rh+",2 => "O(I) Rh-",3 => "A(II) Rh+",4 => "A(II) Rh-",5 => "B(III) Rh+",6 => "B(III) Rh-",7 => "AB(VI) Rh+",8 => "AB(VI) Rh-"}
  g[blood_group]

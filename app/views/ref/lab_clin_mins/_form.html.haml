@@ -1,0 +1,5 @@
+=simple_form_for(@ref_lab_clin_min) do |f|
+  =f.error_notification
+  =f.association :lab_test_type, :label => "Тип анализа"
+  = f.submit "Сохранить"
+

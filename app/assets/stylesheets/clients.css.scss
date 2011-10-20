@@ -141,7 +141,11 @@ input:focus, textarea:focus {
 .small {
  font-size: 10px;
  color: gray;
- 
 }
 
 
+#year_links a {
+  color: #ccccff;
+  font-size: small;
+  padding-right: 7px;
+}

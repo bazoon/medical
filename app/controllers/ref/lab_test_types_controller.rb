@@ -33,7 +33,7 @@ class Ref::LabTestTypesController < ApplicationController
 
     respond_to do |format|
       if @ref_lab_test_type.save
-        format.html { redirect_to ref_lab_test_types_path, notice: I18n.t(:record_created) }
+        format.html { redirect_to ath, notice: I18n.t(:record_created) }
         format.json { render json: @ref_lab_test_type, status: :created, location: @ref_lab_test_type }
       else
         format.html { render action: "new" }

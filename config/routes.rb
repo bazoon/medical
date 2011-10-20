@@ -1,5 +1,7 @@
 Medical::Application.routes.draw do
 
+  namespace :ref do resources :lab_clin_mins end
+
   namespace :ref do resources :mkb_types end
 
   namespace :ref do resources :benefit_categories end
@@ -30,6 +32,10 @@ Medical::Application.routes.draw do
       resources :sanatorium_notes
 
       resources :prof_inspections do
+        collection do
+          get 'year/:year',:action => :year,:as => :year
+        end
+
         resources :diagnoses
       end 
 
