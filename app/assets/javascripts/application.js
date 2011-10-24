@@ -9,9 +9,15 @@
 //= require jquery-ui
 //= require_tree .
 //
+//
 
 $(document).ready(function() {
   return $('#search').autocomplete({
     source: "/ajax/clients"
   });
 });
+
+
+$(document).ready(function(){ 
+  $("#top_menu").superfish(); 
+}); 

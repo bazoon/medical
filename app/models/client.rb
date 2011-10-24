@@ -3,9 +3,9 @@ class Client < ActiveRecord::Base
   belongs_to :ins_company, :class_name => 'Ref::InsCompany'
   has_many :lab_tests, :dependent => :delete_all,:order =>"test_date DESC"
   has_many :diagnostic_tests,:dependent => :delete_all,:order =>"test_date DESC"
-  has_many :hospitalizations,:dependent => :delete_all,:order =>"actual_date DESC"
+  has_many :hospitalizations,:dependent => :delete_all,:order =>"period_start DESC"
   has_many :htm_help_notes,:dependent => :delete_all,:order =>"actual_date DESC"
-  has_many :sanatorium_notes,:dependent => :delete_all,:order =>"actual_date DESC"
+  has_many :sanatorium_notes,:dependent => :delete_all,:order =>"neediness_ref_date DESC"
   has_many :med_diagnostic_tests,:dependent => :delete_all,:order =>"test_date DESC"
   has_many :prof_inspections,:dependent => :delete_all,:order =>"actual_date DESC"
   has_many :benefits,:dependent => :delete_all,:order => "prim DESC"

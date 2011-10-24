@@ -1,0 +1,12 @@
+
+%div.container
+  %div.span-24
+    Header
+  %div.span-4
+    Left sidebar
+  %div.span-16
+    Main content
+  %div{:class => "span-4 last"}
+    Right sidebar
+
+

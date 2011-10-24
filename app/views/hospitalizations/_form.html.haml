@@ -1,5 +1,8 @@
 =simple_form_for [@client,@hospitalization] do |f|
-   =f.error_notification
-   =f.association :hospitalization_type, :label => "Тип госпитализации"
-   =f.input :actual_date, :label => "Дата госпитализации"
-   =f.submit "Сохранить"
+  =f.error_notification
+  =f.association :hospitalization_type, :label => "ЛПУ"
+  =f.input :kind, :label => "Тип" do
+    =f.select :kind, [["Плановая",0],["Экстренная",1]], :include_blank => false
+  =f.input :period_start, :label => "Госпитализация с.."
+  =f.input :period_end, :label => "..по"
+  =f.submit "Сохранить"

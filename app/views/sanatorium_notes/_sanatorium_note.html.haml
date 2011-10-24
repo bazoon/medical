@@ -1,4 +1,6 @@
 #san
-  %b= l(item.actual_date)
-  %p= "Справка о нуждаемости: #{item.neediness_reference}"
-  %p= "Санаторно-курортная карта: #{item.sanatorium_card}"
+  %p= "Справка о нуждаемости: #{l item.neediness_ref_date}"
+  %p= "Санаторно-курортная карта: #{l item.sanatorium_card_fill_date}"
+  %p= "Санаторий: #{item.sanatorium.name}"
+  %p= "Период: #{l item.period_start} - #{l item.period_end}"
+

@@ -11,7 +11,8 @@ class ProfInspectionsController < ApplicationController
   
   def index
    @prof_inspections = @client.prof_inspections.page(params[:page]).per(12)
-   @prof_inspection_groups = @prof_inspections.group_by {|p| p.actual_date.year}
+ 
+   #@prof_inspection_groups = @prof_inspections.group_by {|p| p.actual_date.year}
 
 
     respond_to do |format|
@@ -27,8 +28,7 @@ class ProfInspectionsController < ApplicationController
     start_date=Date.new(@year.to_i,1,1)
     end_date=Date.new(@year.to_i,12,31)
     @prof_inspections=ProfInspection.where("actual_date between ? and ?",start_date,end_date)
-#    render :text => @prof_inspections.count
-#
+
     respond_to do |format|
       format.js 
     end

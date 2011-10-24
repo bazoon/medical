@@ -1,42 +1,10 @@
 %ul
   %li
-    %h2 Искать
+    %h2 Искать 
     %div
       =render :partial => "clients/search_form"
-  -unless @client.nil? or @client.id.nil?
-    %li
-      %h2 
-        Что сделать ?
-      %ul      
-        %li= link_to "Профосмотры",client_prof_inspections_path(@client), :class => "#{"active" if request.path=~/prof_inspections/}"
-        %li= link_to "Лаб. анализы",client_lab_tests_path(@client), :class => "#{"active" if request.path=~/lab_tests/}"
-        %li= link_to "Диагностика",client_diagnostic_tests_path(@client) , :class => "#{"active" if request.path=~/\/diagnostic_tests/}"
-        %li= link_to "Госпитализации",client_hospitalizations_path(@client) , :class => "#{"active" if request.path=~/hospitalizations/}"
-        %li= link_to "ВТМП",client_htm_help_notes_path(@client) , :class => "#{"active" if request.path=~/htm_help_notes/}"
-        %li= link_to "СКЛ",client_sanatorium_notes_path(@client) , :class => "#{"active" if request.path=~/sanatorium_notes/}"
-        %li= link_to "Леч. диагн. работа",client_med_diagnostic_tests_path(@client), :class => "#{"active" if request.path=~/med_diagnostic_tests/}"
-        %li= link_to "Льготы",client_benefits_path(@client), :class => "#{"active" if request.path=~/benefit/}"
-        %li= link_to "МКБ 10",client_mkbs_path(@client), :class => "#{"active" if request.path=~/mkb/}"
-  %li
-    %h2 
-      Разделы
+    Разделы 
     %ul      
       %li= link_to "Пациенты",clients_path
       %li= link_to "Врачи",users_path
-  %li
-    %h2 
-      Справочники
-    %ul      
-      %li= link_to "Страховые компании",ref_ins_companies_path
-      %li= link_to "Типы анализов",ref_lab_test_types_path
-      %li= link_to "Типы диагностики",ref_diagnostic_test_types_path
-      %li= link_to "Типы госпитализации",ref_hospitalization_types_path
-      %li= link_to "Типы Л. диагностики",ref_med_diagnostic_test_types_path
-      %li= link_to "Типы ВТМП",ref_htm_help_types_path
-      %li= link_to "Типы врачей",ref_doctor_types_path
-      %li= link_to "Типы заболеваний",ref_desease_types_path
-      %li= link_to "Врач - заболевание ",ref_doctor_deseases_path
-      %li= link_to "Категории льгот",ref_benefit_categories_path
-      %li= link_to "МКБ",ref_mkb_types_path
-      %li= link_to "Клинический минимум",ref_lab_clin_mins_path
-
+    =render_navigation(:expand_all => false)

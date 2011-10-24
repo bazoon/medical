@@ -3,14 +3,15 @@
 form.simple_form {
  border: solid 1px #cccccc;
  padding: 15px;
- background-color: #c3c3c3;
-
+ background-color: #ffffff;
+ border: solid 1px silver;
+ width: 560px;
 
 }
 
 
 .simple_form div.input {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .simple_form label {
@@ -82,11 +83,19 @@ label.collection_check_boxes {
 
 
 .simple_form select.date {
-  width: 100px;
+  width: 104px;
 }
 
 form.simple_form input,textarea {
   width: 300px;
+}
+
+form.simple_form textarea {
+  height: 50px;
+}
+
+form.simple_form select,input {
+
 }
 form.simple_form select {
   width: 320px;
@@ -103,4 +112,5 @@ form.simple_form select {
 .simple_form input[type='submit']:hover {
   border: solid 4px #aa5555;
 }
+
 

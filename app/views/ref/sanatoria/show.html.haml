@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @ref_sanatorium.name
+
+= link_to 'Edit', edit_ref_sanatorium_path(@ref_sanatorium)
+\|
+= link_to 'Back', ref_sanatoria_path

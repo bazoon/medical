@@ -1,5 +1,7 @@
 Medical::Application.routes.draw do
 
+  namespace :ref do resources :sanatoria end
+
   namespace :ref do resources :lab_clin_mins end
 
   namespace :ref do resources :mkb_types end
@@ -32,9 +34,6 @@ Medical::Application.routes.draw do
       resources :sanatorium_notes
 
       resources :prof_inspections do
-        collection do
-          get 'year/:year',:action => :year,:as => :year
-        end
 
         resources :diagnoses
       end 
@@ -58,6 +57,7 @@ Medical::Application.routes.draw do
   # Keep in mind you can assign values other than :controller and :action
 
   match 'ajax/clients' => "ajax#clients"
+  match 'ajax/prof_inspections_by_year/clients/:client_id/year/:year' => "ajax#prof_inspections_by_year",:as => :prof_inspections_by_year
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase

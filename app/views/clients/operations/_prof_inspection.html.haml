@@ -1,0 +1,8 @@
+%div#year_links
+  -@client.prof_inspection_years.each do |k,v|
+    =link_to k,prof_inspections_by_year_path(@client,k), :remote => true,:class => :year_link
+%br
+=render :partial => 'clients/operations/prof_inspections', :locals => {:items => @client.prof_inspections.this_year}
+=render :partial => 'clients/operations/lab_tests', :locals => {:items => @client.lab_tests.this_year.prof_inspection_minimum}
+=render :partial => 'clients/operations/diagnostic_tests', :locals => {:items => @client.diagnostic_tests.this_year.prof_inspection_minimum}
+

@@ -1,0 +1,17 @@
+%div#labs
+  -unless (items.nil?) or (items.count <=0)
+    %table#newspaper-a
+      %tr
+        %th Анализ
+        %th Дата
+        %th Результат
+        %th Действует ?
+        %th 
+        
+      -items.each do |lab_test|
+        %tr  
+          %td= lab_test.lab_test_type.name
+          %td= l lab_test.test_date
+          %td= lab_test.result
+          %td= content_tag(:span,"",class: "ui-icon ui-icon-check") if  lab_test.valid_test?
+          %td  

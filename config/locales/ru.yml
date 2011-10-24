@@ -33,6 +33,9 @@ ru:
   given_by: "выдан"
   document: "документ"
 
+  prof_tag_name: "prof"
+  plan_hospitalization: "Плановая"
+  extra_hospitalization: "Экстренная"
 
   views:
     pagination:

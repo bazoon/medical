@@ -3,7 +3,8 @@ class ClientsController < ApplicationController
 
   def operations
     begin
-     @client = Client.find(params[:id])
+     @client = Client.includes(:mkbs =>:mkb_type,:benefits => :benefit_category,:prof_inspections => [:diagnoses,:user => :doctor_type],:lab_tests => :lab_test_type).find(params[:id])
+#     @client = Client.find(params[:id])
      session[:client_id] = @client.id
     rescue ActiveRecord::RecordNotFound
       redirect_to clients_path

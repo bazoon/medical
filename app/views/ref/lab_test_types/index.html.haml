@@ -4,12 +4,18 @@
 %table#newspaper-a
   %tr
     %th Тип
+    %th Норма
+    %th Период действия
+    %th Теги
     %th
     %th
 
   - @ref_lab_test_types.each do |ref_lab_test_type|
     %tr
       %td= ref_lab_test_type.name
+      %td= ref_lab_test_type.norm
+      %td= ref_lab_test_type.valid_period
+      %td= ref_lab_test_type.clin_min_list
       %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_lab_test_type_path(ref_lab_test_type)
       %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , ref_lab_test_type_path(ref_lab_test_type), :confirm => 'Are you sure?', :method => :delete if ref_lab_test_type.can_be_deleted
 %br

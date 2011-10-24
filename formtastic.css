@@ -1,0 +1,265 @@
+/* NORMALIZE AND RESET - obviously inspired by Yahoo's reset.css, but scoped to just .simpleform
+--------------------------------------------------------------------------------------------------*/
+.simpleform,
+.simpleform ul,
+.simpleform ol,
+.simpleform li,
+.simpleform fieldset,
+.simpleform legend,
+.simpleform input,
+.simpleform textarea,
+.simpleform select,
+.simpleform p {
+  margin:0;
+  padding:0;
+}
+
+.simpleform fieldset {
+  border:0;
+}
+
+.simpleform em,
+.simpleform strong {
+  font-style:normal;
+  font-weight:normal;
+}
+
+.simpleform ol,
+.simpleform ul {
+  list-style:none;
+}
+
+.simpleform abbr,
+.simpleform acronym {
+  border:0;
+  font-variant:normal;
+}
+
+.simpleform input,
+.simpleform textarea {
+  font-family:sans-serif;
+  font-size:inherit;
+  font-weight:inherit;
+}
+
+.simpleform input,
+.simpleform textarea,
+.simpleform select {
+  font-size:100%;
+}
+
+.simpleform legend {
+  white-space:normal;
+  color:#000;
+}
+
+
+/* SEMANTIC ERRORS
+--------------------------------------------------------------------------------------------------*/
+.simpleform .errors {
+  color:#cc0000;
+  margin:0.5em 0 1.5em 25%;
+  list-style:square;
+}
+
+.simpleform .errors li {
+  padding:0;
+  border:none;
+  display:list-item;
+}
+
+
+/* BUTTONS
+--------------------------------------------------------------------------------------------------*/
+.simpleform .buttons {
+  overflow:hidden; /* clear containing floats */
+  padding-left:25%;
+}
+
+.simpleform .button {
+  float:left;
+  padding-right:0.5em;
+}
+
+
+/* INPUTS
+--------------------------------------------------------------------------------------------------*/
+.simpleform .inputs {
+  overflow:hidden; /* clear containing floats */
+}
+
+.simpleform .input {
+  overflow:hidden; /* clear containing floats */
+  padding:0.5em 0; /* padding and negative margin juggling is for Firefox */
+  margin-top:-0.5em;
+  margin-bottom:1em;
+}
+
+
+/* LEFT ALIGNED LABELS
+--------------------------------------------------------------------------------------------------*/
+.simpleform .input .label {
+  display:block;
+  width:25%;
+  float:left;
+  padding-top:.2em;
+}
+
+.simpleform .fragments .label,
+.simpleform .choices .label {
+  position:absolute;
+  width:95%;
+  left:0px;
+}
+
+.simpleform .fragments .label label,
+.simpleform .choices .label label {
+  position:absolute;
+}
+
+/* NESTED FIELDSETS AND LEGENDS (radio, check boxes and date/time inputs use nested fieldsets)
+--------------------------------------------------------------------------------------------------*/
+.simpleform .choices {
+  position:relative;
+}
+
+.simpleform .choices-group {
+  float:left;
+  width:74%;
+  margin:0;
+  padding:0 0 0 25%;
+}
+
+.simpleform .choice {
+  padding:0;
+  border:0;
+}
+
+
+/* INLINE HINTS
+--------------------------------------------------------------------------------------------------*/
+.simpleform .input .inline-hints {
+  color:#666;
+  margin:0.5em 0 0 25%;
+}
+
+
+/* INLINE ERRORS
+--------------------------------------------------------------------------------------------------*/
+.simpleform .inline-errors {
+  color:#cc0000;
+  margin:0.5em 0 0 25%;
+}
+
+.simpleform .errors {
+  color:#cc0000;
+  margin:0.5em 0 0 25%;
+  list-style:square;
+}
+
+.simpleform .errors li {
+  padding:0;
+  border:none;
+  display:list-item;
+}
+
+
+/* STRING, NUMERIC, PASSWORD, EMAIL, URL, PHONE, SEARCH (ETC) OVERRIDES
+--------------------------------------------------------------------------------------------------*/
+.simpleform .stringish input {
+  width:72%;
+}
+
+.simpleform .stringish input[size] {
+  width:auto;
+  max-width:72%;
+}
+
+
+/* TEXTAREA OVERRIDES
+--------------------------------------------------------------------------------------------------*/
+.simpleform .text textarea {
+  width:72%;
+}
+
+.simpleform .text textarea[cols] {
+  width:auto;
+  max-width:72%;
+}
+
+
+/* HIDDEN OVERRIDES
+--------------------------------------------------------------------------------------------------*/
+.simpleform .hidden {
+  display:none;
+}
+
+
+/* BOOLEAN LABELS
+--------------------------------------------------------------------------------------------------*/
+.simpleform .boolean label {
+  padding-left:25%;
+  display:block;
+}
+
+
+/* CHOICE GROUPS
+--------------------------------------------------------------------------------------------------*/
+.simpleform .choices-group {
+  margin-bottom:-0.5em;
+}
+
+.simpleform .choice {
+  margin:0.1em 0 0.5em 0;
+}
+
+.simpleform .choice label {
+  float:none;
+  width:100%;
+  line-height:100%;
+  padding-top:0;
+  margin-bottom:0.6em;
+}
+
+
+/* ADJUSTMENTS FOR INPUTS INSIDE LABELS (boolean input, radio input, check_boxes input)
+--------------------------------------------------------------------------------------------------*/
+.simpleform .choice label input,
+.simpleform .boolean label input {
+  margin:0 0.3em 0 0.1em;
+  line-height:100%;
+}
+
+
+/* FRAGMENTED INPUTS (DATE/TIME/DATETIME)
+--------------------------------------------------------------------------------------------------*/
+.simpleform .fragments {
+  position:relative;
+}
+
+.simpleform .fragments-group {
+  float:left;
+  width:74%;
+  margin:0;
+  padding:0 0 0 25%;
+}
+
+.simpleform .fragment {
+  float:left;
+  width:auto;
+  margin:0 .3em 0 0;
+  padding:0;
+  border:0;
+}
+
+.simpleform .fragment label {
+  display:none;
+}
+
+.simpleform .fragment label input {
+  display:inline;
+  margin:0;
+  padding:0;
+}
+
+

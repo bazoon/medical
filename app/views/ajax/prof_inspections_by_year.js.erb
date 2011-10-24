@@ -1,0 +1,6 @@
+$("#prof").replaceWith('<%=j render :partial=>'clients/operations/prof_inspections',:locals => {:items => @prof_inspections} %>')
+$("#prof").effect("highlight");
+$("#labs").replaceWith('<%=j render :partial=>'clients/operations/lab_tests',:locals => {:items => @lab_tests} %>')
+$("#labs").effect("highlight");
+$("#diagn").replaceWith('<%=j render :partial=>'clients/operations/diagnostic_tests',:locals => {:items => @diagnostic_tests} %>')
+$("#diagn").effect("highlight");

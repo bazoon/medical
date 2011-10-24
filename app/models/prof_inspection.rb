@@ -4,7 +4,7 @@ class ProfInspection < ActiveRecord::Base
   has_many :diagnoses
   validates :actual_date,:user_id,:client_id, :presence =>true
 
-  scope :this_year,lambda {current_year}
+  scope :this_year,lambda {current_year} #Осмотры за текущий год
 
 
   def self.current_year
@@ -12,6 +12,9 @@ class ProfInspection < ActiveRecord::Base
     end_date=Time.now.end_of_year
     where("actual_date between ? and ?",start_date,end_date)
   end
+
+
+  
 
 
 end

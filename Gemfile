@@ -28,6 +28,10 @@ gem 'pg'
 gem 'kaminari'
 gem 'simple_form'
 
+gem 'acts-as-taggable-on', '~>2.1.0'
+gem "simple-navigation"
+
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

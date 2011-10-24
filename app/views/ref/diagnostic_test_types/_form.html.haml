@@ -1,4 +1,6 @@
 = simple_form_for(@ref_diagnostic_test_type) do |f|
   = f.error_notification
   = f.input :name,:label => "Имя"
+  = f.input :valid_period,:label => "Период действия"
+  = f.input :tag_list,:label => "Теги"
   = f.submit "Сохранить"
