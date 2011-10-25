@@ -3,8 +3,22 @@
     %h2 Искать 
     %div
       =render :partial => "clients/search_form"
-    Разделы 
-    %ul      
-      %li= link_to "Пациенты",clients_path
-      %li= link_to "Врачи",users_path
-    =render_navigation(:expand_all => false)
+      
+    %br  
+    %div#accordion
+      -unless @client.nil?
+        %h3
+          %a{:href => "#"} 
+            ="#{@client.short_fio}"
+        %div
+          =render_navigation
+      %h3
+        %a{:href => "#"} Разделы
+      %div
+        %ul      
+          %li= link_to "Пациенты",clients_path
+          %li= link_to "Врачи",users_path
+      %h3
+        %a{:href => "#"} Справочники
+      %div 
+        =render_navigation :context => :dict

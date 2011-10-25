@@ -52,15 +52,19 @@ SimpleNavigation::Configuration.run do |navigation|
    # primary.item :key_1, 'name', url, options
     #
 
-      primary.item :profs, "Профосмотры",Proc.new {client_prof_inspections_path(@client)} ,:if => Proc.new {not @client.nil?}
-      primary.item :profs1, "Лаб. анализы",Proc.new {client_lab_tests_path(@client)},:if => Proc.new {not @client.nil?}
-      primary.item :prof2s, "Диагностика",Proc.new {client_diagnostic_tests_path(@client)} ,:if => Proc.new {not @client.nil?}
-      primary.item :profs3, "Госпитализации",Proc.new {client_hospitalizations_path(@client)},:if => Proc.new {not @client.nil?}
-      primary.item :profs4, "ВТМП",Proc.new {client_htm_help_notes_path(@client)} ,:if => Proc.new {not @client.nil?}
-      primary.item :profs5, "СКЛ",Proc.new {client_sanatorium_notes_path(@client)},:if => Proc.new {not @client.nil?}
-      primary.item :profs6, "Леч. диагн. работа",Proc.new {client_med_diagnostic_tests_path(@client)},:if => Proc.new {not @client.nil?}
-      primary.item :profs7, "Льготы",Proc.new {client_benefits_path(@client)},:if => Proc.new {not @client.nil?}
-      primary.item :profs8, "МКБ 10",Proc.new {client_mkbs_path(@client)},:if => Proc.new {not @client.nil?}
+
+    primary.item :ins_companies,"Страховые компании",ref_ins_companies_path
+    primary.item :lab_test_types,"Типы анализов",ref_lab_test_types_path
+    primary.item :ins_diagnostic_types,"Типы диагностики",ref_diagnostic_test_types_path
+    primary.item :hospitalization_types,"Типы госпитализации",ref_hospitalization_types_path
+    primary.item :med_diagnostic_types,"Типы Л. диагностики",ref_med_diagnostic_test_types_path
+    primary.item :htm_help_types,"Типы ВТМП",ref_htm_help_types_path
+    primary.item :doctor_types,"Специальности",ref_doctor_types_path
+    primary.item :desease_types,"Типы заболеваний",ref_desease_types_path
+    primary.item :doctor_deseases,"Врач - заболевание ",ref_doctor_deseases_path
+    primary.item :benefit_categories,"Категории льгот",ref_benefit_categories_path
+    primary.item :mkb_types,"МКБ",ref_mkb_types_path
+    primary.item :sanatoria,"Санатории",ref_sanatoria_path
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,
@@ -70,8 +74,8 @@ SimpleNavigation::Configuration.run do |navigation|
 
     # you can also specify a css id or class to attach to this particular level
     # works for all levels of the menu
-     primary.dom_id = 'top_menu'
-    # primary.dom_class = 'menu-class'
+    # primary.dom_id = 'menu'
+    # primary.dom_class = 'topnav'
 
     # You can turn off auto highlighting for a specific level
     # primary.auto_highlight = false

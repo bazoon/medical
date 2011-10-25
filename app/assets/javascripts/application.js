@@ -15,9 +15,11 @@ $(document).ready(function() {
   return $('#search').autocomplete({
     source: "/ajax/clients"
   });
+
+
 });
 
-
-$(document).ready(function(){ 
-  $("#top_menu").superfish(); 
-}); 
+$(document).ready(function(){  
+ $( "#accordion" ).accordion({ autoHeight: false });
+ 
+});  
