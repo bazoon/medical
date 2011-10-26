@@ -113,4 +113,6 @@ form.simple_form select {
   border: solid 4px #aa5555;
 }
 
-
+.hidden {
+ visibility: none;
+}

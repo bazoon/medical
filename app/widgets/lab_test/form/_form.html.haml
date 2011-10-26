@@ -1,0 +1,9 @@
+#error
+=simple_form_for [@client,@lab_test],:url => url_for_event(:submit), :remote => true do |f|
+  =f.error_notification
+  =f.input :test_date,:label=>"Дата"
+  =f.association :lab_test_type,:label=>"Тип анализа"
+  =f.input :result, :label => "Результат"
+  =text_field_tag :lab_test_client_id, @client.id,:name => "lab_test[client_id]",:class => "hidden"
+  =f.submit "Сохранить"
+

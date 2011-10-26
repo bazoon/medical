@@ -1,0 +1,26 @@
+= widget_div do
+
+ 
+  -if @lab_tests.count > 0 
+    %table#newspaper-a
+      %tr
+        %th Дата
+        %th Тип
+        %th Результат
+        %th
+        %th
+
+      - @lab_tests.each do |lab_test|
+        %tr
+          %td= l lab_test.test_date
+          %td= lab_test.lab_test_type.name
+          %td= lab_test.result
+
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_lab_test_path(@client,lab_test)
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , client_lab_test_path(@client,lab_test), :confirm => 'Are you sure?', :method => :delete
+  -else
+    =render "empty"
+
+  %br
+
+  = link_to t(:new_record), new_client_lab_test_path 

@@ -57,6 +57,8 @@ Medical::Application.routes.draw do
   # Keep in mind you can assign values other than :controller and :action
 
   match 'ajax/clients' => "ajax#clients"
+  match 'clients/:client_id/ajax/lab_test_form' => "ajax#lab_test_form"
+  match 'ajax/mkb_types' => "ajax#mkb_types"
   match 'ajax/prof_inspections_by_year/clients/:client_id/year/:year' => "ajax#prof_inspections_by_year",:as => :prof_inspections_by_year
 
   # Sample of named route:
