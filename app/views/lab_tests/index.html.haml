@@ -2,7 +2,10 @@
 %br
 %h1= @client.fio unless @client.nil?
 %br
-%h2 Лабораторные анализы
+%h2#lab 
+  Лабораторные анализы 
+  =render_widget :lab_test_count_widget
+
 %br
 
 =render_widget :lab_test_form_widget

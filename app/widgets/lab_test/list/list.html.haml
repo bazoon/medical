@@ -14,5 +14,4 @@
         %td= lab_test.result
 
         %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_lab_test_path(@client,lab_test)
-        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , client_lab_test_path(@client,lab_test), :confirm => 'Are you sure?', :method => :delete
-
+        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , url_for_event(:delete, :lab_test_id => lab_test.id,:client_id => @client.id) , :confirm => 'Are you sure?', :method => :delete,:remote => true

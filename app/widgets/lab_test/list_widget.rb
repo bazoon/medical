@@ -1,16 +1,17 @@
 class LabTest::ListWidget < Apotomo::Widget
  responds_to_event :newLabTest, :with => :redraw_list
+ responds_to_event :delete, :with => :delete
   
   has_widgets do |root|
     root << widget('lab_test/form',:lab_test_form_widget)
+    root << widget('lab_test/count',:lab_test_count_widget)
   end
 
 
   def display
-    @client=Client.find(params[:client_id])
+    @client = Client.find(params[:client_id])
     @lab_tests = @client.lab_tests
-    render :locals => {:flash => options[:flash]}
-
+    render({:state => :list}, @client.lab_tests)
   end
 
   def list(lab_tests)
@@ -21,10 +22,17 @@ class LabTest::ListWidget < Apotomo::Widget
   def redraw_list(evt)
    @client=Client.find(evt[:client_id])
    html = render({:state => :list}, @client.lab_tests)
+   trigger(:updateCount,:count => @client.lab_tests.count)
    replace "##{widget_id}", :text => html
-    
-#   render :text => "alert('#{evt[:client_id]}');"
   end
 
+
+
+
+  def delete(evt)
+    @lab_test =LabTest.find(evt[:lab_test_id])
+    @lab_test.destroy
+    render({:state => :redraw_list}, :client_id => @lab_test.client_id)
+  end
 
 end

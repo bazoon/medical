@@ -3,9 +3,9 @@ class LabTest::FormWidget < Apotomo::Widget
 
 
   def display
-   @client=Client.find(params[:client_id])
-   @lab_test = LabTest.new
-   render 
+    @client=Client.find(params[:client_id])
+    @lab_test = LabTest.new
+    render 
   end
 
 
@@ -15,21 +15,15 @@ class LabTest::FormWidget < Apotomo::Widget
 
   def process_form(evt)
     @lab_test = LabTest.new(evt[:lab_test])
-    params[:client_id] = @lab_test.client_id
+    @client = Client.find(evt[:lab_test][:client_id])
+    params[:client_id] = @client.id
 
     if @lab_test.update_attributes(evt[:lab_test])
-     trigger(:newLabTest,:client_id => @lab_test.client_id,:lab_tests => @lab_test)
+     trigger(:newLabTest,:client_id => @lab_test.client_id)
      replace :state => :display
     else
-     errors="" 
-     @lab_test.errors.full_messages.each {|e| errors=errors+e}
-     render :text => "alert('#{errors}');"
+      replace :view => :display
     end
-
-
-
-
-
   end
 
 
