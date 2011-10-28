@@ -1,0 +1,118 @@
+/* ----- SimpleForm Styles ----- */
+/* ----- SimpleForm Styles ----- */
+form.simple_form {
+ border: solid 1px #cccccc;
+ padding: 15px;
+ background-color: #ffffff;
+ border: solid 1px silver;
+ width: 560px;
+
+}
+
+
+.simple_form div.input {
+  margin-bottom: 5px;
+}
+
+.simple_form label {
+  float: left;
+  width: 140px;
+  text-align: right;
+  margin: 2px 10px;
+}
+
+
+div.boolean {
+ margin-left: 15px;
+
+}
+
+
+div.boolean label {
+  float: none;
+  margin: -25px;
+}
+
+label.collection_radio {
+  float: none;
+  margin: 0;
+}
+
+label.collection_radio {
+  margin-right: 10px;
+  margin-left:   2px;
+}
+
+.field_with_errors {
+  background-color: #ff3333;
+}
+
+.simple_form .error {
+  clear:   left;
+  color:   black;
+  display: block;
+  margin-left: 160px;
+  font-size:    12px;
+}
+
+.simple_form .hint {
+  clear: left;
+  margin-left: 160px;
+  font-size:    12px;
+  color: #555;
+  display: block;
+  font-style: italic;
+}
+
+input.radio {
+  margin-right: 5px;
+  vertical-align: -3px;
+}
+
+input.check_boxes {
+  margin-left: 3px;
+  vertical-align: -3px;
+}
+
+label.collection_check_boxes {
+  float: none;
+  margin: 0;
+  vertical-align: -2px;
+  margin-left:   2px;
+}
+
+
+.simple_form select.date {
+  width: 104px;
+}
+
+form.simple_form input,textarea {
+  width: 300px;
+}
+
+form.simple_form textarea {
+  height: 50px;
+}
+
+form.simple_form select,input {
+
+}
+form.simple_form select {
+  width: 320px;
+}
+
+
+.simple_form input[type='submit'] {
+  width: 320px;
+  height: 50px;
+  margin-left: 160px;
+  border: solid 1px #aa5555;
+}
+
+.simple_form input[type='submit']:hover {
+  border: solid 4px #aa5555;
+}
+
+.hidden {
+ visibility: none;
+}

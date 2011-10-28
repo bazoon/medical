@@ -6,7 +6,7 @@
       
     %br  
     %div#accordion
-      -unless @client.nil?
+      -unless @client.nil? or @client.id.nil?
         %h3
           %a{:href => "#"} 
             ="#{@client.short_fio}"

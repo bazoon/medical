@@ -12,32 +12,34 @@
 -unless flash.empty?
   %p#notice= notice
 
-= paginate @clients
+%div.autopagerize_page_element
 
-%br
+  = paginate @clients
 
-%table#newspaper-a
-  
-  %thead
-    %tr
-      %th ФИО
-      %th Номер карты
-      %th Дата рождения
-      %th .
-      %th .
+  %br
+
+  %table#newspaper-a
     
-  %tbody      
-    - @clients.each do |client|
+    %thead
       %tr
-        %td= link_to(client.short_fio, operations_client_path(client))
-        %td= client.num_card
-        %td= l client.birth_date.to_date unless client.birth_date.nil?
-        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_client_path(client)
-        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus"), client, :confirm => 'Are you sure?', :method => :delete
+        %th ФИО
+        %th Номер карты
+        %th Дата рождения
+        %th .
+        %th .
+      
+    %tbody      
+      - @clients.each do |client|
+        %tr
+          %td= link_to(client.short_fio, operations_client_path(client))
+          %td= client.num_card
+          %td= l client.birth_date.to_date unless client.birth_date.nil?
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_client_path(client)
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus"), client, :confirm => 'Are you sure?', :method => :delete
 
 
 
 
-%br
+  %br
 
-= link_to 'Новый пациент', new_client_path
+  = link_to 'Новый пациент', new_client_path

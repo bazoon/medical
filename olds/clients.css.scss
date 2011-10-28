@@ -1,0 +1,154 @@
+// Place all the styles related to the Clients controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*body { padding:50px 100px; font:13px/150% Verdana, Tahoma, sans-serif; }
+
+/* tutorial */
+
+input, textarea,select { 
+	padding: 9px;
+	border: solid 1px #E5E5E5;
+	outline: 0;
+	font: normal 13px/100% Verdana, Tahoma, sans-serif;
+	width: 200px;
+	background: #FFFFFF url('bg_form.png') left top repeat-x;
+	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
+	background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	}
+.date_select { 
+	padding: 9px;
+	border: solid 1px #E5E5E5;
+	outline: 0;
+	font: normal 13px/100% Verdana, Tahoma, sans-serif;
+	width: 100px;
+	background: #FFFFFF url('bg_form.png') left top repeat-x;
+	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
+	background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	}
+
+textarea { 
+	width: 400px;
+	max-width: 400px;
+	height: 150px;
+	line-height: 150%;
+	}
+
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+	border-color: #a9a9a9; 
+	-webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
+	}
+
+.form label { 
+	margin-left: 10px; 
+	color: #999999; 
+	}
+
+.submit input {
+	width: 200px;
+	padding: 9px 15px;
+	background: #617798;
+	border: 0;
+	font-size: 14px;
+	color: #FFFFFF;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	}
+
+
+#newspaper-a
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 0px;
+	text-align: left;
+	border-collapse: collapse;
+	border: 1px solid #69c;
+        margin-top: 5px;
+        width: 100%;
+}
+#newspaper-a th
+{
+	padding: 12px 17px 12px 17px;
+	font-weight: normal;
+	font-size: 14px;
+	color: #039;
+	border-bottom: 1px dashed #69c;
+        text-align: left;
+}
+#newspaper-a td
+{
+	padding: 7px 17px 7px 17px;
+	color: #669;
+}
+#newspaper-a tbody tr:hover td
+{
+	color: #339;
+	background: #d0dafd;
+}
+
+
+.search_field {
+ width: 200px;
+}
+
+.search_submit {
+ width: 219px;
+}
+
+.underlined {
+ border-bottom: 1px solid silver;
+ background-color: #eeeeee;
+}
+
+.ct {
+  color: #eab440;
+  position: absolute;
+  bottom: 0;
+}
+
+
+
+.client_field {
+  font-weight: bold;
+}
+
+.caption_field {
+  width: 40%;
+}
+
+
+.client_info {
+ padding: 2px;
+}
+
+#client_table {
+ width: 100%;
+}
+
+#client_table td {
+ padding: 7px;
+}
+
+.flag {
+ float: right;
+}
+
+.small {
+ font-size: 10px;
+ color: gray;
+}
+
+
+#year_links a {
+  color: #ccccff;
+  font-size: small;
+  padding-right: 7px;
+}
