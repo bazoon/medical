@@ -1,9 +1,8 @@
 = widget_div do
-  =simple_form_for [@client,@lab_test],:url => url_for_event(:submit), :remote => true do |f|
-    =f.error_notification
-    =f.input :test_date,:label=>"Дата"
-    =f.association :lab_test_type,:label=>"Тип анализа"
-    =f.input :result, :label => "Результат"
-    =text_field_tag :lab_test_client_id, @client.id,:name => "lab_test[client_id]",:class => "hidden"
-    =f.submit "Сохранить"
-
+  =form_for [@client, @lab_test], :url => url_for_event(:submit), :remote => true do |f|
+    =render :partial => "../../app/views/form_helpers/date",:locals => {:f => f,:label => "Дата", :field_name => "test_date", :hint => "" }
+    =render :partial => "../../app/views/form_helpers/association",:locals => {:f => f,:label => "Тип анализа", :field_name => "lab_test_type_id", :hint => "",:collection => Ref::LabTestType.all,:text_method => :name }
+    =render :partial => "../../app/views/form_helpers/input",:locals => {:f => f,:label => "Результат", :field_name => "result", :hint => "" }
+    =text_field_tag :lab_test_client_id, @client.id,:name => "lab_test[client_id]",:class => "hide"
+    .actions
+      =f.submit "Сохранить",:class => "btn primary"

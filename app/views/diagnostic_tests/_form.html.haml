@@ -1,6 +1,6 @@
-=simple_form_for [@client,@diagnostic_test] do |f|
-  =f.error_notification
-  =f.input :test_date,:label=>"Дата"
-  =f.association :diagnostic_test_type,:label =>"Тип"
-  =f.input :result,:label=>"Результат"
-  =f.submit "Сохранить"
+=form_for [@client, @diagnostic_test] do |f|
+  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата", :field_name => "test_date", :hint => "" }
+  =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Тип анализа", :field_name => "diagnostic_test_type_id", :hint => "",:collection => Ref::DiagnosticTestType.all,:text_method => :name }
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Результат", :field_name => "result", :hint => "" }
+  .actions
+    =f.submit "Сохранить",:class => "btn primary"

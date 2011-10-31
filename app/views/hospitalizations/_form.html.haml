@@ -1,8 +1,7 @@
-=simple_form_for [@client,@hospitalization] do |f|
-  =f.error_notification
-  =f.association :hospitalization_type, :label => "ЛПУ"
-  =f.input :kind, :label => "Тип" do
-    =f.select :kind, [["Плановая",0],["Экстренная",1]], :include_blank => false
-  =f.input :period_start, :label => "Госпитализация с.."
-  =f.input :period_end, :label => "..по"
-  =f.submit "Сохранить"
+=form_for [@client, @hospitalization] do |f|
+  =render :partial => "form_helpers/association",:locals => {:f => f,:label => "ЛПУ", :field_name => "hospitalization_type_id", :hint => "",:collection => Ref::HospitalizationType.all,:text_method => :name }
+  =render :partial => "form_helpers/select",:locals => {:f => f,:label => "Тип", :field_name => "kind", :hint => "",:collection => [["Плановая",0],["Экстренная",1]]}
+  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Госпитализация с", :field_name => "period_start", :hint => "" }
+  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "...по", :field_name => "period_end", :hint => "" }
+  .actions
+    =f.submit "Сохранить",:class => "btn primary"

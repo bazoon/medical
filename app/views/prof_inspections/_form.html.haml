@@ -1,8 +1,7 @@
-=simple_form_for [@client,@prof_inspection] do |f|
-  =f.error_notification
-  =f.input :actual_date, :label => "Дата"
-  = f.input :user,:label =>"Врач" do 
-    = f.select :user_id, User.all.map { |u| [u.short_fio_with_doctor_type, u.id] }, :include_blank => false, :selected => 5
-  = f.input :stat_card, :label => "Стат. талон выдан ?"
-  = f.input :conclusion, :label => "Примечания"
-  = f.submit "Сохранить"
+=form_for [@client, @prof_inspection] do |f|
+  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата", :field_name => "actual_date", :hint => "" }
+  =render :partial => "form_helpers/check",:locals => {:f => f,:label => "Стат. талон выдан ?", :field_name => "stat_card", :hint => "" }
+  =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Врач", :field_name => "user_id", :hint => "",:collection => User.all,:text_method => :short_fio_with_doctor_type }
+  =render :partial => "form_helpers/area",:locals => {:f => f,:label => "Примечания", :field_name => "conclusion", :hint => "" }
+  .actions
+    =f.submit "Сохранить",:class => "btn primary"

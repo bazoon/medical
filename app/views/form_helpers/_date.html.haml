@@ -1,0 +1,7 @@
+.clearfix
+  =f.label label
+  .input
+    =f.date_select field_name,{:use_month_numbers => true, :order => [:day,:month,:year]},:class => "span2"
+    -if hint
+      %span.help-block
+        =hint

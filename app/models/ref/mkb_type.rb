@@ -18,6 +18,9 @@ require 'csv'
 
   end
 
+def code_with_name
+ "#{code} #{name}"
+end
 
 def can_be_deleted
   true

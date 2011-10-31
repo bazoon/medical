@@ -6,6 +6,10 @@ def to_s
  "#{code}: #{short_name} "
 end  
 
+def code_with_short_name
+ "#{code}: #{short_name} "
+end
+
 def can_be_deleted
   true
 end

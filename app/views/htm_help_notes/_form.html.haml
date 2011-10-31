@@ -1,6 +1,8 @@
-=simple_form_for [@client,@htm_help_note] do |f|
-  =f.error_notification
-  =f.input :actual_date, :label => 'Дата'
-  =f.association :htm_help_type, :label => 'Тип ВТМП'
-  =f.input :note, :label => 'Комментарий'
-  =f.submit "Сохранить"
+=form_for [@client, @htm_help_note] do |f|
+  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата", :field_name => "actual_date", :hint => "" }
+  =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Тип", :field_name => "htm_help_type_id", :hint => "",:collection => Ref::HtmHelpType.all,:text_method => :name }
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Комментарий", :field_name => "note",:hint =>""}
+  .actions
+    =f.submit "Сохранить",:class => "btn primary"
+
+

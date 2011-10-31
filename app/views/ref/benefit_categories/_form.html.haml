@@ -1,14 +1,8 @@
-= simple_form_for @ref_benefit_category do |f|
-  -if @ref_benefit_category.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@ref_benefit_category.errors.count, "error")} Сохранение невозможно! Есть ошибки.:"
-      %ul
-        - @ref_benefit_category.errors.full_messages.each do |msg|
-          %li= msg
-  =f.input :code,:label =>"Код"
-  =f.input :short_name,:label =>"Краткое наименование"
-  =f.input :full_name,:label =>"Полное наименование"
-  =f.input :percent,:label =>"Процент оплаты"
-  =f.input :source,:label =>"Краткое наименование" do
-    =f.select :source,[["Ф",1],["Т",2]]
-  =f.submit "Сохранить"
+=form_for [@client, @ref_benefit_category] do |f|
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Код", :field_name => "code", :hint => "" }
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Краткое наименование", :field_name => "short_name", :hint => "" }
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Полное наименование", :field_name => "full_name", :hint => "" }
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Процент", :field_name => "percent", :hint => "" }
+  =render :partial => "form_helpers/select",:locals => {:f => f,:label => "Источник финансирования", :field_name => "source", :hint => "",:collection => [["Ф",1],["Т",2]]}
+  .actions
+    =f.submit "Сохранить",:class => "btn primary"

@@ -1,5 +1,23 @@
--unless @client.nil?
+%h2 Искать 
+%div
+  =render :partial => "clients/search_form"
+  = link_to "Пациенты",clients_path
+ 
+%br  
+%div#accordion
+  -unless @client.nil? or @client.id.nil?
+    %h3
+      %a{:href => "#"} 
+        ="#{@client.short_fio}"
+    %div
+      =render_navigation
   %h3
-    %a{:href => "#"} Что делать ?
+    %a{:href => "#"} Разделы
+  %div
+    %ul      
+      %li= link_to "Пациенты",clients_path
+      %li= link_to "Врачи",users_path
+  %h3
+    %a{:href => "#"} Справочники
   %div 
-    =render_navigation
+    =render_navigation :context => :dict

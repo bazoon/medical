@@ -1,10 +1,10 @@
-=simple_form_for [@client,@benefit] do |f|
-  =f.association :benefit_category,:label=>"Льготная категория", :include_blank => false
-  =f.input :doc_name, :label => "Документ"
-  =f.input :doc_seria, :label => "Серия"
-  =f.input :doc_num, :label => "Номер"
-  =f.input :doc_given_by, :label => "Кем выдан"
-  =f.input :doc_date, :label => "Дата выдачи"
-  =f.input :prim,:label => "Основная льгота"
-  =f.submit "Сохранить"
-
+=form_for [@client, @benefit] do |f|
+  =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Льготная категория", :field_name => "benefit_category_id", :hint => "",:collection => Ref::BenefitCategory.all,:text_method => :code_with_short_name }
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Документ", :field_name => "doc_name", :hint => "" }
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Серия", :field_name => "doc_seria", :hint => "" }
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Номер", :field_name => "doc_num", :hint => "" }
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Кем выдан", :field_name => "doc_given_by", :hint => "" }
+  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата выдачи", :field_name => "doc_date", :hint => "" }
+  =render :partial => "form_helpers/check",:locals => {:f => f,:label => "Основная льгота ?", :field_name => "prim", :hint => "" }
+  .actions
+    =f.submit "Сохранить",:class => "btn primary"

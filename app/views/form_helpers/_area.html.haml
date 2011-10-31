@@ -1,0 +1,7 @@
+.clearfix
+  =f.label label
+  .input
+    =f.text_area field_name, :rows =>10, :class => "span6"
+    -if hint
+      %span.help-block
+        =hint
