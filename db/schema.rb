@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111024084508) do
+ActiveRecord::Schema.define(:version => 20111101102133) do
 
   create_table "benefits", :force => true do |t|
     t.integer  "client_id"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20111024084508) do
     t.boolean  "first_detected",     :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "stat_card",          :default => false
   end
 
   create_table "diagnostic_tests", :force => true do |t|
@@ -101,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20111024084508) do
     t.integer  "kind",                    :default => 0
     t.date     "period_start"
     t.date     "period_end"
+    t.integer  "mkb_type_id"
   end
 
   create_table "htm_help_notes", :force => true do |t|
@@ -139,6 +141,22 @@ ActiveRecord::Schema.define(:version => 20111024084508) do
     t.integer  "user_id"
   end
 
+  create_table "mses", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "mkb_type_id"
+    t.date     "send_date"
+    t.boolean  "ipr"
+    t.integer  "conclusion_group"
+    t.integer  "conclusion_till"
+    t.date     "conclusion_date"
+    t.boolean  "indefinitely"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "client_id"
+    t.integer  "first"
+    t.integer  "re"
+  end
+
   create_table "prof_inspections", :force => true do |t|
     t.integer  "client_id"
     t.date     "actual_date"
@@ -147,7 +165,6 @@ ActiveRecord::Schema.define(:version => 20111024084508) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "mkb_type_id"
-    t.boolean  "stat_card",      :default => false
     t.boolean  "first_detected", :default => false
   end
 

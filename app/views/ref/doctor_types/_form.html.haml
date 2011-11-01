@@ -1,10 +1,7 @@
-= simple_form_for @ref_doctor_type do |f|
-  -if @ref_doctor_type.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@ref_doctor_type.errors.count, "error")} prohibited this ref_doctor_type from being saved:"
-      %ul
-        - @ref_doctor_type.errors.full_messages.each do |msg|
-          %li= msg
+=form_for [@ref_doctor_type] do |f|
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Врач", :field_name => "name", :hint => "" }
+  .actions
+    =f.submit "Сохранить",:class => "btn primary"
 
-  = f.input :name,:label => "Врач"
-  = f.submit 'Сохранить'
+
+

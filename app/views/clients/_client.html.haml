@@ -31,6 +31,17 @@
     = render :partial => "mkb10",:collection => client.mkbs, :as => :mkb
 
     = render :partial => "table_sep", :locals => {:header =>"Прочие данные"}
+
+    -case client.have_full_prof_inspection_this_year?
+    -when :prof_all then 
+      =render :partial => "client_field", :locals => {:field_name =>"Профосмотр в текущем году", :field_value => I18n.t(:prof_al),:emph => "success"}
+    -when :prof_partial then 
+      =render :partial => "client_field", :locals => {:field_name =>"Профосмотр в текущем году", :field_value => I18n.t(:prof_partial),:emph => "warning"}
+    -else 
+      =render :partial => "client_field", :locals => {:field_name =>"Профосмотр в текущем году", :field_value => I18n.t(:prof_zero),:emph => "important"}
+  
+
+
     = render :partial => "client_field", :locals => {:field_name =>"Паспорт", :field_value => client.passport}
     = render :partial => "client_field", :locals => {:field_name =>"Лекарственная непереносимость", :field_value => client.drug_intolerance}
     = render :partial => "client_field", :locals => {:field_name =>"Группа крови", :field_value => client.blood}

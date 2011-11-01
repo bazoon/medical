@@ -1,8 +1,11 @@
 class ProfInspection < ActiveRecord::Base
   belongs_to :client, :counter_cache => true
   belongs_to :user
-  has_many :diagnoses
+  has_many :diagnoses,:dependent => :delete_all,:order => "id"
   validates :actual_date,:user_id,:client_id, :presence =>true
+
+
+
 
   scope :this_year,lambda {current_year} #Осмотры за текущий год
 

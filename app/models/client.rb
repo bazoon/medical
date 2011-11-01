@@ -23,11 +23,34 @@ def blood
  g[blood_group]
 end
 
+
+
+def have_full_prof_inspection_this_year?
+ count = prof_inspections.current_year.count * client_sex_id
+ result = count
+
+ if client_sex_id == 1
+   result = case count
+      when 12 then :prof_all
+      when 1..11 then :prof_partial    
+   end
+ else
+   result = case count
+      when 24 then :prof_all
+      when 2..22 then :prof_partial    
+   end
+ end
+            
+ if count == 0 
+  result = I18n.t(:prof_zero)
+ end
+
+ result
+end
+
+
 def primary_benefit
  benefits.each do |b|
-  
-
-
  end
 
 end

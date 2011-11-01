@@ -1,9 +1,7 @@
-= simple_form_for [@prof_inspection.client,@prof_inspection,@diagnosis] do |f|
-  =f.error_notification
-  %div{:class => "input string optional"}
-    %label{:class => "string optional"} Заболевание
-    =text_field_tag :mkb
-  =f.input :mkb_type_id,:as => :hidden
-  =f.input :first_detected,:label => "Выявлено впервые ?"
-  =f.submit "Сохранить"
-
+=form_for [@prof_inspection.client,@prof_inspection,@diagnosis] do |f|
+  =render :partial => "form_helpers/check",:locals => {:f => f,:label => "Выявлено впервые", :field_name => "first_detected", :hint => "" }
+  =render :partial => "form_helpers/check",:locals => {:f => f,:label => "Стат. талон выдан ?", :field_name => "stat_card", :hint => "" }
+  =render :partial => "form_helpers/input_tag",:locals => {:label => "Заболевание", :field_name => "mkb", :hint => "", :value => @diagnosis.mkb_info }
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "", :field_name => "mkb_type_id", :hint => "",:class_name => "hide" }
+  .actions
+    =f.submit "Сохранить",:class => "btn primary"

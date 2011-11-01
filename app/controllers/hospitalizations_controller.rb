@@ -49,6 +49,7 @@ class HospitalizationsController < ApplicationController
     @hospitalization = Hospitalization.new(params[:hospitalization])
     @hospitalization.client=@client
 
+
     respond_to do |format|
       if @hospitalization.save
         format.html { redirect_to client_hospitalizations_path(@client), notice: I18n.t(:record_created) }

@@ -1,0 +1,17 @@
+%h1 Listing mses
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @mses.each do |mse|
+    %tr
+      %td= link_to 'Show', mse
+      %td= link_to 'Edit', edit_client_mse_path(@client,mse)
+      %td= link_to 'Destroy', client_mse_path(@client), :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Mse', new_client_mse_path(@client)

@@ -13,12 +13,21 @@ class AjaxController < ApplicationController
 
 
    def mkb_types
+
     if params[:term]
       like= "%".concat(params[:term].concat("%"))
       mkb_types = Ref::MkbType.where("code like ?", like)
-    else
+    
+      if mkb_types.count == 0
+        mkb_types = Ref::MkbType.where("name like ?", like)
+      end
+    
+    end
+
+    if mkb_types.count == 0
       mkb_types = Ref::MkbType.all
     end
+
     list = mkb_types.map {|m| Hash[ id: m.id, label: "#{m.code} #{m.name}", name: m.code]}
     render json: list
      

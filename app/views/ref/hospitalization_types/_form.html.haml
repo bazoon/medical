@@ -1,4 +1,5 @@
-=simple_form_for(@ref_hospitalization_type) do |f|
-  =f.error_notification
-  =f.input :name,:title => "Тип госпитализации"
-  = f.submit "Сохранить"
+=form_for [@ref_hospitalization_type] do |f|
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Тип госпитализации", :field_name => "name", :hint => "" }
+  .actions
+    =f.submit "Сохранить",:class => "btn primary"
+

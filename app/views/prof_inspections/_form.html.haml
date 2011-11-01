@@ -1,6 +1,5 @@
 =form_for [@client, @prof_inspection] do |f|
   =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата", :field_name => "actual_date", :hint => "" }
-  =render :partial => "form_helpers/check",:locals => {:f => f,:label => "Стат. талон выдан ?", :field_name => "stat_card", :hint => "" }
   =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Врач", :field_name => "user_id", :hint => "",:collection => User.all,:text_method => :short_fio_with_doctor_type }
   =render :partial => "form_helpers/area",:locals => {:f => f,:label => "Примечания", :field_name => "conclusion", :hint => "" }
   .actions

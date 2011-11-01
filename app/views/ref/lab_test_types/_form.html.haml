@@ -1,13 +1,9 @@
-= simple_form_for @ref_lab_test_type do |f|
-  -if @ref_lab_test_type.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@ref_lab_test_type.errors.count, "error")} prohibited this ref_lab_test_type from being saved:"
-      %ul
-        - @ref_lab_test_type.errors.full_messages.each do |msg|
-          %li= msg
+=form_for [@ref_lab_test_type] do |f|
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Тип анализа", :field_name => "name", :hint => "" }
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Норма", :field_name => "norm", :hint => "" }
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Период действия", :field_name => "valid_period", :hint => "количество дней" }
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Теги", :field_name => "clin_min_list", :hint => "" }
+  .actions
+    =f.submit "Сохранить",:class => "btn primary"
 
-  = f.input :name,:label => "Тип анализа"
-  = f.input :norm,:label => "Норма"
-  = f.input :valid_period,:label => "Период действия (дни)"
-  = f.input :clin_min_list,:label =>"Теги"
-  = f.submit 'Сохранить'
+

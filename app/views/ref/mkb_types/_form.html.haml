@@ -1,10 +1,5 @@
-= simple_form_for @ref_mkb_type do |f|
-  -if @ref_mkb_type.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@ref_mkb_type.errors.count, "error")} Сохранение невозможно! Есть ошибки.:"
-      %ul
-        - @ref_mkb_type.errors.full_messages.each do |msg|
-          %li= msg
-  =f.input :code,:label =>"Код"
-  =f.input :name,:label =>"Наименование"
-  =f.submit "Сохранить"
+=form_for [@ref_mkb_type] do |f|
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Наименование", :field_name => "name", :hint => "" }
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Код", :field_name => "code", :hint => "" }
+  .actions
+    =f.submit "Сохранить",:class => "btn primary"

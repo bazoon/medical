@@ -2,4 +2,8 @@
   %td.underlined.caption_field
     ="#{field_name}"
   %td.underlined.client_field
-    =field_value
+    -if defined?(emph)
+      %span{:class => "label #{emph}"}
+        =field_value
+    -else
+      =field_value  

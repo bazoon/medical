@@ -1,4 +1,4 @@
-= simple_form_for(@ref_med_diagnostic_test_type) do |f|
-  = f.error_notification
-  = f.input :name,:label => "Имя"
-  = f.submit "Сохранить"
+=form_for [@ref_med_diagnostic_test_type] do |f|
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Наименование", :field_name => "name", :hint => "" }
+  .actions
+    =f.submit "Сохранить",:class => "btn primary"

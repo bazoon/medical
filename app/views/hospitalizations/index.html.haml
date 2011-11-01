@@ -14,6 +14,7 @@
       %th ЛПУ
       %th Тип госпитализации
       %th Период
+      %th Заболевание
       %th
       %th
 
@@ -22,6 +23,7 @@
         %td= hospitalization.hospitalization_type.name
         %td= hospitalization.hospitalization_kind
         %td= "#{l hospitalization.period_start} - #{l hospitalization.period_end}"
+        %td= hospitalization.mkb_info
         %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_hospitalization_path(@client,hospitalization)
         %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,client_hospitalization_path(@client,hospitalization), :method=>:delete, :confirm => 'Are you sure?'
 -else

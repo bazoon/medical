@@ -1,0 +1,10 @@
+.clearfix
+  =label_tag label
+  .input
+    -if defined?(class_name)
+      =text_field_tag field_name,value,:class => "span6 #{class_name}"
+    -else
+      =text_field_tag field_name,value,:class => "span6"
+    -if hint
+      %span.help-block
+        =hint

@@ -32,6 +32,9 @@ ru:
   num: "номер"
   given_by: "выдан"
   document: "документ"
+  prof_all: "пройден полностью"
+  prof_partial: "пройден частично"
+  prof_zero: "не пройден"
 
   prof_tag_name: "prof"
   plan_hospitalization: "Плановая"

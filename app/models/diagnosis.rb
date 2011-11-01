@@ -11,5 +11,18 @@ def first
   end
   
 end
-  
+ 
+def stat_card_given?
+  if stat_card
+    I18n.t(:y)
+  else
+    I18n.t(:n)
+  end
+end  
+
+
+  def mkb_info
+    "#{mkb_type.code} #{mkb_type.name}" unless mkb_type.nil?
+  end
+
 end

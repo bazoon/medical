@@ -1,7 +1,7 @@
 %tr
   %td -
   %td -
-  %td -
+  %td= content_tag(:span,"",class: "ui-icon ui-icon-check") if  diagnosis.stat_card
   %td= "#{diagnosis.mkb_type.code} #{diagnosis.mkb_type.name} #{diagnosis.first}"
   %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_client_prof_inspection_diagnosis_path(diagnosis.prof_inspection.client,diagnosis.prof_inspection,diagnosis)
   %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , client_prof_inspection_diagnosis_path(diagnosis.prof_inspection.client,diagnosis.prof_inspection,diagnosis), :confirm => 'Are you sure?', :method => :delete

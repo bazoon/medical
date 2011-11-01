@@ -61,6 +61,8 @@ SimpleNavigation::Configuration.run do |navigation|
       primary.item :profs6, "Леч. диагн. работа",Proc.new {client_med_diagnostic_tests_path(@client)},:if => Proc.new {not @client.nil?}
       primary.item :profs7, "Льготы",Proc.new {client_benefits_path(@client)},:if => Proc.new {not @client.nil?}
       primary.item :profs8, "МКБ 10",Proc.new {client_mkbs_path(@client)},:if => Proc.new {not @client.nil?}
+      primary.item :profs8, "МСЭ",Proc.new {client_mses_path(@client)},:if => Proc.new {not @client.nil?}
+
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,

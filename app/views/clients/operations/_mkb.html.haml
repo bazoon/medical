@@ -1,3 +1,6 @@
 -diagnoses.each do |diagnosis|
   %p
-    ="#{diagnosis.mkb_type.code} #{diagnosis.mkb_type.name} #{diagnosis.first}"
+    ="#{diagnosis.mkb_type.code} #{diagnosis.mkb_type.name} #{diagnosis.first} Ст. талон: #{diagnosis.stat_card_given?} "
+    %hr
+
+

@@ -45,6 +45,7 @@ Medical::Application.routes.draw do
       resources :lab_tests
       resources :benefits
       resources :mkbs
+      resources :mses
   end
 
   resources :client_sexes

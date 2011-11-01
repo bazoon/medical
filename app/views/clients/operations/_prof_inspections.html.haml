@@ -5,7 +5,6 @@
       %th Врач
       %th Дата
       %th МКБ
-      %th Стат. талон
       %th ФИО врача
       
     -items.each do |prof_inspection|
@@ -13,6 +12,5 @@
         %td= prof_inspection.user.doctor_type.name
         %td= l prof_inspection.actual_date
         %td= render :partial =>'clients/operations/mkb',:locals => {:diagnoses => prof_inspection.diagnoses}
-        %td= content_tag(:span,"",class: "ui-icon ui-icon-check") if  prof_inspection.stat_card
         %td= prof_inspection.user.short_fio 
 

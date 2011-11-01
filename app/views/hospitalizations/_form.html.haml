@@ -3,5 +3,8 @@
   =render :partial => "form_helpers/select",:locals => {:f => f,:label => "Тип", :field_name => "kind", :hint => "",:collection => [["Плановая",0],["Экстренная",1]]}
   =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Госпитализация с", :field_name => "period_start", :hint => "" }
   =render :partial => "form_helpers/date",:locals => {:f => f,:label => "...по", :field_name => "period_end", :hint => "" }
+
+  =render :partial => "form_helpers/input_tag",:locals => {:label => "Заболевание", :field_name => "hospitalization_mkb", :hint => "",:value =>@hospitalization.mkb_info}
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "", :field_name => "mkb_type_id", :hint => "",:class_name => "hide" }
   .actions
     =f.submit "Сохранить",:class => "btn primary"

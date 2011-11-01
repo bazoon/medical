@@ -1,4 +1,7 @@
-=simple_form_for(@ref_htm_help_type) do |f|
-  =f.error_notification
-  =f.input :name, :label => "Тип ВТМП"
-  = f.submit "Сохранить"
+=form_for [@ref_htm_help_type] do |f|
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Тип ВТМП", :field_name => "name", :hint => "" }
+  .actions
+    =f.submit "Сохранить",:class => "btn primary"
+
+
+
