@@ -1,17 +1,49 @@
-%h1 Listing mses
+= link_to content_tag(:span,"",class: "ui-icon ui-icon-triangle-1-w"), operations_client_path(@client)
+%br
+%h1= @client.fio unless @client.nil?
+%br
+%h2 МСЭ
+%br
 
-%table
-  %tr
-    %th
-    %th
-    %th
+-unless flash.empty?
+  %span.label.notice= notice
 
-  - @mses.each do |mse|
+%table.zebra-striped
+  -@mses.each do |mse|
     %tr
-      %td= link_to 'Show', mse
-      %td= link_to 'Edit', edit_client_mse_path(@client,mse)
-      %td= link_to 'Destroy', client_mse_path(@client), :confirm => 'Are you sure?', :method => :delete
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_mse_path(@client,mse)
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,client_mse_path(@client,mse), :method=>:delete, :confirm => 'Are you sure?'
+    %tr
+      %td Врач 
+      %td=mse.user.short_fio_with_doctor_type
+    %tr
+      %td Заболевание
+      %td= mse.mkb_info
+    %tr
+      %td Дата направления 
+      %td= ldate(mse.send_date) 
+    %tr
+      %td ИПР ?
+      %td= content_tag(:span,"",class: "ui-icon ui-icon-check") if mse.ipr
+    %tr
+      %td Консультация ?
+      %td= content_tag(:span,"",class: "ui-icon ui-icon-check") if mse.consultation
+    %tr
+      %td Впервые
+      %td= mse.first_info
+    %tr
+      %td Переосвидетельствование
+      %td= mse.re_info
+    %tr
+      %td Заключение
+      %td= mse.conclusion_info
+    %tr
+      %td Дата выдачи
+      %td=ldate(mse.conclusion_date)
+    %tr
+      %td{:style =>"border-bottom: black solid 2px "} До
+      %td{:style =>"border-bottom: black solid 2px "}= mse.again
 
 %br
 
-= link_to 'New Mse', new_client_mse_path(@client)
+=link_to 'New Mse', new_client_mse_path(@client)

@@ -6,13 +6,13 @@ class CreateMses < ActiveRecord::Migration
       t.date :send_date
       t.boolean :ipr
 
-      t.boolean :first_one
-      t.boolean :first_second
-      t.boolean :first_third
+  #    t.boolean :first_one
+  #    t.boolean :first_second
+  #    t.boolean :first_third
 
-      t.boolean :re_third_to_second
-      t.boolean :re_third_to_one
-      t.boolean :re_second_to_one
+  #    t.boolean :re_third_to_second
+  #    t.boolean :re_third_to_one
+  #    t.boolean :re_second_to_one
 
       t.integer :conclusion_group
       t.integer :conclusion_till

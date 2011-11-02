@@ -59,19 +59,18 @@
           
             <%= render :partial => "current_client", :locals => {:current_client => current_client} %>
            
-        </div>
-        <div class="row">
-          <div class="span12">
-
-            <%= yield %>
-
-
-
-
           </div>
+
+        <div class="row">
+
+          <div class="span12">
+            <%= yield %>
+          </div>
+
           <div class="span4">
             <%= render "side" %>
           </div>
+
         </div>
       </div>
 

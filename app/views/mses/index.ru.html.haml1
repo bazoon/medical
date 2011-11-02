@@ -1,0 +1,40 @@
+= link_to content_tag(:span,"",class: "ui-icon ui-icon-triangle-1-w"), operations_client_path(@client)
+%br
+%h1= @client.fio unless @client.nil?
+%br
+%h2 МСЭ
+%br
+
+-unless flash.empty?
+  %p#notice= notice
+
+%table.span6
+  %tr
+    %th Направлен
+    %th Дата напра- вления
+    %th ИПР
+    %th Впервые
+    %th Перео- свидетель- ствование
+    %th Заклю- чение
+    %th Дата выдачи
+    %th До    
+    %th 
+
+  - @mses.each do |mse|
+    %tr
+      %td
+        =mse.user.short_fio_with_doctor_type
+        %hr= mse.mkb_info
+      %td= l mse.send_date
+      %td= content_tag(:span,"",class: "ui-icon ui-icon-check") if mse.ipr
+      %td= mse.first_info
+      %td= mse.re_info
+      %td= mse.conclusion_info
+      %td= l mse.conclusion_date
+      %td= mse.again
+      %td
+        = link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_mse_path(@client,mse)
+        %hr= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,client_mse_path(@client,mse), :method=>:delete, :confirm => 'Are you sure?'
+%br
+
+= link_to 'New Mse', new_client_mse_path(@client)

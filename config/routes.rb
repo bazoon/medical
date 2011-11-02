@@ -26,6 +26,9 @@ Medical::Application.routes.draw do
 
   match 'csv' =>"clients#import_csv"
 
+  match 'mse_calendar' =>"mse_calendar#show"
+  match 'mse_events' =>"mse_calendar#events"
+
   resources :clients do
     member do
       get :operations,:search

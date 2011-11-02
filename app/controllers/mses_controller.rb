@@ -56,7 +56,7 @@ class MsesController < ApplicationController
 
     respond_to do |format|
       if @mse.save
-        format.html { redirect_to @mse, notice: 'Mse was successfully created.' }
+        format.html { redirect_to client_mses_path(@client), notice: I18n.t(:record_created) }
         format.json { render json: @mse, status: :created, location: @mse }
       else
         format.html { render action: "new" }
@@ -72,7 +72,7 @@ class MsesController < ApplicationController
 
     respond_to do |format|
       if @mse.update_attributes(params[:mse])
-        format.html { redirect_to @mse, notice: 'Mse was successfully updated.' }
+        format.html { redirect_to client_mses_path(@client), notice: I18n.t(:record_updated) }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -88,7 +88,7 @@ class MsesController < ApplicationController
     @mse.destroy
 
     respond_to do |format|
-      format.html { redirect_to mses_url }
+      format.html { redirect_to client_mses_path(@client) }
       format.json { head :ok }
     end
   end

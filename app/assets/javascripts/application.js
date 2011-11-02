@@ -26,3 +26,12 @@ $(document).ready(function(){
 
 
 
+$(document).ready(function(){
+  $.datepicker.setDefaults( $.datepicker.regional["ru"] );
+  $('input.ui-datepicker').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        dateFormat: "dd.mm.yy"
+  });
+});
