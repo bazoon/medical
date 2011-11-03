@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111102093210) do
+ActiveRecord::Schema.define(:version => 20111103041030) do
 
   create_table "benefits", :force => true do |t|
     t.integer  "client_id"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20111102093210) do
     t.string   "reg_address"
     t.integer  "benefits_count",             :default => 0
     t.integer  "mkbs_count",                 :default => 0
+    t.boolean  "disabled",                   :default => false
   end
 
   add_index "clients", ["id"], :name => "clients_id_idx"

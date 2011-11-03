@@ -43,6 +43,7 @@ GEM
     cells (3.7.0)
       actionpack (~> 3.0)
       railties (~> 3.0)
+    dynamic_form (1.1.4)
     erubis (2.7.0)
     execjs (1.2.9)
       multi_json (~> 1.0)
@@ -140,6 +141,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on (~> 2.1.0)
   apotomo
+  dynamic_form
   execjs
   haml-rails
   jquery-rails

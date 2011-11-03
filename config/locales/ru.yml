@@ -50,6 +50,8 @@ ru:
   mse_third_to_second: "3 -> 2"
   mse_indefinitely: "бессрочно"
 
+  invalid_date_format: "Дата должна быть в формате дд.мм.гггг !"
+
   views:
     pagination:
       previous: "&larr;"

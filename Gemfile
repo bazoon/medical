@@ -32,6 +32,8 @@ gem 'acts-as-taggable-on', '~>2.1.0'
 gem "simple-navigation"
 gem 'apotomo'
 gem 'russian'
+gem 'dynamic_form'
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -3,7 +3,14 @@ class Mse < ActiveRecord::Base
   belongs_to :user
   belongs_to :client
 
+  scope :before, lambda {|end_time| {:conditions => ["conclusion_date+conclusion_till < ?", Mse.format_date(end_time)]}}
+  scope :after, lambda {|start_time| {:conditions => ["conclusion_date+conclusion_till > ?", Mse.format_date(start_time)] }}
 
+
+
+ def next_conclusion_date
+   conclusion_date+conclusion_till
+ end
 
   def mkb_info
     "#{mkb_type.code} #{mkb_type.name}" unless mkb_type.nil?
@@ -49,5 +56,25 @@ class Mse < ActiveRecord::Base
       result = I18n.l(conclusion_date + conclusion_till) unless conclusion_date.nil?
     end
   end
+
+ 
+  def self.format_date(date_time)
+    Time.at(date_time.to_i).to_formatted_s(:db)
+  end
+
+  
+ def as_json(options = {})
+    {
+      :id => self.id,
+      :title => self.client.fio,
+      :description => "Descr",
+      :start => next_conclusion_date.rfc822,
+      :end => next_conclusion_date.rfc822,
+      :allDay => false,
+      :recurring => false,
+      :url => Rails.application.routes.url_helpers.client_mses_path(self.client.id)
+    }
+  end
+
 
 end

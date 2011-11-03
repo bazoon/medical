@@ -42,8 +42,8 @@ class ClientsController < ApplicationController
   # GET /clients/new.json
   def new
     @client = Client.new
-    @client.attach_date=Time.now
-    @client.detach_date=Time.now
+    @client.attach_date=Date.parse(Time.now.to_s)
+   # @client.detach_date=Date.parse(Time.now.to_s)
     @client.client_sex_id=1
 
 

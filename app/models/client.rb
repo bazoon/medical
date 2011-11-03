@@ -10,8 +10,12 @@ class Client < ActiveRecord::Base
   has_many :prof_inspections,:dependent => :delete_all,:order =>"actual_date DESC"
   has_many :benefits,:dependent => :delete_all,:order => "prim DESC"
   has_many :mkbs,:dependent => :delete_all,:order => "actual_date DESC"
+  has_many :mses,:dependent => :delete_all,:order => "id DESC"
 
-  validates :name,:surname,:birth_date,:ins_company_id,:client_sex_id, :presence=>true
+  validates :name,:surname,:birth_date,:ins_company_id,:client_sex_id, :presence => true
+
+  validates :birth_date, :format => {:with => /\d{2}\.\d{2}\.\d{4}/, :message => I18n.t(:invalid_date_format)}
+
 
 
 def prof_inspection_years
@@ -22,7 +26,6 @@ def blood
  g={1 => "O(I) Rh+",2 => "O(I) Rh-",3 => "A(II) Rh+",4 => "A(II) Rh-",5 => "B(III) Rh+",6 => "B(III) Rh-",7 => "AB(VI) Rh+",8 => "AB(VI) Rh-"}
  g[blood_group]
 end
-
 
 
 def have_full_prof_inspection_this_year?
@@ -69,7 +72,7 @@ def local_date(field)
 end
 
 def passport
-  "#{pasp_seria} #{pasp_num}"
+ "#{pasp_seria} #{pasp_num}"
 end
 
 def work_info

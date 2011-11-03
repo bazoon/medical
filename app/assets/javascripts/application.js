@@ -35,3 +35,9 @@ $(document).ready(function(){
         dateFormat: "dd.mm.yy"
   });
 });
+
+
+$(document).ready(function(){  
+ $('.topbar').dropdown();
+});  
+

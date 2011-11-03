@@ -10,7 +10,7 @@ class DiagnosesController < ApplicationController
 
 
   def index
-    @diagnoses = Diagnosis.all
+    @diagnoses = @prof_inspection.diagnosis
 
     respond_to do |format|
       format.html # index.html.erb

@@ -11,8 +11,10 @@ class MsesController < ApplicationController
     @client=Client.find(params[:client_id])
   end
 
+  
+
   def index
-    @mses = Mse.all
+    @mses = @client.mses
 
     respond_to do |format|
       format.html # index.html.erb
