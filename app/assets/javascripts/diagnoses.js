@@ -3,15 +3,21 @@
 //
 //
 
-$(document).ready(function() {
 
-  return $('#mkb').autocomplete({
+$(document).ready(function() {
+  return $('#diagnose_mkb').autocomplete({
     source: "/ajax/mkb_types",
 
+
     select: function( event, ui ) {
-      $("#diagnosis_mkb_type_id").val(ui.item.id);
-    return false;
+      $(".mkb").val(ui.item.id);
+  
   }
 
+
+
   });
+
+
 });
+

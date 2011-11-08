@@ -65,6 +65,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :benefit_categories,"Категории льгот",ref_benefit_categories_path
     primary.item :mkb_types,"МКБ",ref_mkb_types_path
     primary.item :sanatoria,"Санатории",ref_sanatoria_path
+    primary.item :death_reasons,"Причины смерти",ref_death_reasons_path
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,

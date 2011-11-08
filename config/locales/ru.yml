@@ -52,6 +52,13 @@ ru:
 
   invalid_date_format: "Дата должна быть в формате дд.мм.гггг !"
 
+
+  detach_reason_none: "Не переведен"
+  detach_reason_other_clinic: "Переведен в другую клинику"
+  detach_reason_died_at_home: "Умер дома"
+  detach_reason_died_at_clinic: "Умер в ЛПУ"
+
+   
   views:
     pagination:
       previous: "&larr;"
@@ -362,6 +369,7 @@ ru:
       record_invalid: "Возникли ошибки: %{errors}"
 
   activerecord:
+
     errors:
       template:
         header:
@@ -408,6 +416,10 @@ ru:
 
       full_messages:
         format: "%{attribute} %{message}"
+
+
+
+
 
 
   support:

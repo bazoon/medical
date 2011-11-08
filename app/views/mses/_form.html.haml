@@ -1,17 +1,46 @@
 =form_for [@client, @mse] do |f|
-  =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Врач", :field_name => "user_id", :hint => "",:collection => User.all,:text_method => :name }
-  =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Заболевание", :field_name => "mkb_type_id", :hint => "",:collection => Ref::MkbType.all,:text_method => :name }
-  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата направления", :field_name => "send_date", :hint => "" }
-  =render :partial => "form_helpers/check",:locals => {:f => f,:label => "ИПР", :field_name => "ipr", :hint => "" }
+  = f.error_messages
+  %fieldset
+    %legend 
+      Направление
+    =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Врач", :field_name => "user_id", :hint => "",:collection => User.all,:text_method => :short_fio_with_doctor_type }
+    =render :partial => "form_helpers/input_tag",:locals => {:label => "Заболевание", :field_name => "mse_mkb", :hint => "",:value => @mse.mkb_info}
 
-  =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Впервые 1 группа", :field_name => "first", :hint => "",:tag_value => 1 }
-  =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Впервые 2 группа", :field_name => "first", :hint => "",:tag_value => 2 }
-  =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Впервые 3 группа", :field_name => "first", :hint => "",:tag_value => 3 }
+    =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата направления", :field_name => "send_date", :hint => "",:value => @mse.send_date}
+    =render :partial => "form_helpers/check",:locals => {:f => f,:label => "ИПР ?", :field_name => "ipr", :hint => "" }
+    =render :partial => "form_helpers/check",:locals => {:f => f,:label => "Консультация ?", :field_name => "consultation", :hint => "" }
+  
+  %fieldset
+    %legend 
+      Впервые
+
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Не выбрано", :field_name => "reason", :hint => "",:tag_value => 0 }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Впервые 1 группа", :field_name => "reason", :hint => "",:tag_value => 1 }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Впервые 2 группа", :field_name => "reason", :hint => "",:tag_value => 2 }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Впервые 3 группа", :field_name => "reason", :hint => "",:tag_value => 3 }
+  %fieldset
+    %legend 
+      Переосвидетельствование
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Без изменения", :field_name => "reason", :hint => "",:tag_value => 4 }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Завышение (3-1)", :field_name => "reason", :hint => "",:tag_value => 5 }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Завышение (2-1)", :field_name => "reason", :hint => "",:tag_value => 6 }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Завышение (3-2)", :field_name => "reason", :hint => "",:tag_value => 7 }
+  %fieldset
+    %legend 
+      Заключение
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Отказано", :field_name => "conclusion_group", :hint => "",:tag_value => 0 }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "1 группа", :field_name => "conclusion_group", :hint => "",:tag_value => 1 }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "2 группа", :field_name => "conclusion_group", :hint => "",:tag_value => 2 }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "3 группа", :field_name => "conclusion_group", :hint => "",:tag_value => 3 }
 
 
-  =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Завышение (3-2)", :field_name => "re", :hint => "",:tag_value => 1 }
-  =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Завышение (3-1)", :field_name => "re", :hint => "",:tag_value => 2 }
-  =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Завышение (2-1)", :field_name => "re", :hint => "",:tag_value => 3 }
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "На срок", :field_name => "conclusion_till", :hint => "дней"}
+    =render :partial => "form_helpers/check",:locals => {:f => f,:label => "Бессрочно", :field_name => "indefinitely", :hint => "" }
+    =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата выдачи заключения", :field_name => "conclusion_date", :hint => "",:value => @mse.conclusion_date}
+
+
+
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "", :field_name => "mkb_type_id", :hint => "",:class_name => "hide",:class_name =>"mkb hide" }
 
 
   .actions

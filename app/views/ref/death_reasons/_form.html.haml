@@ -1,0 +1,4 @@
+=form_for [@ref_death_reason] do |f|
+  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Наименование", :field_name => "name", :hint => "" }
+  .actions
+    =f.submit "Сохранить",:class => "btn primary"

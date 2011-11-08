@@ -1,6 +1,8 @@
 class Client < ActiveRecord::Base
   belongs_to :client_sex
   belongs_to :ins_company, :class_name => 'Ref::InsCompany'
+  belongs_to :death_reason, :class_name => 'Ref::DeathReason'
+    
   has_many :lab_tests, :dependent => :delete_all,:order =>"test_date DESC"
   has_many :diagnostic_tests,:dependent => :delete_all,:order =>"test_date DESC"
   has_many :hospitalizations,:dependent => :delete_all,:order =>"period_start DESC"
@@ -14,7 +16,7 @@ class Client < ActiveRecord::Base
 
   validates :name,:surname,:birth_date,:ins_company_id,:client_sex_id, :presence => true
 
-  validates :birth_date, :format => {:with => /\d{2}\.\d{2}\.\d{4}/, :message => I18n.t(:invalid_date_format)}
+ # validates :birth_date, :format => {:with => /\d{2}\.\d{2}\.\d{4}/, :message => I18n.t(:invalid_date_format)}
 
 
 
@@ -25,6 +27,16 @@ end
 def blood
  g={1 => "O(I) Rh+",2 => "O(I) Rh-",3 => "A(II) Rh+",4 => "A(II) Rh-",5 => "B(III) Rh+",6 => "B(III) Rh-",7 => "AB(VI) Rh+",8 => "AB(VI) Rh-"}
  g[blood_group]
+end
+
+def detach_reason_info
+ result=case detach_reason
+         when 0 then I18n.t(:detach_reason_none)
+         when 1 then I18n.t(:detach_reason_other_clinic)
+         when 2 then I18n.t(:detach_reason_died_at_home)
+         when 3 then I18n.t(:detach_reason_died_at_clinic)
+        end 
+ result
 end
 
 

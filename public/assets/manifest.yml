@@ -94,6 +94,7 @@ ui-icons_2e83ff_256x240.png: ui-icons_2e83ff_256x240-e29b3e0adf13517e2a83efec2e0
 ui-icons_454545_256x240.png: ui-icons_454545_256x240-3d29ea1c83342c98856cc86976f9816d.png
 ui-icons_888888_256x240.png: ui-icons_888888_256x240-4139d920a16a331c76a74d9e723b10aa.png
 ui-icons_cd0a0a_256x240.png: ui-icons_cd0a0a_256x240-cfc8bd7dbc6d28fa7e25febb3280ce52.png
+jquery.ui.datepicker-ru.js: jquery.ui.datepicker-ru-6ddeea9dd152d695190675389df3d2fa.js
 images/ui-bg_flat_0_aaaaaa_40x100.png: images/ui-bg_flat_0_aaaaaa_40x100-fb6d5492d0ff97ac24b5b7250416d99b.png
 images/ui-bg_flat_75_ffffff_40x100.png: images/ui-bg_flat_75_ffffff_40x100-b3933e868e0d2995a17f8e742241aebb.png
 images/ui-bg_glass_55_fbf9ee_1x400.png: images/ui-bg_glass_55_fbf9ee_1x400-5188edbb18c1f27f20364bdede43289b.png
@@ -123,5 +124,5 @@ jquery.ui.tabs.css: jquery.ui.tabs-794ba83f805ec9e51ef97ddac2cff7b2.css
 jquery.ui.theme.css: jquery.ui.theme-adfd9e2d7a9e9c2d0263b576bf159a8c.css
 jquery-ui.min.js: jquery-ui.min-d913601fd10b630009a692f5c1e468e6.js
 jquery.min.js: jquery.min-577c1490f343b8523162dfea48e02dc3.js
-application.js: application-108ac3df817db8bb3ec974dbe6b29c1b.js
-application.css: application-7c843fc7f9f16120071db29c4dec4e62.css
+application.js: application-93a5e6aee25258baad349975e849b282.js
+application.css: application-cc987d232d1de88689448c3c22879887.css

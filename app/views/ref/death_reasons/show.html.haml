@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @ref_death_reason.name
+
+= link_to 'Edit', edit_ref_death_reason_path(@ref_death_reason)
+\|
+= link_to 'Back', ref_death_reasons_path

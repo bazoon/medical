@@ -1,0 +1,16 @@
+%h1 Просмотр причин смерти
+
+%table
+  %tr
+    %th Наименование
+    %th
+    %th
+
+  - @ref_death_reasons.each do |ref_death_reason|
+    %tr
+      %td= ref_death_reason.name
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_death_reason_path(ref_death_reason)
+      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,ref_death_reason, :confirm => 'Are you sure?', :method => :delete if ref_death_reason.can_be_deleted
+%br
+
+= link_to 'Добавить', new_ref_death_reason_path

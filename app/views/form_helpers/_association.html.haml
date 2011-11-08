@@ -1,4 +1,4 @@
 .clearfix
   =f.label label
   .input
-    =f.collection_select field_name,collection,:id,text_method,{},:class => "span6"
+    =f.collection_select field_name,collection,:id,text_method,:include_blank => true,:class => "span6"

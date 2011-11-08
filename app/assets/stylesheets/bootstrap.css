@@ -632,7 +632,7 @@ select,
 .uneditable-input {
   display: inline-block;
   width: 210px;
-  height: 18px;
+  height: 28px;
   padding: 4px;
   font-size: 13px;
   line-height: 18px;

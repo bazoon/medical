@@ -1,4 +1,4 @@
-=form_for [@client, @ref_benefit_category] do |f|
+=form_for [ref_benefit_category] do |f|
   =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Код", :field_name => "code", :hint => "" }
   =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Краткое наименование", :field_name => "short_name", :hint => "" }
   =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Полное наименование", :field_name => "full_name", :hint => "" }

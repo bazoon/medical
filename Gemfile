@@ -31,12 +31,17 @@ gem 'simple_form'
 gem 'acts-as-taggable-on', '~>2.1.0'
 gem "simple-navigation"
 gem 'apotomo'
-gem 'russian'
-gem 'dynamic_form'
-
-
+#gem 'russian'
+#gem 'dynamic_form'
+#gem 'acts_as_reportable'
+#gem 'ruport'
+#gem 'ruport-util'
 # Use unicorn as the web server
 # gem 'unicorn'
+#
+gem 'prawn'
+gem "prawn_rails"
+
 
 # Deploy with Capistrano
 # gem 'capistrano'

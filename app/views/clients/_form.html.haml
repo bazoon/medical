@@ -1,34 +1,59 @@
 = form_for [@client] do |f|
   =f.error_messages
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Номер карты", :field_name => "num_card", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "СНИЛС", :field_name => "snils", :hint => "" }
-  =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Страховая компания", :field_name => "ins_company_id", :hint => "застрахован в...",:collection => Ref::InsCompany.all,:text_method => :name }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Серия полиса", :field_name => "ins_seria", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Номер полиса", :field_name => "ins_num", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Фамилия", :field_name => "surname", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Имя", :field_name => "name", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Отчество", :field_name => "father_name", :hint => "" }
-  =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Пол", :field_name => "client_sex_id", :hint => "",:collection => Ref::ClientSex.all,:text_method => :sex }
-  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата рождения", :field_name => "birth_date", :hint => "",:value => @client.birth_date }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Адрес регистрации", :field_name => "reg_address", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Адрес местанахождения", :field_name => "real_address", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Телефон сотовый", :field_name => "mobile_phone", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Телефон домашний", :field_name => "home_phone", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Телефон рабочий", :field_name => "work_phone", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Телефоны родственников", :field_name => "relative_phone", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Серия паспорта", :field_name => "pasp_seria", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Номер паспорта", :field_name => "pasp_num", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Место работы", :field_name => "work_place", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Должность", :field_name => "work_position", :hint => "" }
-  =render :partial => "form_helpers/check",:locals => {:f => f,:label => "Пенсионер ?", :field_name => "pensioner", :hint => "" }
-  =render :partial => "form_helpers/check",:locals => {:f => f,:label => "Маломобильный ?", :field_name => "disabled", :hint => "" }
-  =render :partial => "form_helpers/check",:locals => {:f => f,:label => "Отказался от льгот ?", :field_name => "benefit_refuse", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Лекарственная непереносимость", :field_name => "drug_intolerance", :hint => "" }
-  =render :partial => "form_helpers/select",:locals => {:f => f,:label => "Группа крови", :field_name => "blood_group", :hint => "",:collection => [["I+",1],["I-",2],["II+",3],["II-",4],["III+",5],["III-",6],["VI+",7],["VI-",8]]}
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Особые заметки", :field_name => "special_note", :hint => "" }
-  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата прикрепления", :field_name => "attach_date", :hint => "",:value => @client.attach_date }
-  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата открепления", :field_name => "detach_date", :hint => "" ,:value => @client.detach_date}
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Примечания", :field_name => "notes", :hint => "" }
+  %fieldset
+    %legend 
+      Общие данные
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Номер карты", :field_name => "num_card", :hint => "" }
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "СНИЛС", :field_name => "snils", :hint => "" }
+    =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Страховая компания", :field_name => "ins_company_id", :hint => "застрахован в...",:collection => Ref::InsCompany.all,:text_method => :name }
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Серия полиса", :field_name => "ins_seria", :hint => "" }
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Номер полиса", :field_name => "ins_num", :hint => "" }
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Фамилия", :field_name => "surname", :hint => "" }
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Имя", :field_name => "name", :hint => "" }
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Отчество", :field_name => "father_name", :hint => "" }
+    =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Пол", :field_name => "client_sex_id", :hint => "",:collection => Ref::ClientSex.all,:text_method => :sex }
+    =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата рождения", :field_name => "birth_date", :hint => "",:value => @client.birth_date }
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Серия паспорта", :field_name => "pasp_seria", :hint => "" }
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Номер паспорта", :field_name => "pasp_num", :hint => "" }
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Место работы", :field_name => "work_place", :hint => "" }
+  %fieldset
+    %legend 
+      Контактная информация
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Адрес регистрации", :field_name => "reg_address", :hint => "" }
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Адрес местанахождения", :field_name => "real_address", :hint => "" }
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Телефон сотовый", :field_name => "mobile_phone", :hint => "" }
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Телефон домашний", :field_name => "home_phone", :hint => "" }
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Телефон рабочий", :field_name => "work_phone", :hint => "" }
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Телефоны родственников", :field_name => "relative_phone", :hint => "" }
+  %fieldset
+    %legend 
+      Информация о занятости
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Должность", :field_name => "work_position", :hint => "" }
+    =render :partial => "form_helpers/check",:locals => {:f => f,:label => "Пенсионер ?", :field_name => "pensioner", :hint => "" }
+  %fieldset
+    %legend 
+      Дополнительная информация
+    =render :partial => "form_helpers/check",:locals => {:f => f,:label => "Маломобильный ?", :field_name => "disabled", :hint => "" }
+    =render :partial => "form_helpers/check",:locals => {:f => f,:label => "Отказался от льгот ?", :field_name => "benefit_refuse", :hint => "" }
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Лекарственная непереносимость", :field_name => "drug_intolerance", :hint => "" }
+    =render :partial => "form_helpers/select",:locals => {:f => f,:label => "Группа крови", :field_name => "blood_group", :hint => "",:collection => [["I+",1],["I-",2],["II+",3],["II-",4],["III+",5],["III-",6],["VI+",7],["VI-",8]]}
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Особые заметки", :field_name => "special_note", :hint => "" }
+    =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата прикрепления", :field_name => "attach_date", :hint => "",:value => @client.attach_date }
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Примечания", :field_name => "notes", :hint => "" }
+  %fieldset
+    %legend 
+      Дата и причины открепления
+    =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата открепления", :field_name => "detach_date", :hint => "" ,:value => @client.detach_date}
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => t(:detach_reason_none), :field_name => "detach_reason", :hint => "",:tag_value => 0 }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => t(:detach_reason_other_clinic), :field_name => "detach_reason", :hint => "",:tag_value => 1 }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => t(:detach_reason_died_at_home), :field_name => "detach_reason", :hint => "",:tag_value => 2 }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => t(:detach_reason_died_at_clinic), :field_name => "detach_reason", :hint => "",:tag_value => 3 }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Умер в ЛПУ", :field_name => "detach_reason", :hint => "",:tag_value => 4 }
+  %fieldset
+    %legend 
+      Дата и причины смерти
+    =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата смерти", :field_name => "death_date", :hint => "",:value => @client.death_date }
+    =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Причина", :field_name => "death_reason_id", :hint => "",:collection => Ref::DeathReason.all,:text_method => :name }
 
 
   .actions

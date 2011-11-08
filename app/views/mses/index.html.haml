@@ -24,16 +24,13 @@
       %td= ldate(mse.send_date) 
     %tr
       %td ИПР ?
-      %td= content_tag(:span,"",class: "ui-icon ui-icon-check") if mse.ipr
+      %td= boolean_to_yes_no(mse.ipr)
     %tr
       %td Консультация ?
-      %td= content_tag(:span,"",class: "ui-icon ui-icon-check") if mse.consultation
+      %td= boolean_to_yes_no(mse.consultation) 
     %tr
-      %td Впервые
-      %td= mse.first_info
-    %tr
-      %td Переосвидетельствование
-      %td= mse.re_info
+      %td Впервые / Переосвидетельствование
+      %td= mse.reason_info
     %tr
       %td Заключение
       %td= mse.conclusion_info

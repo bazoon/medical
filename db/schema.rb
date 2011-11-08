@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111103041030) do
+ActiveRecord::Schema.define(:version => 20111108040312) do
 
   create_table "benefits", :force => true do |t|
     t.integer  "client_id"
@@ -73,6 +73,9 @@ ActiveRecord::Schema.define(:version => 20111103041030) do
     t.integer  "benefits_count",             :default => 0
     t.integer  "mkbs_count",                 :default => 0
     t.boolean  "disabled",                   :default => false
+    t.integer  "detach_reason",              :default => 0
+    t.date     "death_date"
+    t.integer  "death_reason_id"
   end
 
   add_index "clients", ["id"], :name => "clients_id_idx"
@@ -154,9 +157,8 @@ ActiveRecord::Schema.define(:version => 20111103041030) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "client_id"
-    t.integer  "first"
-    t.integer  "re"
     t.boolean  "consultation",     :default => false
+    t.integer  "reason"
   end
 
   create_table "prof_inspections", :force => true do |t|
@@ -178,6 +180,12 @@ ActiveRecord::Schema.define(:version => 20111103041030) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "source"
+  end
+
+  create_table "ref_death_reasons", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "ref_desease_types", :force => true do |t|

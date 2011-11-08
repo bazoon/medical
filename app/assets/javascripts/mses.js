@@ -4,18 +4,21 @@
 //
 
 
-
 $(document).ready(function() {
-
-  return $('#mkb').autocomplete({
+  return $('#mse_mkb').autocomplete({
     source: "/ajax/mkb_types",
+
 
     select: function( event, ui ) {
       $(".mkb").val(ui.item.id);
-    return false;
+  
   }
 
+
+
   });
+
+
 });
 
 
