@@ -24,6 +24,21 @@ Medical::Application.routes.draw do
     resources :lab_test_types       
   end
 
+
+
+  namespace :rep do
+
+    resource :main do
+      member do
+       get :ask_date
+       post :deads_by_deseases
+      end  
+    end
+
+
+  end
+
+
   root :to => 'welcome#index'  
 
   match 'csv' =>"clients#import_csv"

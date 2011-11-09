@@ -1,0 +1,7 @@
+.clearfix
+  =label_tag label 
+  .input
+    =text_field_tag field_name,"",:class => "span6 ui-datepicker"
+    %span.help-block
+      дд.мм.гггг 
+      =hint if hint

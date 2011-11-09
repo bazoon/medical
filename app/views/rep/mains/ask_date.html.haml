@@ -1,0 +1,5 @@
+=form_tag deads_by_deseases_rep_main_path do |f|
+  =render :partial => "form_helpers/date_tag",:locals => {:label => "Начальная дата", :field_name => "start_date", :hint => ""}
+  =render :partial => "form_helpers/date_tag",:locals => {:label => "Конечная дата", :field_name => "end_date", :hint => ""}
+  .actions
+    =submit_tag "Сохранить",:class => "btn primary"

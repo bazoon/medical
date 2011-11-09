@@ -1,0 +1,15 @@
+%table
+  %tr
+    %td Наименование
+    -@years.each do |k|
+      %td= k
+
+
+  -@a.each_pair do |dn,item|
+    %tr
+      %td=dn
+      -@years.each do |year|
+        %td=item[year].count unless item[year].nil?
+        
+      
+        

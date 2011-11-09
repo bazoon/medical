@@ -30,16 +30,16 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
-  #  @ti="Hello clients"
+    @ti="Hello clients"
 
-  #  output = ClientReport.new.foo
+    output = ClientReport.new.to_pdf
     
-  words = "Hello There"
-  Prawn::Document.generate "example.pdf" do |pdf|
-   pdf.text words
-  end
+#  words = "Hello There"
+#   Prawn::Document.generate "example.pdf" do |pdf|
+#   pdf.text words
+#  end
   
-  #  send_data output, :filename => "hello.pdf",:type => "application/pdf"
+    send_data output, :filename => "hello.pdf",:type => "application/pdf"
 
 #   @client = Client.find(params[:id])
 

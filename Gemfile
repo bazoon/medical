@@ -32,7 +32,7 @@ gem 'acts-as-taggable-on', '~>2.1.0'
 gem "simple-navigation"
 gem 'apotomo'
 #gem 'russian'
-#gem 'dynamic_form'
+gem 'dynamic_form'
 #gem 'acts_as_reportable'
 #gem 'ruport'
 #gem 'ruport-util'
