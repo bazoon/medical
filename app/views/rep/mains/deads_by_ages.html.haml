@@ -1,4 +1,4 @@
-- present "DeadsByDesease" do |p|
+- present "DeadsByAges" do |p|
   %table.condensed-table.zebra-striped
 
     %thead
@@ -14,7 +14,7 @@
 
     %tbody
 
-      -@by_reason_and_date.each_pair do |dn,item|
+      -@by_age_and_date.each_pair do |dn,item|
         %tr
           %td=dn
           -@years.each do |year|

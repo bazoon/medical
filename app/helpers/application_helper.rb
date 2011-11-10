@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+def present(klass)
+  klass ="#{klass}Presenter".constantize
+  presenter = klass.new(self)
+  yield presenter if block_given?
+  presenter
+end  
+
+
 def ldate(d)  
   I18n.l(d) unless d.nil?
 end
