@@ -4,7 +4,7 @@
   =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Серия", :field_name => "doc_seria", :hint => "" }
   =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Номер", :field_name => "doc_num", :hint => "" }
   =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Кем выдан", :field_name => "doc_given_by", :hint => "" }
-  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата выдачи", :field_name => "doc_date", :hint => "" }
+  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата выдачи", :field_name => "doc_date", :hint => "" ,:value => @benefit.doc_date}
   =render :partial => "form_helpers/check",:locals => {:f => f,:label => "Основная льгота ?", :field_name => "prim", :hint => "" }
   .actions
     =f.submit "Сохранить",:class => "btn primary"

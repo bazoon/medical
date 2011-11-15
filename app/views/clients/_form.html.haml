@@ -11,7 +11,7 @@
     =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Фамилия", :field_name => "surname", :hint => "" }
     =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Имя", :field_name => "name", :hint => "" }
     =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Отчество", :field_name => "father_name", :hint => "" }
-    =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Пол", :field_name => "client_sex_id", :hint => "",:collection => Ref::ClientSex.all,:text_method => :sex }
+    =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Пол", :field_name => "client_sex_id", :hint => "",:collection => ClientSex.all,:text_method => :sex }
     =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата рождения", :field_name => "birth_date", :hint => "",:value => @client.birth_date }
     =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Серия паспорта", :field_name => "pasp_seria", :hint => "" }
     =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Номер паспорта", :field_name => "pasp_num", :hint => "" }

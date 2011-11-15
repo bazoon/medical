@@ -5,10 +5,13 @@ class Benefit < ActiveRecord::Base
 
   before_save :check_primary_field
 
+  before_save :add_to_client
+  after_destroy :remove_from_client 
+
+  scope :war_invalids, includes(:benefit_category).where("ref_benefit_categories.code=?","010")   
 
 
 def check_primary_field
-
   client_benefits = Benefit.where(:client_id => client_id)
   n = client_benefits.count
 
@@ -23,10 +26,17 @@ def check_primary_field
  if n == 0
    self.prim = true
  end
+end
+
+
+def add_to_client
+end
+
+def remove_from_client
+
 
 
 end
-
 
 def document
  "#{I18n.t(:document)} #{doc_name} #{I18n.t(:seria)} #{doc_seria} #{I18n.t(:num)} #{doc_num} #{I18n.t(:given_by)} #{doc_given_by} #{I18n.l(doc_date)}       "

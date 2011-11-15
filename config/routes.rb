@@ -1,5 +1,6 @@
 Medical::Application.routes.draw do
 
+
   namespace :ref do resources :death_reasons end
 
   namespace :ref do resources :sanatoria end
@@ -24,14 +25,12 @@ Medical::Application.routes.draw do
     resources :lab_test_types       
   end
 
-
-
   namespace :rep do
 
     resource :main do
       member do
        get :ask_date
-       post :deads_by_deseases,:deads_by_ages
+       post :deads_by_deseases,:deads_by_ages,:death_reports,:invalids_report
       end  
     end
 
@@ -66,6 +65,7 @@ Medical::Application.routes.draw do
       resources :benefits
       resources :mkbs
       resources :mses
+      resources :disps
   end
 
   resources :client_sexes

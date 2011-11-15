@@ -3,6 +3,9 @@ class BenefitsController < ApplicationController
   # GET /benefits.json
   #
  before_filter :find_client
+
+
+
   
   def find_client
     @client=Client.find(params[:client_id])

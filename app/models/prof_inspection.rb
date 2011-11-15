@@ -4,9 +4,6 @@ class ProfInspection < ActiveRecord::Base
   has_many :diagnoses,:dependent => :delete_all,:order => "id"
   validates :actual_date,:user_id,:client_id, :presence =>true
 
-
-
-
   scope :this_year,lambda {current_year} #Осмотры за текущий год
 
 

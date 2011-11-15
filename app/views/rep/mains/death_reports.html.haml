@@ -1,0 +1,3 @@
+=render :partial => "deads_by_deseases",:locals => {:by_reason_and_date => @by_reason_and_date,:by_years => @by_years, :years => @years}
+%hr
+=render :partial => "deads_by_ages",:locals => {:by_age_and_date => @by_age_and_date,:by_years => @by_years, :years => @years}

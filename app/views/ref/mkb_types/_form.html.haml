@@ -1,5 +1,7 @@
 =form_for [@ref_mkb_type] do |f|
+  =f.error_messages
   =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Наименование", :field_name => "name", :hint => "" }
   =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Код", :field_name => "code", :hint => "" }
+  =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Специалист", :field_name => "doctor_type_id", :hint => "",:collection => Ref::DoctorType.all,:text_method => :name }
   .actions
     =f.submit "Сохранить",:class => "btn primary"

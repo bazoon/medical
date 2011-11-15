@@ -3,7 +3,10 @@
     %ul.inputs-list
       %li
         %label
-          =f.radio_button field_name,tag_value
+          -if defined?(checked)
+            =f.radio_button field_name,tag_value,:checked => true
+          -else
+            =f.radio_button field_name,tag_value
           %span
             =label
 

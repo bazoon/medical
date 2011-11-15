@@ -28,7 +28,7 @@ class AjaxController < ApplicationController
       mkb_types = Ref::MkbType.all
     end
 
-    list = mkb_types.map {|m| Hash[ id: m.id, label: "#{m.code} #{m.name}", name: m.code]}
+    list = mkb_types.map {|m| Hash[ id: m.id, label: "#{m.code} #{m.name}", name: m.code, category: "#{m.class_number}"]}
     render json: list
      
    end

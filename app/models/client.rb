@@ -13,11 +13,19 @@ class Client < ActiveRecord::Base
   has_many :benefits,:dependent => :delete_all,:order => "prim DESC"
   has_many :mkbs,:dependent => :delete_all,:order => "actual_date DESC"
   has_many :mses,:dependent => :delete_all,:order => "id DESC"
+  has_many :disps,:dependent => :delete_all,:order => "id DESC"
 
   validates :name,:surname,:birth_date,:ins_company_id,:client_sex_id, :presence => true
 
+
+
+
  # validates :birth_date, :format => {:with => /\d{2}\.\d{2}\.\d{4}/, :message => I18n.t(:invalid_date_format)}
 
+  #Инвалиды войны
+  scope :war_invalids,includes(:benefits).where("benefits.benefit_category_id=?",Ref::BenefitCategory.war_invalid_id)
+  scope :war_participants,includes(:benefits).where("benefits.benefit_category_id IN (?)",Ref::BenefitCategory.war_participants_ids)
+                             
 
 
 def prof_inspection_years
@@ -124,8 +132,6 @@ end
   else
    scoped
   end  
- 
-
    
  end 
 
@@ -145,6 +151,15 @@ def short_fio
   res="#{surname} #{name[0]}. #{father_name[0]}."
  end
 end
+
+
+
+
+
+
+
+
+
 
   def convert_d(b)
    res=b[0,2]+'.'+b[2,2]+'.'+b[4,4] unless (b.nil? or b.length < 8)

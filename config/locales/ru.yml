@@ -58,6 +58,15 @@ ru:
   detach_reason_died_at_home: "Умер дома"
   detach_reason_died_at_clinic: "Умер в ЛПУ"
 
+
+  disp_plan: "Плановый"
+  disp_initial: "Первоначально"
+  disp_out: "Снятие"
+ 
+  disp_unchanged: "Без изменений"
+  disp_improvement: "Улучшение"
+  disp_degradation: "Ухудшение"
+
    
   views:
     pagination:

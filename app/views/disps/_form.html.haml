@@ -1,0 +1,34 @@
+=form_for [@client, @disp] do |f|
+  = f.error_messages
+  %fieldset
+    %legend 
+      Исходные данные
+    =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата направления", :field_name => "actual_date", :hint => "",:value => @disp.actual_date}
+    =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Врач", :field_name => "user_id", :hint => "",:collection => User.all,:text_method => :short_fio_with_doctor_type }
+    =render :partial => "form_helpers/input_tag",:locals => {:label => "Заболевание", :field_name => "disp_mkb", :hint => "",:value => @disp.mkb_info}
+  %fieldset
+    %legend 
+      Диспансерная группа
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "1", :field_name => "disp_group", :hint => "",:tag_value => 1,:checked => true }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "2", :field_name => "disp_group", :hint => "",:tag_value => 2 }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "3", :field_name => "disp_group", :hint => "",:tag_value => 3 }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "4", :field_name => "disp_group", :hint => "",:tag_value => 4 }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "5", :field_name => "disp_group", :hint => "",:tag_value => 5 }
+  %fieldset
+    %legend 
+      Тип
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Плановый визит", :field_name => "disp_type", :hint => "",:tag_value => 1,:checked => true }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Постановка на учет", :field_name => "disp_type", :hint => "",:tag_value => 2 }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Снятие с учета", :field_name => "disp_type", :hint => "",:tag_value => 3 }
+  %fieldset
+    %legend 
+      Заключение
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Без изменений", :field_name => "result", :hint => "",:tag_value => 1,:checked => true }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Лучше", :field_name => "result", :hint => "",:tag_value => 2 }
+    =render :partial => "form_helpers/radio",:locals => {:f => f,:label => "Хуже", :field_name => "result", :hint => "",:tag_value => 3 }
+
+
+    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "", :field_name => "mkb_type_id", :hint => "",:class_name => "hide",:class_name =>"mkb hide" }
+
+  .actions
+    =f.submit "Сохранить",:class => "btn primary"
