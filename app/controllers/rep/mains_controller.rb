@@ -9,6 +9,26 @@ end
 
 
 
+def disp_invalids
+  @sd=params[:start_date]
+  @ed=params[:end_date]
+  @years = years_array(@sd,@ed)
+
+  @by_years_and_benefit = Hash.new
+  @benefits = ["020","010","030"]
+
+  @years.each do |y|
+   @by_years_and_benefit[y] = @benefits
+  end
+
+
+#  @on_observation = Client.includes(:disps,:benefits).where("benefits.benefit_category_id in(?) and disps.actual_date < ed and reason in (?)",Ref::BenefitCategory.warriors_codes_ids,@sd,@ed,[5,6,7])
+# render :text => @by_years_and_benefit.inspect
+
+
+end
+
+
 
 def invalids_report
   @sd=params[:start_date]

@@ -1,5 +1,3 @@
-class Ref::BenefitCategoriesController < ApplicationController
-  # GET /ref/benefit_categories
   # GET /ref/benefit_categories.json
   def index
     @ref_benefit_categories = Ref::BenefitCategory.all
