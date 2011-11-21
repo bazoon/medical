@@ -9,7 +9,6 @@
 //= require jquery-ui
 //= require_tree .
 //
-//
 
 $(document).ready(function() {
   return $('#search').autocomplete({
@@ -21,8 +20,8 @@ $(document).ready(function() {
 
 $(document).ready(function(){  
  $( "#accordion" ).accordion({clearStyle: true});
- 
-});  
+
+ });  
 
 
 

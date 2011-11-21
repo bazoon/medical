@@ -1,8 +1,8 @@
-=form_for [@ref_lab_test_type] do |f|
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Тип анализа", :field_name => "name", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Норма", :field_name => "norm", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Период действия", :field_name => "valid_period", :hint => "количество дней" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Теги", :field_name => "clin_min_list", :hint => "" }
+=bootstrap_form_for @ref_lab_test_type do |f|
+  =f.text_field :name, :label => "Тип анализа"
+  =f.text_field :norm, :label => "Норма" 
+  =f.text_field :valid_period, :label => "Период действия" 
+  =f.text_field :clin_min_list, :label => "Теги"
   .actions
     =f.submit "Сохранить",:class => "btn primary"
 

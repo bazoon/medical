@@ -1,0 +1,5 @@
+- present "DeathReports" do |p|
+  - p.prepare(sd,ed,years) 
+  =render :partial => "deads_by_deseases",:locals => {:sd => @sd,:ed => @ed, :years => @years,:death_reports_presenter => p}
+  %hr
+  =render :partial => "deads_by_ages",:locals => {:sd => @sd,:ed => @ed, :years => @years, :death_reports_presenter => p}

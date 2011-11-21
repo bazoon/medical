@@ -5,7 +5,7 @@
 
 
 $(document).ready(function() {
-  return $('#diagnose_mkb').autocomplete({
+  return $('#diagnosis_mkb').autocomplete({
     source: "/ajax/mkb_types",
 
 

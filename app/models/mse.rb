@@ -13,9 +13,19 @@ class Mse < ActiveRecord::Base
   conclusion_date+conclusion_till unless indefinitely 
  end
 
-  def mkb_info
-    "#{mkb_type.code} #{mkb_type.name}" unless mkb_type.nil?
-  end
+ def mkb
+  "#{mkb_type.try(:code)}: #{mkb_type.try(:name)}"
+ end
+
+ def mkb=(name)
+   code = name[0,name.index(":")]
+   self.mkb_type = Ref::MkbType.find_by_code(code)
+ end
+
+
+ def mkb_info
+  "{mkb_type.name}" unless mkb_type.nil?
+ end
 
 
   def reason_info

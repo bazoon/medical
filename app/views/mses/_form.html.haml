@@ -4,7 +4,7 @@
     %legend 
       Направление
     =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Врач", :field_name => "user_id", :hint => "",:collection => User.all,:text_method => :short_fio_with_doctor_type }
-    =render :partial => "form_helpers/input_tag",:locals => {:label => "Заболевание", :field_name => "mse_mkb", :hint => "",:value => @mse.mkb_info}
+    =render :partial => "form_helpers/input",:locals => {:f => f, :label => "Заболевание", :field_name => "mkb", :hint => ""}
 
     =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата направления", :field_name => "send_date", :hint => "",:value => @mse.send_date}
     =render :partial => "form_helpers/check",:locals => {:f => f,:label => "ИПР ?", :field_name => "ipr", :hint => "" }
@@ -40,7 +40,6 @@
 
 
 
-    =render :partial => "form_helpers/input",:locals => {:f => f,:label => "", :field_name => "mkb_type_id", :hint => "",:class_name => "hide",:class_name =>"mkb hide" }
 
 
   .actions

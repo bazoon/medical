@@ -1,10 +1,10 @@
-=form_for [@client, @benefit] do |f|
-  =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Льготная категория", :field_name => "benefit_category_id", :hint => "",:collection => Ref::BenefitCategory.all,:text_method => :code_with_short_name }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Документ", :field_name => "doc_name", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Серия", :field_name => "doc_seria", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Номер", :field_name => "doc_num", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Кем выдан", :field_name => "doc_given_by", :hint => "" }
-  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата выдачи", :field_name => "doc_date", :hint => "" ,:value => @benefit.doc_date}
-  =render :partial => "form_helpers/check",:locals => {:f => f,:label => "Основная льгота ?", :field_name => "prim", :hint => "" }
+=bootstrap_form_for [@client, @benefit] do |f|
+  =f.collection_select :benefit_category_id,Ref::BenefitCategory.all,:id,:code_with_short_name, :label => "Льготная категория"
+  =f.text_field :doc_name, :label => "Документ"
+  =f.text_field :doc_seria, :label => "Серия"
+  =f.text_field :doc_num, :label => "Номер"
+  =f.text_field :doc_given_by, :label => "Кем выдан"
+  =f.date_select :doc_date, :label => "Дата выдачи"
+  =f.check_box :prim, :label => "Основная льгота ?"
   .actions
     =f.submit "Сохранить",:class => "btn primary"

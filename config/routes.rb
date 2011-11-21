@@ -1,6 +1,8 @@
 Medical::Application.routes.draw do
 
 
+  resources :places
+
   namespace :ref do resources :death_reasons end
 
   namespace :ref do resources :sanatoria end
@@ -30,7 +32,7 @@ Medical::Application.routes.draw do
     resource :main do
       member do
        get :ask_date
-       post :deads_by_deseases,:deads_by_ages,:death_reports,:invalids_report,:disp_invalids
+       post :report,:deads_by_deseases,:deads_by_ages,:death_reports,:invalids_report,:disp_invalids
       end  
     end
 

@@ -6,8 +6,10 @@
 %br
 
 -unless flash.empty?
-  %p#notice= notice
-
+  %div{:class =>"alert-message info", "data-alert" => "alert"}
+    %a.close{:href => "#"} &times;
+    = notice
+    
 = paginate @prof_inspections
 
 %br

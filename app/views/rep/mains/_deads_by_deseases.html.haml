@@ -1,4 +1,7 @@
+%h3 Распределение умерших по классам болезней
 - present "DeadsByDesease" do |p|
+  - p.prepare(sd,ed,years,death_reports_presenter)
+
   %table.condensed-table.zebra-striped
 
     %thead
@@ -14,18 +17,18 @@
 
     %tbody
 
-      -by_reason_and_date.each_pair do |dn,item|
+      -p.by_reason_and_date.each_pair do |dn,item|
         %tr
           %td=dn
           -years.each do |year|
             %td
               = p.abs_row_value(item[year])
             %td
-              = p.rel_row_value(item[year],by_years[year].count)
+              = p.rel_row_value(item[year],p.by_years[year].count)
       %tr
         %td Всего
         -years.each do |year|
-          %td{:colspan => 2}= by_years[year].count
+          %td{:colspan => 2}= p.by_years[year].count
 
 
 

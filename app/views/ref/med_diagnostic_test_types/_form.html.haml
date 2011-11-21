@@ -1,4 +1,4 @@
-=form_for [@ref_med_diagnostic_test_type] do |f|
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Наименование", :field_name => "name", :hint => "" }
+=bootstrap_form_for @ref_med_diagnostic_test_type do |f|
+  =f.text_field :name, :label => "Наименование"
   .actions
     =f.submit "Сохранить",:class => "btn primary"

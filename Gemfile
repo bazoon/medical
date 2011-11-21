@@ -19,14 +19,14 @@ group :assets do
   gem 'therubyracer'
 
 end
-  gem 'haml-rails'
+
+gem 'haml-rails'
 
 gem 'jquery-rails'
 
 gem 'execjs'
 gem 'pg'
 gem 'kaminari'
-gem 'simple_form'
 
 gem 'acts-as-taggable-on', '~>2.1.0'
 gem "simple-navigation"
@@ -39,8 +39,11 @@ gem 'dynamic_form'
 # Use unicorn as the web server
 # gem 'unicorn'
 #
-gem 'prawn'
-gem "prawn_rails"
+#gem 'prawn'
+#gem "prawn_rails"
+
+gem 'simple_form'
+gem 'client_side_validations'
 
 
 # Deploy with Capistrano

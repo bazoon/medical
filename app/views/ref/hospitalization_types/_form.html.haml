@@ -1,5 +1,5 @@
-=form_for [@ref_hospitalization_type] do |f|
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Тип госпитализации", :field_name => "name", :hint => "" }
+=bootstrap_form_for @ref_hospitalization_type do |f|
+  =f.text_field :name, :label => "Тип госпитализации"
   .actions
     =f.submit "Сохранить",:class => "btn primary"
 

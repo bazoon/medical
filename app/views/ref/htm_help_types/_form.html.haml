@@ -1,5 +1,5 @@
-=form_for [@ref_htm_help_type] do |f|
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Тип ВТМП", :field_name => "name", :hint => "" }
+=bootstrap_form_for @ref_htm_help_type do |f|
+  =f.text_field :name,:label => "Тип ВТМП" 
   .actions
     =f.submit "Сохранить",:class => "btn primary"
 

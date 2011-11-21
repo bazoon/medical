@@ -3,6 +3,18 @@ class Disp < ActiveRecord::Base
   belongs_to :mkb_type, :class_name => 'Ref::MkbType'
   belongs_to :user 
 
+
+  scope :initial, where("disp_type = 2")
+  scope :out, where("disp_type =3")
+  scope :planned, where("disp_type = 1")
+  scope :non_out, where("disp_type in (2,1)")
+  
+  scope :before, lambda {|d| where("disps.actual_date < ?",d)}
+  scope :between, lambda {|s,e| where("disps.actual_date between ? and ?",s,e)}
+
+
+
+
   def mkb_info
     "#{mkb_type.code} #{mkb_type.name}" unless mkb_type.nil?
   end

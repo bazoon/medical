@@ -1,4 +1,7 @@
-  # GET /ref/benefit_categories.json
+class Ref::BenefitCategoriesController < ApplicationController
+ 
+
+# GET /ref/benefit_categories.json
   def index
     @ref_benefit_categories = Ref::BenefitCategory.all
 
@@ -6,6 +9,7 @@
       format.html # index.html.erb
       format.json { render json: @ref_benefit_categories }
     end
+
   end
 
   # GET /ref/benefit_categories/1
@@ -78,4 +82,4 @@
       format.json { head :ok }
     end
   end
-end
+end  

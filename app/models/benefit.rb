@@ -10,6 +10,8 @@ class Benefit < ActiveRecord::Base
 
   scope :war_invalids, includes(:benefit_category).where("ref_benefit_categories.code=?","010")   
 
+  scope :first_group_invalids, includes(:benefit_category).where("ref_benefit_categories=?","081")
+
 
 def check_primary_field
   client_benefits = Benefit.where(:client_id => client_id)

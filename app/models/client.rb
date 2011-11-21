@@ -23,9 +23,21 @@ class Client < ActiveRecord::Base
  # validates :birth_date, :format => {:with => /\d{2}\.\d{2}\.\d{4}/, :message => I18n.t(:invalid_date_format)}
 
   #Инвалиды войны
-  scope :war_invalids,includes(:benefits).where("benefits.benefit_category_id=?",Ref::BenefitCategory.war_invalid_id)
-  scope :war_participants,includes(:benefits).where("benefits.benefit_category_id IN (?)",Ref::BenefitCategory.war_participants_ids)
-                             
+  #scope :war_invalids,includes(:benefits).where("benefits.benefit_category_id=?",Ref::BenefitCategory.war_invalid_id)
+ # scope :war_participants,includes(:benefits).where("benefits.benefit_category_id IN (?)",Ref::BenefitCategory.war_participants_ids)
+
+
+  scope :benefit_category, lambda { |code| includes(:benefits).where("benefits.benefit_category_id = ?",Ref::BenefitCategory.id_by_code(code) ) }
+
+  scope :disp_out, joins(:disps).merge(Disp.out)
+  scope :disp_initial, joins(:disps).merge(Disp.initial)
+  scope :disp_non_out, joins(:disps).merge(Disp.non_out)
+
+  scope :disp_before, lambda {|d| joins(:disps).merge(Disp.before(d) )}
+  scope :disp_between, lambda {|s,e| joins(:disps).merge(Disp.between(s,e) )}
+
+  scope :died, where("detach_reason in (2,3)")
+  scope :moved, where("detach_reason = 1")
 
 
 def prof_inspection_years

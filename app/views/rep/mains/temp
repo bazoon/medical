@@ -1,0 +1,29 @@
+
+  %table.condensed-table.zebra-striped
+
+    %thead
+      %tr
+        %th Наименование
+        -years.each do |k|
+          %th{:colspan =>2}= k
+      %tr
+        %th 
+        -years.each do |k|
+          %th Абс. число
+          %th % 
+
+    %tbody
+
+      -p.by_mse_reason_and_year.each_pair do |dn,item|
+        %tr
+          %td=dn
+          -years.each do |year|
+            %td
+              = p.abs_row_value(item[year])
+            %td
+              = p.rel_row_value(item[year],p.by_years[year].count)
+      %tr
+        %td Всего
+        -years.each do |year|
+          %td{:colspan => 2}= p.by_years[year].count unless p.by_years[year].nil?
+

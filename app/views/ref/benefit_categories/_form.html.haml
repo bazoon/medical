@@ -1,8 +1,10 @@
-=form_for [ref_benefit_category] do |f|
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Код", :field_name => "code", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Краткое наименование", :field_name => "short_name", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Полное наименование", :field_name => "full_name", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Процент", :field_name => "percent", :hint => "" }
-  =render :partial => "form_helpers/select",:locals => {:f => f,:label => "Источник финансирования", :field_name => "source", :hint => "",:collection => [["Ф",1],["Т",2]]}
+=bootstrap_form_for [@ref_benefit_category] do |f|
+  =f.text_field :code,:label => "Код"
+  =f.text_field :short_name, :label => "Краткое наименование"
+  =f.text_field :full_name, :label => "Полное наименование"
+  =f.text_field :percent, :label => "Процент"
+  =f.select :source,[["Ф",1],["Т",2]],:label => "Источник финансирования"
   .actions
     =f.submit "Сохранить",:class => "btn primary"
+
+

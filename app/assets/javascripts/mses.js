@@ -6,16 +6,7 @@
 
 $(document).ready(function() {
   return $('#mse_mkb').autocomplete({
-    source: "/ajax/mkb_types",
-
-
-    select: function( event, ui ) {
-      $(".mkb").val(ui.item.id);
-  
-  }
-
-
-
+    source: "/ajax/mkb_types"
   });
 
 

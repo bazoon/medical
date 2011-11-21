@@ -1,267 +1,107 @@
 class DispInvalidsPresenter < BasePresenter
- 
-################## Строка №1: Состоит под наблюдением на начало
+ attr_accessor :by_years_and_benefit, :benefits, :by_year_and_benefit
+ attr_accessor :years 
 
 
-#Заполняет хэш год -> льгота = количество на начало
-def fill_observed_on_begin(years,items)
- @observed_by_years_and_benefits_beg ||= Hash.new
+def prepare(sd,ed,years)
+  @years = years
+
+  @by_years_and_benefit = Hash.new
+  @benefits = ["020","010","030"]
+
+  years.each do |y|
+   @by_years_and_benefit[y] = @benefits
+  end
+end
+
+
+def fill(years,items,num)
+ @observed = Hash.new 
+ @observed[num] ||= Hash.new
  years.each do |y|
   items.each do |b|
-   @observed_by_years_and_benefits_beg[y] ||= Hash.new
-   @observed_by_years_and_benefits_beg[y][b] = get_observed_on_begin_abs(y,b) 
+   @observed[num][y] ||= Hash.new
+   @observed[num][y][b] = get_observed(y,b,num) 
   end
  end
 end
 
 
 #Метод доступа к переменной внутри класса
-def observed_on_begin_abs(year,benefit)
- @observed_by_years_and_benefits_beg[year][benefit]
+def observed(year,benefit,num)
+ @observed[num][year][benefit]
 end
 
 #Сумма стоящих на учете на начало периода по всем категориям льготников
-def observed_on_begin_total(year)
+def observed_total(year,num)
  sum = 0
- @observed_by_years_and_benefits_beg[year].each {|k,v| sum = sum +v}
- sum
-end
-
-############## Строка №2 Вновь взято на диспансерное наблюдение
-
-
-#Заполняет хэш год -> льгота = количество взятых
-def fill_taken(years,items)
- @taken_by_year_and_benefit ||= Hash.new
- years.each do |y|
-  items.each do |b|
-   @taken_by_year_and_benefit[y] ||= Hash.new
-   @taken_by_year_and_benefit[y][b] = get_taken_abs(y,b) 
-  end
- end
-end
-
-
-#Метод доступа к переменной внутри класса
-def taken_abs(year,benefit)
- @taken_by_year_and_benefit[year][benefit]
-end
-
-#Сумма стоящих на учете на начало периода по всем категориям льготников
-def taken_total(year)
- sum = 0
- @taken_by_year_and_benefit[year].each {|k,v| sum = sum +v}
+ @observed[num][year].each {|k,v| sum = sum +v}
  sum
 end
 
 
-############## Строка №3 Снято с диспансерного наблюдения
 
-#Заполняет хэш год -> льгота = количество взятых
-def fill_out(years,items)
- @out_by_year_and_benefit ||= Hash.new
- years.each do |y|
-  items.each do |b|
-   @out_by_year_and_benefit[y] ||= Hash.new
-   @out_by_year_and_benefit[y][b] = get_out_abs(y,b) 
-  end
- end
-end
+#private
 
-
-#Метод доступа к переменной внутри класса
-def out_abs(year,benefit)
- @out_by_year_and_benefit[year][benefit]
-end
-
-#Сумма стоящих на учете на начало периода по всем категориям льготников
-def out_total(year)
- sum = 0
- @out_by_year_and_benefit[year].each {|k,v| sum = sum +v}
- sum
-end
-
-############## Строка №4 Снято с диспансерного наблюдения в том числе выехало
-
-
-#Заполняет хэш год -> льгота = количество взятых
-def fill_out_moved(years,items)
- @out_moved_by_year_and_benefit ||= Hash.new
- years.each do |y|
-  items.each do |b|
-   @out_moved_by_year_and_benefit[y] ||= Hash.new
-   @out_moved_by_year_and_benefit[y][b] = get_out_moved_abs(y,b) 
-  end
- end
-end
-
-
-#Метод доступа к переменной внутри класса
-def out_moved_abs(year,benefit)
- @out_moved_by_year_and_benefit[year][benefit]
-end
-
-#Сумма стоящих на учете на начало периода по всем категориям льготников
-def out_moved_total(year)
- sum = 0
- @out_moved_by_year_and_benefit[year].each {|k,v| sum = sum +v}
- sum
-end
-
-
-############## Строка №5 Снято с диспансерного наблюдения умерло
-
-
-#Заполняет хэш год -> льгота = количество взятых
-def fill_out_died(years,items)
- @out_died_by_year_and_benefit ||= Hash.new
- years.each do |y|
-  items.each do |b|
-   @out_died_by_year_and_benefit[y] ||= Hash.new
-   @out_died_by_year_and_benefit[y][b] = get_out_died_abs(y,b) 
-  end
- end
-end
-
-
-#Метод доступа к переменной внутри класса
-def out_died_abs(year,benefit)
- @out_died_by_year_and_benefit[year][benefit]
-end
-
-#Сумма стоящих на учете на начало периода по всем категориям льготников
-def out_died_total(year)
- sum = 0
- @out_died_by_year_and_benefit[year].each {|k,v| sum = sum +v}
- sum
-end
-
-
-private
-
-#Возвращает количество стоящих на учете на начало отчетного периода
-def get_observed_on_begin_abs(year,benefit)
+def get_observed(year,benefit,num)
  sd = Date.new(year,1,1) 
- observed_on_begin_count = Hash.new
+ ed = Date.new(year,12,31) 
  
- #Те, у кого дата постановки до отчетной даты, тип постановка/визит, и категория уов/ивов/убд
- on_observation = Client.includes(:disps,:benefits).where("benefits.benefit_category_id = ? and disps.actual_date < ? and disps.disp_type in(2,3)",Ref::BenefitCategory.id_by_code(benefit),sd)
 
- on_observation.each do |client|
+ on_observation = case num
+    when 1 then Client.benefit_category(benefit).disp_before(sd)
+    when 2 then Client.benefit_category(benefit).disp_between(sd,ed).disp_initial
+    when 3 then Client.benefit_category(benefit).disp_between(sd,ed).disp_out
+    when 4 then Client.benefit_category(benefit).disp_between(sd,ed).disp_out.moved
+    when 5 then Client.benefit_category(benefit).disp_between(sd,ed).disp_out.died
+    when 6 then Client.benefit_category(benefit).disp_before(ed)
+    when 7 then Client.benefit_category(benefit).disp_before(ed) & Client.benefit_category("081") #инвалиды 1 ой группы
+    when 8 then Client.benefit_category(benefit).disp_before(ed) & Client.benefit_category("082") #инвалиды 1 ой группы
+    when 9 then Client.benefit_category(benefit).disp_before(ed) & Client.benefit_category("083") #инвалиды 1 ой группы
 
- by_mkb = client.disps.group_by {|d| d.mkb_type.code }
-  observed_on_begin_count[client.id] = 0
+
+ end
+
+  count = case num
+    when 1 then get_initial_non_out_count(on_observation,sd)
+    when 6 then get_initial_non_out_count(on_observation,ed)
+     
+    else on_observation.count       
+  end
+
+ 
+ count
+end
+
+#Выборка тех, кто не был снят с учета после постановки
+def get_initial_non_out_count(clients,sd)
+ observed_count = Hash.new
+
+ 
+ clients.each do |client|
+ by_mkb = client.disps.before(sd).group_by {|d| d.mkb_type.code }
+  
+ observed_count[client.id] = 0
+
   by_mkb.each_pair do |m,items|
    sorted_disps = items.sort {|a,b| a.actual_date <=> b.actual_date } 
-   observed_on_begin_count[client.id] = observed_on_begin_count[client.id] + 1 if sorted_disps.last.disp_type != 3
-  end  
- end
 
- #@total ||= get_observed_on_begin_total(year)
+#   puts "#{client.fio}  #{sorted_disps.inspect}"
 
- #Если у человека более чем одна болезнь на дисп учете то можно посмотроеть в observed_on_begin_count[client.id] там их количество
- count = observed_on_begin_count.count
- count
-end
-
-
-
-#Возвращает количество взятых на учет за отчетный период
-def get_taken_abs(year,benefit)
- sd = Date.new(year,1,1) 
- ed = Date.new(year,12,31) 
- observed = Hash.new
+   if sorted_disps.last.disp_type !=3
+    observed_count[client.id] = observed_count[client.id] + 1 unless observed_count[client.id] == 1
+ #   puts "Yes: #{client.id} count: #{observed_count[client.id]} type: #{sorted_disps.last.disp_type}"
+   end
  
- #Те, у кого дата постановки в пределах отч. периода, тип постановка, и категория уов/ивов/убд
- taken = Client.includes(:disps,:benefits).where("benefits.benefit_category_id = ? and disps.actual_date between ? and ? and disps.disp_type=2",Ref::BenefitCategory.id_by_code(benefit),sd,ed)
-
- taken.each do |client|
-
- by_mkb = client.disps.group_by {|d| d.mkb_type.code }
-  observed[client.id] = 0
-  by_mkb.each_pair do |m,items|
-   observed[client.id] = observed[client.id] + 1 
   end  
-  
  end
 
- #Если у человека более чем одна болезнь на дисп учете то можно посмотроеть в observed_on_begin_count[client.id] там их количество
- count = observed.count
- count
+ sum = 0
+ observed_count.each {|k,v| sum = sum + v}
+
+ sum
+# observed_count.inspect
 end
-
-
-#Возвращает количество снятых за отчетный период
-def get_out_abs(year,benefit)
- sd = Date.new(year,1,1) 
- ed = Date.new(year,12,31) 
- observed = Hash.new
- 
- #Те, у кого дата постановки в пределах отч. периода, тип постановка, и категория уов/ивов/убд
- out = Client.includes(:disps,:benefits).where("benefits.benefit_category_id = ? and disps.actual_date between ? and ? and disps.disp_type=3",Ref::BenefitCategory.id_by_code(benefit),sd,ed)
-
- out.each do |client|
-
- by_mkb = client.disps.group_by {|d| d.mkb_type.code }
-  observed[client.id] = 0
-  by_mkb.each_pair do |m,items|
-   observed[client.id] = observed[client.id] + 1 
-  end  
-  
- end
-
- count = observed.count
- count
-end
-
-
-#Возвращает количество снятых за отчетный период и выехавших
-def get_out_moved_abs(year,benefit)
- sd = Date.new(year,1,1) 
- ed = Date.new(year,12,31) 
- observed = Hash.new
- 
- #Те, у кого дата постановки в пределах отч. периода, тип постановка, и категория уов/ивов/убд
- out = Client.includes(:disps,:benefits).where("benefits.benefit_category_id = ? and disps.actual_date between ? and ? and disps.disp_type=3 and detach_reason=1",Ref::BenefitCategory.id_by_code(benefit),sd,ed)
-
- out.each do |client|
-
- by_mkb = client.disps.group_by {|d| d.mkb_type.code }
-  observed[client.id] = 0
-  by_mkb.each_pair do |m,items|
-   observed[client.id] = observed[client.id] + 1 
-  end  
-  
- end
-
- count = observed.count
- count
-end
-
-
-#Возвращает количество снятых за отчетный период и умерших
-def get_out_died_abs(year,benefit)
- sd = Date.new(year,1,1) 
- ed = Date.new(year,12,31) 
- observed = Hash.new
- 
- #Те, у кого дата постановки в пределах отч. периода, тип постановка, и категория уов/ивов/убд
- out = Client.includes(:disps,:benefits).where("benefits.benefit_category_id = ? and disps.actual_date between ? and ? and disps.disp_type=3 and detach_reason in (2,3)",Ref::BenefitCategory.id_by_code(benefit),sd,ed)
-
- out.each do |client|
-
- by_mkb = client.disps.group_by {|d| d.mkb_type.code }
-  observed[client.id] = 0
-  by_mkb.each_pair do |m,items|
-   observed[client.id] = observed[client.id] + 1 
-  end  
-  
- end
-
- count = observed.count
- count
-end
-
 
 
 

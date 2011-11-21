@@ -1,0 +1,42 @@
+%h3 Диспансеризация инвалидов и участников ВОВ и воинов-интернационалистов
+- present "DispInvalids" do |p|
+  -p.prepare(sd,ed,years)
+  %table.condensed-table.zebra-striped
+
+    %thead
+      %tr
+        %th Наименование
+        -p.by_years_and_benefit.each_pair do |year,items|
+          %th{:colspan =>6}= year
+        
+      %tr
+        %th
+          -p.by_years_and_benefit.each_pair do |year,items|
+            -items.each do |b|
+              %th{:colspan =>2}= b
+
+      %tr
+        %th 
+          -p.by_years_and_benefit.each_pair do |year,items|
+            -items.each do |b|
+              %th Абс
+              %th %
+
+
+      - {1 => "Состоит под диспансерным наблюдением на начало отченого года",
+         2 => "Вновь взято на диспансерное наблюдение  в отчетном году",
+         3 => "Снято с диспансерного наблюдения в течение отчетного года",
+         4 => "В том числе выехало",
+         5 => "- умерло ",
+         6 => "Состоит под диспансерным наблюдением на конец года",
+         7 => "В том числе по группам инвалидности I",
+         8 => "II",
+         9 => "III"}.each do |k,v|
+        %tr
+          %td
+            =v
+            -p.fill(p.years,p.benefits,k)
+            -p.by_years_and_benefit.each_pair do |year,items|
+              -items.each do |b|
+                %td= p.observed(year,b,k)
+                %td= p.get_rel(p.observed(year,b,k), p.observed_total(year,k))

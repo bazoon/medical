@@ -1,6 +1,8 @@
-=form_for [@client, @ref_diagnostic_test_type] do |f|
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Наименование", :field_name => "name", :hint => "" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Период действия", :field_name => "valid_period", :hint => "количество дней" }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Теги", :field_name => "tag_list", :hint => "" }
+=bootstrap_form_for(@ref_diagnostic_test_type) do |f|
+  =f.text_field :name, :label => "Наименование"
+  =f.text_field :valid_period,:label => "Период действия",:hint => "Количество дней" 
+  =f.text_field :tag_list,:label => "Теги"
   .actions
     =f.submit "Сохранить",:class => "btn primary"
+
+

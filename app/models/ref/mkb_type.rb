@@ -1,7 +1,7 @@
 class Ref::MkbType < ActiveRecord::Base
 
 validates :code,:name, :presence => true
-#validates :code, :uniqueness => true
+validates :code,:name, :uniqueness => true
 
 require 'csv'
 
