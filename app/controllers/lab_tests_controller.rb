@@ -2,7 +2,8 @@ class LabTestsController < ApplicationController
   # GET /lab_tests
   # GET /lab_tests.json
   before_filter :find_client
-  
+
+
   has_widgets do |root|
     root << widget('lab_test/list',:lab_test_list_widget,:flash => flash)
   end
@@ -39,7 +40,7 @@ class LabTestsController < ApplicationController
   # GET /lab_tests/new.json
   def new
     @lab_test = LabTest.new
-    @lab_test.test_date=Time.now
+    @lab_test.test_date=Date.parse(Time.now.to_s)
 
     respond_to do |format|
       format.html # new.html.erb

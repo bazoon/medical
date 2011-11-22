@@ -16,7 +16,7 @@ class Client < ActiveRecord::Base
   has_many :disps,:dependent => :delete_all,:order => "id DESC"
 
   validates :name,:surname,:birth_date,:ins_company_id,:client_sex_id, :presence => true
-
+  
 
 
 
@@ -38,6 +38,11 @@ class Client < ActiveRecord::Base
 
   scope :died, where("detach_reason in (2,3)")
   scope :moved, where("detach_reason = 1")
+
+  scope :full_inspected,lambda { where("prof_inspections_count >= 12") } #Период не выбран ! Использовать только для выборки за определенный год
+  scope :rested,lambda { where("sanatorium_notes_count > 0") } #Период не выбран ! Использовать только для выборки за определенный год
+
+  scope :mse_group_increased, lambda {joins(:mses).merge(Mse.group_increase )}
 
 
 def prof_inspection_years
@@ -82,6 +87,31 @@ def have_full_prof_inspection_this_year?
 
  result
 end
+
+
+def have_full_prof_inspection_in_year(sd,ed)
+ count = prof_inspections.in_year(sd,ed).count * client_sex_id
+ result = count
+
+ if client_sex_id == 1
+   result = case count
+      when 12 then :prof_all
+      when 1..11 then :prof_partial    
+   end
+ else
+   result = case count
+      when 24 then :prof_all
+      when 2..22 then :prof_partial    
+   end
+ end
+            
+ if count == 0 
+  result = :prof_zero
+ end
+
+ result
+end
+
 
 
 def primary_benefit

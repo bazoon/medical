@@ -68,7 +68,7 @@ def radio_button(method,tag_value, options = {})
  radio = super
  radio = radio + " " + @template.content_tag(:span,options[:label]) if defined?(options[:label])
 
- in_li = @template.content_tag(:label,check)
+ in_li = @template.content_tag(:label,radio)
 
  in_ul = @template.content_tag(:li,in_li)
  in_input = @template.content_tag(:ul,in_ul,:class => "inputs-list")
@@ -81,6 +81,20 @@ def date_select(name, options = {})
  options.reverse_merge!(:value => I18n.l(@object.send(name))) unless @object.send(name).nil?
 
  content = text_field(name,options)
+end
+
+def text_area(name, options = {})
+ options.reverse_merge!(:class => "span6")
+
+ content = super
+
+ content = content + hint_field(options[:hint]) if defined?(options[:hint])
+
+ content = @template.content_tag(:div,content,:class => "input")
+
+ label = @template.content_tag(:label,options[:label])
+
+ @template.content_tag(:div,label + content,:class => "clearfix")
 end
 
 

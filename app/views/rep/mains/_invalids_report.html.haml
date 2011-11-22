@@ -1,6 +1,6 @@
 %h3 Выход на инвалидность
 - present "Invalids" do |p|
-  - p.prepare(sd,ed)
+  - p.prepare(sd,ed,years)
 
   %table.condensed-table.zebra-striped
 
@@ -17,16 +17,21 @@
 
     %tbody
 
-      -p.by_mse_reason_and_year.each_pair do |dn,item|
+      - {1 => "Количество ИОВ, направленных на завышение группы инвалидности",
+         2 => "Из них со 2 на 1 группу",
+         3 => "с 3 на 2 группу",
+         4 => "Количество УОВ, направленных для завышения группы инвалидности",
+         5 => "ИПР",
+         6 => "Количество пациентов, направленных для определения группы впервые",
+         7 => "Ежегодное переосвидетельствование",
+         8 => "Из них 2 группа",
+         9 => "3 группа",
+         10 => "с 3 на 2 группу",
+         11 => "Из освидетельствованных маломобильные"}.each do |k,v|
         %tr
-          %td=dn
-          -years.each do |year|
-            %td
-              = p.abs_row_value(item[year])
-            %td
-              = p.rel_row_value(item[year],p.by_years[year])
-      %tr
-        %td Всего
-        -years.each do |year|
-          %td{:colspan => 2}= p.by_years[year].count unless p.by_years[year].nil?
-
+          %td
+            =v
+            -p.fill(p.years,k)
+            -p.years.each do |year|
+              %td= p.observed(year,k)
+              %td= 0 #p.get_rel(p.observed(year,k), p.observed_total(year,k))

@@ -44,8 +44,7 @@ gem 'dynamic_form'
 
 gem 'simple_form'
 gem 'client_side_validations'
-
-
+gem "best_in_place"
 # Deploy with Capistrano
 # gem 'capistrano'
 

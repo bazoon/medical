@@ -5,6 +5,14 @@ class Hospitalization < ActiveRecord::Base
   validates :hospitalization_type_id, :presence => true
 
 
+ def mkb
+  "#{mkb_type.try(:code)}: #{mkb_type.try(:name)}" unless mkb_type.nil?
+ end
+
+ def mkb=(name)
+   code = name[0,name.index(":")]
+   self.mkb_type = Ref::MkbType.find_by_code(code)
+ end
 
   def hospitalization_kind
     if kind == 0

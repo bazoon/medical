@@ -1,8 +1,12 @@
 class Ref::LabTestTypesController < ApplicationController
   # GET /ref/lab_test_types
   # GET /ref/lab_test_types.json
+  #
+  
+
   def index
     @ref_lab_test_types = Ref::LabTestType.all
+    @lab_test_type =@ref_lab_test_types[0] 
 
     respond_to do |format|
       format.html # index.html.erb

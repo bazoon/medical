@@ -1,6 +1,6 @@
-=form_for [@client, @lab_test] do |f|
-  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата", :field_name => "test_date", :hint => "" }
-  =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Тип анализа", :field_name => "lab_test_type_id", :hint => "",:collection => Ref::LabTestType.all,:text_method => :name }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Результат", :field_name => "result", :hint => "" }
+=bootstrap_form_for [@client, @lab_test] do |f|
+  =f.date_select :test_date,:label => "Дата" 
+  =f.collection_select :lab_test_type_id,Ref::LabTestType.all,:id,:name,:label => "Тип анализа"
+  =f.text_field :result,:label => "Результат"
   .actions
     =f.submit "Сохранить",:class => "btn primary"

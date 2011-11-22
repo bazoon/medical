@@ -30,16 +30,16 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
-    @ti="Hello clients"
+  #  @ti="Hello clients"
 
-    output = ClientReport.new.to_pdf
+ #   output = ClientReport.new.to_pdf
     
 #  words = "Hello There"
 #   Prawn::Document.generate "example.pdf" do |pdf|
 #   pdf.text words
 #  end
   
-    send_data output, :filename => "hello.pdf",:type => "application/pdf"
+   # send_data output, :filename => "hello.pdf",:type => "application/pdf"
 
 #   @client = Client.find(params[:id])
 
@@ -83,7 +83,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to @client, notice: t(:patient_saved) }
+        format.html { redirect_to operations_client_path(@client), notice: t(:patient_saved) }
         format.json { render json: @client, status: :created, location: @client }
       else
         format.html { render action: "new" }

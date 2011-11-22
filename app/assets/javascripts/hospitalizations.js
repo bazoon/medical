@@ -6,15 +6,7 @@
 $(document).ready(function() {
 
   return $('#hospitalization_mkb').autocomplete({
-    source: "/ajax/mkb_types",
-
-    select: function( event, ui ) {
-      $("#hospitalization_mkb_type_id").val(ui.item.id);
-    return false;
-  }
-
-
-
+    source: "/ajax/mkb_types"
 
   });
 

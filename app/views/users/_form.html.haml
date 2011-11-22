@@ -1,13 +1,9 @@
-= simple_form_for [@user] do |form|
-  -if @user.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
-      %ul
-        - @user.errors.full_messages.each do |msg|
-          %li= msg
+= bootstrap_form_for [@user] do |f|
+  =f.error_messages
 
-  = form.input :surname,:label => "Фамилия"
-  = form.input :name,:label => "Имя"
-  = form.input :father_name,:label => "Отчество"
-  = form.association :doctor_type, :label => "Врач"
-  = form.submit "Сохранить" 
+  =f.text_field :surname,:label => "Фамилия"
+  =f.text_field :name,:label => "Имя"
+  =f.text_field :father_name,:label => "Отчество"
+  =f.collection_select :doctor_type_id, Ref::DoctorType.all,:id,:name, :label => "Врач"
+  .actions
+    =f.submit "Сохранить",:class => "btn primary"

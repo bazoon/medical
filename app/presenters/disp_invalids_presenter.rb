@@ -58,8 +58,8 @@ def get_observed(year,benefit,num)
     when 7 then Client.benefit_category(benefit).disp_before(ed) & Client.benefit_category("081") #инвалиды 1 ой группы
     when 8 then Client.benefit_category(benefit).disp_before(ed) & Client.benefit_category("082") #инвалиды 1 ой группы
     when 9 then Client.benefit_category(benefit).disp_before(ed) & Client.benefit_category("083") #инвалиды 1 ой группы
-
-
+    when 10 then Client.benefit_category(benefit).disp_before(ed).full_inspected
+    when 11 then Client.benefit_category(benefit).disp_before(ed).rested
  end
 
   count = case num

@@ -1,7 +1,7 @@
-=form_for [@client, @htm_help_note] do |f|
-  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата", :field_name => "actual_date", :hint => "" }
-  =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Тип", :field_name => "htm_help_type_id", :hint => "",:collection => Ref::HtmHelpType.all,:text_method => :name }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Комментарий", :field_name => "note",:hint =>""}
+=bootstrap_form_for [@client, @htm_help_note] do |f|
+  =f.date_select :actual_date,:label => "Дата"
+  =f.collection_select :htm_help_type_id, Ref::HtmHelpType.all,:id,:name,:label => "Тип"
+  =f.text_field :note, :label => "Комментарий"
   .actions
     =f.submit "Сохранить",:class => "btn primary"
 

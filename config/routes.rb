@@ -1,8 +1,6 @@
 Medical::Application.routes.draw do
 
 
-  resources :places
-
   namespace :ref do resources :death_reasons end
 
   namespace :ref do resources :sanatoria end

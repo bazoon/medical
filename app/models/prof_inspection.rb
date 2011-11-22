@@ -6,6 +6,9 @@ class ProfInspection < ActiveRecord::Base
 
   scope :this_year,lambda {current_year} #Осмотры за текущий год
 
+  scope :in_year, lambda {|sd,ed| where("actual_date between ? and ?",sd,ed)}
+
+
 
   def self.current_year
     start_date=Time.now.beginning_of_year

@@ -1,8 +1,8 @@
-=form_for [@client, @sanatorium_note] do |f|
-  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Справка о нуждаемости", :field_name => "neediness_ref_date", :hint => "Дата заполнения (дд.мм.гг)" }
-  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Санаторно-курортная карта", :field_name => "sanatorium_card_fill_date", :hint => "Дата заполнения" }
-  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата заезда", :field_name => "period_start", :hint => "" }
-  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата выбытия", :field_name => "period_end", :hint => "" }
-  =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Санаторий", :field_name => "sanatorium_id", :hint => "",:collection => Ref::Sanatorium.all,:text_method => :name }
+=bootstrap_form_for [@client, @sanatorium_note] do |f|
+  =f.date_select :neediness_ref_date, :label => "Справка о нуждаемости"
+  =f.date_select :sanatorium_card_fill_date,:label => "Санаторно-курортная карта"
+  =f.date_select :period_start,:label => "Дата заезда"
+  =f.date_select :period_end, :label => "Дата выбытия" 
+  =f.collection_select :sanatorium_id,Ref::Sanatorium.all,:id,:name,:label => "Санаторий"
   .actions
     =f.submit "Сохранить",:class => "btn primary"

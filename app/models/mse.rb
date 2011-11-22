@@ -6,6 +6,9 @@ class Mse < ActiveRecord::Base
   scope :before, lambda {|end_time| {:conditions => ["indefinitely=false and conclusion_date+conclusion_till < ?", Mse.format_date(end_time)]}}
   scope :after, lambda {|start_time| {:conditions => ["indefinitely=false and conclusion_date+conclusion_till > ?", Mse.format_date(start_time)] }}
 
+  scope :group_increase, where("reason in (5,6,7)")
+
+
   validates :conclusion_date,:mkb_type_id,:send_date,:client_id,:user_id, :presence => true
 
 
@@ -14,7 +17,7 @@ class Mse < ActiveRecord::Base
  end
 
  def mkb
-  "#{mkb_type.try(:code)}: #{mkb_type.try(:name)}"
+  "#{mkb_type.try(:code)}: #{mkb_type.try(:name)}" unless mkb_type.nil?
  end
 
  def mkb=(name)

@@ -1,6 +1,6 @@
-=form_for [@client, @med_diagnostic_test] do |f|
-  =render :partial => "form_helpers/date",:locals => {:f => f,:label => "Дата", :field_name => "test_date", :hint => "" }
-  =render :partial => "form_helpers/association",:locals => {:f => f,:label => "Тип", :field_name => "med_diagnostic_test_type_id", :hint => "",:collection => Ref::MedDiagnosticTestType.all,:text_method => :name }
-  =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Результат", :field_name => "result", :hint => "" }
+=bootstrap_form_for [@client, @med_diagnostic_test] do |f|
+  =f.date_select :test_date,:label => "Дата"
+  =f.collection_select :med_diagnostic_test_type_id,Ref::MedDiagnosticTestType.all,:id,:name,:label => "Тип"
+  =f.text_field :result,:label => "Результат" 
   .actions
     =f.submit "Сохранить",:class => "btn primary"
