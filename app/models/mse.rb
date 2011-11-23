@@ -1,4 +1,21 @@
 class Mse < ActiveRecord::Base
+  REASON_UNCHOSEN = 0
+  REASON_INIT_FIRST = 1
+  REASON_INIT_SECOND = 2
+  REASON_INIT_THIRD = 3
+
+  REASON_RE_SECOND = 4
+  REASON_RE_THIRD = 8
+  REASON_RE_3_1 = 5
+  REASON_RE_2_1 = 6
+  REASON_RE_3_2 = 7
+ 
+  C_REFUSED = 0
+  C_FIRST = 1
+  C_SECOND = 2
+  C_THIRD = 3
+
+
   belongs_to :mkb_type, :class_name => 'Ref::MkbType'
   belongs_to :user
   belongs_to :client
@@ -6,8 +23,16 @@ class Mse < ActiveRecord::Base
   scope :before, lambda {|end_time| {:conditions => ["indefinitely=false and conclusion_date+conclusion_till < ?", Mse.format_date(end_time)]}}
   scope :after, lambda {|start_time| {:conditions => ["indefinitely=false and conclusion_date+conclusion_till > ?", Mse.format_date(start_time)] }}
 
-  scope :group_increase, where("reason in (5,6,7)")
-
+  scope :between, lambda {|s,e| where("send_date between ? and ?",s,e)}
+  scope :group_increase,  where("reason in (#{REASON_RE_3_1},#{REASON_RE_3_2},#{REASON_RE_2_1} )") 
+  scope :group_increase_2_1, lambda {where("reason = #{REASON_RE_2_1}")}
+  scope :group_increase_3_2, where("reason = #{REASON_RE_3_2}")
+  scope :iprs, where("ipr = true")
+  scope :first, where("reason in (#{REASON_INIT_FIRST},#{REASON_INIT_SECOND},#{REASON_INIT_THIRD})")
+  scope :re, where("reason in (#{REASON_RE_SECOND},#{REASON_RE_THIRD},#{REASON_RE_3_1},#{REASON_RE_2_1},#{REASON_RE_3_2})")
+  scope :re_2, where("reason = #{REASON_RE_SECOND}")
+  scope :re_3, where("reason = #{REASON_RE_THIRD}")
+  scope :re_3_2, where("reason = #{REASON_RE_3_2}")
 
   validates :conclusion_date,:mkb_type_id,:send_date,:client_id,:user_id, :presence => true
 

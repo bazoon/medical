@@ -1,4 +1,9 @@
 class Client < ActiveRecord::Base
+  DETACH_REASON_NONE = 0
+  DETACH_REASON_OTHER_CLINIC = 1
+  DETACH_REASON_DIED_AT_HOME =2
+  DETACH_REASON_DIED_AT_CLINIC = 3
+
   belongs_to :client_sex
   belongs_to :ins_company, :class_name => 'Ref::InsCompany'
   belongs_to :death_reason, :class_name => 'Ref::DeathReason'
@@ -18,6 +23,9 @@ class Client < ActiveRecord::Base
   validates :name,:surname,:birth_date,:ins_company_id,:client_sex_id, :presence => true
   
 
+  #
+  scope :present, lambda {|e| where("attach_date <= ? and (detach_date is null or detach_date > ?) ",e,e)}
+    
 
 
  # validates :birth_date, :format => {:with => /\d{2}\.\d{2}\.\d{4}/, :message => I18n.t(:invalid_date_format)}
@@ -25,10 +33,17 @@ class Client < ActiveRecord::Base
   #Инвалиды войны
   #scope :war_invalids,includes(:benefits).where("benefits.benefit_category_id=?",Ref::BenefitCategory.war_invalid_id)
  # scope :war_participants,includes(:benefits).where("benefits.benefit_category_id IN (?)",Ref::BenefitCategory.war_participants_ids)
-
-
+  
+ # scope :war_invalids,lambda { joins(:benefits).merge(Benefit.war_invalids )  }
+ 
+  #Возможна ошибка, если ищется id несуществующей льготы
   scope :benefit_category, lambda { |code| includes(:benefits).where("benefits.benefit_category_id = ?",Ref::BenefitCategory.id_by_code(code) ) }
+ 
+  
+  scope :disables, where("disabled = true") 
+ 
 
+  #Disp scopes 
   scope :disp_out, joins(:disps).merge(Disp.out)
   scope :disp_initial, joins(:disps).merge(Disp.initial)
   scope :disp_non_out, joins(:disps).merge(Disp.non_out)
@@ -42,8 +57,17 @@ class Client < ActiveRecord::Base
   scope :full_inspected,lambda { where("prof_inspections_count >= 12") } #Период не выбран ! Использовать только для выборки за определенный год
   scope :rested,lambda { where("sanatorium_notes_count > 0") } #Период не выбран ! Использовать только для выборки за определенный год
 
+  #Mse scoupes
   scope :mse_group_increased, lambda {joins(:mses).merge(Mse.group_increase )}
-
+  scope :mse_group_increased_2_1, lambda {joins(:mses).merge(Mse.group_increase_2_1 )}
+  scope :mse_group_increased_3_2, lambda {joins(:mses).merge(Mse.group_increase_3_2 )}
+  scope :mse_iprs, lambda {joins(:mses).merge(Mse.iprs )}
+  scope :mse_first, lambda {joins(:mses).merge(Mse.first )}
+  scope :mse_between, lambda {|s,e| joins(:mses).merge(Mse.between(s,e) )}
+  scope :mse_re, lambda {joins(:mses).merge(Mse.re )}
+  scope :mse_re_2, lambda {joins(:mses).merge(Mse.re_2 )}
+  scope :mse_re_3, lambda {joins(:mses).merge(Mse.re_3 )}
+  scope :mse_re_3_2, lambda {joins(:mses).merge(Mse.re_3_2 )}
 
 def prof_inspection_years
   years=prof_inspections.group_by {|p| p.actual_date.year}

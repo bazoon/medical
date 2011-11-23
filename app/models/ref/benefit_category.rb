@@ -1,5 +1,30 @@
 class Ref::BenefitCategory < ActiveRecord::Base
-  has_many :users
+
+  WAR_INVALIDS = "010"
+  WAR_PARTICIPANTS = "020"
+  CONFLICT_PARTICIPANTS = "030"
+  WIDOWS = "060"
+  BLOKADNIKS = "050"
+  PRISONERS = "140,150"                                                                                   
+  FRONT_WORKERS = "926"
+  REPRESSED = "924"
+  CHERNOBIL = "092"
+  VETERANS = "0" #change !!!
+
+
+  scope :war_invalids,where("code in (?) ",WAR_INVALIDS)
+  scope :war_participants,where("code in (?) ",WAR_PARTICIPANTS)
+  scope :conflict_participants,where("code in (?) ",CONFLICT_PARTICIPANTS)
+  scope :widows,where("code in (?) ",WIDOWS)
+  scope :blokadniks,where("code in (?) ",BLOKADNIKS)
+  scope :prisoners,where("code in (?) ",PRISONERS)
+  scope :front_workers,where("code in (?) ",FRONT_WORKERS)
+  scope :repressed,where("code in (?) ",REPRESSED)
+  scope :chernobil,where("code in (?) ",CHERNOBIL)
+  scope :veterans,where("code in (?) ",VETERANS)
+
+
+ has_many :users
 
 
 def self.id_by_code(c)

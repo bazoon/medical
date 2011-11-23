@@ -11,24 +11,25 @@
   %fieldset
     %legend 
       Впервые
-    =f.radio_button :reason,0,:label => "Не выбрано"
-    =f.radio_button :reason,1,:label => "Впервые 1 группа" 
-    =f.radio_button :reason,2,:label => "Впервые 2 группа"
-    =f.radio_button :reason,3,:label => "Впервые 3 группа"
+    =f.radio_button :reason,Mse::REASON_UNCHOSEN,:label => "Не выбрано"
+    =f.radio_button :reason,Mse::REASON_INIT_FIRST,:label => "Впервые 1 группа" 
+    =f.radio_button :reason,Mse::REASON_INIT_SECOND,:label => "Впервые 2 группа"
+    =f.radio_button :reason,Mse::REASON_INIT_THIRD,:label => "Впервые 3 группа"
   %fieldset
     %legend 
       Переосвидетельствование
-    =f.radio_button :reason,4,:label => "Без изменения" 
-    =f.radio_button :reason,5,:label => "Завышение (3-1)"
-    =f.radio_button :reason,6,:label => "Завышение (2-1)"
-    =f.radio_button :reason,7,:label => "Завышение (3-2)"
+    =f.radio_button :reason,Mse::REASON_RE_SECOND,:label => "2 группа" 
+    =f.radio_button :reason,Mse::REASON_RE_THIRD,:label => "3 группа" 
+    =f.radio_button :reason,Mse::REASON_RE_3_1,:label => "Завышение (3-1)"
+    =f.radio_button :reason,Mse::REASON_RE_2_1,:label => "Завышение (2-1)"
+    =f.radio_button :reason,Mse::REASON_RE_3_2,:label => "Завышение (3-2)"
   %fieldset
     %legend 
       Заключение
-    =f.radio_button :conclusion_group,0,:label => "Отказано" 
-    =f.radio_button :conclusion_group,1,:label => "1 группа" 
-    =f.radio_button :conclusion_group,2,:label => "2 группа" 
-    =f.radio_button :conclusion_group,3,:label => "3 группа" 
+    =f.radio_button :conclusion_group,Mse::C_REFUSED,:label => "Отказано" 
+    =f.radio_button :conclusion_group,Mse::C_FIRST,:label => "1 группа" 
+    =f.radio_button :conclusion_group,Mse::C_SECOND,:label => "2 группа" 
+    =f.radio_button :conclusion_group,Mse::C_THIRD,:label => "3 группа" 
 
     =f.text_field :conclusion_till,:label => "На срок",:hint => "дней"
     =f.check_box :indefinitely, :label => "Бессрочно"

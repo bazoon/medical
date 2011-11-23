@@ -1,4 +1,4 @@
-class InvalidsPresenter
+class PeopleStructurePresenter
   attr_accessor :years
   attr_accessor :totals_by_year
 
@@ -65,26 +65,27 @@ def get_observed(year,num)
  sd = Date.new(year,1,1) 
  ed = Date.new(year,12,31) 
 
+ clients = Client.includes(:benefits => :ref_benefit_catagories).present(ed)
 
  on_observation = case num
-     when 1 then Client.benefit_category("010").mse_between(sd,ed).mse_group_increased
-     when 2 then Client.benefit_category("010").mse_between(sd,ed).mse_group_increased_2_1
-     when 3 then Client.benefit_category("010").mse_between(sd,ed).mse_group_increased_3_2
-     when 4 then Client.benefit_category("020").mse_between(sd,ed).mse_group_increased
-     when 41 then Client.benefit_category("020").mse_between(sd,ed).mse_group_increased_2_1
-     when 42 then Client.benefit_category("020").mse_between(sd,ed).mse_group_increased_3_2
-     when 5 then Client.mse_between(sd,ed).mse_iprs
-     when 6 then Client.mse_between(sd,ed).mse_first
-     when 7 then Client.mse_between(sd,ed).mse_re
-     when 8 then Client.mse_between(sd,ed).mse_re_2
-     when 9 then Client.mse_between(sd,ed).mse_re_3
-     when 10 then Client.mse_between(sd,ed).mse_re_3_2
-     when 11 then Client.disables.mse_between(sd,ed)
+     when 1 then clients.benefit_category("010")
+     when 2 then clients.benefit_category("020")
+     when 3 then clients.benefit_category("030")
+     when 4 then clients.benefit_category("060")
+     when 5 then clients.benefit_category("050")
+     when 6 then clients.benefit_category("140") + clients.benefit_category("150")
+     when 7 then clients.benefit_category("926")
+     when 8 then clients.benefit_category("924")
+     when 9 then clients.benefit_category("092")
+     when 10 then clients.benefit_category("010")
+     when 11 then clients.benefit_category("010")
  end
 #
 #
  on_observation.count unless on_observation.nil?
 end
+
+
 
 
 

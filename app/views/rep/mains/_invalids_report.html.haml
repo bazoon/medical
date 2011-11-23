@@ -21,6 +21,8 @@
          2 => "Из них со 2 на 1 группу",
          3 => "с 3 на 2 группу",
          4 => "Количество УОВ, направленных для завышения группы инвалидности",
+         41 => "Из них со 2 на 1 группу",
+         42 => "с 3 на 2 группу",
          5 => "ИПР",
          6 => "Количество пациентов, направленных для определения группы впервые",
          7 => "Ежегодное переосвидетельствование",
@@ -34,4 +36,10 @@
             -p.fill(p.years,k)
             -p.years.each do |year|
               %td= p.observed(year,k)
-              %td= 0 #p.get_rel(p.observed(year,k), p.observed_total(year,k))
+              %td= p.rel_row_value(p.observed(year,k),year)
+      %tr
+        %td
+          Всего
+          -p.years.each do |year|
+            %td= p.totals_by_year[year]
+            %td 100 %
