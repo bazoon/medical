@@ -15,7 +15,8 @@
   - @ref_benefit_categories.each do |ref_benefit_category|
     %tr
       %td= ref_benefit_category.short_name
-      %td= ref_benefit_category.code
+      %td= best_in_place ref_benefit_category, :code, :type => :input,:path => ref_benefit_category,:method => :put
+
       %td= ref_benefit_category.percent
       %td= ref_benefit_category.source_string
       %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_benefit_category_path(ref_benefit_category)

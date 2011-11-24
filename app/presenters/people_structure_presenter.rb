@@ -68,17 +68,17 @@ def get_observed(year,num)
  clients = Client.includes(:benefits => :ref_benefit_catagories).present(ed)
 
  on_observation = case num
-     when 1 then clients.benefit_category("010")
-     when 2 then clients.benefit_category("020")
-     when 3 then clients.benefit_category("030")
-     when 4 then clients.benefit_category("060")
-     when 5 then clients.benefit_category("050")
-     when 6 then clients.benefit_category("140") + clients.benefit_category("150")
-     when 7 then clients.benefit_category("926")
-     when 8 then clients.benefit_category("924")
-     when 9 then clients.benefit_category("092")
-     when 10 then clients.benefit_category("010")
-     when 11 then clients.benefit_category("010")
+     when 1 then clients.war_invalids
+     when 2 then clients.war_participants
+     when 3 then clients.conflict_participants
+     when 4 then clients.widows
+     when 5 then clients.blokadniks
+     when 6 then clients.prisoners
+     when 7 then clients.front_workers
+     when 8 then clients.repressed
+     when 9 then clients.chernobil
+     when 10 then clients.veterans
+     when 11 then clients.pensioners
  end
 #
 #

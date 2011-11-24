@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111115100828) do
+ActiveRecord::Schema.define(:version => 20111124031136) do
 
   create_table "benefits", :force => true do |t|
     t.integer  "client_id"
@@ -189,13 +189,13 @@ ActiveRecord::Schema.define(:version => 20111115100828) do
   end
 
   create_table "ref_benefit_categories", :force => true do |t|
-    t.string   "code"
     t.string   "short_name"
     t.string   "full_name"
     t.integer  "percent"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "source"
+    t.integer  "code"
   end
 
   create_table "ref_death_reasons", :force => true do |t|

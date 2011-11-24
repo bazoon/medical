@@ -12,22 +12,22 @@ class Benefit < ActiveRecord::Base
   #scope :war_invalids, includes(:benefit_category).where("ref_benefit_categories.code=?","010")   
  
 
-  scope :first_group_invalids, includes(:benefit_category).where("ref_benefit_categories=?","081")
+#  scope :first_group_invalids, includes(:benefit_category).where("ref_benefit_categories=?","081")
 
- # scope :war_invalids,find_by_sql("select code from benefits,ref_benefit_categories where benefits.benefit_category_id=ref_benefit_categories.id and code in (?)",Ref::BenefitCategory::WAR_INVALIDS)
-
-
+  scope :wars,joins(:benefit_categories).merge(Ref::BenefitCategory.war_invalids)
 
 
-#  scope :war_participants,where("benefit_catecode in (?) ",WAR_PARTICIPANTS)
-#  scope :conflict_participants,where("code in (?) ",CONFLICT_PARTICIPANTS)
-#  scope :widows,where("code in (?) ",WIDOWS)
-#  scope :blokadniks,where("code in (?) ",BLOKADNIKS)
-#  scope :prisoners,where("code in (?) ",PRISONERS)
-#  scope :front_workers,where("code in (?) ",FRONT_WORKERS)
-#  scope :repressed,where("code in (?) ",REPRESSED)
-#  scope :chernobil,where("code in (?) ",CHERNOBIL)
-#  scope :veterans,where("code in (?) ",VETERANS)
+  scope :war_invalids,joins(:benefit_category).merge(Ref::BenefitCategory.war_invalids)
+
+  scope :war_participants,joins(:benefit_category).merge(Ref::BenefitCategory.war_participants)
+  scope :conflict_participants,joins(:benefit_category).merge(Ref::BenefitCategory.conflict_participants)
+  scope :widows,joins(:benefit_category).merge(Ref::BenefitCategory.widows)
+  scope :blokadniks,joins(:benefit_category).merge(Ref::BenefitCategory.blokadniks)
+  scope :prisoners,joins(:benefit_category).merge(Ref::BenefitCategory.prisoners)
+  scope :front_workers,joins(:benefit_category).merge(Ref::BenefitCategory.front_workers)
+  scope :repressed,joins(:benefit_category).merge(Ref::BenefitCategory.repressed)
+  scope :chernobil,joins(:benefit_category).merge(Ref::BenefitCategory.chernobil)
+  scope :veterans,joins(:benefit_category).merge(Ref::BenefitCategory.veterans)
 
 def check_primary_field
   client_benefits = Benefit.where(:client_id => client_id)

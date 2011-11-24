@@ -15,7 +15,10 @@ class Client < ActiveRecord::Base
   has_many :sanatorium_notes,:dependent => :delete_all,:order =>"neediness_ref_date DESC"
   has_many :med_diagnostic_tests,:dependent => :delete_all,:order =>"test_date DESC"
   has_many :prof_inspections,:dependent => :delete_all,:order =>"actual_date DESC"
+  
   has_many :benefits,:dependent => :delete_all,:order => "prim DESC"
+  has_many :benefit_categories, :through => :benefits
+
   has_many :mkbs,:dependent => :delete_all,:order => "actual_date DESC"
   has_many :mses,:dependent => :delete_all,:order => "id DESC"
   has_many :disps,:dependent => :delete_all,:order => "id DESC"
@@ -23,10 +26,8 @@ class Client < ActiveRecord::Base
   validates :name,:surname,:birth_date,:ins_company_id,:client_sex_id, :presence => true
   
 
-  #
-  scope :present, lambda {|e| where("attach_date <= ? and (detach_date is null or detach_date > ?) ",e,e)}
     
-
+  scope :present, lambda {|e| where("attach_date <= ? and (detach_date is null or detach_date > ?) ",e,e)}
 
  # validates :birth_date, :format => {:with => /\d{2}\.\d{2}\.\d{4}/, :message => I18n.t(:invalid_date_format)}
 
@@ -39,6 +40,22 @@ class Client < ActiveRecord::Base
   #Возможна ошибка, если ищется id несуществующей льготы
   scope :benefit_category, lambda { |code| includes(:benefits).where("benefits.benefit_category_id = ?",Ref::BenefitCategory.id_by_code(code) ) }
  
+
+  scope :war_invalids,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.war_invalids)
+  scope :war_participants,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.war_participants)
+  scope :conflict_participants,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.conflict_participants)
+  scope :widows,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.widows)
+  scope :blokadniks,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.blokadniks)
+  scope :prisoners,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.prisoners)
+  scope :front_workers,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.front_workers)
+  scope :repressed,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.repressed)
+  scope :chernobil,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.chernobil)
+  scope :veterans,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.veterans)
+
+
+  scope :pensioners,where("pensioner = true")
+
+
   
   scope :disables, where("disabled = true") 
  
