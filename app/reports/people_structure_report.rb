@@ -48,9 +48,6 @@ def fill(years,num)
  end
 end
 
-def foo
- @observed 
-end
 
 #Метод доступа к переменной внутри класса
 def observed(year,num)
