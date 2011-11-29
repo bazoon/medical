@@ -1,37 +1,30 @@
-= link_to content_tag(:span,"",class: "ui-icon ui-icon-triangle-1-w"), operations_client_path(@client)
-%br
-%h1= @client.fio unless @client.nil?
-%br
-%h2 Льготы
-%br
+- present "ClientOperations" do |p|
 
--unless flash.empty?
-  %p#notice= notice
+  -p.prepare(@benefits,"Льготы",notice,@client)
 
+  =p.client_header
 
--if @benefits.count > 0 
-  %table#newspaper-a
-    %tr
-      %th Категория льготы
-      %th Документ
-      %th Основная льгота
-      %th
-      %th
-
-    - @benefits.each do |benefit|
+  =p.table_or_empty do
+    %table.zebra-striped
       %tr
-        %td= benefit.benefit_category
-        %td= benefit.document
-        %td= benefit.primary_benefit?
+        %th Категория льготы
+        %th Документ
+        %th Основная льгота
+        %th
+        %th
 
-        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_benefit_path(@client,benefit)
-        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , client_benefit_path(@client,benefit), :confirm => 'Are you sure?', :method => :delete
--else
-  =render "clients/empty"
+      - @benefits.each do |benefit|
+        %tr
+          %td= benefit.benefit_category
+          %td= benefit.document
+          %td= benefit.primary_benefit?
 
-%br
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_benefit_path(@client,benefit)
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , client_benefit_path(@client,benefit), :confirm => 'Are you sure?', :method => :delete
 
-= link_to t(:new_record), new_client_benefit_path 
+  %br
+
+  = link_to t(:new_record), new_client_benefit_path 
 
 
 

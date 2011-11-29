@@ -1,24 +1,25 @@
-= link_to content_tag(:span,"",class: "ui-icon ui-icon-triangle-1-w"), operations_client_path(@client)
-%br
-%h1= @client.fio unless @client.nil?
-%br
-%h2 Лабораторные анализы 
-%table
-  %tr
-    %th Дата
-    %th Тип
-    %th Результат
-    %th
-    %th
+- present "ClientOperations" do |p|
+  -p.prepare(@lab_tests,"Лабораторные анализы",notice,@client)
 
-  - @lab_tests.each do |lab_test|
-    %tr
-      %td= l lab_test.test_date
-      %td= best_in_place lab_test,:lab_test_type_id, :type => :select, :collection => Ref::LabTestType.all.map {|l| [l.id,l.name]}, :path => client_lab_test_path(@client,lab_test),:method => :put
+  =p.client_header
 
-      %td= best_in_place lab_test, :result, :type => :input,:path => client_lab_test_path(@client,lab_test),:method => :put
-      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_lab_test_path(@client,lab_test)
-      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,client_lab_test_path(@client,lab_test), :confirm => 'Are you sure?', :method => :delete
+  =p.table_or_empty do
+    %table.zebra-striped
+      %tr
+        %th Дата
+        %th Тип
+        %th Результат
+        %th
+        %th
+
+      - @lab_tests.each do |lab_test|
+        %tr
+          %td= l lab_test.test_date
+          %td= best_in_place lab_test,:lab_test_type_id, :type => :select, :collection => Ref::LabTestType.all.map {|l| [l.id,l.name]}, :path => client_lab_test_path(@client,lab_test),:method => :put
+
+          %td= best_in_place lab_test, :result, :type => :input,:path => client_lab_test_path(@client,lab_test),:method => :put
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_lab_test_path(@client,lab_test)
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,client_lab_test_path(@client,lab_test), :confirm => 'Are you sure?', :method => :delete
+
 %br
-
 = link_to t(:new_record), new_client_lab_test_path(@client)

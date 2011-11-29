@@ -1,33 +1,26 @@
-= link_to content_tag(:span,"",class: "ui-icon ui-icon-triangle-1-w"), operations_client_path(@client)
-%br
-%h1= @client.fio unless @client.nil?
-%br
-%h2 Госпитализации
-%br
+- present "ClientOperations" do |p|
 
--unless flash.empty?
-  %p#notice= notice
+  -p.prepare(@hospitalizations,"Госпитализации",notice,@client)
 
--if @hospitalizations.count > 0
-  %table#newspaper-a
-    %tr
-      %th ЛПУ
-      %th Тип госпитализации
-      %th Период
-      %th Заболевание
-      %th
-      %th
-
-    - @hospitalizations.each do |hospitalization|
+  =p.client_header
+  =p.table_or_empty do
+    %table.zebra-striped
       %tr
-        %td= hospitalization.hospitalization_type.name
-        %td= hospitalization.hospitalization_kind
-        %td= "#{l hospitalization.period_start} - #{l hospitalization.period_end}"
-        %td= hospitalization.mkb_info
-        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_hospitalization_path(@client,hospitalization)
-        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,client_hospitalization_path(@client,hospitalization), :method=>:delete, :confirm => 'Are you sure?'
--else
-  =render "clients/empty"
+        %th ЛПУ
+        %th Тип госпитализации
+        %th Период
+        %th Заболевание
+        %th
+        %th
+
+      - @hospitalizations.each do |hospitalization|
+        %tr
+          %td= hospitalization.hospitalization_type.name
+          %td= hospitalization.hospitalization_kind
+          %td= "#{l hospitalization.period_start} - #{l hospitalization.period_end}"
+          %td= hospitalization.mkb_info
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_hospitalization_path(@client,hospitalization)
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,client_hospitalization_path(@client,hospitalization), :method=>:delete, :confirm => 'Are you sure?'
 
 %br
 

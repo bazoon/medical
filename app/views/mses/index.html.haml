@@ -1,46 +1,41 @@
-= link_to content_tag(:span,"",class: "ui-icon ui-icon-triangle-1-w"), operations_client_path(@client)
-%br
-%h1= @client.fio unless @client.nil?
-%br
-%h2 МСЭ
-%br
+- present "ClientOperations" do |p|
+  -p.prepare(@mses,"Медико-социальная экспертиза",notice,@client)
 
--unless flash.empty?
-  %span.label.notice= notice
+  =p.client_header
 
-%table.zebra-striped
-  -@mses.each do |mse|
-    %tr
-      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_mse_path(@client,mse)
-      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,client_mse_path(@client,mse), :method=>:delete, :confirm => 'Are you sure?'
-    %tr
-      %td Врач 
-      %td=mse.user.short_fio_with_doctor_type
-    %tr
-      %td Заболевание
-      %td= mse.mkb
-    %tr
-      %td Дата направления 
-      %td= ldate(mse.send_date) 
-    %tr
-      %td ИПР ?
-      %td= boolean_to_yes_no(mse.ipr)
-    %tr
-      %td Консультация ?
-      %td= boolean_to_yes_no(mse.consultation) 
-    %tr
-      %td Впервые / Переосвидетельствование
-      %td= mse.reason_info
-    %tr
-      %td Заключение
-      %td= mse.conclusion_info
-    %tr
-      %td Дата выдачи
-      %td=ldate(mse.conclusion_date)
-    %tr
-      %td{:style =>"border-bottom: black solid 2px "} До
-      %td{:style =>"border-bottom: black solid 2px "}= mse.again
+  =p.table_or_empty do
+    %table.zebra-striped
+      -@mses.each do |mse|
+        %tr
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_mse_path(@client,mse)
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,client_mse_path(@client,mse), :method=>:delete, :confirm => 'Are you sure?'
+        %tr
+          %td Врач 
+          %td=mse.user.short_fio_with_doctor_type
+        %tr
+          %td Заболевание
+          %td= mse.mkb
+        %tr
+          %td Дата направления 
+          %td= ldate(mse.send_date) 
+        %tr
+          %td ИПР ?
+          %td= boolean_to_yes_no(mse.ipr)
+        %tr
+          %td Консультация ?
+          %td= boolean_to_yes_no(mse.consultation) 
+        %tr
+          %td Впервые / Переосвидетельствование
+          %td= mse.reason_info
+        %tr
+          %td Заключение
+          %td= mse.conclusion_info
+        %tr
+          %td Дата выдачи
+          %td=ldate(mse.conclusion_date)
+        %tr
+          %td{:style =>"border-bottom: black solid 2px "} До
+          %td{:style =>"border-bottom: black solid 2px "}= mse.again
 
 %br
-
 =link_to 'New Mse', new_client_mse_path(@client)

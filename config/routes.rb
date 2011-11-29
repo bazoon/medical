@@ -46,6 +46,7 @@ Medical::Application.routes.draw do
   match 'mse_events' =>"mse_calendar#events"
 
   resources :clients do
+ 
     member do
       get :operations,:search
     end 

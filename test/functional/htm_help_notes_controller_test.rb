@@ -3,8 +3,8 @@ require 'test_helper'
 class HtmHelpNotesControllerTest < ActionController::TestCase
 
   setup do
-    @htm_help_note = htm_help_notes(:one)
-    @client = clients(:one)
+    @htm_help_note = FactoryGirl.create(:htm_help_note)
+    @client = FactoryGirl.create(:client)
   end
 
   test "should get index" do

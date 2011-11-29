@@ -1,35 +1,26 @@
-= link_to content_tag(:span,"",class: "ui-icon ui-icon-triangle-1-w"), operations_client_path(@client)
-%br
-%h1= @client.fio unless @client.nil?
-%br
-%h2 Данные о санаторно-курортном лечении 
-%br
+- present "ClientOperations" do |p|
+  -p.prepare(@sanatorium_notes,"Данные о санаторно-курортном лечении",notice,@client)
 
--unless flash.empty?
-  %p#notice= notice
+  =p.client_header
 
--if @sanatorium_notes.count > 0
-
-  %table#newspaper-a
-    %tr
-      %th Справка о нуждаемости
-      %th Санаторно-курортная карта
-      %th Санаторий
-      %th Период
-      %th 
-      %th 
-
-    - @sanatorium_notes.each do |sanatorium_note|
+  =p.table_or_empty do
+    %table.zebra-striped
       %tr
-        %td= l sanatorium_note.neediness_ref_date
-        %td= l sanatorium_note.sanatorium_card_fill_date
-        %td= sanatorium_note.sanatorium.name
-        %td= "#{l sanatorium_note.period_start} - #{l sanatorium_note.period_end}"
+        %th Справка о нуждаемости
+        %th Санаторно-курортная карта
+        %th Санаторий
+        %th Период
+        %th 
+        %th 
 
-        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_client_sanatorium_note_path(@client,sanatorium_note)
-        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus"),  client_sanatorium_note_path(@client,sanatorium_note), :confirm => 'Are you sure?', :method => :delete
--else
-  =render "clients/empty"
+      - @sanatorium_notes.each do |sanatorium_note|
+        %tr
+          %td= l sanatorium_note.neediness_ref_date
+          %td= l sanatorium_note.sanatorium_card_fill_date
+          %td= sanatorium_note.sanatorium.name
+          %td= "#{l sanatorium_note.period_start} - #{l sanatorium_note.period_end}"
+
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_client_sanatorium_note_path(@client,sanatorium_note)
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus"),  client_sanatorium_note_path(@client,sanatorium_note), :confirm => 'Are you sure?', :method => :delete
 %br
-
 = link_to t(:new_record), new_client_sanatorium_note_path

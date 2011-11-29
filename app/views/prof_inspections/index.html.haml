@@ -1,36 +1,20 @@
-= link_to content_tag(:span,"",class: "ui-icon ui-icon-triangle-1-w"), operations_client_path(@client)
-%br
-%h1= @client.fio unless @client.nil?
-%br
-%h2 Данные о профосмотрах
-%br
-
--unless flash.empty?
-  %div{:class =>"alert-message info", "data-alert" => "alert"}
-    %a.close{:href => "#"} &times;
-    = notice
-    
-= paginate @prof_inspections
-
-%br
-= link_to t(:new_record), new_client_prof_inspection_path
-%br
+- present "ClientOperations" do |p|
+  -p.prepare(@prof_inspections,"Данные о профосмотрах",notice,@client)
 
 
-%table#newspaper-a
-  %tr
-    %th Дата
-    %th Врач
-    %th Стат. талон
-    %th Заключение
-    %th
-    %th
-    %th
-    = render :partial => "by_year", :collection => @prof_inspections, :as => :prof_inspection
+  =p.client_header
 
-=render "clients/empty" unless @prof_inspections.count > 0
-
-
+  =p.table_or_empty do
+    %table.zebra-striped
+      %tr
+        %th Дата
+        %th Врач
+        %th Стат. талон
+        %th Заключение
+        %th
+        %th
+        %th
+        = render :partial => "by_year", :collection => @prof_inspections, :as => :prof_inspection
 
 %br
 = link_to t(:new_record), new_client_prof_inspection_path

@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class ClientSexesControllerTest < ActionController::TestCase
+  
   setup do
-    @client_sex = client_sexes(:one)
+    @client_sex = FactoryGirl.create(:client_sex)
   end
 
   test "should get index" do

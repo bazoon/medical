@@ -1,33 +1,25 @@
-= link_to content_tag(:span,"",class: "ui-icon ui-icon-triangle-1-w"), operations_client_path(@client)
-%br
-%h1= @client.fio unless @client.nil?
-%br
-%h2 Диагностические исследования
-%br
+- present "ClientOperations" do |p|
 
--unless flash.empty?
-  %p#notice= notice
+  -p.prepare(@diagnostic_tests,"Диагностические исследования",notice,@client)
 
--if @diagnostic_tests.count > 0
-  %table#newspaper-a
-    %tr
-      %th Дата
-      %th Тип исследования
-      %th Результат
-      %th
-      %th
+  =p.client_header
 
-    - @diagnostic_tests.each do |diagnostic_test|
+  =p.table_or_empty do
+    %table.zebra-striped
       %tr
-        %td= l diagnostic_test.test_date
-        %td= diagnostic_test.diagnostic_test_type.name
-        %td= diagnostic_test.result
-        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_diagnostic_test_path(@client,diagnostic_test)
-        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , client_diagnostic_test_path(@client,diagnostic_test), :confirm => 'Are you sure?', :method => :delete
+        %th Дата
+        %th Тип исследования
+        %th Результат
+        %th
+        %th
 
--else
-  =render "clients/empty"
+      - @diagnostic_tests.each do |diagnostic_test|
+        %tr
+          %td= l diagnostic_test.test_date
+          %td= diagnostic_test.diagnostic_test_type.name
+          %td= diagnostic_test.result
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_diagnostic_test_path(@client,diagnostic_test)
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , client_diagnostic_test_path(@client,diagnostic_test), :confirm => 'Are you sure?', :method => :delete
+  %br
 
-%br
-
-= link_to t(:new_record), new_client_diagnostic_test_path(@client)
+  = link_to t(:new_record), new_client_diagnostic_test_path(@client)

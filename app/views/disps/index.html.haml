@@ -1,28 +1,32 @@
-%h1 Диспансеризация
+- present "ClientOperations" do |p|
 
-%table
-  %tr
-    %th Дата
-    %th Врач
-    %th Заболевание
-    %th Группа
-    %th Визит
-    %th Результат 
-    %th
-    %th
+  -p.prepare(@disps,"Диспансеризация",notice,@client)
 
+  =p.client_header
 
-  - @disps.each do |disp|
-    %tr
-      %td= l disp.actual_date
-      %td= disp.user.short_fio_with_doctor_type
-      %td= disp.mkb_type.code
-      %td= disp.disp_group
-      %td= disp.disp_type_info
-      %td= disp.result_info
+  =p.table_or_empty do
+    %table.zebra-striped
+      %tr
+        %th Дата
+        %th Врач
+        %th Заболевание
+        %th Группа
+        %th Визит
+        %th Результат 
+        %th
+        %th
 
-      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_disp_path(@client,disp)
-      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , client_disp_path(@client,disp), :confirm => 'Are you sure?', :method => :delete
+      - @disps.each do |disp|
+        %tr
+          %td= l disp.actual_date
+          %td= disp.user.short_fio_with_doctor_type
+          %td= disp.mkb_type.code
+          %td= disp.disp_group
+          %td= disp.disp_type_info
+          %td= disp.result_info
+
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_disp_path(@client,disp)
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , client_disp_path(@client,disp), :confirm => 'Are you sure?', :method => :delete
 
 %br
 

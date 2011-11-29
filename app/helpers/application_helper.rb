@@ -1,5 +1,7 @@
 module ApplicationHelper
 
+
+
 def bootstrap_form_for(*args, &block)
   options = args.extract_options!
   options.merge!(:builder => BootstrapFormBuilder)
@@ -15,6 +17,12 @@ def present(klass)
   presenter
 end  
 
+def report(klass)
+  klass ="#{klass}Report".constantize
+  rep = klass.new(self)
+  yield rep if block_given?
+  rep
+end
 
 def ldate(d)  
   I18n.l(d) unless d.nil?

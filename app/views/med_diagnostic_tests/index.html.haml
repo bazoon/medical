@@ -1,31 +1,23 @@
-= link_to content_tag(:span,"",class: "ui-icon ui-icon-triangle-1-w"), operations_client_path(@client)
-%br
-%h1= @client.fio unless @client.nil?
-%br
-%h2 Лечебно-диагностическая работа
-%br
+- present "ClientOperations" do |p|
+  -p.prepare(@med_diagnostic_tests,"Лечебно-диагностическая работа",notice,@client)
 
--unless flash.empty?
-  %p#notice= notice
+  =p.client_header
 
--if @med_diagnostic_tests.count >0 
-  %table#newspaper-a
-    %tr
-      %th Дата
-      %th Тип исследования
-      %th Результат
-      %th
-      %th
-
-    - @med_diagnostic_tests.each do |med_diagnostic_test|
+  =p.table_or_empty do
+    %table.zebra-striped
       %tr
-        %td= l med_diagnostic_test.test_date
-        %td= med_diagnostic_test.med_diagnostic_test_type.name
-        %td= med_diagnostic_test.result
-        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_med_diagnostic_test_path(@client,med_diagnostic_test)
-        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,client_med_diagnostic_test_path(@client,med_diagnostic_test), :confirm => 'Are you sure?', :method => :delete
--else
-  =render "clients/empty"
-%br
+        %th Дата
+        %th Тип исследования
+        %th Результат
+        %th
+        %th
 
+      - @med_diagnostic_tests.each do |med_diagnostic_test|
+        %tr
+          %td= l med_diagnostic_test.test_date
+          %td= med_diagnostic_test.med_diagnostic_test_type.name
+          %td= med_diagnostic_test.result
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_med_diagnostic_test_path(@client,med_diagnostic_test)
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,client_med_diagnostic_test_path(@client,med_diagnostic_test), :confirm => 'Are you sure?', :method => :delete
+%br
 = link_to t(:new_record), new_client_med_diagnostic_test_path(@client)

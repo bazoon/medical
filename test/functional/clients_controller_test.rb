@@ -2,12 +2,12 @@ require 'test_helper'
 
 class ClientsControllerTest < ActionController::TestCase
   setup do
-    @client = clients(:one)
+    @client = FactoryGirl.create(:client)
   end
 
   test "should get index" do
     get :index
-    assert_response :success
+    assert_response 302
     assert_not_nil assigns(:clients)
   end
 
@@ -21,7 +21,7 @@ class ClientsControllerTest < ActionController::TestCase
       post :create, client: @client.attributes
     end
 
-    assert_redirected_to client_path(assigns(:client))
+    assert_redirected_to operations_client_path(assigns(:client))
   end
 
   test "should show client" do
