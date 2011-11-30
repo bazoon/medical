@@ -54,9 +54,8 @@ gem 'factory_girl_rails'
 
 group :test do
   # Pretty printed test output
-  gem 'turn', :require => false
-  gem 'webrat'
   gem 'minitest'
+  gem 'autotest-rails-pure'
 end
 
 

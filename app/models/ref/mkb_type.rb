@@ -1,7 +1,9 @@
 class Ref::MkbType < ActiveRecord::Base
 
+belongs_to :doctor_type,:class_name => "Ref::DoctorType"
+
 validates :code,:name, :presence => true
-validates :code,:name, :uniqueness => true
+validates :code, :uniqueness => true
 
 require 'csv'
 

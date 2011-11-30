@@ -3,12 +3,8 @@ require 'test_helper'
 class LabTestsControllerTest < ActionController::TestCase
 
   setup do
-    @lab_test = lab_tests(:one)
-    @lab_test.test_date = '01.01.2001'
-    @lab_test.lab_test_type_id = 2
-    @lab_test.result = "ok"
-    @lab_test.client_id = 1
-    @client = clients(:one)
+    @lab_test = FactoryGirl.create(:lab_test)
+    @client = FactoryGirl.create(:client)
   end
 
   test "should get index" do

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Ref::HtmHelpTypesControllerTest < ActionController::TestCase
   setup do
-    @ref_htm_help_type = ref_htm_help_types(:one)
+    @ref_htm_help_type = FactoryGirl.create(:htm_help_type)
   end
 
   test "should get index" do

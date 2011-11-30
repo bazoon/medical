@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Ref::InsCompaniesControllerTest < ActionController::TestCase
   setup do
-    @ref_ins_company = ref_ins_companies(:one)
+    @ref_ins_company = FactoryGirl.create(:ins_company)
   end
 
   test "should get index" do

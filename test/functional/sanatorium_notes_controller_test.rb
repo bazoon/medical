@@ -3,8 +3,8 @@ require 'test_helper'
 class SanatoriumNotesControllerTest < ActionController::TestCase
 
   setup do
-    @sanatorium_note = sanatorium_notes(:one)
-    @client = clients(:one)
+    @sanatorium_note = FactoryGirl.create(:sanatorium_note)  
+    @client = FactoryGirl.create(:client)
   end
 
   test "should get index" do

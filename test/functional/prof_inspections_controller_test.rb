@@ -2,8 +2,8 @@ require 'test_helper'
 
 class ProfInspectionsControllerTest < ActionController::TestCase
   setup do
-    @prof_inspection = prof_inspections(:one)
-    @client = clients(:one)
+    @prof_inspection = FactoryGirl.create(:prof_inspection)
+    @client = FactoryGirl.create(:client)
   end
 
   test "should get index" do

@@ -3,8 +3,8 @@ require 'test_helper'
 class MedDiagnosticTestsControllerTest < ActionController::TestCase
 
   setup do
-    @med_diagnostic_test = med_diagnostic_tests(:one)
-    @client = clients(:one)
+    @med_diagnostic_test = FactoryGirl.create(:med_diagnostic_test)
+    @client = FactoryGirl.create(:client)
   end
 
   test "should get index" do

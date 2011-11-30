@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Ref::LabTestTypesControllerTest < ActionController::TestCase
   setup do
-    @ref_lab_test_type = ref_lab_test_types(:one)
+    @ref_lab_test_type = FactoryGirl.create(:lab_test_type)
   end
 
   test "should get index" do

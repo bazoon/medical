@@ -3,7 +3,7 @@ require 'test_helper'
 class BenefitsControllerTest < ActionController::TestCase
  setup do
    @client = FactoryGirl.create(:client)
-   @benefit = FactoryGirl.build(:benefit,:client_id => @client)
+   @benefit = FactoryGirl.create(:benefit,:client_id => @client)
   end
  
   test "should get index" do

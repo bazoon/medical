@@ -3,6 +3,10 @@ require 'test_helper'
 class PeopleStructureReportTest < ActionView::TestCase
   
 
+  test "oned" do
+    assert 1==1,"2323"
+  end
+
   test "should count" do
    
     f = File.open('/var/www/rails/medical/log/my', 'w')

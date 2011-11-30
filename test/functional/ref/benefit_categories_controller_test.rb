@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Ref::BenefitCategoriesControllerTest < ActionController::TestCase
   setup do
-    @ref_benefit_category = ref_benefit_categories(:one)
+    @ref_benefit_category = Factory.create(:benefit_category)
   end
 
   test "should get index" do
@@ -21,7 +21,7 @@ class Ref::BenefitCategoriesControllerTest < ActionController::TestCase
       post :create, ref_benefit_category: @ref_benefit_category.attributes
     end
 
-    assert_redirected_to ref_benefit_category_path(assigns(:ref_benefit_category))
+    assert_redirected_to ref_benefit_categories_path
   end
 
   test "should show ref_benefit_category" do
@@ -36,7 +36,7 @@ class Ref::BenefitCategoriesControllerTest < ActionController::TestCase
 
   test "should update ref_benefit_category" do
     put :update, id: @ref_benefit_category.to_param, ref_benefit_category: @ref_benefit_category.attributes
-    assert_redirected_to ref_benefit_category_path(assigns(:ref_benefit_category))
+    assert_redirected_to ref_benefit_categories_path
   end
 
   test "should destroy ref_benefit_category" do

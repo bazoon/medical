@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Ref::DeathReasonsControllerTest < ActionController::TestCase
   setup do
-    @ref_death_reason = ref_death_reasons(:one)
+    @ref_death_reason = FactoryGirl.create(:death_reason)
   end
 
   test "should get index" do
@@ -21,7 +21,7 @@ class Ref::DeathReasonsControllerTest < ActionController::TestCase
       post :create, ref_death_reason: @ref_death_reason.attributes
     end
 
-    assert_redirected_to ref_death_reason_path(assigns(:ref_death_reason))
+    assert_redirected_to ref_death_reasons_path
   end
 
   test "should show ref_death_reason" do
@@ -36,7 +36,7 @@ class Ref::DeathReasonsControllerTest < ActionController::TestCase
 
   test "should update ref_death_reason" do
     put :update, id: @ref_death_reason.to_param, ref_death_reason: @ref_death_reason.attributes
-    assert_redirected_to ref_death_reason_path(assigns(:ref_death_reason))
+    assert_redirected_to ref_death_reasons_path
   end
 
   test "should destroy ref_death_reason" do

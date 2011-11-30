@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Ref::MedDiagnosticTestTypesControllerTest < ActionController::TestCase
   setup do
-    @ref_med_diagnostic_test_type = ref_med_diagnostic_test_types(:one)
+    @ref_med_diagnostic_test_type = FactoryGirl.create(:med_diagnostic_test_type)
   end
 
   test "should get index" do

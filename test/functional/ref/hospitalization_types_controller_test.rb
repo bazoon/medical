@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Ref::HospitalizationTypesControllerTest < ActionController::TestCase
   setup do
-    @ref_hospitalization_type = ref_hospitalization_types(:one)
+    @ref_hospitalization_type = FactoryGirl.create(:hospitalization_type)
   end
 
   test "should get index" do

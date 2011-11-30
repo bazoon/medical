@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Ref::SanatoriaControllerTest < ActionController::TestCase
   setup do
-    @ref_sanatorium = ref_sanatoria(:one)
+    @ref_sanatorium = FactoryGirl.create(:sanatorium)
   end
 
   test "should get index" do
@@ -21,7 +21,7 @@ class Ref::SanatoriaControllerTest < ActionController::TestCase
       post :create, ref_sanatorium: @ref_sanatorium.attributes
     end
 
-    assert_redirected_to ref_sanatorium_path(assigns(:ref_sanatorium))
+    assert_redirected_to ref_sanatoria_path
   end
 
   test "should show ref_sanatorium" do
@@ -36,7 +36,7 @@ class Ref::SanatoriaControllerTest < ActionController::TestCase
 
   test "should update ref_sanatorium" do
     put :update, id: @ref_sanatorium.to_param, ref_sanatorium: @ref_sanatorium.attributes
-    assert_redirected_to ref_sanatorium_path(assigns(:ref_sanatorium))
+    assert_redirected_to ref_sanatoria_path
   end
 
   test "should destroy ref_sanatorium" do

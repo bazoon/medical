@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Ref::MkbTypesControllerTest < ActionController::TestCase
   setup do
-    @ref_mkb_type = ref_mkb_types(:one)
+    @ref_mkb_type = FactoryGirl.create(:mkb_type)
   end
 
   test "should get index" do
@@ -18,10 +18,11 @@ class Ref::MkbTypesControllerTest < ActionController::TestCase
 
   test "should create ref_mkb_type" do
     assert_difference('Ref::MkbType.count') do
+      @ref_mkb_type.code="#{@ref_mkb_type.code}1"
       post :create, ref_mkb_type: @ref_mkb_type.attributes
     end
 
-    assert_redirected_to ref_mkb_type_path(assigns(:ref_mkb_type))
+    assert_redirected_to ref_mkb_types_path
   end
 
   test "should show ref_mkb_type" do
@@ -36,7 +37,7 @@ class Ref::MkbTypesControllerTest < ActionController::TestCase
 
   test "should update ref_mkb_type" do
     put :update, id: @ref_mkb_type.to_param, ref_mkb_type: @ref_mkb_type.attributes
-    assert_redirected_to ref_mkb_type_path(assigns(:ref_mkb_type))
+    assert_redirected_to ref_mkb_types_path
   end
 
   test "should destroy ref_mkb_type" do

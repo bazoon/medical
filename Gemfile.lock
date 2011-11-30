@@ -32,12 +32,12 @@ GEM
       multi_json (~> 1.0)
     acts-as-taggable-on (2.1.1)
       rails
-    ansi (1.4.1)
     apotomo (1.2.1)
       cells (>= 3.6.7)
       hooks (~> 0.2.0)
       onfire (~> 0.2.0)
     arel (2.2.1)
+    autotest-rails-pure (4.1.2)
     bcrypt-ruby (3.0.1)
     best_in_place (1.0.2)
       jquery-rails
@@ -79,7 +79,6 @@ GEM
     mime-types (1.17.2)
     minitest (2.8.1)
     multi_json (1.0.3)
-    nokogiri (1.5.0)
     onfire (0.2.0)
     pg (0.11.0)
     polyglot (0.3.3)
@@ -133,16 +132,10 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
-    turn (0.8.3)
-      ansi
     tzinfo (0.3.31)
     uglifier (1.1.0)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
-    webrat (0.7.3)
-      nokogiri (>= 1.2.0)
-      rack (>= 1.0)
-      rack-test (>= 0.5.3)
 
 PLATFORMS
   ruby
@@ -150,6 +143,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on (~> 2.1.0)
   apotomo
+  autotest-rails-pure
   best_in_place
   client_side_validations
   dynamic_form
@@ -166,6 +160,4 @@ DEPENDENCIES
   simple_form
   sqlite3
   therubyracer
-  turn
   uglifier
-  webrat
