@@ -31,7 +31,6 @@
         %tr
           %td
             =v
-            -#-p.fill(p.years,k)
             -p.years.each do |year|
               %td= p.observed(year,k)
               %td= p.get_rel(p.observed(year,k),p.year_total(year))

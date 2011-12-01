@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111124031136) do
+ActiveRecord::Schema.define(:version => 20111201061405) do
 
   create_table "benefits", :force => true do |t|
     t.integer  "client_id"
@@ -275,6 +275,7 @@ ActiveRecord::Schema.define(:version => 20111124031136) do
     t.datetime "updated_at"
     t.string   "class_number"
     t.integer  "doctor_type_id"
+    t.integer  "code_i"
   end
 
   add_index "ref_mkb_types", ["code"], :name => "code_index"

@@ -1,0 +1,40 @@
+%h3 Выполнение плана профилактическиз осмотров
+- report "ProfInspectionPlan" do |p|
+  - p.prepare(sd,ed,years)
+
+  %table.condensed-table.zebra-striped
+
+    %thead
+      %tr
+        %th Наименование
+        -years.each do |k|
+          %th{:colspan =>2}= k
+      %tr
+        %th 
+        -years.each do |k|
+          %th Абс. число
+          %th % 
+
+    %tbody
+
+      - {0 => "Число подлежащих профилактическому осмотру",
+         1 => "Из них осмотрено",
+         2 => "Число подлежащих флюорографическому обследованию",
+         3 => "Из них обследовано",
+         4 => "Подлежало осмотру на глаукому",
+         5 => "Из них обследовано",
+         6 => "Число женщин на участке",
+         7 => "Из них подлежало осмотру гинекологом",
+         8 => "Из них осмотрено"}.each do |k,v|
+        %tr
+          %td
+            =v
+            -p.years.each do |year|
+              %td= p.observed(year,k)
+              %td= p.get_rel(p.observed(year,k),p.year_total(year))
+      %tr
+        %td
+          Всего
+          -p.years.each do |year|
+            %td= p.year_total(year)
+            %td 100 %

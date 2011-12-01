@@ -30,23 +30,10 @@ def prepare(sd,ed,years)
 end
 
 
-def rel_row_value(abs_value,year)
- "#{((abs_value.to_f / @totals_by_year[year].to_f)*100).round(2)} %" unless abs_value.nil?
-end
-#
-#def abs_row_value(items)
-# items.count unless items.nil?
-#end
-
 def year_total(year)
  @observed[year].compact.sum unless @observed.nil? or @observed[year].nil?
 end  
 
-def fill(years,num)
- years.each do |y|
-  @observed[num][y] = get_observed(y,num)
- end
-end
 
 
 #Метод доступа к переменной внутри класса
@@ -63,7 +50,7 @@ end
 
 
 
-#private
+private
 
 def get_observed(year,num)
  sd = Date.new(year,1,1) 

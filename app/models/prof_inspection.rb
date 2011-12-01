@@ -10,6 +10,7 @@ class ProfInspection < ActiveRecord::Base
 
 
 
+
   def self.current_year
     start_date=Time.now.beginning_of_year
     end_date=Time.now.end_of_year
