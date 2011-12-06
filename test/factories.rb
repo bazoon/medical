@@ -69,9 +69,10 @@ end
 
 
 Factory.define(:mkb_type, :class => "Ref::MkbType") do |obj|
- obj.sequence(:code) {|n| "code#{n+1}"} 
+ obj.sequence(:code) {|n| "A#{n+1}"} 
  obj.name "mkbtype"
  obj.association :doctor_type,:factory => :doctor_type
+ #obj.code_i 0
 end  
 
 Factory.define(:mkb) do |obj|

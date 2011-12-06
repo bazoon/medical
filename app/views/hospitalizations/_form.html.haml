@@ -1,6 +1,16 @@
 =bootstrap_form_for [@client, @hospitalization] do |f|
-  =f.collection_select :hospitalization_type_id, Ref::HospitalizationType.all,:id,:name, :label => "ЛПУ"
-  =f.select :kind, [["Плановая",0],["Экстренная",1]],:label => "Тип"
+  %fieldset
+    %legend 
+      Статус
+    =f.radio_button :status,Hospitalization::HOSPITILIZED,:label => "Госпитализирован",:checked => true
+    =f.radio_button :status,Hospitalization::REFUSED,:label => "Нет мест" 
+    =f.radio_button :status,Hospitalization::NO_PLACE,:label => "Отказ больного"
+    =f.radio_button :status,Hospitalization::UNPROOVED_DIAGNOSIS,:label => "Диагноз не подтвержден"
+  %fieldset
+    %legend 
+      Данные о госпитализации  
+  =f.collection_select :hospitalization_type_id, Ref::HospitalizationType.all,:id,:name, :label => "ЛПУ",:include_blank => true
+  =f.select :kind, [["Плановая",0],["Экстренная",1]],{:label => "Тип",:include_blank => true,:prompt => ""}
   =f.date_select :period_start,:label => "Госпитализация с"
   =f.date_select :period_end,:label => "...по"
 

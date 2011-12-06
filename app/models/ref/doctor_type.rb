@@ -1,6 +1,5 @@
 class Ref::DoctorType < ActiveRecord::Base
   has_many :users
-  has_many :doctor_deseases
   validates :name,:presence => true
 
 

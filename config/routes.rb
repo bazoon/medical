@@ -14,8 +14,8 @@ Medical::Application.routes.draw do
   resources :users
 
   namespace :ref do 
-    resources :doctor_deseases 
-    resources :desease_types
+    #resources :doctor_deseases 
+    #resources :desease_types
     resources :doctor_types 
     resources :ins_companies  
     resources :htm_help_types

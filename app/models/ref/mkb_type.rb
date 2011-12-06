@@ -4,6 +4,8 @@ belongs_to :doctor_type,:class_name => "Ref::DoctorType"
 
 validates :code,:name, :presence => true
 validates :code, :uniqueness => true
+validates :code, :format => {:with => /^([A-Z])(\d+\.*)*/}
+
 
 acts_as_taggable  #Теги для отнесения к тому или иному классу заболеваний
 
@@ -12,15 +14,32 @@ scope :neoplasm, lambda { where("code_i between ? and ? ",cti("C0"),cti("D48"))}
 scope :glaukoma, lambda { where("code_i between ? and ? ",cti("H40"),cti("H42"))}
 scope :diabet, lambda { where("code_i between ? and ? ",cti("E10"),cti("E14"))}
 
+scope :infections_parasits, lambda { where("code_i between ? and ? ",    cti("A0"), cti("B99"))}
+scope :neoplasms, lambda { where("code_i between ? and ? ",              cti("C0"), cti("D48"))}
+scope :endocryne_diseases, lambda { where("code_i between ? and ? ",     cti("E0"), cti("E90"))}
+scope :blood_diseases, lambda { where("code_i between ? and ? ",         cti("D50"),cti("D89"))}
+scope :nervous_diseases, lambda { where("code_i between ? and ? ",       cti("G0"), cti("G99"))}
+scope :ear_diseases, lambda { where("code_i between ? and ? ",           cti("H60"),cti("H95"))}
+scope :eye_diseases, lambda { where("code_i between ? and ? ",           cti("H0"), cti("H59"))}
+scope :circulatory_diseases, lambda { where("code_i between ? and ? ",   cti("I0"), cti("I99"))}
+scope :respiratory_diseases, lambda { where("code_i between ? and ? ",   cti("J0"), cti("J99"))}
+scope :digestive_diseases, lambda { where("code_i between ? and ? ",     cti("K0"), cti("K93"))}
+scope :genitourinary_diseases, lambda { where("code_i between ? and ? ", cti("N0"), cti("N99"))}
+scope :skin_diseases, lambda { where("code_i between ? and ? ",          cti("L0"), cti("L99"))}
+scope :musculskeletal_diseases, lambda { where("code_i between ? and ? ",cti("M0"), cti("M99"))}
+scope :injury_poisons, lambda { where("code_i between ? and ? ",         cti("S0"), cti("E14"))}
+
+
 #scope :tisis, lambda { where("code = ? or code = ?","C","C1")}
 
 
 before_save :create_code_i
 
-
 def create_code_i
-  self.code_i = Ref::MkbType.cti(code)
+ code_i = Ref::MkbType.cti(code)
 end
+
+
 
 require 'csv'
 
@@ -58,32 +77,26 @@ def can_be_deleted
 end
 
 
+
 def self.cti(code)
- code.strip! 
- l = code[0]
- a = code[1,code.length].split(".") 
-  
+ code.strip!
  
- if ('A' .. 'Z').include?(l)
-  letter = l.ord
- else
-  letter = 0  
+ unless code.nil? or code.blank? or code.length < 1 or not code =~/^([A-Z])(\d+\.*)*/
+
+  result = (code[0].ord-'A'.ord) << 24
+  
+  numbers = code[1,code.length].split(".") 
+
+  numbers.each_with_index do |num,index|
+
+    result |= num.to_i << (16-8*index)
+
+  end
+
+
  end
 
- unless a[0].nil?
-   big_num = a[0].to_i
- else
-   big_num = 0 
- end
-
-
- unless [1].nil?
-   small_num = a[1].to_i
- else
-   small_num = 0
- end
-
- letter << 16 | big_num << 8 | small_num
+ result
 end
 
 end

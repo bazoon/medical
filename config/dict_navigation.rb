@@ -60,8 +60,8 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :med_diagnostic_types," Лечебн. диагностика",ref_med_diagnostic_test_types_path
     primary.item :htm_help_types,"ВТМП",ref_htm_help_types_path
     primary.item :doctor_types,"Специальности",ref_doctor_types_path
- #   primary.item :desease_types,"Типы заболеваний",ref_desease_types_path
-#    primary.item :doctor_deseases,"Врач - заболевание ",ref_doctor_deseases_path
+   #primary.item :desease_types,"Типы заболеваний",ref_desease_types_path
+   #primary.item :doctor_deseases,"Врач - заболевание ",ref_doctor_deseases_path
     primary.item :benefit_categories,"Категории льгот",ref_benefit_categories_path
     primary.item :mkb_types,"МКБ",ref_mkb_types_path
     primary.item :sanatoria,"Санатории",ref_sanatoria_path

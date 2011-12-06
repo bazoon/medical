@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111201061405) do
+ActiveRecord::Schema.define(:version => 20111206101059) do
 
   create_table "benefits", :force => true do |t|
     t.integer  "client_id"
@@ -119,10 +119,11 @@ ActiveRecord::Schema.define(:version => 20111201061405) do
     t.integer  "hospitalization_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "kind",                    :default => 0
     t.date     "period_start"
     t.date     "period_end"
     t.integer  "mkb_type_id"
+    t.integer  "kind"
+    t.integer  "status",                  :default => 0
   end
 
   create_table "htm_help_notes", :force => true do |t|
@@ -185,7 +186,6 @@ ActiveRecord::Schema.define(:version => 20111201061405) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "mkb_type_id"
-    t.boolean  "first_detected", :default => false
   end
 
   create_table "ref_benefit_categories", :force => true do |t|

@@ -1,0 +1,35 @@
+%h3 Частота выявления ранних форм заболеваний на профилактических осмотрах
+- report "ProfDeseaseFreq" do |p|
+  - p.prepare(sd,ed,years)
+
+  %table.condensed-table.zebra-striped
+
+    %thead
+      %tr
+        %th Наименование
+        -years.each do |k|
+          %th{:colspan =>2}= k
+      %tr
+        %th 
+        -years.each do |k|
+          %th Абс. число
+          %th % 
+
+    %tbody
+
+      - {0 => "Туберкулез",
+         1 => "Онко",
+         2 => "Глаукома",
+         3 => "Сахарный диабет"}.each do |k,v|
+        %tr
+          %td
+            =v
+            -p.years.each do |year|
+              %td= p.observed(year,k)
+              %td= p.get_rel(p.observed(year,k),p.year_total(year))
+      %tr
+        %td
+          Всего
+          -p.years.each do |year|
+            %td= p.year_total(year)
+            %td 100 %

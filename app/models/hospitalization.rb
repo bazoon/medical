@@ -2,7 +2,12 @@ class Hospitalization < ActiveRecord::Base
   belongs_to :hospitalization_type, :class_name => 'Ref::HospitalizationType'
   belongs_to :client, :counter_cache => true
   belongs_to :mkb_type, :class_name => 'Ref::MkbType'
-  validates :hospitalization_type_id, :presence => true
+  #validates :hospitalization_type_id, :presence => true
+
+  HOSPITILIZED = 0
+  REFUSED = 1
+  NO_PLACE = 2
+  UNPROOVED_DIAGNOSIS =3
 
 
  def mkb

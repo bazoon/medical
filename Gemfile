@@ -52,6 +52,11 @@ gem 'factory_girl_rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+group :development do
+  gem "railroady"
+  gem "rails-erd"
+end
+
 group :test do
   # Pretty printed test output
   gem 'minitest'
