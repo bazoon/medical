@@ -69,6 +69,10 @@ ru:
   disp_improvement: "Улучшение"
   disp_degradation: "Ухудшение"
 
+  hosp_hospitilized: "Госпитализирован"
+  hosp_refused: "Отказался"
+  hosp_no_place: "Нет мест"
+  hosp_unprooved: "Диагноз не подтвержден"
    
   views:
     pagination:

@@ -1,19 +1,21 @@
 =bootstrap_form_for [@client, @hospitalization] do |f|
+  =f.date_select :request_date,:label => "Дата обращения"
+  =f.text_field :mkb, :label => "Заболевание"
   %fieldset
     %legend 
       Статус
-    =f.radio_button :status,Hospitalization::HOSPITILIZED,:label => "Госпитализирован",:checked => true
-    =f.radio_button :status,Hospitalization::REFUSED,:label => "Нет мест" 
-    =f.radio_button :status,Hospitalization::NO_PLACE,:label => "Отказ больного"
-    =f.radio_button :status,Hospitalization::UNPROOVED_DIAGNOSIS,:label => "Диагноз не подтвержден"
-  %fieldset
-    %legend 
-      Данные о госпитализации  
-  =f.collection_select :hospitalization_type_id, Ref::HospitalizationType.all,:id,:name, :label => "ЛПУ",:include_blank => true
-  =f.select :kind, [["Плановая",0],["Экстренная",1]],{:label => "Тип",:include_blank => true,:prompt => ""}
-  =f.date_select :period_start,:label => "Госпитализация с"
-  =f.date_select :period_end,:label => "...по"
+    =f.radio_button :status,Hospitalization::HOSPITILIZED,:label => "Госпитализирован",:checked => true,:class => "hosp"
+    =f.radio_button :status,Hospitalization::REFUSED,:label => "Отказ больного",:class => "nohosp"
+    =f.radio_button :status,Hospitalization::NO_PLACE,:label => "Нет мест",:class => "nohosp"
+    =f.radio_button :status,Hospitalization::UNPROOVED_DIAGNOSIS,:label => "Диагноз не подтвержден",:class => "nohosp"
+  %div#hosp_data
+    %fieldset
+      %legend 
+        Данные о госпитализации  
+    =f.collection_select :hospitalization_type_id, Ref::HospitalizationType.all,:id,:name, :label => "ЛПУ",:include_blank => true
+    =f.select :kind, [["Плановая",Hospitalization::PLANNED],["Экстренная",Hospitalization::EXTRA]],{:label => "Тип",:include_blank => true}
+    =f.date_select :period_start,:label => "Госпитализация с"
+    =f.date_select :period_end,:label => "...по"
 
-  =f.text_field :mkb, :label => "Заболевание"
   .actions
     =f.submit "Сохранить",:class => "btn primary"

@@ -6,19 +6,21 @@
   =p.table_or_empty do
     %table.zebra-striped
       %tr
+        %th Статус
+        %th Заболевание
         %th ЛПУ
         %th Тип госпитализации
         %th Период
-        %th Заболевание
         %th
         %th
 
       - @hospitalizations.each do |hospitalization|
         %tr
-          %td= hospitalization.hospitalization_type.name
-          %td= hospitalization.hospitalization_kind
-          %td= "#{l hospitalization.period_start} - #{l hospitalization.period_end}"
+          %td= hospitalization.status_info
           %td= hospitalization.mkb_info
+          %td= hospitalization.hospitalization_type_name
+          %td= hospitalization.hospitalization_kind
+          %td= hospitalization.period 
           %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_hospitalization_path(@client,hospitalization)
           %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,client_hospitalization_path(@client,hospitalization), :method=>:delete, :confirm => 'Are you sure?'
 

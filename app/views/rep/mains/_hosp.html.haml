@@ -1,0 +1,38 @@
+%h3 Госпитализация
+- report "Hosp" do |p|
+  - p.prepare(sd,ed,years)
+
+  %table.condensed-table.zebra-striped
+
+    %thead
+      %tr
+        %th Наименование
+        -years.each do |k|
+          %th{:colspan =>2}= k
+      %tr
+        %th Плановая госпитализация
+        -years.each do |k|
+          %th факт
+          %th % 
+
+    %tbody
+
+      %tr
+        %td Всего нуждались в госпитализации
+        -p.years.each do |year|
+          %td=p.plan_total(year)
+          %td
+
+      %tr
+        %td Госпитализировано из них
+        -p.years.each do |year|
+          %td=p.plan_total(year)
+          %td
+
+      -p.plan_places.each_pair do |k,v|
+        %tr
+          %td=k
+          -p.years.each do |year|
+            %td=v[year]
+            %td
+

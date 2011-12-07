@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111206101059) do
+ActiveRecord::Schema.define(:version => 20111207044136) do
 
   create_table "benefits", :force => true do |t|
     t.integer  "client_id"
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20111206101059) do
     t.integer  "mkb_type_id"
     t.integer  "kind"
     t.integer  "status",                  :default => 0
+    t.date     "request_date"
   end
 
   create_table "htm_help_notes", :force => true do |t|
