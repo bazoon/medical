@@ -51,6 +51,7 @@ class MedDiagnosticTestsController < ApplicationController
     @med_diagnostic_test = MedDiagnosticTest.new(params[:med_diagnostic_test])
     @med_diagnostic_test.client=@client
 
+
     respond_to do |format|
       if @med_diagnostic_test.save
         format.html { redirect_to client_med_diagnostic_tests_path(@client), notice: I18n.t(:record_saved) }

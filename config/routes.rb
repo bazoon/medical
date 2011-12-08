@@ -83,6 +83,10 @@ Medical::Application.routes.draw do
   match 'ajax/mkb_types' => "ajax#mkb_types"
   match 'ajax/prof_inspections_by_year/clients/:client_id/year/:year' => "ajax#prof_inspections_by_year",:as => :prof_inspections_by_year
 
+  match 'ajax/doctor_types' => "ajax#doctor_types"
+
+
+
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)

@@ -24,8 +24,6 @@ class Client < ActiveRecord::Base
   has_many :disps,:dependent => :delete_all,:order => "id DESC"
 
   validates :name,:surname,:birth_date,:ins_company_id,:client_sex_id, :presence => true
-  
-
     
   scope :present, lambda {|e| where("attach_date <= ? and (detach_date is null or detach_date > ?) ",e,e)}
 

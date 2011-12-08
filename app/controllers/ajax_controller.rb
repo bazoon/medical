@@ -49,11 +49,19 @@ class AjaxController < ApplicationController
     end
   end
 
-
-
   def lab_test_form
     @client=Client.find(params[:client_id])
     @lab_test=LabTest.new
+  end
+
+
+  def doctor_types
+    @doctor_types = Ref::DoctorType.where("lower(name) like ?","%#{params[:q]}%")
+
+    respond_to do |format|
+      format.json {render :json => @doctor_types.map(&:attributes) }
+    end
+
   end
 
 

@@ -4,16 +4,35 @@ class Hospitalization < ActiveRecord::Base
   belongs_to :mkb_type, :class_name => 'Ref::MkbType'
   #validates :hospitalization_type_id, :presence => true
 
-  #States
+  #Statuses
   HOSPITILIZED = 0
   REFUSED = 1
   NO_PLACE = 2
   UNPROOVED_DIAGNOSIS =3
- 
 
   #Types
   PLANNED = 0
   EXTRA = 1
+
+
+  scope :planned, where("kind = ?",PLANNED)
+  scope :extra, where("kind = ?",EXTRA)
+
+
+  scope :between, lambda {|s,e| where("request_date between ? and ?",s,e) }
+  scope :hospitilized, where("status = ?",HOSPITILIZED)
+  scope :unhospitilized, where("status <> ?",HOSPITILIZED)
+  scope :refused, where("status = ?",REFUSED)
+  scope :no_place, where("status = ?",NO_PLACE)
+  scope :unprooved_diagnosis, where("status = ?",UNPROOVED_DIAGNOSIS)
+
+
+  scope :blood_diseases, joins(:mkb_type).merge(Ref::MkbType.blood_diseases)
+  scope :circulatory_diseases, joins(:mkb_type).merge(Ref::MkbType.circulatory_diseases)
+  scope :respiratory_diseases,joins(:mkb_type).merge(Ref::MkbType.respiratory_diseases)
+  scope :digestive_diseases, joins(:mkb_type).merge(Ref::MkbType.digestive_diseases)
+
+
 
 
  def mkb
@@ -21,12 +40,12 @@ class Hospitalization < ActiveRecord::Base
  end
 
  def mkb=(name)
-   code = name[0,name.index(":")]
-   self.mkb_type = Ref::MkbType.find_by_code(code)
+  code = name[0,name.index(":")]
+  self.mkb_type = Ref::MkbType.find_by_code(code)
  end
 
   def hospitalization_kind
-    result = case kind 
+   result = case kind 
       when 0 then I18n.t(:plan_hospitalization)
       when 1 then I18n.t(:extra_hospitalization)
       else ""  

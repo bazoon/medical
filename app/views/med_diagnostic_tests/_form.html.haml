@@ -1,6 +1,19 @@
 =bootstrap_form_for [@client, @med_diagnostic_test] do |f|
   =f.date_select :test_date,:label => "Дата"
-  =f.collection_select :med_diagnostic_test_type_id,Ref::MedDiagnosticTestType.all,:id,:name,:label => "Тип"
+  =f.collection_select :hospitalization_type_id,Ref::HospitalizationType.all,:id,:name,:label => "Тип"
   =f.text_field :result,:label => "Результат" 
+  =f.text_field :doctor_tokens,:label => "Врачи","data-pre" => @med_diagnostic_test.doctor_types.map(&:attributes).to_json
+  %fieldset
+    %legend 
+      Цель
+    =f.radio_button :aim,MedDiagnosticTest::AIM_CONSULT,:label => "Консультация" 
+    =f.radio_button :aim,MedDiagnosticTest::AIM_THERAPY_CORRECTION,:label => "Коррекция лечение" 
+    =f.radio_button :aim,MedDiagnosticTest::AIM_DIAGNOSIS_CLARIFICATION,:label => "Уточнение диагноза" 
+    =f.radio_button :aim,MedDiagnosticTest::AIM_EXAMINATION,:label => "Обследование" 
+    =f.radio_button :aim,MedDiagnosticTest::AIM_OPERATION,:label => "Оперативное лечение" 
+    =f.radio_button :aim,MedDiagnosticTest::AIM_CONTROL_INSPECTION,:label => "Контрольный осмотр" 
+
+
+
   .actions
     =f.submit "Сохранить",:class => "btn primary"

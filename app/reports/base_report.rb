@@ -20,5 +20,11 @@ class BaseReport
   end  
  end
 
+  def value_or_zero(value)
+    result = 0
+    result = value unless value.nil? 
+    result
+  end
+
 end
 

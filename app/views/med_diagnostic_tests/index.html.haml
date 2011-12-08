@@ -15,7 +15,7 @@
       - @med_diagnostic_tests.each do |med_diagnostic_test|
         %tr
           %td= l med_diagnostic_test.test_date
-          %td= med_diagnostic_test.med_diagnostic_test_type.name
+          %td= med_diagnostic_test.hospitalization_type_name
           %td= med_diagnostic_test.result
           %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_med_diagnostic_test_path(@client,med_diagnostic_test)
           %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,client_med_diagnostic_test_path(@client,med_diagnostic_test), :confirm => 'Are you sure?', :method => :delete
