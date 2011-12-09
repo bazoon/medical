@@ -77,3 +77,20 @@ class Hospitalization < ActiveRecord::Base
 
 
 end
+# == Schema Information
+#
+# Table name: hospitalizations
+#
+#  id                      :integer         not null, primary key
+#  client_id               :integer
+#  hospitalization_type_id :integer
+#  created_at              :datetime
+#  updated_at              :datetime
+#  period_start            :date
+#  period_end              :date
+#  mkb_type_id             :integer
+#  kind                    :integer
+#  status                  :integer         default(0)
+#  request_date            :date
+#
+

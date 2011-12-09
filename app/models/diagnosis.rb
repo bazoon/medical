@@ -61,3 +61,16 @@ end
   end
 
 end
+# == Schema Information
+#
+# Table name: diagnoses
+#
+#  id                 :integer         not null, primary key
+#  prof_inspection_id :integer
+#  mkb_type_id        :integer
+#  first_detected     :boolean         default(FALSE)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  stat_card          :boolean         default(FALSE)
+#
+

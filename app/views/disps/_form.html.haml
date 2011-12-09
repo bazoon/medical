@@ -23,9 +23,9 @@
   %fieldset
     %legend 
       Заключение
-    =f.radio_button :result,1,:label => "Без изменений", :checked => true 
-    =f.radio_button :result,2,:label => "Лучше" 
-    =f.radio_button :result,3,:label => "Хуже"
+    =f.radio_button :result,Disp::STABLE,:label => "Без изменений", :checked => true 
+    =f.radio_button :result,Disp::PROGRESS,:label => "Лучше" 
+    =f.radio_button :result,Disp::REGRESS,:label => "Хуже"
 
 
 

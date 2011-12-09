@@ -70,3 +70,20 @@ def primary_benefit?
 end  
 
 end
+# == Schema Information
+#
+# Table name: benefits
+#
+#  id                  :integer         not null, primary key
+#  client_id           :integer
+#  doc_name            :string(255)
+#  doc_seria           :string(255)
+#  doc_num             :string(255)
+#  created_at          :datetime
+#  updated_at          :datetime
+#  doc_date            :date
+#  benefit_category_id :integer
+#  doc_given_by        :string(255)
+#  prim                :boolean
+#
+

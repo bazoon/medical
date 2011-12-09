@@ -18,3 +18,16 @@ class Mkb < ActiveRecord::Base
 
     
 end
+# == Schema Information
+#
+# Table name: mkbs
+#
+#  id          :integer         not null, primary key
+#  client_id   :integer
+#  mkb_type_id :integer
+#  actual_date :date
+#  created_at  :datetime
+#  updated_at  :datetime
+#  user_id     :integer
+#
+

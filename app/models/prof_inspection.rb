@@ -22,3 +22,17 @@ class ProfInspection < ActiveRecord::Base
 
 
 end
+# == Schema Information
+#
+# Table name: prof_inspections
+#
+#  id          :integer         not null, primary key
+#  client_id   :integer
+#  actual_date :date
+#  user_id     :integer
+#  conclusion  :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#  mkb_type_id :integer
+#
+

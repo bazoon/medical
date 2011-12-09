@@ -48,7 +48,7 @@ gem "best_in_place"
 # Deploy with Capistrano
 # gem 'capistrano'
 gem 'factory_girl_rails'
-
+gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 

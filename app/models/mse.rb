@@ -112,3 +112,23 @@ class Mse < ActiveRecord::Base
 
 
 end
+# == Schema Information
+#
+# Table name: mses
+#
+#  id               :integer         not null, primary key
+#  user_id          :integer
+#  mkb_type_id      :integer
+#  send_date        :date
+#  ipr              :boolean
+#  conclusion_group :integer
+#  conclusion_till  :integer
+#  conclusion_date  :date
+#  indefinitely     :boolean
+#  created_at       :datetime
+#  updated_at       :datetime
+#  client_id        :integer
+#  consultation     :boolean         default(FALSE)
+#  reason           :integer
+#
+

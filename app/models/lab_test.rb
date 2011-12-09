@@ -30,3 +30,16 @@ class LabTest < ActiveRecord::Base
 
 
 end
+# == Schema Information
+#
+# Table name: lab_tests
+#
+#  id               :integer         not null, primary key
+#  test_date        :date
+#  client_id        :integer
+#  result           :text
+#  created_at       :datetime
+#  updated_at       :datetime
+#  lab_test_type_id :integer
+#
+

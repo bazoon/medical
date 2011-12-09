@@ -5,3 +5,16 @@ class HtmHelpNote < ActiveRecord::Base
   validates :actual_date,:htm_help_type_id,:presence => true
 
 end
+# == Schema Information
+#
+# Table name: htm_help_notes
+#
+#  id               :integer         not null, primary key
+#  actual_date      :date
+#  htm_help_type_id :integer
+#  note             :text
+#  client_id        :integer
+#  created_at       :datetime
+#  updated_at       :datetime
+#
+

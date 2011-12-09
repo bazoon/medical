@@ -1,0 +1,39 @@
+%h3 Госпитализация маломобильных
+- report "ImobileHosp" do |p|
+  - p.prepare(sd,ed,years)
+
+  %table.condensed-table.zebra-striped
+
+    %thead
+      %tr
+        %th 
+        -years.each do |k|
+          %th{:colspan =>2}= k
+      %tr
+        %th 
+        -years.each do |k|
+          %th абс.
+          %th % 
+
+    %tbody
+
+      %tr
+        %td Всего нуждались в стационарном лечении
+        -p.years.each do |year|
+          %td=p.year_total(year)
+          %td 100%
+
+      %tr
+        %td Госпитализировано из них
+        -p.years.each do |year|
+          %td=p.year_total(year)
+          %td 100%
+
+      - {0 => "- планово ",
+         1 => "- экстренно"}.each do |k,v|
+        %tr
+          %td
+            =v
+            -p.years.each do |year|
+              %td= p.observed(year,k)
+              %td= p.get_rel(p.observed(year,k),p.year_total(year))

@@ -56,7 +56,12 @@ class Client < ActiveRecord::Base
 
   
   scope :disables, where("disabled = true") 
- 
+
+  #Hospitalization scopes
+
+  scope :hosp_between, lambda {|s,e| joins(:hospitalizations).merge(Hospitalization.between(s,e))  }
+  scope :hosp_planned, joins(:hospitalizations).merge(Hospitalization.planned)  
+  scope :hosp_extra, joins(:hospitalizations).merge(Hospitalization.extra)  
 
   #Disp scopes 
   scope :disp_out, joins(:disps).merge(Disp.out)
@@ -68,6 +73,7 @@ class Client < ActiveRecord::Base
 
   scope :died, where("detach_reason in (2,3)")
   scope :moved, where("detach_reason = 1")
+  scope :died_or_moved,where("detach_reason in (1,2,3)")
 
   scope :full_inspected,lambda { where("prof_inspections_count >= 12") } #Период не выбран ! Использовать только для выборки за определенный год
   scope :rested,lambda { where("sanatorium_notes_count > 0") } #Период не выбран ! Использовать только для выборки за определенный год
@@ -83,6 +89,9 @@ class Client < ActiveRecord::Base
   scope :mse_re_2, lambda {joins(:mses).merge(Mse.re_2 )}
   scope :mse_re_3, lambda {joins(:mses).merge(Mse.re_3 )}
   scope :mse_re_3_2, lambda {joins(:mses).merge(Mse.re_3_2 )}
+
+
+
 
 def prof_inspection_years
   years=prof_inspections.group_by {|p| p.actual_date.year}
@@ -294,3 +303,56 @@ end
   end
 
 end
+# == Schema Information
+#
+# Table name: clients
+#
+#  id                         :integer         not null, primary key
+#  num_card                   :string(255)
+#  name                       :string(255)
+#  surname                    :string(255)
+#  father_name                :string(255)
+#  birth_date                 :date
+#  pasp_num                   :string(255)
+#  pasp_seria                 :string(255)
+#  snils                      :string(255)
+#  work_place                 :string(255)
+#  work_position              :string(255)
+#  attach_date                :date
+#  special_note               :string(255)
+#  detach_date                :date
+#  notes                      :string(255)
+#  ins_company_id             :integer
+#  created_at                 :datetime
+#  updated_at                 :datetime
+#  client_sex_id              :integer
+#  lab_tests_count            :integer         default(0)
+#  diagnostic_tests_count     :integer         default(0)
+#  htm_help_notes_count       :integer         default(0)
+#  med_diagnostic_tests_count :integer         default(0)
+#  hospitalizations_count     :integer         default(0)
+#  prof_inspections_count     :integer         default(0)
+#  sanatorium_notes_count     :integer         default(0)
+#  mobile_phone               :string(255)
+#  home_phone                 :string(255)
+#  work_phone                 :string(255)
+#  relative_phone             :string(255)
+#  pensioner                  :boolean         default(FALSE)
+#  blood_group                :integer
+#  benefit_refuse             :boolean         default(FALSE)
+#  drug_intolerance           :text
+#  ins_seria                  :string(255)
+#  ins_num                    :string(255)
+#  real_address               :string(255)
+#  reg_address                :string(255)
+#  benefits_count             :integer         default(0)
+#  mkbs_count                 :integer         default(0)
+#  disabled                   :boolean         default(FALSE)
+#  detach_reason              :integer         default(0)
+#  death_date                 :date
+#  death_reason_id            :integer
+#  is_uov                     :boolean
+#  is_ivov                    :boolean
+#  is_ubd                     :boolean
+#
+

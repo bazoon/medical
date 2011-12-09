@@ -1,0 +1,35 @@
+%h3 Эффективность диспансерной работы
+- report "DispEfficency" do |p|
+  - p.prepare(sd,ed,years)
+
+  %table.condensed-table.zebra-striped
+
+    %thead
+      %tr
+        %th 
+        -years.each do |k|
+          %th{:colspan =>2}= k
+      %tr
+        %th 
+        -years.each do |k|
+          %th абс.
+          %th % 
+
+    %tbody
+
+
+      - {0 => "Без перемен",
+         1 => "Улучшение ",
+         2 => "Ухудшение"}.each do |k,v|
+        %tr
+          %td
+            =v
+            -p.years.each do |year|
+              %td= p.observed(year,k)
+              %td= p.get_rel(p.observed(year,k),p.year_total(year))
+      %tr
+        %td
+          Всего
+          -p.years.each do |year|
+            %td= p.year_total(year)
+            %td 100 %

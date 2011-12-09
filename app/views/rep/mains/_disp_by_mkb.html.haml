@@ -1,0 +1,32 @@
+%h3 Распределение диспансерной группы по нозологии
+- report "DispByMkb" do |p|
+  - p.prepare(sd,ed,years)
+
+  %table.condensed-table.zebra-striped
+
+    %thead
+      %tr
+        %th Группа
+        -years.each do |k|
+          %th{:colspan =>2}= k
+
+      %tr
+        %th 
+        -years.each do |k|
+          %th Абс. число
+          %th % 
+    %tbody
+
+
+      -p.groups.each_pair do |group_name, in_group|
+        %tr
+          %td=group_name
+          -p.years.each do |year|
+            %td=p.value_or_zero(in_group[year])
+            %td=p.get_rel(in_group[year],p.group_total(year))
+
+      %tr
+        %td Всего 
+        -p.years.each do |year|
+          %td=p.group_total(year)
+          %td 100%

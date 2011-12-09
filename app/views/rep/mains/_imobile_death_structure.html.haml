@@ -1,0 +1,27 @@
+%h3 Структура смертности из числа маломобильных больных
+- report "ImobileDeathStructure" do |p|
+  - p.prepare(sd,ed,years)
+
+  %table.condensed-table.zebra-striped
+
+    %thead
+      %tr
+        %th Причина
+        -years.each do |k|
+          %th{:colspan =>2}= k
+
+      %tr
+        %th 
+        -years.each do |k|
+          %th факт
+          %th % 
+    %tbody
+
+
+      -p.deaths.each_pair do |death_reason,gone|
+        %tr
+          %td=death_reason
+          -p.years.each do |year|
+            %td=p.value_or_zero(gone[year])
+            %td=p.get_rel(gone[year],p.death_total(year))
+

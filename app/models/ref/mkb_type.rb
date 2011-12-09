@@ -100,3 +100,17 @@ def self.cti(code)
 end
 
 end
+# == Schema Information
+#
+# Table name: ref_mkb_types
+#
+#  id             :integer         not null, primary key
+#  code           :string(255)
+#  name           :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  class_number   :string(255)
+#  doctor_type_id :integer
+#  code_i         :integer
+#
+

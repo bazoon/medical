@@ -82,3 +82,17 @@ end
 
 
 end
+# == Schema Information
+#
+# Table name: ref_benefit_categories
+#
+#  id         :integer         not null, primary key
+#  short_name :string(255)
+#  full_name  :string(255)
+#  percent    :integer
+#  created_at :datetime
+#  updated_at :datetime
+#  source     :integer
+#  code       :integer
+#
+

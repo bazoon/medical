@@ -31,3 +31,17 @@ class MedDiagnosticTest < ActiveRecord::Base
 
 
 end
+# == Schema Information
+#
+# Table name: med_diagnostic_tests
+#
+#  id                      :integer         not null, primary key
+#  test_date               :date
+#  client_id               :integer
+#  result                  :text
+#  created_at              :datetime
+#  updated_at              :datetime
+#  hospitalization_type_id :integer
+#  aim                     :integer
+#
+

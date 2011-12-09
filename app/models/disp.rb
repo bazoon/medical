@@ -4,13 +4,32 @@ class Disp < ActiveRecord::Base
   belongs_to :user 
 
 
-  scope :initial, where("disp_type = 2")
-  scope :out, where("disp_type =3")
-  scope :planned, where("disp_type = 1")
-  scope :non_out, where("disp_type in (2,1)")
+  STABLE = 1
+  PROGRESS = 2
+  REGRESS = 3
+
+  PLANNED = 1
+  INITIAL = 2
+  OUT = 3
+
+  scope :initial, where("disp_type = ?",INITIAL)
+  scope :non_initial, where("disp_type <> ?",INITIAL)
+  scope :out, where("disp_type = ?",OUT)
+  scope :planned, where("disp_type = ?",PLANNED)
+  scope :non_out, where("disp_type in (?,?)",INITIAL,PLANNED)
   
+  scope :stable, where("result = ?",STABLE)
+  scope :progress, where("result = ?",PROGRESS)
+  scope :regress, where("result = ?",REGRESS)
+
   scope :before, lambda {|d| where("disps.actual_date < ?",d)}
   scope :between, lambda {|s,e| where("disps.actual_date between ? and ?",s,e)}
+
+
+
+
+
+
 
 
  def mkb
@@ -50,3 +69,20 @@ class Disp < ActiveRecord::Base
 
 
 end
+# == Schema Information
+#
+# Table name: disps
+#
+#  id             :integer         not null, primary key
+#  actual_date    :date
+#  disp_type      :integer
+#  mkb_type_id    :integer
+#  doctor_type_id :integer
+#  result         :integer
+#  disp_group     :integer
+#  created_at     :datetime
+#  updated_at     :datetime
+#  client_id      :integer
+#  user_id        :integer
+#
+

@@ -1,0 +1,27 @@
+%h3 Распределение ветеранов по группам диспансерного наблюдения
+- report "DispByGroup" do |p|
+  - p.prepare(sd,ed,years)
+  = p.groups.nil?
+  %table.condensed-table.zebra-striped
+
+    %thead
+      %tr
+        %th Название центра
+        -years.each do |k|
+          %th{:colspan =>2}= k
+
+    %tbody
+
+
+      -p.groups.each_pair do |group_name, in_group|
+        %tr
+          %td=group_name
+          -p.years.each do |year|
+            %td=p.value_or_zero(in_group[year])
+            %td=p.get_rel(in_group[year],p.grop_total(year))
+
+      %tr
+        %td Всего 
+        -p.years.each do |year|
+          %td=p.group_total(year)
+          %td 100%
