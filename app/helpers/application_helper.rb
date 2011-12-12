@@ -5,7 +5,7 @@ module ApplicationHelper
 def bootstrap_form_for(*args, &block)
   options = args.extract_options!
   options.merge!(:builder => BootstrapFormBuilder)
-  options.merge!(:validate => true)
+ # options.merge!(:validate => true)
   form_for(*(args + [options]), &block)
 end
 

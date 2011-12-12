@@ -5,14 +5,14 @@
 
 
 $(document).ready(function() {
-  return $('#diagnosis_mkb').autocomplete({
-    source: "/ajax/mkb_types",
+  return $('.mkb').autocomplete({
+    source: "/ajax/mkb_types" //,
 
 
-    select: function( event, ui ) {
-      $(".mkb").val(ui.item.id);
+// select: function( event, ui ) {
+ //     $(".mkb").val(ui.item.id);
   
-  }
+ // }
 
 
 

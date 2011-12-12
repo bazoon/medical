@@ -9,7 +9,7 @@ class PeopleStructureReportTest < ActionView::TestCase
 
   test "should count" do
    
-    f = File.open('/var/www/rails/medical/log/my', 'w')
+ #   f = File.open('/var/www/rails/medical/log/my', 'w')
 
 
     codes=[10,20,30,60,50,140,926,924,92]
