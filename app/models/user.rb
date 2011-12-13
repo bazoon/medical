@@ -8,6 +8,14 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :surname,:father_name, :doctor_type_id
   #has_secure_password
 
+  scope :surname_like,lambda {|name| where("users.surname like")}
+
+
+def self.surname_like(n)
+ like= "%".concat(n.to_s.concat("%"))
+ where("users.surname like ?",like)
+end
+
 def to_s
   short_fio_with_doctor_type
 end

@@ -41,6 +41,7 @@ gem 'dynamic_form'
 #
 #gem 'prawn'
 #gem "prawn_rails"
+gem 'pry'
 
 gem 'simple_form'
 gem 'client_side_validations'

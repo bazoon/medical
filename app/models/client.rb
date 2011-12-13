@@ -14,7 +14,7 @@ class Client < ActiveRecord::Base
   has_many :htm_help_notes,:dependent => :delete_all,:order =>"actual_date DESC"
   has_many :sanatorium_notes,:dependent => :delete_all,:order =>"neediness_ref_date DESC"
   has_many :med_diagnostic_tests,:dependent => :delete_all,:order =>"test_date DESC"
-  has_many :prof_inspections,:dependent => :delete_all,:order =>"actual_date DESC"
+  has_many :prof_inspections,:dependent => :delete_all
   
   has_many :benefits,:dependent => :delete_all,:order => "prim DESC"
   has_many :benefit_categories, :through => :benefits

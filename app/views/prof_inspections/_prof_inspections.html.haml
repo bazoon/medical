@@ -1,17 +1,11 @@
-%div#prof
-  %h2=items[0].actual_date.year unless items.nil? or items.count <= 0
-  %table#newspaper-a
-    %tr
-      %th Врач
-      %th Дата
-      %th МКБ
-      %th Стат. талон
-      %th ФИО врача
-      
-    -items.each do |prof_inspection|
-      %tr  
-        %td= prof_inspection.user.doctor_type.name
-        %td= l prof_inspection.actual_date
-        %td= render :partial =>'prof_inspections/mkb',:locals => {:diagnoses => prof_inspection.diagnoses}
-        %td= content_tag(:span,"",class: "ui-icon ui-icon-check") if  prof_inspection.stat_card
-        %td= prof_inspection.user.short_fio 
+%table.zebra-striped
+  %tr
+    %th= sortable("actual_date","Дата")
+    %th= sortable("inspection_type","Тип")
+    %th= sortable("user","Врач")
+    %th Стат. талон
+    %th Заключение
+    %th
+    %th
+  
+    = render :partial => "by_year", :collection => @prof_inspections, :as => :prof_inspection

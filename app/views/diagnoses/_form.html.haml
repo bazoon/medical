@@ -1,6 +1,6 @@
 =bootstrap_form_for [@prof_inspection.client,@prof_inspection,@diagnosis] do |f|
   =f.check_box :first_detected,:label => "Выявлено впервые"
   =f.check_box :stat_card,:label => "Стат. талон выдан ?"
-  =f.text_field :mkb,:label => "Заболевание"
+  =f.text_field :mkb,:label => "Заболевание",:class => "span6 mkb"
   .actions
     =f.submit "Сохранить",:class => "btn primary"

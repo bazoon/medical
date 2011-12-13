@@ -9,6 +9,9 @@ validates :code, :format => {:with => /^([A-Z])(\d+\.*)*/}
 
 acts_as_taggable  #Теги для отнесения к тому или иному классу заболеваний
 
+scope :disease_like,lambda {|n| disease_like(n)}
+ 
+
 scope :tisis, lambda { where("code_i between ? and ? ",cti("A15"),cti("A19"))}
 scope :neoplasm, lambda { where("code_i between ? and ? ",cti("C0"),cti("D48"))}
 scope :glaukoma, lambda { where("code_i between ? and ? ",cti("H40"),cti("H42"))}
@@ -39,6 +42,11 @@ def create_code_i
  code_i = Ref::MkbType.cti(code)
 end
 
+
+def self.disease_like(n)
+ like= "%".concat(n.to_s.concat("%"))
+ where("ref_mkb_types.name like ?",like)
+end
 
 
 require 'csv'

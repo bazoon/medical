@@ -1,9 +1,9 @@
 %tr
-  %td= l prof_inspection.actual_date
+  %td=best_in_place prof_inspection, :actual_date_local, :type => :input,:path => client_prof_inspection_path(@client,prof_inspection),:method => :put
+  %td= prof_inspection.prof_inspection? ? content_tag(:span,prof_inspection.inspection_type_info,:class => "label success") : content_tag(:span,prof_inspection.inspection_type_info,:class => "label default")
   %td= prof_inspection.user.short_fio_with_doctor_type
   %td -
   %td= prof_inspection.conclusion
   %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_client_prof_inspection_path(@client,prof_inspection)
   %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , client_prof_inspection_path(@client,prof_inspection), :confirm => 'Are you sure?', :method => :delete
-  %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-plusthick"), new_client_prof_inspection_diagnosis_path(@client,prof_inspection)
   = render :partial => "diagnoses",:collection => prof_inspection.diagnoses,:as => :diagnosis

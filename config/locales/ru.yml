@@ -73,7 +73,11 @@ ru:
   hosp_refused: "Отказался"
   hosp_no_place: "Нет мест"
   hosp_unprooved: "Диагноз не подтвержден"
-   
+ 
+  prof_inspection_usial: "Прием"
+  prof_inspection_prof: "Профосмотр"
+
+
   views:
     pagination:
       previous: "&larr;"

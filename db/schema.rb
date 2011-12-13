@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111208063530) do
+ActiveRecord::Schema.define(:version => 20111213063447) do
 
   create_table "benefits", :force => true do |t|
     t.integer  "client_id"
@@ -195,6 +195,7 @@ ActiveRecord::Schema.define(:version => 20111208063530) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "mkb_type_id"
+    t.integer  "inspection_type", :default => 0
   end
 
   create_table "ref_benefit_categories", :force => true do |t|

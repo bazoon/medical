@@ -1,13 +1,14 @@
 =bootstrap_form_for [@client, @prof_inspection] do |f|
   =f.date_select :actual_date, :label => "Дата" 
+  =f.radio_button :inspection_type,ProfInspection::USIAL,:label => "Прием"
+  =f.radio_button :inspection_type,ProfInspection::PROF,:label => "Профосмотр" 
   =f.collection_select :user_id, User.all,:id,:short_fio_with_doctor_type, :label => "Врач"
   =f.text_area :conclusion,:label => "Примечания",:rows => 7
 
   =f.fields_for :diagnoses do |b|
-    =b.check_box :first_detected,:label => "Выявлено впервые"
-    =b.check_box :stat_card,:label => "Стат. талон выдан ?"
-    =b.text_field :mkb,:label => "Заболевание",:class => "mkb span6"
-
+    =render :partial => "diagnosis_fields", :locals => {:b => b}
+  %p
+    =link_to_add_fields "Добавить", f, :diagnoses
 
   .actions
     =f.submit "Сохранить",:class => "btn primary"

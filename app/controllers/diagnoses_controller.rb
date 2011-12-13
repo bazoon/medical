@@ -83,11 +83,13 @@ class DiagnosesController < ApplicationController
   # DELETE /diagnoses/1.json
   def destroy
     @diagnosis = Diagnosis.find(params[:id])
+    @id = @diagnosis.id
     @diagnosis.destroy
 
     respond_to do |format|
       format.html { redirect_to client_prof_inspections_path(@prof_inspection.client)}
       format.json { head :ok }
+      format.js 
     end
   end
 end

@@ -3,6 +3,8 @@ class Diagnosis < ActiveRecord::Base
   belongs_to :mkb_type, :class_name => 'Ref::MkbType'
 
 
+  scope :disease_like,lambda {|n| joins(:mkb_type).merge(Ref::MkbType.disease_like(n)) }
+
   scope :tisis,joins(:mkb_type).merge(Ref::MkbType.tisis)
   scope :neoplasm,joins(:mkb_type).merge(Ref::MkbType.neoplasm)
   scope :glaukoma,joins(:mkb_type).merge(Ref::MkbType.glaukoma)
