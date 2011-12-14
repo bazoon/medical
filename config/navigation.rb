@@ -52,7 +52,7 @@ SimpleNavigation::Configuration.run do |navigation|
    # primary.item :key_1, 'name', url, options
     #
 
-      primary.item :profs, "Профосмотры",Proc.new {client_prof_inspections_path(@client)} ,:if => Proc.new {not @client.nil?}
+      primary.item :profs, "Посещения",Proc.new {client_prof_inspections_path(@client)} ,:if => Proc.new {not @client.nil?}
       primary.item :profs1, "Лаб. анализы",Proc.new {client_lab_tests_path(@client)},:if => Proc.new {not @client.nil?}
       primary.item :prof2s, "Диагностика",Proc.new {client_diagnostic_tests_path(@client)} ,:if => Proc.new {not @client.nil?}
       primary.item :profs3, "Госпитализации",Proc.new {client_hospitalizations_path(@client)},:if => Proc.new {not @client.nil?}

@@ -124,10 +124,6 @@ def required_field?(obj,attribute)
 end
 
 def clear_fix(&block)
-def clear_fix(&block)
- content = yield
- @template.content_tag(:div,content,:class => "clearfix" )
-end
  content = yield
  @template.content_tag(:div,content,:class => "clearfix" )
 end

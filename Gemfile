@@ -53,15 +53,23 @@ gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+gem 'simplecov', :require => false, :group => :test
+
 group :development do
   gem "railroady"
   gem "rails-erd"
 end
 
+
+group :test,:development do
+  gem 'rspec-rails'
+end
+
 group :test do
   # Pretty printed test output
   gem 'minitest'
-  gem 'autotest-rails-pure'
+#  gem 'autotest-rails-pure'
+  gem 'autotest-standalone'
 end
 
 

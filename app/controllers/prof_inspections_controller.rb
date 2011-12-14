@@ -12,8 +12,10 @@ class ProfInspectionsController < ApplicationController
   
   
   def index
-   @prof_inspections = @client.prof_inspections.includes(:diagnoses,:mkb_types,:user,:doctor_type).search(params[:search_prof_inspection]).order(sort_column+' '+sort_direction).page(params[:page]).per(12)
+   @prof_inspections = @client.prof_inspections.includes(:diagnoses,:mkb_types,:user,:doctor_type).search(params[:search_prof_inspection]).order(sort_column+' '+sort_direction).page(params[:page]).per(5)
+   # @prof_inspections = @client.prof_inspections.search(params[:search_prof_inspection]).order(sort_column+' '+sort_direction).page(params[:page]).per(5)
 
+   #binding.pry
  
    #@prof_inspection_groups = @prof_inspections.group_by {|p| p.actual_date.year}
 

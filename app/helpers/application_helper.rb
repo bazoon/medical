@@ -3,9 +3,13 @@ module ApplicationHelper
  def sortable(column, title = nil)
     title ||= column.titleize
     css_class = column == sort_column ? "current #{sort_direction}" : nil
+
+
+
  #   binding.pry
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-    link_to title, params.merge(:sort => column, :direction => direction, :page => nil), {:class => css_class}
+    link_to(title, params.merge(:sort => column, :direction => direction, :page => nil))+content_tag(:span,"",:class => css_class)
+
   end
 
 
@@ -50,7 +54,6 @@ def ldate(d)
 end
 
 
-
 def boolean_to_yes_no(value)
   if value
     I18n.t(:y) 
@@ -58,5 +61,16 @@ def boolean_to_yes_no(value)
     I18n.t(:n)
   end
 end
+
+
+def boolean_to_yes_no(field)
+  if send(field)
+    I18n.t(:y) 
+  else
+    I18n.t(:n)
+  end
+end
+
+
 
 end

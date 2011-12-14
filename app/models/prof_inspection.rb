@@ -13,8 +13,7 @@ class ProfInspection < ActiveRecord::Base
 
   scope :disease_like,lambda {|n| joins(:diagnoses,:mkb_types).merge(Ref::MkbType.disease_like(n)) }
   scope :user_surname_like,lambda {|n| joins(:user).merge(User.surname_like(n)) }
- 
-  
+    
 
   USIAL = 0
   PROF = 1
@@ -25,15 +24,23 @@ class ProfInspection < ActiveRecord::Base
 
 
   def self.search(s)
-    if s
-     a= disease_like(s) 
-     b= user_surname_like(s)
-     result = a.empty? ? b : a
-    else  
-     scoped 
-    end
-
-  end  
+      case s
+       when /^\d{1,2}\.\d{1,2}\.\d{2,4}/
+         result = where("actual_date =?",s)
+       when /^\d{2,4}/
+         result = year(s.to_i)
+       when "" 
+         result = scoped
+       when nil
+         result = scoped
+       else
+         a= disease_like(s) 
+         b= user_surname_like(s)
+         result = a.empty? ? b : a
+      end
+    
+    result
+  end
 
   def actual_date_local
    I18n.l(actual_date)   
@@ -50,6 +57,11 @@ class ProfInspection < ActiveRecord::Base
     where("actual_date between ? and ?",start_date,end_date)
   end
 
+  def self.year(y)
+    start_date = Date.new(y,1,1) 
+    end_date = Date.new(y,12,31)
+    in_year(start_date,end_date)
+  end
 
   def inspection_type_info
    result=case(inspection_type)   

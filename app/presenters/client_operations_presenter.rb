@@ -9,7 +9,6 @@ end
 
 def client_header
  content = client_back_path + index_header + flash_message
- content = content + paginate_items if @items.respond_to?(:current_page)
  content
 end
 

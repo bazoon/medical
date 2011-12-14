@@ -6,7 +6,7 @@ $(document).ready(function(){
  $(".alert-message").alert(); 
 
 
-  $('#prof_inspections th a').live('click', function () {
+  $('#prof_inspections th a,#prof_inspections .pagination a').live('click', function () {
     $.getScript(this.href);
     return false;
   });

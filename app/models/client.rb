@@ -93,9 +93,6 @@ class Client < ActiveRecord::Base
 
 
 
-def prof_inspection_years
-  years=prof_inspections.group_by {|p| p.actual_date.year}
-end
 
 def blood
  g={1 => "O(I) Rh+",2 => "O(I) Rh-",3 => "A(II) Rh+",4 => "A(II) Rh-",5 => "B(III) Rh+",6 => "B(III) Rh-",7 => "AB(VI) Rh+",8 => "AB(VI) Rh-"}
@@ -114,26 +111,9 @@ end
 
 
 def have_full_prof_inspection_this_year?
- count = prof_inspections.current_year.count * client_sex_id
- result = count
-
- if client_sex_id == 1
-   result = case count
-      when 12 then :prof_all
-      when 1..11 then :prof_partial    
-   end
- else
-   result = case count
-      when 24 then :prof_all
-      when 2..22 then :prof_partial    
-   end
- end
-            
- if count == 0 
-  result = I18n.t(:prof_zero)
- end
-
- result
+ start_date=Time.now.beginning_of_year
+ end_date=Time.now.end_of_year
+ result = have_full_prof_inspection_in_year(start_date,end_date)
 end
 
 
@@ -159,23 +139,6 @@ def have_full_prof_inspection_in_year(sd,ed)
 
  result
 end
-
-
-
-def primary_benefit
- benefits.each do |b|
- end
-
-end
-
-def boolean_to_yes_no(field)
-  if send(field)
-    I18n.t(:y) 
-  else
-    I18n.t(:n)
-  end
-end
-
 
 def local_date(field)
  I18n.l(self.send(field)) unless self.send(field).nil?

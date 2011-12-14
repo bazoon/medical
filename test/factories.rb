@@ -49,7 +49,7 @@ Factory.define(:lab_test) do |obj|
 end  
 
 Factory.define(:med_diagnostic_test) do |obj|
- obj.med_diagnostic_test_type_id 1
+ obj.hospitalization_type_id 1
  obj.test_date '01.01.2011'
  obj.result "ok"
  obj.client_id 1
@@ -91,7 +91,9 @@ Factory.define(:mse) do |obj|
 end  
 
 Factory.define(:prof_inspection) do |obj|
- obj.actual_date '01.01.2011'
+ obj.actual_date "01.01.2011"
+ obj.inspection_type 1  
+
  obj.association :client, :factory => :client
  obj.association :user,:factory => :user
 end  
