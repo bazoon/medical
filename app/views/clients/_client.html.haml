@@ -25,7 +25,7 @@
 
     = render :partial => "table_sep", :locals => {:header =>"Занятость"}
     = render :partial => "client_field", :locals => {:field_name =>"Место работы", :field_value => client.work_info}
-    = render :partial => "client_field", :locals => {:field_name =>"Пенсионер ?", :field_value => client.boolean_to_yes_no(:pensioner)}
+    = render :partial => "client_field", :locals => {:field_name =>"Пенсионер ?", :field_value => boolean_to_yes_no(client.pensioner)}
 
     = render :partial => "table_sep", :locals => {:header =>"Заболевания подлежащие диспансерному учету"}
     = render :partial => "mkb10",:collection => client.mkbs, :as => :mkb
@@ -40,13 +40,11 @@
     -else 
       =render :partial => "client_field", :locals => {:field_name =>"Профосмотр в текущем году", :field_value => I18n.t(:prof_zero),:emph => "important"}
   
-
-
     = render :partial => "client_field", :locals => {:field_name =>"Паспорт", :field_value => client.passport}
     = render :partial => "client_field", :locals => {:field_name =>"Лекарственная непереносимость", :field_value => client.drug_intolerance}
     = render :partial => "client_field", :locals => {:field_name =>"Группа крови", :field_value => client.blood}
-    = render :partial => "client_field", :locals => {:field_name =>"Отказался от льгот ?", :field_value => client.boolean_to_yes_no(:benefit_refuse)}
-    = render :partial => "client_field", :locals => {:field_name =>"Маломобильный ?", :field_value => client.boolean_to_yes_no(:disabled)}
+    = render :partial => "client_field", :locals => {:field_name =>"Отказался от льгот ?", :field_value => boolean_to_yes_no(client.benefit_refuse)}
+    = render :partial => "client_field", :locals => {:field_name =>"Маломобильный ?", :field_value => boolean_to_yes_no(client.disabled)}
     = render :partial => "client_field", :locals => {:field_name =>"Дата прикрепления", :field_value => client.local_date(:attach_date)}
     = render :partial => "client_field", :locals => {:field_name =>"Дата открепления", :field_value => client.local_date(:detach_date)}
     = render :partial => "client_field", :locals => {:field_name =>"Причина открепления", :field_value => client.detach_reason_info}

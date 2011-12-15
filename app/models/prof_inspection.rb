@@ -13,15 +13,13 @@ class ProfInspection < ActiveRecord::Base
 
   scope :disease_like,lambda {|n| joins(:diagnoses,:mkb_types).merge(Ref::MkbType.disease_like(n)) }
   scope :user_surname_like,lambda {|n| joins(:user).merge(User.surname_like(n)) }
-    
+  scope :this_year,lambda {current_year} #Осмотры за текущий год
+  scope :in_year, lambda {|sd,ed| where("actual_date between ? and ?",sd,ed)}
+
 
   USIAL = 0
   PROF = 1
-
-  scope :this_year,lambda {current_year} #Осмотры за текущий год
-
-  scope :in_year, lambda {|sd,ed| where("actual_date between ? and ?",sd,ed)}
-
+  MAX_PROF_INSPECIONS = 12
 
   def self.search(s)
       case s

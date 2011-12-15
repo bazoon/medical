@@ -11,7 +11,7 @@
     =f.text_field :surname, :label => "Фамилия"
     =f.text_field :name, :label => "Имя"
     =f.text_field :father_name, :label => "Отчество"
-    =f.collection_select :client_sex_id,ClientSex.all,:id,:sex, :label => "Пол"
+    =f.select :client_sex_id,[["М",Client::MALE],["Ж",Client::FEMALE]], :label => "Пол"
     =f.date_select :birth_date, :label => "Дата рождения" 
     =f.text_field :pasp_seria,:label => "Серия паспорта"
     =f.text_field :pasp_num,:label => "Номер паспорта"

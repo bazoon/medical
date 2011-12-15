@@ -4,6 +4,9 @@ class Client < ActiveRecord::Base
   DETACH_REASON_DIED_AT_HOME =2
   DETACH_REASON_DIED_AT_CLINIC = 3
 
+  MALE = 1
+  FEMALE = 2
+
   belongs_to :client_sex
   belongs_to :ins_company, :class_name => 'Ref::InsCompany'
   belongs_to :death_reason, :class_name => 'Ref::DeathReason'
@@ -91,7 +94,9 @@ class Client < ActiveRecord::Base
   scope :mse_re_3_2, lambda {joins(:mses).merge(Mse.re_3_2 )}
 
 
-
+def prof_inspection_years
+  prof_inspections.group_by {|p| p.actual_date.year}
+end
 
 
 def blood
@@ -101,10 +106,10 @@ end
 
 def detach_reason_info
  result=case detach_reason
-         when 0 then I18n.t(:detach_reason_none)
-         when 1 then I18n.t(:detach_reason_other_clinic)
-         when 2 then I18n.t(:detach_reason_died_at_home)
-         when 3 then I18n.t(:detach_reason_died_at_clinic)
+         when Client::DETACH_REASON_NONE then I18n.t(:detach_reason_none)
+         when Client::DETACH_REASON_OTHER_CLINIC then I18n.t(:detach_reason_other_clinic)
+         when Client::DETACH_REASON_DIED_AT_HOME then I18n.t(:detach_reason_died_at_home)
+         when Client::DETACH_REASON_DIED_AT_CLINIC then I18n.t(:detach_reason_died_at_clinic)
         end 
  result
 end
@@ -118,24 +123,24 @@ end
 
 
 def have_full_prof_inspection_in_year(sd,ed)
- count = prof_inspections.in_year(sd,ed).count * client_sex_id
- result = count
+ count = prof_inspections.in_year(sd,ed).count
 
- if client_sex_id == 1
-   result = case count
-      when 12 then :prof_all
-      when 1..11 then :prof_partial    
+ unless count == 0
+   if client_sex_id == MALE
+     result = case count
+        when ProfInspection::MAX_PROF_INSPECIONS then :prof_all
+        when 1..ProfInspection::MAX_PROF_INSPECIONS-1 then :prof_partial    
+     end
+   else
+     result = case count
+        when ProfInspection::MAX_PROF_INSPECIONS+1 then :prof_all
+        when 1..ProfInspection::MAX_PROF_INSPECIONS then :prof_partial    
+     end
    end
- else
-   result = case count
-      when 24 then :prof_all
-      when 2..22 then :prof_partial    
-   end
- end
-            
- if count == 0 
+ else 
   result = :prof_zero
  end
+
 
  result
 end
@@ -152,18 +157,18 @@ def work_info
  "#{work_place} / #{work_position}"
 end
 
-def client_name=(name)
-  client = Client.find_by_surname(name)
-  if client
-    self.user_id = client.id
-  else
-    errors[:user_name] << "Invalid name entered"
-  end
-end
-
-def client_name
-  Client.find(client_id).name if client_id
-end
+#def client_name=(name)
+#  client = Client.find_by_surname(name)
+#  if client
+#    self.user_id = client.id
+#  else
+#    errors[:user_name] << "Invalid name entered"
+#  end
+#end
+#
+#def client_name
+#  Client.find(client_id).name if client_id
+#end
 
 
  def self.search(search)
@@ -176,9 +181,10 @@ end
       else
         scoped
       end 
+    when 2
+      where('surname LIKE ? and name LIKE ?',"#{s[0]}","#{s[1]}")  
     when 3
       where('surname LIKE ? and name LIKE ? and father_name LIKE ?',"#{s[0]}","#{s[1]}","#{s[2]}")  
-#      find_by_surname_and_name_and_father_name(s[0],s[1],s[2])
     else
       scoped
     end  
@@ -199,71 +205,65 @@ end
  
 
 def short_fio
- res=name 
+ res=surname
  unless (surname.nil? or name.nil? or father_name.nil?)
   res="#{surname} #{name[0]}. #{father_name[0]}."
  end
+ res
 end
 
 
 
-
-
-
-
-
-
-
-  def convert_d(b)
-   res=b[0,2]+'.'+b[2,2]+'.'+b[4,4] unless (b.nil? or b.length < 8)
-   res=' ' if res.nil?
-   res
-  end
-
-  def sex(s)
-   
-
-
-    res=2
-    if (s==I18n.t(:sex_m))
-     res=1    
-    end
-
-
-    res
-  end
-
-  def import_csv
-
-   s="hello" 
-
-  @clients=[]
-  CSV.foreach("/home/bazoon/form2_fios.csv")  do |row|
-  
-   unless (row.nil? or row[1].nil? or row[2].nil? or row[3].nil? or row[11].nil? or row[5].nil?) 
-
-     @client=Client.new
-     @client.num_card=row[0]
-     @client.father_name=row[3].mb_chars.capitalize unless row[1].nil?
-     @client.name=row[2].mb_chars.capitalize unless row[2].nil?
-     @client.surname=row[1].mb_chars.capitalize unless row[3].nil?
-     sex=row[11]
-     @client.client_sex_id=sex
-     @client.birth_date=convert_d(row[5])
-     @client.ins_seria=row[6]
-     @client.ins_num=row[7]
-     @client.reg_address=row[9]
-     @client.snils=row[10]
-
-     @client.ins_company_id=1
-     @client.save! unless (@client.name.nil? or @client.birth_date.nil? or @client.client_sex_id.nil?)
-   end
-   
-    end
-
-#  render :text => @client.num_card
-    @clients
-  end
+#  def convert_d(b)
+#   res=b[0,2]+'.'+b[2,2]+'.'+b[4,4] unless (b.nil? or b.length < 8)
+#   res=' ' if res.nil?
+#   res
+#  end
+#
+#  def sex(s)
+#   
+#
+#
+#    res=2
+#    if (s==I18n.t(:sex_m))
+#     res=1    
+#    end
+#
+#
+#    res
+#  end
+#
+#  def import_csv
+#
+#   s="hello" 
+#
+#  @clients=[]
+#  CSV.foreach("/home/bazoon/form2_fios.csv")  do |row|
+#  
+#   unless (row.nil? or row[1].nil? or row[2].nil? or row[3].nil? or row[11].nil? or row[5].nil?) 
+#
+#     @client=Client.new
+#     @client.num_card=row[0]
+#     @client.father_name=row[3].mb_chars.capitalize unless row[1].nil?
+#     @client.name=row[2].mb_chars.capitalize unless row[2].nil?
+#     @client.surname=row[1].mb_chars.capitalize unless row[3].nil?
+#     sex=row[11]
+#     @client.client_sex_id=sex
+#     @client.birth_date=convert_d(row[5])
+#     @client.ins_seria=row[6]
+#     @client.ins_num=row[7]
+#     @client.reg_address=row[9]
+#     @client.snils=row[10]
+#
+#     @client.ins_company_id=1
+#     @client.save! unless (@client.name.nil? or @client.birth_date.nil? or @client.client_sex_id.nil?)
+#   end
+#   
+#    end
+#
+##  render :text => @client.num_card
+#    @clients
+#  end
 
 end
 # == Schema Information

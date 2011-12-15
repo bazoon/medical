@@ -63,13 +63,6 @@ def boolean_to_yes_no(value)
 end
 
 
-def boolean_to_yes_no(field)
-  if send(field)
-    I18n.t(:y) 
-  else
-    I18n.t(:n)
-  end
-end
 
 
 
