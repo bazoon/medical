@@ -175,19 +175,15 @@ end
   if search
     s=search.scan(/\S+/)
     case s.size
-    when 1  
-      if s[0]
-        where('surname LIKE ?', "%#{s[0]}%")  
+      when 1  
+         where('surname LIKE ?', "%#{s[0]}%")  
+      when 2
+        where('surname LIKE ? and name LIKE ?',"#{s[0]}","#{s[1]}")  
+      when 3
+        where('surname LIKE ? and name LIKE ? and father_name LIKE ?',"#{s[0]}","#{s[1]}","#{s[2]}")  
       else
         scoped
-      end 
-    when 2
-      where('surname LIKE ? and name LIKE ?',"#{s[0]}","#{s[1]}")  
-    when 3
-      where('surname LIKE ? and name LIKE ? and father_name LIKE ?',"#{s[0]}","#{s[1]}","#{s[2]}")  
-    else
-      scoped
-    end  
+    end
   else
    scoped
   end  
