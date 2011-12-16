@@ -1,6 +1,0 @@
-%div#year_links
-  -@client.prof_inspection_years.each do |k,v|
-    =link_to k,year_client_prof_inspections_path(@client,k), :remote => true,:class => :year_link
-%br
-=render :partial => 'prof_inspections/prof_inspections', :locals => {:items => items}
- 

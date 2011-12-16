@@ -1,2 +1,0 @@
-module Ref::MkbsHelper
-end
