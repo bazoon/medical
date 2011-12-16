@@ -4,6 +4,7 @@ class Mse < ActiveRecord::Base
   REASON_INIT_SECOND = 2
   REASON_INIT_THIRD = 3
 
+  REASON_RE_FIRST = 9
   REASON_RE_SECOND = 4
   REASON_RE_THIRD = 8
   REASON_RE_3_1 = 5
@@ -51,20 +52,22 @@ class Mse < ActiveRecord::Base
  end
 
 
- def mkb_info
-  "{mkb_type.name}" unless mkb_type.nil?
- end
-
+# def mkb_info
+#  "#{mkb_type.name}" unless mkb_type.nil?
+# end
+#
 
   def reason_info
    result=case reason
-           when 1 then I18n.t(:mse_first_group)
-           when 2 then I18n.t(:mse_second_group)
-           when 3 then I18n.t(:mse_third_group)
-           when 4 then I18n.t(:mse_unchanged)
-           when 5 then I18n.t(:mse_third_to_one)
-           when 6 then I18n.t(:mse_second_to_one)
-           when 7 then I18n.t(:mse_third_to_second)
+           when Mse::REASON_INIT_FIRST then I18n.t(:mse_first_group)
+           when Mse::REASON_INIT_SECOND then I18n.t(:mse_second_group)
+           when Mse::REASON_INIT_THIRD then I18n.t(:mse_third_group)
+           when Mse::REASON_RE_FIRST then I18n.t(:mse_re_first)
+           when Mse::REASON_RE_SECOND then I18n.t(:mse_re_second)
+           when Mse::REASON_RE_THIRD then I18n.t(:mse_re_third)
+           when Mse::REASON_RE_3_1 then I18n.t(:mse_third_to_one)
+           when Mse::REASON_RE_2_1 then I18n.t(:mse_second_to_one)
+           when Mse::REASON_RE_3_2 then I18n.t(:mse_third_to_second)
           end 
    result
   end
@@ -74,10 +77,10 @@ class Mse < ActiveRecord::Base
 
   def conclusion_info
    result=case conclusion_group
-           when 0 then I18n.t(:mse_refused)
-           when 1 then I18n.t(:mse_first_group)
-           when 2 then I18n.t(:mse_second_group)
-           when 3 then I18n.t(:mse_third_group)
+           when Mse::C_REFUSED then I18n.t(:mse_refused)
+           when Mse::C_FIRST then I18n.t(:mse_first_group)
+           when Mse::C_SECOND then I18n.t(:mse_second_group)
+           when Mse::C_THIRD then I18n.t(:mse_third_group)
           end 
    result
   end

@@ -16,7 +16,7 @@ class DiagnosticTest < ActiveRecord::Base
 
 
   def self.prof_inspection_min
-    all.map {|lt| lt if lt.diagnostic_test_type.tag_list.include?(I18n.t(:prof_tag_name))} 
+    all.map {|lt| lt if lt.diagnostic_test_type.tag_list.include?(I18n.t(:prof_tag_name))}.compact 
   end
 
 

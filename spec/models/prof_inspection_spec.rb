@@ -38,6 +38,19 @@ describe ProfInspection do
   ProfInspection.year(2011).count.should == 1
  end
 
+ it "tests inspection_type_info" do
+  @prof_inspection.inspection_type = ProfInspection::USIAL
+  @prof_inspection.inspection_type_info.should == I18n.t(:prof_inspection_usial)
+
+  @prof_inspection.inspection_type = ProfInspection::PROF
+  @prof_inspection.inspection_type_info.should == I18n.t(:prof_inspection_prof)
+ end
+
+  it 'should test prof_inspection?' do
+   @prof_inspection.inspection_type = ProfInspection::PROF
+   @prof_inspection.prof_inspection?.should == true
+  end
+
 
 
 end

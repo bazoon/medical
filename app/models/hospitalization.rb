@@ -46,8 +46,8 @@ class Hospitalization < ActiveRecord::Base
 
   def hospitalization_kind
    result = case kind 
-      when 0 then I18n.t(:plan_hospitalization)
-      when 1 then I18n.t(:extra_hospitalization)
+      when Hospitalization::PLANNED then I18n.t(:plan_hospitalization)
+      when Hospitalization::EXTRA then I18n.t(:extra_hospitalization)
       else ""  
     end
    result 
@@ -71,12 +71,12 @@ class Hospitalization < ActiveRecord::Base
    result 
   end
 
-  def mkb_info
-    "#{mkb_type.code} #{mkb_type.name}" unless mkb_type.nil?
-  end
-
+#  def mkb_info
+#    "#{mkb_type.code} #{mkb_type.name}" unless mkb_type.nil?
+#  end
 
 end
+
 # == Schema Information
 #
 # Table name: hospitalizations

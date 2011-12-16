@@ -18,6 +18,7 @@
   %fieldset
     %legend 
       Переосвидетельствование
+    =f.radio_button :reason,Mse::REASON_RE_FIRST,:label => "1 группа" 
     =f.radio_button :reason,Mse::REASON_RE_SECOND,:label => "2 группа" 
     =f.radio_button :reason,Mse::REASON_RE_THIRD,:label => "3 группа" 
     =f.radio_button :reason,Mse::REASON_RE_3_1,:label => "Завышение (3-1)"
