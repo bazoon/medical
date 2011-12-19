@@ -3,16 +3,13 @@ class LabTestsController < ApplicationController
   # GET /lab_tests.json
   before_filter :find_client
 
-
   has_widgets do |root|
     root << widget('lab_test/list',:lab_test_list_widget,:flash => flash)
   end
 
 
-
   def find_client
    @client=Client.find(params[:client_id]) unless params[:client_id].nil?
-
   end
 
   

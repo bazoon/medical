@@ -21,16 +21,16 @@ def to_s
 end
 
 def short_fio
- res=name 
+ res = name 
  unless (surname.nil? or name.nil? or father_name.nil?)
-  res="#{surname} #{name[0]}. #{father_name[0]}."
+  res = "#{surname} #{name[0]}. #{father_name[0]}."
  end
 end
 
 def short_fio_with_doctor_type
- res='Hello'
+ res = name 
  unless (surname.nil? or name.nil? or father_name.nil? or doctor_type.nil?)
-  res="#{surname} #{name[0]}. #{father_name[0]}. | #{doctor_type.name}"
+  res = "#{surname} #{name[0]}. #{father_name[0]}. | #{doctor_type.name}"
  end
 end
 

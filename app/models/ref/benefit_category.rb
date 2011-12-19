@@ -11,6 +11,9 @@ class Ref::BenefitCategory < ActiveRecord::Base
   CHERNOBIL = "92"
   VETERANS = "10" #change !!!
 
+  FEDERAL = 1
+  REGIONAL = 2
+
   scope :war_invalids,where("code = ? ",WAR_INVALIDS)
   scope :war_participants,where("code in (?) ",WAR_PARTICIPANTS)
   scope :conflict_participants,where("code in (?) ",CONFLICT_PARTICIPANTS)
@@ -31,40 +34,38 @@ def self.id_by_code(c)
 end  
 
 
+#def self.war_invalid_id
+# find(:first,:conditions => ["code = ?",WAR_INVALIDS]).id
+#end  
 
-def self.war_invalid_id
- find(:first,:conditions => ["code = ?","010"]).id
-end  
-
-def self.war_participants_ids
- ids=[] 
- find(:all,:conditions => ["code IN (?)",["011","020"]]).each do |b|
-  ids << b.id
- end
- ids
-end  
+#def self.war_participants_ids
+# ids=[] 
+# find(:all,:conditions => ["code IN (?)",["011","020"]]).each do |b|
+#  ids << b.id
+# end
+# ids
+#end  
 
 
-def self.warriors_codes_ids
- ids=[] 
- find(:all,:conditions => ["code IN (?)",["010","020","030"]]).each do |b|
-  ids << b.id
- end
- ids
-end  
+#def self.warriors_codes_ids
+# ids=[] 
+# find(:all,:conditions => ["code IN (?)",["010","020","030"]]).each do |b|
+#  ids << b.id
+# end
+# ids
+#end  
 
 #Инвалид войны
-def is_war_invalid
- code == "010"
-end
-
+#def is_war_invalid
+# code == "010"
+#end
 
 def to_s
- "#{code}: #{short_name} "
+ "#{code}: #{short_name}"
 end  
 
 def code_with_short_name
- "#{code}: #{short_name} "
+ "#{code}: #{short_name}"
 end
 
 def can_be_deleted
@@ -73,9 +74,9 @@ end
 
 def source_string
   case source 
-    when 1 
+    when FEDERAL
       I18n.t(:federal)
-    when 2 
+    when REGIONAL
       I18n.t(:regional)
   end
 end

@@ -2,11 +2,20 @@ require 'spec_helper'
 
 
 describe ProfInspection do
-  before do
-   user = FactoryGirl.create(:user,:surname => "Ivanov")  
-   @prof_inspection = FactoryGirl.create(:prof_inspection,:user_id => user.id,:actual_date => '01.01.2011')
-   diagnosis = FactoryGirl.create(:diagnosis,:mkb_type => FactoryGirl.create(:mkb_type,:name =>"test"),:prof_inspection_id => @prof_inspection.id )
+  before(:all) do
+   @user = FactoryGirl.create(:user,:surname => "Ivanov")  
+   @prof_inspection = FactoryGirl.create(:prof_inspection,:user_id => @user.id,:actual_date => '01.01.2011')
+   @mkb_type = FactoryGirl.create(:mkb_type,:name =>"test")
+   @diagnosis = FactoryGirl.create(:diagnosis,:mkb_type_id => @mkb_type.id,:prof_inspection_id => @prof_inspection.id )
   end
+
+  after(:all) do
+   @prof_inspection.destroy
+   @user.destroy
+   @diagnosis.destroy
+   @mkb_type.destroy
+  end
+
 
  it "Should search" do
    ProfInspection.search("01.01.2011").count.should == 1

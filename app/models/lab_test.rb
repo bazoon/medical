@@ -18,7 +18,7 @@ class LabTest < ActiveRecord::Base
 
 
   def self.prof_inspection_min
-    all.map {|lt| lt if lt.lab_test_type.clin_min_list.include?(I18n.t(:prof_tag_name))} 
+    all.map {|lt| lt if lt.lab_test_type.clin_min_list.include?(I18n.t(:prof_tag_name))}.compact 
   end
 
 

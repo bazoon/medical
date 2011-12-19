@@ -50,7 +50,7 @@ gem "best_in_place"
 # gem 'capistrano'
 gem 'factory_girl_rails'
 gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
-gem 'rspec-set'
+#gem 'rspec-set'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
@@ -64,6 +64,8 @@ end
 
 group :test,:development do
   gem 'rspec-rails'
+  gem 'capybara'
+  gem 'guard-rspec'
 end
 
 group :test do

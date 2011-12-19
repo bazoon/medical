@@ -2,11 +2,18 @@ require 'spec_helper'
 
 
 describe Mse do
-  before do
-   user = FactoryGirl.create(:user,:surname => "Ivanov")  
-   client = FactoryGirl.create(:client,:name => "Ivanov",:surname => "Petrov",:father_name => "Qwertitv")  
+  before(:all) do
+   @user = FactoryGirl.create(:user,:surname => "Ivanov")  
+   @client = FactoryGirl.create(:client,:name => "Ivanov",:surname => "Petrov",:father_name => "Qwertitv")  
+   @mkb_type = FactoryGirl.create(:mkb_type,:name =>"test",:code => "A10")
+   @mse = FactoryGirl.create(:mse,:user_id => @user.id,:send_date => '01.01.2011',:conclusion_date => '04.01.2011',:conclusion_till => 20,:mkb_type => @mkb_type)
+  end
 
-   @mse = FactoryGirl.create(:mse,:user_id => user.id,:send_date => '01.01.2011',:conclusion_date => '04.01.2011',:conclusion_till => 20,:mkb_type => FactoryGirl.create(:mkb_type,:name =>"test",:code => "A10"))
+  after(:all) do
+   @mse.destroy
+   @user.destroy
+   @client.destroy
+   @mkb_type.destroy
   end
 
 
@@ -81,6 +88,8 @@ describe Mse do
   end
 
   it 'test as json' do
+    @mse.conclusion_date = "01.01.2011"
+    @mse.conclusion_till = 30
     h =
     { :id => @mse.id,
       :title => @mse.client.fio,
@@ -91,7 +100,7 @@ describe Mse do
       :recurring => false,
       :url => Rails.application.routes.url_helpers.client_mses_path(@mse.client.id)
    }
- 
+
    @mse.as_json.should == h
   end
 

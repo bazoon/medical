@@ -1,9 +1,16 @@
 require 'spec_helper'
 
 describe Hospitalization do
-  before do
-   client = FactoryGirl.create(:client,:name => "Ivanov",:surname => "Petrov",:father_name => "Qwertitv")  
-   @hosp = FactoryGirl.create(:hospitalization,:client_id => client.id,:request_date => '01.01.2011',:mkb_type => FactoryGirl.create(:mkb_type,:name =>"test",:code => "A10"))
+  before(:all) do
+   @client = FactoryGirl.create(:client,:name => "Ivanov",:surname => "Petrov",:father_name => "Qwertitv")  
+   @mkb_type = FactoryGirl.create(:mkb_type,:name =>"test",:code => "A10")
+   @hosp = FactoryGirl.create(:hospitalization,:client_id => @client.id,:request_date => '01.01.2011',:mkb_type_id => @mkb_type.id)
+  end
+
+  after(:all) do
+   @hosp.destroy
+   @client.destroy
+   @mkb_type.destroy
   end
 
   it 'test mkb' do
