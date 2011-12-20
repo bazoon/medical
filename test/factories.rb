@@ -8,9 +8,9 @@ Factory.define(:benefit,:class => Benefit) do |benefit|
 end
 
 Factory.define(:client,:class => Client) do |client|
-  client.name "Ivan"
-  client.surname "Petrov"
-  client.ins_company_id 1
+  client.name "Abra123"
+  client.surname "PCodrbr"
+  client.association :ins_company, :factory => :ins_company
   client.birth_date '01.01.2004'
   client.client_sex_id  1
 end  
@@ -49,7 +49,7 @@ Factory.define(:lab_test) do |obj|
 end  
 
 Factory.define(:med_diagnostic_test) do |obj|
- obj.hospitalization_type_id 1
+ obj.association :hospitalization_type, :factory => :hospitalization_type
  obj.test_date '01.01.2011'
  obj.result "ok"
  obj.client_id 1
@@ -135,7 +135,7 @@ Factory.define(:htm_help_type,:class => Ref::HtmHelpType) do |obj|
 end  
 
 Factory.define(:ins_company,:class => Ref::InsCompany) do |obj|
-  obj.name "d"
+  obj.name "Ugoria mine gmbx"
 end  
 
 Factory.define(:lab_test_type,:class => Ref::LabTestType) do |obj|

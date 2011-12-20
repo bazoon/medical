@@ -25,9 +25,9 @@ class MedDiagnosticTest < ActiveRecord::Base
     self.doctor_type_ids = ids.split(",")
   end
 
-  def hospitalization_type_info
-    hospitalization_type.name unless hospitalization_type.nil?
-  end
+ # def hospitalization_type_info
+ #   hospitalization_type.name unless hospitalization_type.nil?
+ # end
 
 
 end

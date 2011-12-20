@@ -48,33 +48,44 @@ def self.disease_like(n)
  where("ref_mkb_types.name like ?",like)
 end
 
-
-require 'csv'
-
-  def import_csv
-
-  CSV.foreach("/home/bazoon/mkb10.csv")  do |row|
-
-   unless (row.nil? or row[0].nil? or row[1].nil?) 
-     @mkbt=Ref::MkbType.new
-     @mkbt.code=row[4]
-     @mkbt.name=row[5] 
-     @mkbt.class_number=row[0]
-     @mkbt.doctor_type_id=row[6]
-     @mkbt.save! unless (@mkbt.name.nil? or @mkbt.code.nil?)
-   end
-
-    end
-
-  end
-
-def self.import_codes
- all.each do |m|
-  m.code_i = Ref::MkbType.cti(m.code)
-  m.save!
- end
+def mkb
+ "#{try(:code)}: #{try(:name)}" 
 end
 
+def mkb=(name)
+ code = name[0,name.index(":")]
+ mkb = Ref::MkbType.find_by_code(code)
+ self.code = mkb.code
+ self.name = mkb.name
+end
+
+
+#require 'csv'
+#
+#  def import_csv
+#
+#  CSV.foreach("/home/bazoon/mkb10.csv")  do |row|
+#
+#   unless (row.nil? or row[0].nil? or row[1].nil?) 
+#     @mkbt=Ref::MkbType.new
+#     @mkbt.code=row[4]
+#     @mkbt.name=row[5] 
+#     @mkbt.class_number=row[0]
+#     @mkbt.doctor_type_id=row[6]
+#     @mkbt.save! unless (@mkbt.name.nil? or @mkbt.code.nil?)
+#   end
+#
+#    end
+#
+#  end
+#
+#def self.import_codes
+# all.each do |m|
+#  m.code_i = Ref::MkbType.cti(m.code)
+#  m.save!
+# end
+#end
+#
 
 def code_with_name
  "#{code} #{name}"

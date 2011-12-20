@@ -1,8 +1,9 @@
 class Ref::Sanatorium < ActiveRecord::Base
  validates :name,:presence => true
+ has_many :sanatorium_notes
 
 def can_be_deleted
- true  
+ sanatorium_notes.count == 0
 end
 
 end

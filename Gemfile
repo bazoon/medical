@@ -66,6 +66,9 @@ group :test,:development do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'guard-rspec'
+  gem 'rb-inotify'
+  gem 'libnotify'
+  gem 'rails_best_practices'
 end
 
 group :test do

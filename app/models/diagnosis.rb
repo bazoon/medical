@@ -2,6 +2,8 @@ class Diagnosis < ActiveRecord::Base
   belongs_to :prof_inspection
   belongs_to :mkb_type, :class_name => 'Ref::MkbType'
 
+  delegate :mkb,:mkb=,:to => :mkb_type, :allow_nil => true
+
 
   scope :disease_like,lambda {|n| joins(:mkb_type).merge(Ref::MkbType.disease_like(n)) }
 
@@ -25,20 +27,17 @@ class Diagnosis < ActiveRecord::Base
   scope :musculskeletal_diseases,joins(:mkb_type).merge(Ref::MkbType.musculskeletal_diseases)
   scope :injury_poisons, joins(:mkb_type).merge(Ref::MkbType.injury_poisons)
 
-
-
-
   scope :between,lambda { |s,e| joins(:prof_inspection).where("prof_inspections.actual_date between ? and ?",s,e) }
   scope :first_time,where("first_detected = true")
 
- def mkb
-  "#{mkb_type.try(:code)}: #{mkb_type.try(:name)}" unless mkb_type.nil?
- end
-
- def mkb=(name)
-  code = name[0,name.index(":")]
-  self.mkb_type = Ref::MkbType.find_by_code(code)
- end
+# def mkb
+#  "#{mkb_type.try(:code)}: #{mkb_type.try(:name)}" unless mkb_type.nil?
+# end
+#
+# def mkb=(name)
+#  code = name[0,name.index(":")]
+#  self.mkb_type = Ref::MkbType.find_by_code(code)
+# end
 
 def first
   if first_detected
@@ -58,9 +57,9 @@ def stat_card_given?
 end  
 
 
-  def mkb_info
-    "#{mkb_type.code} #{mkb_type.name}" unless mkb_type.nil?
-  end
+#  def mkb_info
+#    "#{mkb_type.code} #{mkb_type.name}" unless mkb_type.nil?
+#  end
 
 end
 # == Schema Information

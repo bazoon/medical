@@ -9,7 +9,7 @@
     = render :partial => "client_field", :locals => {:field_name =>"Номер полиса", :field_value => client.ins_num}
     = render :partial => "client_field", :locals => {:field_name =>"ФИО", :field_value => client.fio}
     = render :partial => "client_field", :locals => {:field_name =>"Дата рождения", :field_value => client.local_date(:birth_date)}
-    = render :partial => "client_field", :locals => {:field_name =>"Пол", :field_value => client.client_sex.sex}
+    = render :partial => "client_field", :locals => {:field_name =>"Пол", :field_value => client.sex}
 
     = render :partial => "table_sep", :locals => {:header =>"Контактная информация"}
     = render :partial => "client_field", :locals => {:field_name =>"Адрес регистрации", :field_value => client.reg_address}

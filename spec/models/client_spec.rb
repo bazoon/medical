@@ -2,12 +2,13 @@ require 'spec_helper'
 
 
 describe Client do
-  before(:all) do
+  before(:each) do
+   Client.delete_all 
    @client_2 = FactoryGirl.create(:client,:name => "Miacel",:surname => "Peov",:father_name => "Potrovich")
    @client = FactoryGirl.create(:client,:name => "Ivan",:surname => "Petrov",:father_name => "Petrovich")
   end
 
-  after(:all) do
+  after(:each) do
     Client.delete_all
     ProfInspection.delete_all
   end
@@ -32,6 +33,7 @@ describe Client do
  end
 
  it "should_test_have_full_prof_inspections_in_year_male" do
+  
   @client.client_sex_id = Client::MALE
   @client.prof_inspections.count.should == 0
   @client.have_full_prof_inspection_in_year('01.01.2011','31.12.2011').should == :prof_zero
@@ -109,7 +111,6 @@ describe Client do
    @client.save
    @client_2.save
 
-
    Client.search("Petr").count.should == 1
                          
 
@@ -130,7 +131,6 @@ describe Client do
 
 
   it "should test has_some_records?" do
-    @client = FactoryGirl.create(:client)
     FactoryGirl.create(:prof_inspection,:client_id => @client.id)
     @client.has_some_records?(:prof_inspections).should == true
   end

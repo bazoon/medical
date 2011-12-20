@@ -7,7 +7,7 @@ class Client < ActiveRecord::Base
   MALE = 1
   FEMALE = 2
 
-  belongs_to :client_sex
+#  belongs_to :client_sex
   belongs_to :ins_company, :class_name => 'Ref::InsCompany'
   belongs_to :death_reason, :class_name => 'Ref::DeathReason'
     
@@ -93,6 +93,14 @@ class Client < ActiveRecord::Base
   scope :mse_re_3, lambda {joins(:mses).merge(Mse.re_3 )}
   scope :mse_re_3_2, lambda {joins(:mses).merge(Mse.re_3_2 )}
 
+
+def sex
+  if client_sex_id == MALE
+    I18n.t(:sex_m)
+  else
+    I18n.t(:sex_w)
+  end
+end
 
 def prof_inspection_years
   prof_inspections.group_by {|p| p.actual_date.year}

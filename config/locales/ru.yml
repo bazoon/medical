@@ -80,6 +80,13 @@ ru:
   prof_inspection_usial: "Прием"
   prof_inspection_prof: "Профосмотр"
 
+  
+  submit_form: "Сохранить 12"
+  #
+  clients: "Пациенты"  
+  new_client: "Новый пациент"   
+  c_female: "Ж"
+  c_ins_name: "Югория"
 
   views:
     pagination:
