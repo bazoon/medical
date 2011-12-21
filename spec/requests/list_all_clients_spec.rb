@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe "ListAllClients" do
-    after(:all) do
-      Client.find_by_surname('Capybara').destroy
+    after(:each) do
+      Client.delete_all
+      Ref::InsCompany.delete_all
     end
 
 #    it "works! (now write some real specs)" do
@@ -26,9 +27,6 @@ describe "ListAllClients" do
      @ins = FactoryGirl.create(:ins_company,:name =>"Ugoria") 
     end
   
-    after(:all) do
-     @ins.destroy 
-    end
 
     it 'creates new clients' do
       visit clients_path
@@ -62,12 +60,10 @@ describe "ListAllClients" do
        @client.save!
       end
 
-      after(:all) do
-        @client.destroy
-      end
 
       it 'visit edit client path and saves changes ' do
         visit edit_client_path(@client)
+        click_button("submit")
         page.should have_content(@client.local_date(:birth_date))
         page.should have_content(@client.num_card)
         page.should have_content(@client.snils)
@@ -76,10 +72,7 @@ describe "ListAllClients" do
         page.should have_content(@client.work_position)
         page.should have_content(@client.blood)
         page.should have_content(@client.local_date(:attach_date))
-
-
       end
-    
 
     end
 

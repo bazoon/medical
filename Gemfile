@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.1.3'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -69,6 +69,10 @@ group :test,:development do
   gem 'rb-inotify'
   gem 'libnotify'
   gem 'rails_best_practices'
+  gem 'launchy'
+  gem 'cucumber'
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
 end
 
 group :test do
