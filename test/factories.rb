@@ -19,11 +19,6 @@ Factory.define(:hospitalization) do |hosp|
  hosp.hospitalization_type_id  1
 end  
 
-
-Factory.define(:client_sex) do |cx|
-end  
-
-
 Factory.define(:diagnostic_test) do |obj|
  obj.diagnostic_test_type_id 1
  obj.test_date '01.01.2011'

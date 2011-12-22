@@ -30,8 +30,8 @@
           %td= link_to(client.short_fio, operations_client_path(client))
           %td= client.num_card
           %td= l client.birth_date.to_date unless client.birth_date.nil?
-          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_client_path(client)
-          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus"), client, :confirm => 'Are you sure?', :method => :delete
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_client_path(client), :id => "e_#{client.id}"
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus"), client, :confirm => 'Are you sure?', :method => :delete, :id => "d_#{client.id}"
 
 
 

@@ -69,8 +69,6 @@ Medical::Application.routes.draw do
       resources :disps
   end
 
-  resources :client_sexes
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -73,6 +73,9 @@ group :test,:development do
   gem 'cucumber'
   gem 'cucumber-rails'
   gem 'database_cleaner'
+  gem 'pickle'
+  gem 'selenium-client'
+  gem 'selenium-webdriver'
 end
 
 group :test do

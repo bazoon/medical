@@ -26,7 +26,6 @@ Given /^(\d+) ins_company in db named "([^"]*)"$/ do |arg1, name|
  FactoryGirl.create(:ins_company,:name => name)
 end
 
-
 When /^i go to clients add form$/ do
   visit clients_path
   click_link I18n.t(:new_client)
@@ -73,12 +72,33 @@ Then /^I should see company name "([^"]*)"$/ do |name|
 end
 
 Then /^I should see sex "([^"]*)"$/ do |sex|
-  page.should have_content(sex)
+ page.should have_content(sex)
 end
 
 When /^i go to "([^"]*)" edit form$/ do |surname|
  c = Client.find_by_surname(surname)
- visit edit_client_path(c)
- click_button("submit")
+ #save_page
+ click_link("e_#{c.id}")
+ #visit edit_client_path(c)
+end
+
+Then /^I Should see add form "([^"]*)"$/ do |form_title|
+ page.should have_content(form_title)
+end
+
+
+When /^i click link del with client surname "([^"]*)"$/ do |surname|
+ c = Client.find_by_surname(surname)
+ click_link("d_#{c.id}")
+end
+
+When /^i press ok button with caption "([^"]*)"$/ do |caption|
+ page.driver.browser.switch_to.alert.accept
+ #click_button(caption)
+end
+
+
+Then /^I should not see surname "([^"]*)"$/ do |surname|
+ page.should_not have_content(surname)
 end
 

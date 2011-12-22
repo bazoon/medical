@@ -28,8 +28,14 @@ Feature: Manage clients
         Then I should see sex "Ж"
 
     Scenario: Edit client
-        Given I have clients Petrov Ivan Petrovich,Sidorov Andrey Egorovich
-        Given 1 ins_company in db named "Ugoria"
+        Given the following clients exists
+              | name   | surname | father_name |
+              | Ivan   | Petrov  | Petrovich   |
+              | Andrey | Sidorov | Egorovich   |
+  
+        Given a ins_company exists with name: "Ugoria"
+          
+        When i go to clients index page
         When i go to "Petrov" edit form
         When i enter name "Ivan"
         When i enter surname "Petrov"
@@ -42,3 +48,27 @@ Feature: Manage clients
         Then I should see birthdate "01.01.1980""
         Then I should see company name "Ugoria"
         Then I should see sex "Ж"
+
+    Scenario: Should not save client without required fields
+        Given no clients
+        Given a ins_company exists with name: "Ugoria"
+        When i go to clients add form
+        When i click "Сохранить" button
+        Then I Should see add form "Новый пациент"
+
+    Scenario: Should delete client if yes pressed
+        Given no clients
+        Given the following clients exists
+              | name   | surname | father_name |
+              | Ivan   | Petrov  | Petrovich   |
+              | Andrey | Sidorov | Egorovich   |
+        
+        When i go to clients index page
+        When i click link del with client surname "Petrov"
+        When i press ok button with caption "Cancel"
+        Then I should not see surname "Petrov"
+
+
+
+
+
