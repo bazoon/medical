@@ -5,15 +5,8 @@ Given /^I have clients (.+)$/ do |clients|
   end
 end
 
-When /^i go to clients index page$/ do
- visit clients_path 
-end
 
 
-
-Then /^I should see "([^"]*)"$/ do |fio|         #"
- page.should have_content(fio)
-end
 
 #----------------------------
 #
@@ -55,9 +48,6 @@ When /^i select sex "([^"]*)"$/ do |sex|
   select(sex,:from => "client_client_sex_id")
 end
 
-When /^i click "([^"]*)" button$/ do |button_name|
-  click_button(button_name)
-end
 
 Then /^I should see fio "([^"]*)"$/ do |fio|
   page.should have_content(fio)
@@ -92,13 +82,10 @@ When /^i click link del with client surname "([^"]*)"$/ do |surname|
  click_link("d_#{c.id}")
 end
 
-When /^i press ok button with caption "([^"]*)"$/ do |caption|
- page.driver.browser.switch_to.alert.accept
- #click_button(caption)
-end
 
 
 Then /^I should not see surname "([^"]*)"$/ do |surname|
  page.should_not have_content(surname)
+# Client.find_by_surname(surname).count.should == 0
 end
 

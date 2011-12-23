@@ -25,12 +25,12 @@
         %td=user.father_name
         %td= user.doctor_type.name unless user.doctor_type.nil?
         %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-folder-open"), user_path(user)
-        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil") , edit_user_path(user)
-        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus")  , user, :confirm => 'Are you sure?', :method => :delete
+        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil") , edit_user_path(user), :class => "edit_link"
+        %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus")  , user, :confirm => 'Are you sure?', :method => :delete,:class => "delete_link"
 
 
 
 
 %br
 
-= link_to 'Новый врач', new_user_path
+= link_to I18n.t(:new_record), new_user_path

@@ -116,7 +116,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to clients_url }
-      format.json { head :ok }
+ #     format.json { head :ok }
     end
   end
 end
