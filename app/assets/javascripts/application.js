@@ -11,7 +11,7 @@
 //
 
 $(document).ready(function() {
-  return $('#search').autocomplete({
+  return $('#client_search').autocomplete({
     source: "/ajax/clients"
   });
 

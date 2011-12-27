@@ -9,8 +9,9 @@ class Client < ActiveRecord::Base
 
 #  belongs_to :client_sex
   belongs_to :ins_company, :class_name => 'Ref::InsCompany'
-  belongs_to :death_reason, :class_name => 'Ref::DeathReason'
-    
+  belongs_to :mkb_type, :class_name => 'Ref::MkbType',:foreign_key => "death_reason_id"
+ 
+
   has_many :lab_tests, :dependent => :delete_all,:order =>"test_date DESC"
   has_many :diagnostic_tests,:dependent => :delete_all,:order =>"test_date DESC"
   has_many :hospitalizations,:dependent => :delete_all,:order =>"period_start DESC"
@@ -94,6 +95,24 @@ class Client < ActiveRecord::Base
   scope :mse_re_3_2, lambda {joins(:mses).merge(Mse.re_3_2 )}
 
 
+
+def death_reason
+"#{mkb_type.try(:code)}: #{mkb_type.try(:name)}" unless mkb_type.nil?
+end
+
+def death_reason=(name)
+ code = name[0,name.index(":")]
+ self.mkb_type = Ref::MkbType.find_by_code(code)
+end
+
+def mkb_type_name
+  mkb_type.name unless mkb_type.nil?
+end  
+
+def mkb_type_code
+  mkb_type.code unless mkb_type.nil?
+end  
+
 def sex
   if client_sex_id == MALE
     I18n.t(:sex_m)
@@ -114,7 +133,7 @@ end
 
 def detach_reason_info
  result=case detach_reason
-         when Client::DETACH_REASON_NONE then I18n.t(:detach_reason_none)
+         when Client::DETACH_REASON_NONE then ""
          when Client::DETACH_REASON_OTHER_CLINIC then I18n.t(:detach_reason_other_clinic)
          when Client::DETACH_REASON_DIED_AT_HOME then I18n.t(:detach_reason_died_at_home)
          when Client::DETACH_REASON_DIED_AT_CLINIC then I18n.t(:detach_reason_died_at_clinic)

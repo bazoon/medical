@@ -55,6 +55,7 @@ end
 def mkb=(name)
  code = name[0,name.index(":")]
  mkb = Ref::MkbType.find_by_code(code)
+ binding.pry
  self.code = mkb.code
  self.name = mkb.name
 end

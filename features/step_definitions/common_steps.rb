@@ -22,6 +22,12 @@ When /^i go to "([^"]*)" index page$/ do |model|
  visit polymorphic_path(model)
 end
 
+
+When /^i go to "([^"]*)"$/ do |path|
+ visit path
+end
+
+
 Given /^no "([^"]*)"$/ do |model|
  model.classify.constantize.delete_all
 end

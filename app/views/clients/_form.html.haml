@@ -30,6 +30,7 @@
     =f.text_field :work_position,:label => "Должность"
     =f.text_field :work_place, :label => "Место работы"
     =f.check_box :pensioner, :label => "Пенсионер ?"
+    =f.check_box :is_work_veteran, :label => "Ветеран труда ?"
   %fieldset
     %legend 
       Дополнительная информация
@@ -52,8 +53,7 @@
     %legend 
       Дата и причины смерти
     =f.date_select :death_date,:label => "Дата смерти"
-    =f.collection_select :death_reason_id,Ref::DeathReason.all,:id,:name,:label => "Причина"
-
+    =f.text_field :death_reason,:label => "Заболевание",:class => "mkb span6"
 
   .actions
     =f.submit "Сохранить",:class => "btn primary",:id => "submit"

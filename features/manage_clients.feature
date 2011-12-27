@@ -84,7 +84,7 @@ Feature: Manage clients
         When i click "Искать" button
         Then I should see "Sidorov Andrey Egorovich"
 
-    @focus @javascript
+    @javascript
     Scenario:
         Given a lab_test_type exists with name: "MNO" 
         Given the following clients exists

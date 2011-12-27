@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111213063447) do
+ActiveRecord::Schema.define(:version => 20111227091942) do
 
   create_table "benefits", :force => true do |t|
     t.integer  "client_id"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20111213063447) do
     t.boolean  "is_uov"
     t.boolean  "is_ivov"
     t.boolean  "is_ubd"
+    t.boolean  "is_work_veteran",            :default => false
   end
 
   add_index "clients", ["id"], :name => "clients_id_idx"

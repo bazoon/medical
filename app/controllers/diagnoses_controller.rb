@@ -51,7 +51,6 @@ class DiagnosesController < ApplicationController
     @diagnosis = Diagnosis.new(params[:diagnosis])
     @diagnosis.prof_inspection_id = @prof_inspection.id
 
-
     respond_to do |format|
       if @diagnosis.save
         format.html { redirect_to client_prof_inspections_path(@prof_inspection.client), notice: I18n.t(:record_created) }
