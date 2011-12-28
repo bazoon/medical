@@ -13,6 +13,15 @@ Then /^I should see$/ do |table|
   end
 end
 
+Then /^I should not see$/ do |table|
+  table.hashes.each do |values| 
+    page.should_not have_content(values[:string])
+  end
+end
+
+Then /^I should see record updated message$/ do
+  page.should have_content(I18n.t(:record_updated))
+end
 
 When /^i go to root$/ do
  visit root_path
@@ -88,3 +97,6 @@ When /^i press ok button$/ do
  page.driver.browser.switch_to.alert.accept
 end
 
+Then /^Save page$/ do 
+ save_page
+end

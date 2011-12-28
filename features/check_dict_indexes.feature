@@ -3,7 +3,6 @@ Feature: Manage dict index paths
     As an user
     I want to create and manage clients information
 
-    @focus
     Scenario Outline: visit dicts index paths
         Given a <model> exists with <atrib>: <value>
         When i go to <path>

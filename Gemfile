@@ -76,6 +76,7 @@ group :test,:development do
   gem 'pickle'
   gem 'selenium-client'
   gem 'selenium-webdriver'
+  gem 'cucumber_scaffold'
 end
 
 group :test do
