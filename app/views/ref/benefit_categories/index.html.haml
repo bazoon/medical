@@ -1,26 +1,27 @@
-%h2 Льготные категории
+-present "Ref" do |p|
+  -p.prepare(@ref_benefit_categories,"Льготные категории",notice)
+
+  =p.header
+
+  =p.table_or_empty do
+
+    %table#newspaper-a
+      %tr
+        %th Краткое наименование
+        %th Код
+        %th Процент финансирования
+        %th Источник финансирования
+        %th .
+        %th .
+      - @ref_benefit_categories.each do |ref_benefit_category|
+        %tr
+          %td= ref_benefit_category.short_name
+          %td= best_in_place ref_benefit_category, :code, :type => :input,:path => ref_benefit_category,:method => :put
+
+          %td= ref_benefit_category.percent
+          %td= ref_benefit_category.source_string
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_benefit_category_path(ref_benefit_category)
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,ref_benefit_category, :confirm => 'Are you sure?', :method => :delete if ref_benefit_category.can_be_deleted
 %br
 
-= link_to 'Новая категория', new_ref_benefit_category_path
-%br
-
-%table#newspaper-a
-  %tr
-    %th Краткое наименование
-    %th Код
-    %th Процент финансирования
-    %th Источник финансирования
-    %th .
-    %th .
-  - @ref_benefit_categories.each do |ref_benefit_category|
-    %tr
-      %td= ref_benefit_category.short_name
-      %td= best_in_place ref_benefit_category, :code, :type => :input,:path => ref_benefit_category,:method => :put
-
-      %td= ref_benefit_category.percent
-      %td= ref_benefit_category.source_string
-      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_benefit_category_path(ref_benefit_category)
-      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,ref_benefit_category, :confirm => 'Are you sure?', :method => :delete if ref_benefit_category.can_be_deleted
-%br
-
-= link_to 'Новая категория', new_ref_benefit_category_path,:accesskey => "n"
+= link_to t(:new_record), new_ref_benefit_category_path,:accesskey => "n"

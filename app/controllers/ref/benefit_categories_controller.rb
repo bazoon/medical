@@ -3,7 +3,7 @@ class Ref::BenefitCategoriesController < ApplicationController
 
 # GET /ref/benefit_categories.json
   def index
-    @ref_benefit_categories = Ref::BenefitCategory.all
+    @ref_benefit_categories = Ref::BenefitCategory.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb

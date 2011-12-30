@@ -1,16 +1,21 @@
-%h1 Список санаториев
+-present "Ref" do |p|
+  -p.prepare(@ref_sanatoria,"Список санаториев",notice)
 
-%table#newspaper-a
-  %tr
-    %th Название
-    %th
-    %th
+  =p.header
 
-  - @ref_sanatoria.each do |ref_sanatorium|
-    %tr
-      %td= ref_sanatorium.name
-      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_sanatorium_path(ref_sanatorium)
-      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,ref_sanatorium, :confirm => 'Are you sure?', :method => :delete if ref_sanatorium.can_be_deleted
+  =p.table_or_empty do
+
+    %table#newspaper-a
+      %tr
+        %th Название
+        %th
+        %th
+
+      - @ref_sanatoria.each do |ref_sanatorium|
+        %tr
+          %td= ref_sanatorium.name
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_sanatorium_path(ref_sanatorium)
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,ref_sanatorium, :confirm => 'Are you sure?', :method => :delete if ref_sanatorium.can_be_deleted
 
 %br
 

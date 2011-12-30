@@ -1,24 +1,22 @@
-%h2 Медицинский классификатор болезней
+-present "Ref" do |p|
+  -p.prepare(@ref_mkb_types,"Медицинский классификатор болезней (10)",notice)
+
+  =p.header
+
+  =p.table_or_empty do
+
+    %table#newspaper-a
+      %tr
+        %th Наименование
+        %th Код
+        %th .
+        %th .
+      - @ref_mkb_types.each do |ref_mkb_type|
+        %tr
+          %td= ref_mkb_type.name
+          %td= ref_mkb_type.code
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_mkb_type_path(ref_mkb_type)
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,ref_mkb_type, :confirm => 'Are you sure?', :method => :delete if ref_mkb_type.can_be_deleted
 %br
 
-= link_to 'Новая категория', new_ref_mkb_type_path
-%br
-
-= paginate @ref_mkb_types
-
-
-%table#newspaper-a
-  %tr
-    %th Наименование
-    %th Код
-    %th .
-    %th .
-  - @ref_mkb_types.each do |ref_mkb_type|
-    %tr
-      %td= ref_mkb_type.name
-      %td= ref_mkb_type.code
-      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_mkb_type_path(ref_mkb_type)
-      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,ref_mkb_type, :confirm => 'Are you sure?', :method => :delete if ref_mkb_type.can_be_deleted
-%br
-
-= link_to 'Новая категория', new_ref_mkb_type_path,:accesskey => "n"
+= link_to I18n.t(:new_record),new_ref_mkb_type_path,:accesskey => "n"

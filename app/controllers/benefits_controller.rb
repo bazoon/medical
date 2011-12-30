@@ -13,7 +13,7 @@ class BenefitsController < ApplicationController
 
 
   def index
-    @benefits = Benefit.where(:client_id => @client.id).order(:benefit_category_id)
+    @benefits = @client.benefits.order(:benefit_category_id).page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb

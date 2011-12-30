@@ -17,7 +17,6 @@ Feature: Manage lab_test_types
             | "1-3"  |
             | 30     |
             | 40     |
-    @focus
     Scenario: Add new lab_test_type
         Given the following ref_lab_test_types exists
             | name  | norm  | valid_period |

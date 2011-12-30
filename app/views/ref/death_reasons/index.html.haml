@@ -13,4 +13,4 @@
       %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,ref_death_reason, :confirm => 'Are you sure?', :method => :delete if ref_death_reason.can_be_deleted
 %br
 
-= link_to 'Добавить', new_ref_death_reason_path
+= link_to t(:new_record), new_ref_death_reason_path 

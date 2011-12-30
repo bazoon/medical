@@ -5,9 +5,6 @@ Given /^I have clients (.+)$/ do |clients|
   end
 end
 
-
-
-
 #----------------------------
 #
 

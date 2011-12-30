@@ -15,7 +15,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients =Client.search(params[:search]).page(params[:page])
+    @clients =Client.search(params[:search]).page(params[:page]).per(10)
     
     if @clients && @clients.size == 1
       redirect_to operations_client_path(@clients[0])

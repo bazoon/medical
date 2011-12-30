@@ -2,7 +2,7 @@ class Ref::DoctorTypesController < ApplicationController
   # GET /ref/doctor_types
   # GET /ref/doctor_types.json
   def index
-    @ref_doctor_types = Ref::DoctorType.all
+    @ref_doctor_types = Ref::DoctorType.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb

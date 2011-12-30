@@ -2,7 +2,7 @@ class Ref::InsCompaniesController < ApplicationController
   # GET /ref/ins_companies
   # GET /ref/ins_companies.json
   def index
-    @ref_ins_companies = Ref::InsCompany.all
+    @ref_ins_companies = Ref::InsCompany.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -2,7 +2,7 @@ class Ref::HtmHelpTypesController < ApplicationController
   # GET /ref/htm_help_types
   # GET /ref/htm_help_types.json
   def index
-    @ref_htm_help_types = Ref::HtmHelpType.all
+    @ref_htm_help_types = Ref::HtmHelpType.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -10,7 +10,8 @@ class SanatoriumNotesController < ApplicationController
   
   
   def index
-    @sanatorium_notes = @client.sanatorium_notes
+    @sanatorium_notes = @client.sanatorium_notes.page(params[:page]).per(10)
+
 
 
     respond_to do |format|

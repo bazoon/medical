@@ -1,21 +1,22 @@
-%h2 Типы врачей
+-present "Ref" do |p|
+  -p.prepare(@ref_doctor_types,"Специальности",notice)
+
+  =p.header
+
+  =p.table_or_empty do
+
+
+    %table#newspaper-a
+      %tr
+        %th Тип
+        %th
+        %th
+
+      - @ref_doctor_types.each do |ref_doctor_type|
+        %tr
+          %td= ref_doctor_type.name
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_doctor_type_path(ref_doctor_type)
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , ref_doctor_type, :confirm => 'Are you sure?', :method => :delete if ref_doctor_type.can_be_deleted
 %br
 
-
--unless flash.empty?
-  %p#notice= notice
-
-%table#newspaper-a
-  %tr
-    %th Тип
-    %th
-    %th
-
-  - @ref_doctor_types.each do |ref_doctor_type|
-    %tr
-      %td= ref_doctor_type.name
-      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_doctor_type_path(ref_doctor_type)
-      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , ref_doctor_type, :confirm => 'Are you sure?', :method => :delete if ref_doctor_type.can_be_deleted
-%br
-
-= link_to 'Добавить врача', new_ref_doctor_type_path
+= link_to t(:new_record),new_ref_doctor_type_path

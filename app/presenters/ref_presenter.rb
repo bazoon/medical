@@ -1,21 +1,18 @@
-class ClientOperationsPresenter < BasePresenter
+class RefPresenter < BasePresenter
 
-def prepare(items,title,notice,client,paginate = true)
+def prepare(items,title,notice)
  @items = items
  @title = title
  @notice = notice
- @client = client
- @paginate = paginate
 end
 
-def client_header
- content = client_back_path + index_header + flash_message
- content += paginate_items if @paginate
+def header
+ content = index_header + flash_message + paginate_items
  content
 end
 
 def table_or_empty(&block)
- if @items.count > 0 
+ if not @items.nil? and @items.count > 0 
    content=""
    yield
  else
@@ -38,15 +35,9 @@ def index_header
  content = content + content_tag(:h2,@title) + content_tag(:br)
 end
 
-def client_back_path
- link_to content_tag(:span,"",class: "ui-icon ui-icon-triangle-1-w"), operations_client_path(@client) unless @client.nil?
-end
 
 def paginate_items
- paginate @items if @items.respond_to?(:current_page)
+ paginate @items if not @items.nil? and @items.respond_to?(:current_page)
 end
-
-
-
 
 end

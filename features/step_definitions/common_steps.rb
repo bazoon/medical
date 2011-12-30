@@ -1,5 +1,5 @@
-Then /^I should see "([^"]*)"$/ do |fio|         #"
- page.should have_content(fio)
+Then /^I should see "([^"]*)"$/ do |value|         #"
+ value.split(",").each {|v| page.should have_content(v) }
 end
 
 Then /^I should not see "([^"]*)"$/ do |fio|         #"
@@ -45,15 +45,33 @@ Given /^i click add_new_link/ do
  click_link I18n.t(:new_record)
 end
 
-When /^i enter "([^"]*)" in "([^"]*)"$/ do |value, field|
-  fill_in(field,:with => value) 
+When /^i enter "([^"]*)" in "([^"]*)"$/ do |values, fields|
+ field_array = fields.split(",")
+
+ values.split(",").each_with_index do |v,index|
+  binding.pry
+  fill_in(v,:with => field_array[index]) 
+ end 
+
+ fill_in(field,:with => value) 
+ 
+
 end
 
 When /^i enter$/ do |table|
-  # table is a Cucumber::Ast::Table
 
-  table.hashes.each do |values| 
-    fill_in(values[:field_name], :with => values[:value])
+  table.hashes.each do |rows| 
+  
+    fields = rows[:field_name].split(",")
+    values = rows[:value].split(",")
+    
+    values.count.should == fields.count
+
+    values.each_with_index do |v,index|
+      fill_in(fields[index], :with => v)
+    end
+
+
   end
 
 end
@@ -61,6 +79,27 @@ end
 When /^i select "([^"]*)" in "([^"]*)"$/ do |value, select|
   select(value,:from => select)
 end
+
+
+When /^i select$/ do |table|
+
+  table.hashes.each do |rows| 
+  
+    fields = rows[:field_name].split(",")
+    values = rows[:value].split(",")
+    
+    values.count.should == fields.count
+
+    values.each_with_index do |v,index|
+      select(v, :from => fields[index])
+    end
+
+
+  end
+
+end
+
+
 
 When /^i click "([^"]*)" button$/ do |button_name|
   click_button(button_name)

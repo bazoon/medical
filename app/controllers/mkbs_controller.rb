@@ -10,7 +10,8 @@ class MkbsController < ApplicationController
   end
 
   def index
-    @mkbs = Mkb.all
+    @mkbs = @client.mkbs.page(params[:page]).per(10)
+
 
     respond_to do |format|
       format.html # index.html.erb

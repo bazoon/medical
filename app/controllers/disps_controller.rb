@@ -8,7 +8,8 @@ class DispsController < ApplicationController
   end
 
   def index
-    @disps = @client.disps.all
+    @disps = @client.disps.page(params[:page]).per(10)
+
 
     respond_to do |format|
       format.html # index.html.erb

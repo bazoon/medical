@@ -1,19 +1,22 @@
-%h2 Типы ВТМП
+-present "Ref" do |p|
+  -p.prepare(@ref_htm_help_types,"Виды высокотехнологичной помощи",notice)
+
+  =p.header
+
+  =p.table_or_empty do
+
+    %table#newspaper-a
+      %tr
+        %th Тип
+        %th
+        %th
+
+      - @ref_htm_help_types.each do |ref_htm_help_type|
+        %tr
+          %td= ref_htm_help_type.name
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_ref_htm_help_type_path(ref_htm_help_type)
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , ref_htm_help_type, :confirm => 'Are you sure?', :method => :delete if ref_htm_help_type.can_be_deleted
+
 %br
 
-
-%table#newspaper-a
-  %tr
-    %th Тип
-    %th
-    %th
-
-  - @ref_htm_help_types.each do |ref_htm_help_type|
-    %tr
-      %td= ref_htm_help_type.name
-      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_ref_htm_help_type_path(ref_htm_help_type)
-      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , ref_htm_help_type, :confirm => 'Are you sure?', :method => :delete if ref_htm_help_type.can_be_deleted
-
-%br
-
-= link_to 'Новый тип ВТМП', new_ref_htm_help_type_path
+= link_to t(:new_record),new_ref_htm_help_type_path

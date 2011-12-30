@@ -21,4 +21,4 @@
       %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , ref_desease_type, :confirm => 'Are you sure?', :method => :delete if ref_desease_type.can_be_deleted
 %br
 
-= link_to 'Добавить новый тип заболевания', new_ref_desease_type_path
+= link_to t(:new_record),new_ref_desease_type_path 

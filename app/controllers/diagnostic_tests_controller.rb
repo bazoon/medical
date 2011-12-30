@@ -8,7 +8,8 @@ class DiagnosticTestsController < ApplicationController
   end
 
   def index
-    @diagnostic_tests = @client.diagnostic_tests
+    @diagnostic_tests = @client.diagnostic_tests.page(params[:page]).per(10)
+
 
     respond_to do |format|
       format.html # index.html.erb

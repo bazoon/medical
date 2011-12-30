@@ -2,7 +2,7 @@ class Ref::SanatoriaController < ApplicationController
   # GET /ref/sanatoria
   # GET /ref/sanatoria.json
   def index
-    @ref_sanatoria = Ref::Sanatorium.all
+    @ref_sanatoria = Ref::Sanatorium.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb

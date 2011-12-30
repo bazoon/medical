@@ -8,7 +8,8 @@ class MedDiagnosticTestsController < ApplicationController
   end
 
   def index
-    @med_diagnostic_tests = @client.med_diagnostic_tests
+    @med_diagnostic_tests = @client.med_diagnostic_tests.page(params[:page]).per(10)
+
 
 
     respond_to do |format|

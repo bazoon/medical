@@ -2,7 +2,7 @@ class Ref::MedDiagnosticTestTypesController < ApplicationController
   # GET /ref/med_diagnostic_test_types
   # GET /ref/med_diagnostic_test_types.json
   def index
-    @ref_med_diagnostic_test_types = Ref::MedDiagnosticTestType.all
+    @ref_med_diagnostic_test_types = Ref::MedDiagnosticTestType.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb

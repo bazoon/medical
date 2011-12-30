@@ -5,8 +5,8 @@ class Ref::LabTestTypesController < ApplicationController
   
 
   def index
-    @ref_lab_test_types = Ref::LabTestType.all
-    @lab_test_type =@ref_lab_test_types[0] 
+    @ref_lab_test_types = Ref::LabTestType.page(params[:page]).per(10)
+ #   @lab_test_type =@ref_lab_test_types[0] 
 
     respond_to do |format|
       format.html # index.html.erb

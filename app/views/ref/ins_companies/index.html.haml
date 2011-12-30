@@ -1,22 +1,21 @@
-%h2 Страховые компании
-%br
- 
--unless flash.empty?
-  %div{:class =>"alert-message info","data-alert" => "alert"}
-    = link_to('x','',:class => "close") 
-    = notice
+-present "Ref" do |p|
+  -p.prepare(@ref_ins_companies,"Страховые компании",notice)
 
-%table#newspaper-a
-  %tr
-    %th Наименование
-    %th
-    %th
+  =p.header
 
-  - @ref_ins_companies.each do |ref_ins_company|
-    %tr
-      %td= ref_ins_company.name
-      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_ins_company_path(ref_ins_company),:class => "edit_link"
-      %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,ref_ins_company, :confirm => 'Are you sure?', :method => :delete, :class => "delete_link" if ref_ins_company.can_be_deleted
+  =p.table_or_empty do
+
+    %table#newspaper-a
+      %tr
+        %th Наименование
+        %th
+        %th
+
+      - @ref_ins_companies.each do |ref_ins_company|
+        %tr
+          %td= ref_ins_company.name
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_ins_company_path(ref_ins_company),:class => "edit_link"
+          %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") ,ref_ins_company, :confirm => 'Are you sure?', :method => :delete, :class => "delete_link" if ref_ins_company.can_be_deleted
 %br
 
 = link_to I18n.t(:new_record), new_ref_ins_company_path

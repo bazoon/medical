@@ -14,7 +14,7 @@ class LabTestsController < ApplicationController
 
   
   def index
-    @lab_tests = LabTest.where(:client_id => @client.id)
+    @lab_tests = @client.lab_tests.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb

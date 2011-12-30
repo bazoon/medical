@@ -8,7 +8,8 @@ class HtmHelpNotesController < ApplicationController
   end
 
   def index
-    @htm_help_notes = @client.htm_help_notes
+    @htm_help_notes = @client.htm_help_notes.page(params[:page]).per(10)
+
 
 
     respond_to do |format|

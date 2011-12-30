@@ -2,7 +2,7 @@ class Ref::HospitalizationTypesController < ApplicationController
   # GET /ref/hospitalization_types
   # GET /ref/hospitalization_types.json
   def index
-    @ref_hospitalization_types = Ref::HospitalizationType.all
+    @ref_hospitalization_types = Ref::HospitalizationType.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb
