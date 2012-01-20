@@ -8,27 +8,27 @@
 #tabs
   %ul
     = render :partial => "tab_caption", :locals => {:tab_id =>"#tab-0", :tab_caption => "Общая информация"}
-    = render :partial => "tab_caption", :locals => {:tab_id =>"#tab-1", :tab_caption => "Лабораторные исследования"} if @client.has_some_records?(:lab_tests)
-    = render :partial => "tab_caption", :locals => {:tab_id =>"#tab-2", :tab_caption => "Диагностические исследования"} if @client.has_some_records?(:diagnostic_tests)
-    = render :partial => "tab_caption", :locals => {:tab_id =>"#tab-3", :tab_caption => "Госпитализации"} if @client.has_some_records?(:hospitalizations)
-    = render :partial => "tab_caption", :locals => {:tab_id =>"#tab-4", :tab_caption => "Высокотехнологичная помощь"} if @client.has_some_records?(:htm_help_notes)
-    = render :partial => "tab_caption", :locals => {:tab_id =>"#tab-5", :tab_caption => "Санаторно-курортное лечение"} if @client.has_some_records?(:sanatorium_notes)
-    = render :partial => "tab_caption", :locals => {:tab_id =>"#tab-6", :tab_caption => "Лечебно диагностическая работа"} if @client.has_some_records?(:med_diagnostic_tests)
+    =# render :partial => "tab_caption", :locals => {:tab_id =>"#tab-1", :tab_caption => "Лабораторные исследования"} if @client.has_some_records?(:lab_tests)
+    =# render :partial => "tab_caption", :locals => {:tab_id =>"#tab-2", :tab_caption => "Диагностические исследования"} if @client.has_some_records?(:diagnostic_tests)
+    =# render :partial => "tab_caption", :locals => {:tab_id =>"#tab-3", :tab_caption => "Госпитализации"} if @client.has_some_records?(:hospitalizations)
+    =# render :partial => "tab_caption", :locals => {:tab_id =>"#tab-4", :tab_caption => "Высокотехнологичная помощь"} if @client.has_some_records?(:htm_help_notes)
+    =# render :partial => "tab_caption", :locals => {:tab_id =>"#tab-5", :tab_caption => "Санаторно-курортное лечение"} if @client.has_some_records?(:sanatorium_notes)
+    =# render :partial => "tab_caption", :locals => {:tab_id =>"#tab-6", :tab_caption => "Лечебно диагностическая работа"} if @client.has_some_records?(:med_diagnostic_tests)
     = render :partial => "tab_caption", :locals => {:tab_id =>"#tab-7", :tab_caption => "Профосмотры"} if @client.has_some_records?(:prof_inspections)
 
 
   = render :partial => "client", :locals => {:tab_id => "tab-0", :client => @client }
-  -if @client.has_some_records?(:lab_tests) 
+  -#if @client.has_some_records?(:lab_tests) 
     =render :partial => "client_records",:locals => {:tab_id => "tab-1",:render_name => @client.lab_tests,:tab_name =>"Лабораторные исследования",:items => :lab_tests}
-  -if @client.has_some_records?(:diagnostic_tests) 
+  -#if @client.has_some_records?(:diagnostic_tests) 
     =render :partial => "client_records",:locals => {:tab_id => "tab-2",:render_name => @client.diagnostic_tests,:tab_name =>"Диагностические исследования",:items => :diagnostic_tests,}
-  -if @client.has_some_records?(:hospitalizations) 
+  -#if @client.has_some_records?(:hospitalizations) 
     =render :partial => "client_records",:locals => {:tab_id => "tab-3",:render_name => @client.hospitalizations,:tab_name =>"Госпитализация",:items => :hospitalizations}
-  -if @client.has_some_records?(:htm_help_notes) 
+  -#if @client.has_some_records?(:htm_help_notes) 
     =render :partial => "client_records",:locals => {:tab_id => "tab-4",:render_name => @client.htm_help_notes,:tab_name =>"Высокотехнологичная помощь",:items => :htm_help_notes}
-  -if @client.has_some_records?(:sanatorium_notes) 
+  -#if @client.has_some_records?(:sanatorium_notes) 
     =render :partial => "client_records",:locals => {:tab_id => "tab-5",:render_name => @client.sanatorium_notes,:tab_name =>"Санаторно-курортное лечение",:items => :sanatorium_notes}
-  -if @client.has_some_records?(:med_diagnostic_tests) 
+  -#if @client.has_some_records?(:med_diagnostic_tests) 
     =render :partial => "client_records",:locals => {:tab_id => "tab-6",:render_name => @client.med_diagnostic_tests,:tab_name =>"Лечебно-диагностическая работа",:items => :med_diagnostic_tests}
   -if @client.has_some_records?(:prof_inspections) 
     =render :partial => "client_record",:locals => {:tab_id => "tab-7",:render_name => 'clients/operations/prof_inspection',:tab_name =>"Профосмотры"}

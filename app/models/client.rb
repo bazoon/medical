@@ -11,6 +11,7 @@ class Client < ActiveRecord::Base
   belongs_to :ins_company, :class_name => 'Ref::InsCompany'
   belongs_to :mkb_type, :class_name => 'Ref::MkbType',:foreign_key => "death_reason_id"
  
+  belongs_to :death_reason, :class_name => 'Ref::MkbType',:foreign_key => "death_reason_id"
 
   has_many :lab_tests, :dependent => :delete_all,:order =>"test_date DESC"
   has_many :diagnostic_tests,:dependent => :delete_all,:order =>"test_date DESC"
@@ -122,7 +123,7 @@ def sex
 end
 
 def prof_inspection_years
-  prof_inspections.group_by {|p| p.actual_date.year}
+  prof_inspections.prof_only.group_by {|p| p.actual_date.year}
 end
 
 

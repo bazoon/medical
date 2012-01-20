@@ -15,7 +15,8 @@ class ProfInspection < ActiveRecord::Base
   scope :user_surname_like,lambda {|n| joins(:user).merge(User.surname_like(n)) }
   scope :this_year,lambda {current_year} #Осмотры за текущий год
   scope :in_year, lambda {|sd,ed| where("actual_date between ? and ?",sd,ed)}
-
+  scope :between, lambda {|sd,ed| where("actual_date between ? and ?",sd,ed)}
+  scope :prof_only,lambda { where("inspection_type = ?",PROF) }
 
   USIAL = 0
   PROF = 1
