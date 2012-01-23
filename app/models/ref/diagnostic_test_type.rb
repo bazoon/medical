@@ -3,11 +3,18 @@ class Ref::DiagnosticTestType < ActiveRecord::Base
   has_many :diagnostic_tests 
 
   acts_as_taggable #Теги 
+  scope :prof_inspection_minimum,lambda {prof_inspection_min} #Анализы для профосмотров
 
 
 def can_be_deleted
   diagnostic_tests.count<=0
 end
+
+ def self.prof_inspection_min
+   all.map {|dtt| dtt if dtt.tag_list.include?(I18n.t(:prof_tag_name))}.compact 
+ end
+
+
 
 end
 # == Schema Information

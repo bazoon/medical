@@ -3,7 +3,7 @@
     ="#{field_name}"
   %td.underlined.client_field
     -if defined?(emph)
-      %span{:class => "label #{emph}"}
+      %div{:class => "label #{emph}",:style => "word-wrap: break-word;display: inline;"}
         =field_value
     -else
       =field_value  

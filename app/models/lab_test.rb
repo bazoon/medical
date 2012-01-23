@@ -8,6 +8,7 @@ class LabTest < ActiveRecord::Base
   scope :prof_inspection_minimum,lambda {prof_inspection_min} #Анализы для профосмотров
 
   scope :this_year,lambda {current_year} #Анализы за текущий год
+  scope :in_year, lambda {|sd,ed| where("test_date between ? and ?",sd,ed)}
 
 
   def self.current_year

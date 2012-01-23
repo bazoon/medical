@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111227091942) do
+ActiveRecord::Schema.define(:version => 20120123075627) do
 
   create_table "benefits", :force => true do |t|
     t.integer  "client_id"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20111227091942) do
     t.text     "result"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "total"
   end
 
   create_table "disps", :force => true do |t|
@@ -178,7 +179,6 @@ ActiveRecord::Schema.define(:version => 20111227091942) do
     t.date     "send_date"
     t.boolean  "ipr"
     t.integer  "conclusion_group"
-    t.integer  "conclusion_till"
     t.date     "conclusion_date"
     t.boolean  "indefinitely"
     t.datetime "created_at"
@@ -186,6 +186,7 @@ ActiveRecord::Schema.define(:version => 20111227091942) do
     t.integer  "client_id"
     t.boolean  "consultation",     :default => false
     t.integer  "reason"
+    t.date     "conclusion_till"
   end
 
   create_table "prof_inspections", :force => true do |t|

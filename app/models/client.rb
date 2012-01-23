@@ -149,6 +149,42 @@ def have_full_prof_inspection_this_year?
  result = have_full_prof_inspection_in_year(start_date,end_date)
 end
 
+# Функции для получения информации об пройденых врачах, анализах, диагностике
+def prof_inspections_info
+ prof_inspections.prof_only.this_year.map {|p| p.user.doctor_type.name}.uniq  
+end
+
+def lab_tests_info
+ lab_tests.this_year.prof_inspection_minimum.map {|lt| lt.lab_test_type.name}.uniq
+end
+
+def diagnostic_tests_info
+ diagnostic_tests.this_year.prof_inspection_minimum.map {|dt| dt.diagnostic_test_type.name}.uniq
+end
+
+def ungiven_lab_tests_info
+ Ref::LabTestType.prof_inspection_minimum.map {|ltt| ltt.name} - lab_tests_info
+end  
+
+def ungiven_diagnostic_tests_info
+ Ref::DiagnosticTestType.prof_inspection_minimum.map {|dtt| dtt.name} - diagnostic_tests_info
+end  
+
+def ungiven_prof_inspections_info
+  (Ref::DoctorType.all.map {|dt| dt.name } - prof_inspections_info)
+end
+
+###
+
+def have_all_prof_inspections_in_year(sd,ed)
+ count = LabTests.prof_inspection_minimum.count + Diagnostic_tests.prof_inspection_minimum.count
+
+ client_count = lab_tests.in_year(sd,ed).prof_inspection_minimum.count
+ client_count += diagnostic_tests.in_year(sd,ed).prof_inspection_minimum.count
+
+end
+
+
 
 def have_full_prof_inspection_in_year(sd,ed)
  count = prof_inspections.in_year(sd,ed).count

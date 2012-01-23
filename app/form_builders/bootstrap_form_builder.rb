@@ -1,7 +1,6 @@
 class BootstrapFormBuilder < SimpleForm::FormBuilder
 
 
-
 def text_field(name, options = {})
  options.reverse_merge!(:class => "span6")
 
@@ -69,6 +68,9 @@ end
 def radio_button(method,tag_value, options = {})
  radio = super
  radio = radio + " " + @template.content_tag(:span,options[:label]) if defined?(options[:label])
+
+ required = required_field?(@object,method)
+ options[:required] = required
 
  in_li = @template.content_tag(:label,radio)
 

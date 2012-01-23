@@ -1,6 +1,19 @@
-=bootstrap_form_for [@client, @diagnostic_test], :validate => true do |f|
-  =f.date_select :test_date,:label => "Дата"
-  =f.collection_select :diagnostic_test_type_id,Ref::DiagnosticTestType.all,:id,:name,:label => "Тип анализа"
-  =f.text_field :result, :label => "Результат"
+=bootstrap_form_for [@client, @diagnostic_test] do |f|
+  %fieldset
+    %legend 
+      Общие данные
+    =f.date_select :test_date,:label => "Дата"
+    =f.collection_select :diagnostic_test_type_id,Ref::DiagnosticTestType.all,:id,:name,:label => "Тип анализа"
+  %fieldset
+    %legend 
+      Результат
+    =f.radio_button :total,DiagnosticTest::NORM,:label => "Норма"
+    =f.radio_button :total,DiagnosticTest::BETTER ,:label => "Без улучшения"
+    =f.radio_button :total,DiagnosticTest::WORSE,:label => "Ухудшение. Контроль"
+  %fieldset
+    %legend 
+      Комментарий
+    =f.text_field :result, :label => ""
+  
   .actions
     =f.submit "Сохранить",:class => "btn primary"

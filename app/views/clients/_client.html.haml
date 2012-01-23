@@ -1,56 +1,69 @@
-%div{:id => tab_id}
-  = link_to content_tag(:div,"",class: "ui-icon ui-icon-pencil size_32x32"), edit_client_path(client)
-  %table#client_table
-    = render :partial => "table_sep", :locals => {:header =>"Личные данные"}
-    = render :partial => "client_field", :locals => {:field_name =>"Номер амбулаторной карты", :field_value => client.num_card}
-    = render :partial => "client_field", :locals => {:field_name =>"СНИЛС", :field_value => client.snils}
-    = render :partial => "client_field", :locals => {:field_name =>"Страховая компания", :field_value => client.ins_company.name}
-    = render :partial => "client_field", :locals => {:field_name =>"Серия полиса", :field_value => client.ins_seria}
-    = render :partial => "client_field", :locals => {:field_name =>"Номер полиса", :field_value => client.ins_num}
-    = render :partial => "client_field", :locals => {:field_name =>"ФИО", :field_value => client.fio}
-    = render :partial => "client_field", :locals => {:field_name =>"Дата рождения", :field_value => client.local_date(:birth_date)}
-    = render :partial => "client_field", :locals => {:field_name =>"Пол", :field_value => client.sex}
+- present "Client" do |p|
+  -p.prepare(client)
 
-    = render :partial => "table_sep", :locals => {:header =>"Контактная информация"}
-    = render :partial => "client_field", :locals => {:field_name =>"Адрес регистрации", :field_value => client.reg_address}
-    = render :partial => "client_field", :locals => {:field_name =>"Адрес места жительства", :field_value => client.real_address}
-    = render :partial => "client_field", :locals => {:field_name =>"Телефон сотовый", :field_value => client.mobile_phone}
-    = render :partial => "client_field", :locals => {:field_name =>"Телефон домашний", :field_value => client.home_phone}
-    = render :partial => "client_field", :locals => {:field_name =>"Телефон рабочий", :field_value => client.work_phone}
-    = render :partial => "client_field", :locals => {:field_name =>"Телефоны родственников", :field_value => client.relative_phone}
+  %div{:id => tab_id}
+    = link_to content_tag(:div,"",class: "ui-icon ui-icon-pencil size_32x32"), edit_client_path(client)
+    %table{:width => "100%",:style => "table-layout: fixed", :id => "client_table"}
+      = render :partial => "table_sep", :locals => {:header =>"Личные данные"}
+      = render :partial => "client_field", :locals => {:field_name =>"Номер амбулаторной карты", :field_value => client.num_card}
+      = render :partial => "client_field", :locals => {:field_name =>"СНИЛС", :field_value => client.snils}
+      = render :partial => "client_field", :locals => {:field_name =>"Страховая компания", :field_value => client.ins_company.name}
+      = render :partial => "client_field", :locals => {:field_name =>"Серия полиса", :field_value => client.ins_seria}
+      = render :partial => "client_field", :locals => {:field_name =>"Номер полиса", :field_value => client.ins_num}
+      = render :partial => "client_field", :locals => {:field_name =>"ФИО", :field_value => client.fio}
+      = render :partial => "client_field", :locals => {:field_name =>"Дата рождения", :field_value => client.local_date(:birth_date)}
+      = render :partial => "client_field", :locals => {:field_name =>"Пол", :field_value => client.sex}
 
-    = render :partial => "table_sep", :locals => {:header =>"Льготы"}
-    = render :partial => "benefits",:collection => client.benefits, :as => :benefit
+      = render :partial => "table_sep", :locals => {:header =>"Контактная информация"}
+      = render :partial => "client_field", :locals => {:field_name =>"Адрес регистрации", :field_value => client.reg_address}
+      = render :partial => "client_field", :locals => {:field_name =>"Адрес места жительства", :field_value => client.real_address}
+      = render :partial => "client_field", :locals => {:field_name =>"Телефон сотовый", :field_value => client.mobile_phone}
+      = render :partial => "client_field", :locals => {:field_name =>"Телефон домашний", :field_value => client.home_phone}
+      = render :partial => "client_field", :locals => {:field_name =>"Телефон рабочий", :field_value => client.work_phone}
+      = render :partial => "client_field", :locals => {:field_name =>"Телефоны родственников", :field_value => client.relative_phone}
+
+      = render :partial => "table_sep", :locals => {:header =>"Льготы"}
+      = render :partial => "benefits",:collection => client.benefits, :as => :benefit
 
 
-    = render :partial => "table_sep", :locals => {:header =>"Занятость"}
-    = render :partial => "client_field", :locals => {:field_name =>"Место работы", :field_value => client.work_info}
-    = render :partial => "client_field", :locals => {:field_name =>"Пенсионер ?", :field_value => boolean_to_yes_no(client.pensioner)}
-    = render :partial => "client_field", :locals => {:field_name =>"Ветеран труда ?", :field_value => boolean_to_yes_no(client.is_work_veteran)}
-    = render :partial => "table_sep", :locals => {:header =>"Заболевания подлежащие диспансерному учету"}
-    = render :partial => "mkb10",:collection => client.mkbs, :as => :mkb
+      = render :partial => "table_sep", :locals => {:header =>"Занятость"}
+      = render :partial => "client_field", :locals => {:field_name =>"Место работы", :field_value => client.work_info}
+      = render :partial => "client_field", :locals => {:field_name =>"Пенсионер ?", :field_value => boolean_to_yes_no(client.pensioner)}
+      = render :partial => "client_field", :locals => {:field_name =>"Ветеран труда ?", :field_value => boolean_to_yes_no(client.is_work_veteran)}
+      = render :partial => "table_sep", :locals => {:header =>"Заболевания подлежащие диспансерному учету"}
+      = render :partial => "mkb10",:collection => client.mkbs, :as => :mkb
 
-    = render :partial => "table_sep", :locals => {:header =>"Прочие данные"}
+      = render :partial => "table_sep", :locals => {:header =>"Профосмотры в текущем году"}
 
-    -case client.have_full_prof_inspection_this_year?
-    -when :prof_all then 
-      =render :partial => "client_field", :locals => {:field_name =>"Профосмотр в текущем году", :field_value => I18n.t(:prof_al),:emph => "success"}
-    -when :prof_partial then 
-      =render :partial => "client_field", :locals => {:field_name =>"Профосмотр в текущем году", :field_value => I18n.t(:prof_partial),:emph => "warning"}
-    -else 
-      =render :partial => "client_field", :locals => {:field_name =>"Профосмотр в текущем году", :field_value => I18n.t(:prof_zero),:emph => "important"}
-  
-    = render :partial => "client_field", :locals => {:field_name =>"Паспорт", :field_value => client.passport}
-    = render :partial => "client_field", :locals => {:field_name =>"Лекарственная непереносимость", :field_value => client.drug_intolerance}
-    = render :partial => "client_field", :locals => {:field_name =>"Группа крови", :field_value => client.blood}
-    = render :partial => "client_field", :locals => {:field_name =>"Отказался от льгот ?", :field_value => boolean_to_yes_no(client.benefit_refuse)}
-    = render :partial => "client_field", :locals => {:field_name =>"Маломобильный ?", :field_value => boolean_to_yes_no(client.disabled)}
+      = render :partial => "client_field", :locals => {:field_name =>"Есть заключение специалистов", :field_value => client.prof_inspections_info }
+      = render :partial => "client_field", :locals => {:field_name =>"Требуется пройти", :field_value => client.ungiven_prof_inspections_info }
+      = render :partial => "client_field", :locals => {:field_name =>"Сданы анализы", :field_value => client.lab_tests_info }
+      = render :partial => "client_field", :locals => {:field_name =>"Нужно сдать анализы", :field_value => client.ungiven_lab_tests_info }
+      = render :partial => "client_field", :locals => {:field_name =>"Пройдена диагностика", :field_value => client.diagnostic_tests_info }
+      = render :partial => "client_field", :locals => {:field_name =>"Нужно пройти", :field_value => client.ungiven_diagnostic_tests_info}
 
-    = render :partial => "table_sep", :locals => {:header =>"Прикрепление / открепление"}
+      = render :partial => "table_sep", :locals => {:header =>"Прочие данные"}
 
-    = render :partial => "client_field", :locals => {:field_name =>"Дата прикрепления", :field_value => client.local_date(:attach_date)}
-    = render :partial => "client_field", :locals => {:field_name =>"Дата открепления", :field_value => client.local_date(:detach_date)}
-    = render :partial => "client_field", :locals => {:field_name =>"Причина открепления", :field_value => client.detach_reason_info}
-    = render :partial => "client_field", :locals => {:field_name =>"Дата смерти", :field_value => client.local_date(:death_date)} 
-    = render :partial => "client_field", :locals => {:field_name =>"Причина смерти", :field_value => client.death_reason} 
-    = render :partial => "client_field", :locals => {:field_name =>"Особые заметки", :field_value => client.special_note}
+      -#case client.have_full_prof_inspection_this_year?
+      -#when :prof_all then 
+        =render :partial => "client_field", :locals => {:field_name =>"Профосмотр в текущем году", :field_value => I18n.t(:prof_al),:emph => "success"}
+      -#when :prof_partial then 
+        =render :partial => "client_field", :locals => {:field_name =>"Профосмотр в текущем году", :field_value => I18n.t(:prof_partial),:emph => "warning"}
+      -#else 
+        =render :partial => "client_field", :locals => {:field_name =>"Профосмотр в текущем году", :field_value => I18n.t(:prof_zero),:emph => "important"}
+    
+
+      = render :partial => "client_field", :locals => {:field_name =>"Паспорт", :field_value => client.passport}
+      = render :partial => "client_field", :locals => {:field_name =>"Лекарственная непереносимость", :field_value => client.drug_intolerance}
+      = render :partial => "client_field", :locals => {:field_name =>"Группа крови", :field_value => client.blood}
+      = render :partial => "client_field", :locals => {:field_name =>"Отказался от льгот ?", :field_value => boolean_to_yes_no(client.benefit_refuse)}
+      = render :partial => "client_field", :locals => {:field_name =>"Маломобильный ?", :field_value => boolean_to_yes_no(client.disabled)}
+
+      = render :partial => "table_sep", :locals => {:header =>"Прикрепление / открепление"}
+
+      = render :partial => "client_field", :locals => {:field_name =>"Дата прикрепления", :field_value => client.local_date(:attach_date)}
+      = render :partial => "client_field", :locals => {:field_name =>"Дата открепления", :field_value => client.local_date(:detach_date)}
+      = render :partial => "client_field", :locals => {:field_name =>"Причина открепления", :field_value => client.detach_reason_info}
+      = render :partial => "client_field", :locals => {:field_name =>"Дата смерти", :field_value => client.local_date(:death_date)} 
+      = render :partial => "client_field", :locals => {:field_name =>"Причина смерти", :field_value => client.death_reason} 
+      = render :partial => "client_field", :locals => {:field_name =>"Особые заметки", :field_value => client.special_note}

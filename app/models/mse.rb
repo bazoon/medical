@@ -21,8 +21,8 @@ class Mse < ActiveRecord::Base
   belongs_to :user
   belongs_to :client
 
-  scope :before, lambda {|end_time| {:conditions => ["indefinitely=false and conclusion_date+conclusion_till < ?", Mse.format_date(end_time)]}}
-  scope :after, lambda {|start_time| {:conditions => ["indefinitely=false and conclusion_date+conclusion_till > ?", Mse.format_date(start_time)] }}
+  scope :before, lambda {|end_time| {:conditions => ["indefinitely=false and conclusion_till < ?", Mse.format_date(end_time)]}}
+  scope :after, lambda {|start_time| {:conditions => ["indefinitely=false and conclusion_till > ?", Mse.format_date(start_time)] }}
 
   scope :between, lambda {|s,e| where("send_date between ? and ?",s,e)}
   scope :group_increase,  where("reason in (#{REASON_RE_3_1},#{REASON_RE_3_2},#{REASON_RE_2_1} )") 
@@ -39,7 +39,7 @@ class Mse < ActiveRecord::Base
 
 
  def next_conclusion_date
-  conclusion_date+conclusion_till unless indefinitely 
+  conclusion_till unless indefinitely
  end
 
  def mkb
@@ -65,9 +65,9 @@ class Mse < ActiveRecord::Base
            when Mse::REASON_RE_FIRST then I18n.t(:mse_re_first)
            when Mse::REASON_RE_SECOND then I18n.t(:mse_re_second)
            when Mse::REASON_RE_THIRD then I18n.t(:mse_re_third)
-           when Mse::REASON_RE_3_1 then I18n.t(:mse_third_to_one)
-           when Mse::REASON_RE_2_1 then I18n.t(:mse_second_to_one)
-           when Mse::REASON_RE_3_2 then I18n.t(:mse_third_to_second)
+           when Mse::REASON_RE_3_1 then I18n.t(:mse_re_third_to_one)
+           when Mse::REASON_RE_2_1 then I18n.t(:mse_re_second_to_one)
+           when Mse::REASON_RE_3_2 then I18n.t(:mse_re_third_to_second)
           end 
    result
   end
@@ -90,7 +90,7 @@ class Mse < ActiveRecord::Base
     if indefinitely
       result = I18n.t(:mse_indefinitely)
     else
-      result = I18n.l(conclusion_date + conclusion_till) unless conclusion_date.nil?
+      result = I18n.l(conclusion_till) unless conclusion_till.nil?
     end
   end
 

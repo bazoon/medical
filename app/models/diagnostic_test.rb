@@ -1,11 +1,18 @@
 class DiagnosticTest < ActiveRecord::Base
+ 
+  NORM = 1
+  BETTER = 2
+  WORSE = 3
+
   belongs_to :diagnostic_test_type, :class_name => 'Ref::DiagnosticTestType'
-  validates :test_date,:diagnostic_test_type_id,:result, :presence => true
+  validates :test_date,:diagnostic_test_type_id,:total, :presence => true
   belongs_to :client, :counter_cache => true
 
   scope :prof_inspection_minimum,lambda {prof_inspection_min} #Анализы для профосмотров
 
   scope :this_year,lambda {current_year} #Анализы за текущий год
+  scope :in_year, lambda {|sd,ed| where("test_date between ? and ?",sd,ed)}
+  
 
 
   def self.current_year
@@ -23,6 +30,19 @@ class DiagnosticTest < ActiveRecord::Base
  def valid_test?
   test_date+diagnostic_test_type.valid_period >= Date.parse(Time.now.to_s)
  end
+
+  def total_info
+   result=case total
+           when NORM then I18n.t(:diagnostic_test_norm)
+           when BETTER then I18n.t(:diagnostic_test_better)
+           when WORSE then I18n.t(:diagnostic_test_worse)
+          end 
+   result
+  end
+
+  
+
+
 
 end
 # == Schema Information

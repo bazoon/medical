@@ -32,7 +32,7 @@
     =f.radio_button :conclusion_group,Mse::C_SECOND,:label => "2 группа" 
     =f.radio_button :conclusion_group,Mse::C_THIRD,:label => "3 группа" 
 
-    =f.text_field :conclusion_till,:label => "На срок",:hint => "дней"
+    =f.date_select :conclusion_till,:label => "На срок"
     =f.check_box :indefinitely, :label => "Бессрочно"
     =f.date_select :conclusion_date,:label => "Дата выдачи заключения"
 

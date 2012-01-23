@@ -54,6 +54,12 @@ ru:
   mse_re_second_to_one: "2 -> 1"
   mse_re_third_to_second: "3 -> 2"
   mse_indefinitely: "бессрочно"
+  mse_first_group: "первая группа"
+  mse_second_group: "вторая группа"
+  mse_third_group: "третья группа"
+
+  
+
 
   invalid_date_format: "Дата должна быть в формате дд.мм.гггг !"
 
@@ -80,8 +86,12 @@ ru:
   prof_inspection_usial: "Прием"
   prof_inspection_prof: "Профосмотр"
 
+  diagnostic_test_norm: "Норма"
+  diagnostic_test_better: "Без улучшения"
+  diagnostic_test_worse: "Ухудшение. Контроль"
   
-  submit_form: "Сохранить 12"
+
+  submit_form: "Сохранить"
   #
   clients: "Пациенты"  
   new_client: "Новый пациент"   
