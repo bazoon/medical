@@ -80,9 +80,9 @@ Medical::Application.routes.draw do
   match 'clients/:client_id/ajax/lab_test_form' => "ajax#lab_test_form"
   match 'ajax/mkb_types' => "ajax#mkb_types"
   match 'ajax/prof_inspections_by_year/clients/:client_id/year/:year' => "ajax#prof_inspections_by_year",:as => :prof_inspections_by_year
-
   match 'ajax/doctor_types' => "ajax#doctor_types"
-
+  match 'ajax/lab_test_groups' => "ajax#lab_test_groups"
+  match 'ajax/lab_test_types' => "ajax#lab_test_types"
 
 
   # Sample of named route:

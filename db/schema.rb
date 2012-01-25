@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120123075627) do
+ActiveRecord::Schema.define(:version => 20120125035524) do
 
   create_table "benefits", :force => true do |t|
     t.integer  "client_id"
@@ -262,6 +262,19 @@ ActiveRecord::Schema.define(:version => 20120123075627) do
 
   create_table "ref_lab_clin_mins", :force => true do |t|
     t.integer  "lab_test_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ref_lab_test_groups", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ref_lab_test_type_groups", :force => true do |t|
+    t.integer  "lab_test_type_id"
+    t.integer  "lab_test_group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

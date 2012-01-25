@@ -10,11 +10,5 @@ $(function () {
      searchingText: "Идет поиск...",
      hintText: "Наберите слово для поиска",
      noResultText: "Ничего не найдено"
-
-    
-   
-   
    });
-
-
 });

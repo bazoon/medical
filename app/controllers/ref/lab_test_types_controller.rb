@@ -5,12 +5,13 @@ class Ref::LabTestTypesController < ApplicationController
   
 
   def index
-    @ref_lab_test_types = Ref::LabTestType.page(params[:page]).per(10)
+    @ref_lab_test_types = Ref::LabTestType.search(params[:search_lab_test_type]).page(params[:page]).per(10)
  #   @lab_test_type =@ref_lab_test_types[0] 
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @ref_lab_test_types }
+      format.js
     end
   end
 

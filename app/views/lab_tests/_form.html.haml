@@ -1,6 +1,7 @@
 =bootstrap_form_for [@client, @lab_test] do |f|
   =f.date_select :test_date,:label => "Дата" 
-  =f.collection_select :lab_test_type_id,Ref::LabTestType.all,:id,:name,:label => "Тип анализа"
+  =#f.collection_select :lab_test_type_id,Ref::LabTestType.all,:id,:name,:label => "Тип анализа"
+  =f.text_field :lab_test_type_name,:label => "Тип анализа"
   =f.text_field :result,:label => "Результат"
   .actions
     =f.submit "Сохранить",:class => "btn primary"

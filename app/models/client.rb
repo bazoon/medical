@@ -155,7 +155,7 @@ def prof_inspections_info
 end
 
 def lab_tests_info
- lab_tests.this_year.prof_inspection_minimum.map {|lt| lt.lab_test_type.name}.uniq
+ lab_tests.this_year.prof_inspection_minimum.map {|lt| lt.lab_test_type.lab_test_group_names }.uniq.flatten
 end
 
 def diagnostic_tests_info
@@ -163,7 +163,7 @@ def diagnostic_tests_info
 end
 
 def ungiven_lab_tests_info
- Ref::LabTestType.prof_inspection_minimum.map {|ltt| ltt.name} - lab_tests_info
+ Ref::LabTestType.prof_inspection_minimum.map {|ltt| ltt.lab_test_group_names }.uniq.flatten - lab_tests_info
 end  
 
 def ungiven_diagnostic_tests_info

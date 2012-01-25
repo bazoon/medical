@@ -1,13 +1,15 @@
 class RefPresenter < BasePresenter
 
-def prepare(items,title,notice)
+def prepare(items,title,notice,paginate = true)
  @items = items
  @title = title
  @notice = notice
+ @paginate = paginate
 end
 
 def header
- content = index_header + flash_message + paginate_items
+ content = index_header + flash_message 
+ content += paginate_items if @paginate
  content
 end
 

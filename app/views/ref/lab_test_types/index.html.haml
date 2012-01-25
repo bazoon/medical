@@ -1,28 +1,24 @@
 - present "Ref" do |p|
-  -p.prepare(@ref_lab_test_types,"Виды анализов",notice)
+  -p.prepare(@ref_lab_test_types,"Виды анализов",notice,false)
 
   =p.header
+
+
+  =form_tag ref_lab_test_types_path, :id => "lab_test_type_search" , :method => 'get' do 
+    =hidden_field_tag :direction, params[:direction] 
+    =hidden_field_tag :sort, params[:sort] 
+    =text_field_tag :search_lab_test_type, params[:search] 
+    =submit_tag "Поиск", :name => nil 
+    %span{:class => "help-block"}
+      В поле поиска можно указать 
+
+
+
+
 
   =p.table_or_empty do
     
     %div#lab_test_types
-      %table#newspaper-a
-        %tr
-          %th Тип
-          %th Норма
-          %th Период действия
-          %th Теги
-          %th
-          %th
-
-        - @ref_lab_test_types.each do |ref_lab_test_type|
-          %tr
-            %td= ref_lab_test_type.name
-            %td= ref_lab_test_type.norm
-            %td= ref_lab_test_type.valid_period
-            %td= ref_lab_test_type.clin_min_list
-            %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"), edit_ref_lab_test_type_path(ref_lab_test_type)
-            %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-minus") , ref_lab_test_type_path(ref_lab_test_type), :confirm => 'Are you sure?', :method => :delete if ref_lab_test_type.can_be_deleted
-%br
+      =render "lab_test_types"
 
 = link_to I18n.t(:new_record),new_ref_lab_test_type_path

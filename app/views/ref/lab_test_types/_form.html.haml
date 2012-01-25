@@ -1,4 +1,5 @@
 =bootstrap_form_for @ref_lab_test_type do |f|
+  =f.text_field :lab_test_group_tokens,:label=> "Группа","data-pre" => @ref_lab_test_type.lab_test_groups.map(&:attributes).to_json
   =f.text_field :name, :label => "Тип анализа"
   =f.text_field :norm, :label => "Норма" 
   =f.text_field :valid_period, :label => "Период действия" 

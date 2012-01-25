@@ -65,5 +65,28 @@ class AjaxController < ApplicationController
 
   end
 
+  def lab_test_groups
+    @lab_test_groups = Ref::LabTestGroup.where("lower(name) like ?","%#{params[:q]}%")
+    results = @lab_test_groups.map(&:attributes)
+    results << {:name => "#{I18n.t(:add)}: #{params[:q]}", :id => "CREATE_#{params[:q]}_END"}
+
+    respond_to do |format|
+      format.json {render :json => results }
+    end
+
+  end
+
+ def lab_test_types
+    if params[:term]
+      like= "%".concat(params[:term].concat("%"))
+      ltt = Ref::LabTestType.where("name like ?", like)
+    else
+      ltt = Ref::LabTestType.all
+    end
+    list = ltt.map {|l| Hash[ id: l.id, label: l.name]}
+    render json: list
+ end
+
+
 
 end
