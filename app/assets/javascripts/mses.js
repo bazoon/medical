@@ -5,6 +5,7 @@
 
 
 $(document).ready(function() {
+ 
   return $('#mse_mkb').autocomplete({
     source: "/ajax/mkb_types"
   });
@@ -14,34 +15,3 @@ $(document).ready(function() {
 
 
 
-$(document).ready(function() {
-
-		$('#cal').fullCalendar({
-           	header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
-			},
-			editable: false,
-			
-			events: "/mse_events",
-			
-			eventDrop: function(event, delta) {
-				alert(event.title + ' was moved ' + delta + ' days\n' +
-					'(should probably update your database)');
-
-
-                        
-
-
-
-			},
-			
-			loading: function(bool) {
-				if (bool) $('#loading').show();
-				else $('#loading').hide();
-			}
-			
-		});
-		
-	});

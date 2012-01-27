@@ -17,16 +17,21 @@
           %th % 
     %tbody
 
-
-      -p.groups.each_pair do |group_name, in_group|
+      - {1 => "1",
+         2 => "2",
+         3 => "3",
+         4 => "4",
+         5 => "5"}.each do |k,v|
         %tr
-          %td=group_name
-          -p.years.each do |year|
-            %td=p.value_or_zero(in_group[year])
-            %td=p.get_rel(in_group[year],p.group_total(year))
-
+          %td
+            =v
+            -p.years.each do |year|
+              %td= p.observed(year,k)
+              %td= p.get_rel(p.observed(year,k),p.year_total(year))
+          
       %tr
-        %td Всего 
-        -p.years.each do |year|
-          %td=p.group_total(year)
-          %td 100%
+        %td
+          Всего
+          -p.years.each do |year|
+            %td= p.year_total(year)
+            %td 100 %

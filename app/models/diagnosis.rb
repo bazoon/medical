@@ -1,6 +1,7 @@
 class Diagnosis < ActiveRecord::Base
   belongs_to :prof_inspection
   belongs_to :mkb_type, :class_name => 'Ref::MkbType'
+  has_one :client,:through => :prof_inspection
 
   #delegate :mkb,:mkb=,:to => :mkb_type, :allow_nil => true
 
@@ -29,6 +30,8 @@ class Diagnosis < ActiveRecord::Base
 
   scope :between,lambda { |s,e| joins(:prof_inspection).where("prof_inspections.actual_date between ? and ?",s,e) }
   scope :first_time,where("first_detected = true")
+  scope :client_sector, lambda {|sector_num| joins(:prof_inspection).merge(ProfInspection.client_sector(sector_num))}
+
 
  def mkb
   "#{mkb_type.try(:code)}: #{mkb_type.try(:name)}" unless mkb_type.nil?

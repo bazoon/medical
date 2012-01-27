@@ -30,7 +30,6 @@ class Client < ActiveRecord::Base
 
   validates :name,:surname,:birth_date,:ins_company_id,:client_sex_id, :presence => true
     
-  scope :present, lambda {|e| where("attach_date <= ? and (detach_date is null or detach_date > ?) ",e,e)}
 
  # validates :birth_date, :format => {:with => /\d{2}\.\d{2}\.\d{4}/, :message => I18n.t(:invalid_date_format)}
 
@@ -55,11 +54,13 @@ class Client < ActiveRecord::Base
   scope :chernobil,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.chernobil)
   scope :veterans,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.veterans)
 
+  #Участок пациента
+  scope :sector,lambda {|sector_num|  where("num_card like ?",sector_num.to_s+"%") }
+  
+  #Пациенты не снятые с учета до даты e
+  scope :present, lambda {|e| where("attach_date <= ? and (detach_date is null or detach_date > ?) ",e,e)}
 
   scope :pensioners,where("pensioner = true")
-
-
-  
   scope :disables, where("disabled = true") 
 
   #Hospitalization scopes
@@ -102,8 +103,10 @@ def death_reason
 end
 
 def death_reason=(name)
- code = name[0,name.index(":")]
- self.mkb_type = Ref::MkbType.find_by_code(code)
+ unless name.nil? or name.blank?
+  code = name[0,name.index(":")]
+  self.mkb_type = Ref::MkbType.find_by_code(code)
+ end 
 end
 
 def mkb_type_name

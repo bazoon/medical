@@ -13,6 +13,10 @@ class ProfInspection < ActiveRecord::Base
 
   scope :disease_like,lambda {|n| joins(:diagnoses,:mkb_types).merge(Ref::MkbType.disease_like(n)) }
   scope :user_surname_like,lambda {|n| joins(:user).merge(User.surname_like(n)) }
+  
+  #Поиск осмотров для клиентов определенного участка
+  scope :client_sector, lambda {|sector_num| joins(:client).merge(Client.sector(sector_num))}
+
   scope :this_year,lambda {current_year} #Осмотры за текущий год
   scope :in_year, lambda {|sd,ed| where("actual_date between ? and ?",sd,ed)}
   scope :between, lambda {|sd,ed| where("actual_date between ? and ?",sd,ed)}

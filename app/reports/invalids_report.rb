@@ -25,10 +25,9 @@ def prepare(sd,ed,years)
 end
 
 
-def rel_row_value(abs_value,year)
- "#{((abs_value.to_f / @totals_by_year[year].to_f)*100).round(2)} %" unless abs_value.nil?
- 
-end
+#def rel_row_value(abs_value,year)
+# "#{((abs_value.to_f / @totals_by_year[year].to_f)*100).round(2)} %" unless abs_value
+#end
 #
 #def abs_row_value(items)
 # items.count unless items.nil?

@@ -24,6 +24,10 @@ class Disp < ActiveRecord::Base
 
   scope :before, lambda {|d| where("disps.actual_date < ?",d)}
   scope :between, lambda {|s,e| where("disps.actual_date between ? and ?",s,e)}
+  
+  scope :client_present,lambda {|e| joins(:client).merge(Client.present(e))}
+  scope :disp_group,lambda {|disp_group| where("disp_group = ?",disp_group) }
+
 
  def mkb
   "#{mkb_type.try(:code)}: #{mkb_type.try(:name)}" unless mkb_type.nil?
