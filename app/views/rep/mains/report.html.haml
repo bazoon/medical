@@ -5,7 +5,7 @@
 =#render :partial => "out_consult_count",:locals => {:sd => @sd,:ed => @ed, :years => @years}
 =#render :partial => "people_structure",:locals => {:sd => @sd,:ed => @ed, :years => @years}
 =#render :partial => "disp_invalids",:locals => {:sd => @sd,:ed => @ed, :years => @years}
-=render :partial => "disp_by_group",:locals => {:sd => @sd,:ed => @ed, :years => @years}
+=render :partial => "disp_by_group",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
 =#render :partial => "disp_by_group_imobile",:locals => {:sd => @sd,:ed => @ed, :years => @years}
 =#render :partial => "disp_by_mkb",:locals => {:sd => @sd,:ed => @ed, :years => @years}
 =#render :partial => "disp_efficency",:locals => {:sd => @sd,:ed => @ed, :years => @years}

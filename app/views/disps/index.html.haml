@@ -1,6 +1,6 @@
 - present "ClientOperations" do |p|
 
-  -p.prepare(@disps,"Диспансеризация",notice,@client)
+  -p.prepare(@disps,"Диспансерное наблюдение",notice,@client)
 
   =p.client_header
 
@@ -11,7 +11,6 @@
         %th Врач
         %th Заболевание
         %th Группа
-        %th Визит
         %th Результат 
         %th
         %th
@@ -20,9 +19,8 @@
         %tr
           %td= l disp.actual_date
           %td= disp.user.short_fio_with_doctor_type
-          %td= disp.mkb_type.code
-          %td= disp.disp_group
-          %td= disp.disp_type_info
+          %td= disp.mkb.mkb
+          %td= disp.mkb.disp_group
           %td= disp.result_info
 
           %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_disp_path(@client,disp)

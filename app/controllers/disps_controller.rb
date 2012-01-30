@@ -32,6 +32,7 @@ class DispsController < ApplicationController
   # GET /disps/new.json
   def new
     @disp = Disp.new
+    @disp_mkbs = @client.mkbs
 
     respond_to do |format|
       format.html # new.html.erb

@@ -10,6 +10,7 @@ end
 def report
   @sd=params[:start_date]
   @ed=params[:end_date]
+  @sector_num = params[:sector_num]
   @years = years_array(@sd,@ed)
 end
 

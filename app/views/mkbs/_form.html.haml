@@ -1,6 +1,18 @@
 =bootstrap_form_for [@client, @mkb] do |f|
+  %fieldset
+    %legend 
+      Основные данные
   =f.date_select :actual_date,:label => "Дата"
+  =f.date_select :out_date,:label => "Дата открепления"
   =f.text_field :mkb, :label => "Заболевание"
   =f.collection_select :user_id,User.all,:id,:short_fio_with_doctor_type, :label => "Врач"
+  %fieldset
+    %legend 
+      Диспансерная группа
+    =f.radio_button :disp_group,1,:label => "1",:checked => true 
+    =f.radio_button :disp_group,2,:label => "2"
+    =f.radio_button :disp_group,3,:label => "3"
+    =f.radio_button :disp_group,4,:label => "4"
+    =f.radio_button :disp_group,5,:label => "5"
   .actions
     =f.submit "Сохранить",:class => "btn primary"

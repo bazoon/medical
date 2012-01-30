@@ -70,12 +70,10 @@ class Client < ActiveRecord::Base
   scope :hosp_extra, joins(:hospitalizations).merge(Hospitalization.extra)  
 
   #Disp scopes 
-  scope :disp_out, joins(:disps).merge(Disp.out)
-  scope :disp_initial, joins(:disps).merge(Disp.initial)
-  scope :disp_non_out, joins(:disps).merge(Disp.non_out)
-
   scope :disp_before, lambda {|d| joins(:disps).merge(Disp.before(d) )}
   scope :disp_between, lambda {|s,e| joins(:disps).merge(Disp.between(s,e) )}
+
+
 
   scope :died, where("detach_reason in (2,3)")
   scope :moved, where("detach_reason = 1")

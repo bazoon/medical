@@ -1,6 +1,8 @@
-%h3 Распределение ветеранов по группам диспансерного наблюдения
+%h3
+  Распределение ветеранов по группам диспансерного наблюдения 
+  ="(участок #{sector_num})"
 - report "DispByGroup" do |p|
-  - p.prepare(sd,ed,years)
+  - p.prepare_fixed_num_rows(sd,ed,years,5,sector_num)
 
   %table.condensed-table.zebra-striped
 

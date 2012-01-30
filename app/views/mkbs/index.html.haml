@@ -6,18 +6,20 @@
   =p.table_or_empty do
     %table.zebra-striped
       %tr
-        %th Код
         %th Наименование
         %th Дата
+        %th Дата открепления
+        %th Группа
         %th Врач
         %th
         %th
 
       - @mkbs.each do |mkb|
         %tr
-          %td= mkb.mkb_type.code
-          %td= mkb.mkb_type.name
-          %td= I18n.l(mkb.actual_date)
+          %td= mkb.mkb
+          %td= ldate(mkb.actual_date)
+          %td= ldate(mkb.out_date)
+          %td= mkb.disp_group
           %td= "#{mkb.user.doctor_type.name} / #{mkb.user.short_fio}"
 
           %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_mkb_path(@client,mkb)
