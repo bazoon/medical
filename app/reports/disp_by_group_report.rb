@@ -1,7 +1,4 @@
 class DispByGroupReport < BaseReport
-  attr_accessor :years
-  attr_accessor :groups
-  
 
 
 private

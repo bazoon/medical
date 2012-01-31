@@ -1,35 +1,29 @@
-class DispByGroupImobileReport < DispByGroupReport
+class DispByGroupImobileReport < BaseReport
   attr_accessor :years
   attr_accessor :groups
 
-def fill_groups
- @data = MedDiagnosticTest.find_by_sql ["select date_part('year',actual_date) as year,detach_date,disp_group,count(*)
-                                          as total from disps,clients where (actual_date between ? and ?) and 
-                                          (disps.client_id=clients.id) and ((detach_date > ?) or (detach_date is NULL))
-                                          and (disabled=true)
-                                          group by year,disp_group,detach_date
-                                          order by disp_group",@sd,@ed,@sd]
- @groups = Hash.new
- @group_total = Array.new
- @years.each { |year| @group_total[year] = 0 }
 
- @data.each do |item|
- @groups[item.disp_group] ||=  Hash.new
- 
-  if belongs_to_year(item.year.to_i,item.detach_date) and has_no_nils(item)
+private
 
-   @groups[item.disp_group][item.year.to_i] = 0 if @groups[item.disp_group][item.year.to_i].nil?
-   @groups[item.disp_group][item.year.to_i] += item.total.to_i 
-   
-   
-   @group_total[item.year.to_i] += item.total.to_i 
+def get_observed(year,num)
+ sd = Date.new(year,1,1) 
+ ed = Date.new(year,12,31) 
 
+ mkbs = Mkb.present(ed).client_present(ed).client_disables.before(ed) 
 
-  end 
+ mkbs = apply_sector_num(mkbs)
 
-
+ on_observation = case num
+     when 1 then mkbs.disp_group(1)
+     when 2 then mkbs.disp_group(2)
+     when 3 then mkbs.disp_group(3)
+     when 4 then mkbs.disp_group(4)
+     when 5 then mkbs.disp_group(5)
  end
 
+ on_observation.count unless on_observation.nil?
 end
+
+
 
 end

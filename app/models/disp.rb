@@ -2,6 +2,7 @@ class Disp < ActiveRecord::Base
   belongs_to :client
   belongs_to :user 
   belongs_to :mkb
+  has_one :mkb_type,:through => :mkb
 
 
   STABLE = 1
@@ -19,6 +20,9 @@ class Disp < ActiveRecord::Base
   
   scope :client_present,lambda {|e| joins(:client).merge(Client.present(e))}
   scope :client_sector,lambda {|n| joins(:client).merge(Client.sector(n))}
+
+
+  scope :disease, lambda {|d| joins(:mkb).merge(Mkb.disease(d))}
 
 
 # def mkb_info

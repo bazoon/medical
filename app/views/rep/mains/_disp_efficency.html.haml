@@ -1,6 +1,6 @@
 %h3 Эффективность диспансерной работы
 - report "DispEfficency" do |p|
-  - p.prepare(sd,ed,years)
+  - p.prepare_fixed_num_rows(sd,ed,years,3,sector_num)
 
   %table.condensed-table.zebra-striped
 
@@ -18,9 +18,9 @@
     %tbody
 
 
-      - {0 => "Без перемен",
-         1 => "Улучшение ",
-         2 => "Ухудшение"}.each do |k,v|
+      - {1 => "Без перемен",
+         2 => "Улучшение ",
+         3 => "Ухудшение"}.each do |k,v|
         %tr
           %td
             =v

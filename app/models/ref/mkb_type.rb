@@ -10,7 +10,8 @@ validates :code, :format => {:with => /^([A-Z])(\d+\.*)*/}
 acts_as_taggable  #Теги для отнесения к тому или иному классу заболеваний
 
 scope :disease_like,lambda {|n| disease_like(n)}
- 
+scope :disease,lambda {|n| where("name = ?",n) }
+
 
 scope :tisis, lambda { where("code_i between ? and ? ",cti("A15"),cti("A19"))}
 scope :neoplasm, lambda { where("code_i between ? and ? ",cti("C0"),cti("D48"))}

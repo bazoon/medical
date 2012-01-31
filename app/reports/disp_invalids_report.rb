@@ -3,9 +3,10 @@ class DispInvalidsReport < BaseReport
  attr_accessor :years 
 
 
-def prepare(sd,ed,years)
+def prepare(sd,ed,years,sector_num)
   @years = years
-
+  @sector_num = sector_num
+   
   @by_years_and_benefit = Hash.new
   @benefits = ["020","010","030"]
 
@@ -47,30 +48,31 @@ def get_observed(year,benefit,num)
  sd = Date.new(year,1,1) 
  ed = Date.new(year,12,31) 
  
+ clients = Client.sector(@sector_num).benefit_category(benefit) 
 
  on_observation = case num
-    when 1 then Client.benefit_category(benefit).disp_before(sd)
-    when 2 then Client.benefit_category(benefit).disp_between(sd,ed).disp_initial
-    when 3 then Client.benefit_category(benefit).disp_between(sd,ed).disp_out
-    when 4 then Client.benefit_category(benefit).disp_between(sd,ed).disp_out.moved
-    when 5 then Client.benefit_category(benefit).disp_between(sd,ed).disp_out.died
-    when 6 then Client.benefit_category(benefit).disp_before(ed)
-    when 7 then Client.benefit_category(benefit).disp_before(ed) & Client.benefit_category("081") #инвалиды 1 ой группы
-    when 8 then Client.benefit_category(benefit).disp_before(ed) & Client.benefit_category("082") #инвалиды 1 ой группы
-    when 9 then Client.benefit_category(benefit).disp_before(ed) & Client.benefit_category("083") #инвалиды 1 ой группы
-    when 10 then Client.benefit_category(benefit).disp_before(ed).full_inspected
-    when 11 then Client.benefit_category(benefit).disp_before(ed).rested
+    when 1 then  clients.mkbs_present(sd).mkbs_before(sd)
+    when 2 then  clients.mkbs_between(sd,ed)
+    when 3 then  clients.mkbs_gone(sd,ed)
+    when 4 then  clients.mkbs_gone(sd,ed).moved
+    when 5 then  clients.mkbs_gone(sd,ed).died
+    when 6 then  clients.mkbs_before(ed).mkbs_present(ed)
+    when 7 then  clients.mkbs_before(ed).mkbs_present(ed) & Client.benefit_category("081") #инвалиды 1 ой группы
+    when 8 then  clients.mkbs_before(ed).mkbs_present(ed) & Client.benefit_category("082") #инвалиды 1 ой группы
+    when 9 then  clients.mkbs_before(ed).mkbs_present(ed) & Client.benefit_category("083") #инвалиды 1 ой группы
+    when 10 then clients.full_inspected
+    when 11 then clients.rested
  end
 
-  count = case num
-    when 1 then get_initial_non_out_count(on_observation,sd)
-    when 6 then get_initial_non_out_count(on_observation,ed)
-     
-    else on_observation.count       
-  end
+#  count = case num
+#    when 1 then get_initial_non_out_count(on_observation,sd)
+#    when 6 then get_initial_non_out_count(on_observation,ed)
+#     
+#    else on_observation.count       
+#  end
 
+ on_observation.count
  
- count
 end
 
 #Выборка тех, кто не был снят с учета после постановки

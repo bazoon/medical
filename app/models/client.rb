@@ -73,8 +73,6 @@ class Client < ActiveRecord::Base
   scope :disp_before, lambda {|d| joins(:disps).merge(Disp.before(d) )}
   scope :disp_between, lambda {|s,e| joins(:disps).merge(Disp.between(s,e) )}
 
-
-
   scope :died, where("detach_reason in (2,3)")
   scope :moved, where("detach_reason = 1")
   scope :died_or_moved,where("detach_reason in (1,2,3)")
@@ -94,6 +92,12 @@ class Client < ActiveRecord::Base
   scope :mse_re_3, lambda {joins(:mses).merge(Mse.re_3 )}
   scope :mse_re_3_2, lambda {joins(:mses).merge(Mse.re_3_2 )}
 
+
+  #Mkbs scoupes
+  scope :mkbs_before, lambda {|d| joins(:mkbs).merge(Mkb.before(d) )}
+  scope :mkbs_between, lambda {|s,e| joins(:mkbs).merge(Mkb.between(s,e) )}
+  scope :mkbs_present, lambda {|e| joins(:mkbs).merge(Mkb.present(e) )}
+  scope :mkbs_gone, lambda {|s,e| joins(:mkbs).merge(Mkb.gone(s,e) )}
 
 
 def death_reason

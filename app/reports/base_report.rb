@@ -1,9 +1,17 @@
 class BaseReport
- 
+  attr_accessor :years
+
 #sd,ed даты отчетного периода
 #num_rows количество строк отчета
 #section_num номер участка
 #
+def prepare(sd,ed,years,sector_num)  
+ @sd = sd
+ @ed = ed
+ @years = years
+ @sector_num =sector_num
+end  
+  
 def prepare_fixed_num_rows(sd,ed,years,num_rows,sector_num)  
  @sd = sd
  @ed = ed

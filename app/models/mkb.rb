@@ -8,9 +8,12 @@ class Mkb < ActiveRecord::Base
   scope :before, lambda {|d| where("actual_date < ?",d)}
   scope :between, lambda {|s,e| where("actual_date between ? and ?",s,e)}
   scope :present, lambda {|e| where("out_date is null or out_date > ?",e)}
+  scope :gone, lambda {|s,e| where("out_date between ? and ?",s,e) }
 
   scope :client_present,lambda {|e| joins(:client).merge(Client.present(e))}
   scope :client_sector,lambda {|n| joins(:client).merge(Client.sector(n))}
+  scope :client_disables,lambda {joins(:client).merge(Client.disables)}
+  scope :disease, lambda {|d| joins(:mkb_type).merge(Ref::MkbType.disease(d))}
 
 
   scope :disp_group, lambda {|d| where("disp_group = ?",d)}
