@@ -4,32 +4,6 @@ class ImobileHospReport < BaseReport
   attr_accessor :plan_places
 
 
-def prepare(sd,ed,years)  
- @sd = sd
- @ed = ed
- @years = years
- @years_total=Array.new
-
- @observed = Hash.new 
-
- @years.each do |y|
-
-  @observed[y] = Array.new
-
-  (0..1).to_a.each do |num|
-    @observed[y][num] = get_observed(y,num)
-  end
- end
-end
-
-#Метод доступа к переменной внутри класса
-def observed(year,num)
- @observed[year][num]
-end
-
-def year_total(year)
- @observed[year].compact.sum unless @observed.nil? or @observed[year].nil?
-end  
 
 private
 
@@ -38,10 +12,11 @@ def get_observed(year,num)
  ed = Date.new(year,12,31) 
 
  hosps = Hospitalization.between(sd,ed)
+ hosps = apply_sector_num(hosps)
 
  on_observation = case num
-    when 0 then  hosps.planned
-    when 1 then  hosps.extra
+    when 1 then  hosps.planned
+    when 2 then  hosps.extra
  end
 
  on_observation.count unless on_observation.nil?

@@ -2,32 +2,21 @@ class OutConsultCountReport < BaseReport
   attr_accessor :years
   attr_accessor :out_places
   
-def prepare(sd,ed,years)  
- @sd = sd
- @ed = ed
- @years = years
- @years_total=Array.new
 
- fill_out_places
-end
+def fill
+ meds = MedDiagnosticTest.between(@sd,@ed)
+ meds = apply_sector_num(meds)
 
-#Плановая госпитализация
-def fill_out_places
- @places = MedDiagnosticTest.find_by_sql ["select date_part('year',test_date) as year,ref_hospitalization_types.name,count(*)
-                                          as total from med_diagnostic_tests,ref_hospitalization_types where (test_date between ? and ?) and 
-                                          (ref_hospitalization_types.id=med_diagnostic_tests.hospitalization_type_id)  
-                                          group by year,ref_hospitalization_types.name",@sd,@ed]
- 
  @out_places = Hash.new
- @out_total = Array.new
- @years.each { |year| @out_total[year] = 0 }
+ @out_total = Hash.new
 
- @places.each do |place|
-  @out_places[place.name] ||=  Hash.new
-  @out_places[place.name][place.year.to_i] = place.total.to_i unless place.nil? or place.name.nil? or place.year.nil? or place.total.nil?
-  @out_total[place.year.to_i] += place.total.to_i 
+ meds.each do |m|
+  @out_places[m.hospitalization_type.name] ||= Hash.new
+  @out_places[m.hospitalization_type.name][m.test_date.year] ||= 0
+  @out_places[m.hospitalization_type.name][m.test_date.year] +=1
+  @out_total[m.test_date.year] ||= 0
+  @out_total[m.test_date.year] += 1
  end
-
 end
 
 def out_total(year)

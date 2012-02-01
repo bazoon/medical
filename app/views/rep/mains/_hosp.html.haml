@@ -1,6 +1,7 @@
 %h3 Госпитализация
 - report "Hosp" do |p|
-  - p.prepare(sd,ed,years)
+  - p.prepare_fixed_num_rows(sd,ed,years,6,sector_num)
+  - p.fill
 
   %table.condensed-table.zebra-striped
 
@@ -42,18 +43,18 @@
         -years.each do |k|
           %td 
           %td 
-      - {0 => "Нуждалось в госпитализации",
-         1 => "Госпитализировано",
-         2 => "Не госпитализировано, из них: ",
-         3 => "В связи с отказом больного",
-         4 => "В связи с отстутствием мест",
-         5 => "В связи с не подтвержденным диагнозом"}.each do |k,v|
+      - {1 => "Нуждалось в госпитализации",
+         2 => "Госпитализировано",
+         3 => "Не госпитализировано, из них: ",
+         4 => "В связи с отказом больного",
+         5 => "В связи с отстутствием мест",
+         6 => "В связи с не подтвержденным диагнозом"}.each do |k,v|
         %tr
           %td
             =v
             -p.years.each do |year|
               %td= p.observed(year,k)
-              %td= p.get_rel(p.observed(year,k),p.observed(year,0))
+              %td= p.get_rel(p.observed(year,k),p.observed(year,1))
 
 
 

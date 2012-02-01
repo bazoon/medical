@@ -66,6 +66,7 @@ end
     result
   end
 
+
 def year_total(year)
  @observed[year].compact.sum unless @observed.nil? or @observed[year].nil?
 end  

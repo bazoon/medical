@@ -33,6 +33,8 @@ class Hospitalization < ActiveRecord::Base
   scope :digestive_diseases, joins(:mkb_type).merge(Ref::MkbType.digestive_diseases)
 
 
+  scope :client_present,lambda {|e| joins(:client).merge(Client.present(e))}
+  scope :client_sector,lambda {|n| joins(:client).merge(Client.sector(n))}
 
 
  def mkb

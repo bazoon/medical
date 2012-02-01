@@ -9,7 +9,7 @@ class Benefit < ActiveRecord::Base
  # before_save :add_to_client
  # after_destroy :remove_from_client 
 
-  #scope :war_invalids, includes(:benefit_category).where("ref_benefit_categories.code=?","010")   
+  #scope :lids, includes(:benefit_category).where("ref_benefit_categories.code=?","010")   
  
 
 #  scope :first_group_invalids, includes(:benefit_category).where("ref_benefit_categories=?","081")
@@ -28,6 +28,13 @@ class Benefit < ActiveRecord::Base
   scope :repressed,joins(:benefit_category).merge(Ref::BenefitCategory.repressed)
   scope :chernobil,joins(:benefit_category).merge(Ref::BenefitCategory.chernobil)
   scope :veterans,joins(:benefit_category).merge(Ref::BenefitCategory.veterans)
+
+
+  scope :primary,lambda {where("benefits.prim = true")}
+  scope :client_present,lambda {|e| joins(:client).merge(Client.present(e))}
+  scope :client_sector,lambda {|n| joins(:client).merge(Client.sector(n))}
+
+
 
 def check_primary_field
   client_benefits = Benefit.where(:client_id => client_id)

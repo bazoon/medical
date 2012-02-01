@@ -1,6 +1,6 @@
 %h3 Госпитализация маломобильных
 - report "ImobileHosp" do |p|
-  - p.prepare(sd,ed,years)
+  - p.prepare_fixed_num_rows(sd,ed,years,2,sector_num)
 
   %table.condensed-table.zebra-striped
 
@@ -29,8 +29,8 @@
           %td=p.year_total(year)
           %td 100%
 
-      - {0 => "- планово ",
-         1 => "- экстренно"}.each do |k,v|
+      - {1 => "- планово ",
+         2 => "- экстренно"}.each do |k,v|
         %tr
           %td
             =v

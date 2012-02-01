@@ -43,16 +43,16 @@ class Client < ActiveRecord::Base
   scope :benefit_category, lambda { |code| includes(:benefits).where("benefits.benefit_category_id = ?",Ref::BenefitCategory.id_by_code(code) ) }
  
 
-  scope :war_invalids,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.war_invalids)
-  scope :war_participants,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.war_participants)
-  scope :conflict_participants,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.conflict_participants)
-  scope :widows,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.widows)
-  scope :blokadniks,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.blokadniks)
-  scope :prisoners,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.prisoners)
-  scope :front_workers,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.front_workers)
-  scope :repressed,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.repressed)
-  scope :chernobil,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.chernobil)
-  scope :veterans,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.veterans)
+  scope :war_invalids,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.war_invalids).merge(Benefit.primary)
+  scope :war_participants,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.war_participants).merge(Benefit.primary)
+  scope :conflict_participants,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.conflict_participants).merge(Benefit.primary)
+  scope :widows,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.widows).merge(Benefit.primary)
+  scope :blokadniks,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.blokadniks).merge(Benefit.primary)
+  scope :prisoners,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.prisoners).merge(Benefit.primary)
+  scope :front_workers,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.front_workers).merge(Benefit.primary)
+  scope :repressed,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.repressed).merge(Benefit.primary)
+  scope :chernobil,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.chernobil).merge(Benefit.primary)
+ 
 
   #Участок пациента
   scope :sector,lambda {|sector_num|  where("num_card like ?",sector_num.to_s+"%") }
@@ -60,6 +60,7 @@ class Client < ActiveRecord::Base
   #Пациенты не снятые с учета до даты e
   scope :present, lambda {|e| where("attach_date <= ? and (detach_date is null or detach_date > ?) ",e,e)}
 
+  scope :work_veterans,lambda {where("is_work_veteran = true")}
   scope :pensioners,where("pensioner = true")
   scope :disables, where("disabled = true") 
 

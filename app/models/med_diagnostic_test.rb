@@ -6,6 +6,13 @@ class MedDiagnosticTest < ActiveRecord::Base
   has_many :doctor_types,:through => :med_diagnostic_test_doctors, :class_name => 'Ref::DoctorType'
 
 
+  scope :before, lambda {|d| where("test_date < ?",d)}
+  scope :between, lambda {|s,e| where("test_date between ? and ?",s,e)}
+  
+  scope :client_present,lambda {|e| joins(:client).merge(Client.present(e))}
+  scope :client_sector,lambda {|n| joins(:client).merge(Client.sector(n))}
+
+
   AIM_CONSULT = 1
   AIM_THERAPY_CORRECTION = 2
   AIM_DIAGNOSIS_CLARIFICATION = 3

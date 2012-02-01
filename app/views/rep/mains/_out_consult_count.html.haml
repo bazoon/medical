@@ -1,6 +1,7 @@
 %h3 Число получивших консультации за пределами госпиталя
 - report "OutConsultCount" do |p|
-  - p.prepare(sd,ed,years)
+  - p.prepare(sd,ed,years,sector_num)
+  - p.fill
 
   %table.condensed-table.zebra-striped
 
@@ -25,3 +26,8 @@
             %td=p.value_or_zero(sent[year])
             %td=p.get_rel(sent[year],p.out_total(year))
 
+      %tr
+        %td Всего
+        -p.years.each do |year|
+          %td=p.out_total(year)
+          %td 100%
