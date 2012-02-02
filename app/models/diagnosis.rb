@@ -29,8 +29,13 @@ class Diagnosis < ActiveRecord::Base
   scope :injury_poisons, joins(:mkb_type).merge(Ref::MkbType.injury_poisons)
 
   scope :between,lambda { |s,e| joins(:prof_inspection).where("prof_inspections.actual_date between ? and ?",s,e) }
+  scope :prof_only,lambda { joins(:prof_inspection).merge(ProfInspection.prof_only) }
+
   scope :first_time,where("first_detected = true")
+  scope :stat_card_only,where("stat_card = true")
+ 
   scope :client_sector, lambda {|sector_num| joins(:prof_inspection).merge(ProfInspection.client_sector(sector_num))}
+  scope :client_present,lambda {|e| joins(:client).merge(Client.present(e))}
 
 
  def mkb

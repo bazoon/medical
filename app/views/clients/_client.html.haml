@@ -65,5 +65,5 @@
       = render :partial => "client_field", :locals => {:field_name =>"Дата открепления", :field_value => client.local_date(:detach_date)}
       = render :partial => "client_field", :locals => {:field_name =>"Причина открепления", :field_value => client.detach_reason_info}
       = render :partial => "client_field", :locals => {:field_name =>"Дата смерти", :field_value => client.local_date(:death_date)} 
-      = render :partial => "client_field", :locals => {:field_name =>"Причина смерти", :field_value => client.death_reason} 
+      = render :partial => "client_field", :locals => {:field_name =>"Причина смерти", :field_value => client.death_reason_info} 
       = render :partial => "client_field", :locals => {:field_name =>"Особые заметки", :field_value => client.special_note}

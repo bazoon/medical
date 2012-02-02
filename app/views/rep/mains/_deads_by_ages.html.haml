@@ -1,7 +1,8 @@
 %h3 Возрастная структура умерших
 - report "DeadsByAges" do |p|
-  - p.prepare(sd,ed,years,death_reports_presenter)
+  - p.prepare_fixed_num_rows(sd,ed,years,5,sector_num)
   %table.condensed-table.zebra-striped
+
 
     %thead
       %tr
@@ -11,24 +12,25 @@
       %tr
         %th 
         -years.each do |k|
-          %th Абс. число
+          %th факт
           %th % 
 
     %tbody
 
-      -p.by_age_and_date.each_pair do |dn,item|
+      - {1 => "До 60 лет",
+         2 => "60 - 69",
+         3 => "70 - 79",
+         4 => "80 - 89",
+         5 => "Старше 90"}.each do |k,v|
         %tr
-          %td=dn
-          -years.each do |year|
-            %td
-              = p.abs_row_value(item[year])
-            %td
-              = p.rel_row_value(item[year],p.by_years[year].count)
+          %td
+            =v
+            -p.years.each do |year|
+              %td= p.observed(year,k)
+              %td= p.get_rel(p.observed(year,k),p.year_total(year))
       %tr
-        %td Всего
-        -years.each do |year|
-          %td{:colspan => 2}= p.by_years[year].count
-
-
-
-
+        %td
+          Всего
+          -p.years.each do |year|
+            %td= p.year_total(year)
+            %td 100 %

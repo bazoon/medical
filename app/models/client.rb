@@ -42,7 +42,24 @@ class Client < ActiveRecord::Base
   #Возможна ошибка, если ищется id несуществующей льготы
   scope :benefit_category, lambda { |code| includes(:benefits).where("benefits.benefit_category_id = ?",Ref::BenefitCategory.id_by_code(code) ) }
  
+  #Причины смерти
+  scope :dr_infections_parasits,joins(:death_reason).merge(Ref::MkbType.infections_parasits)
+  scope :dr_neoplasms, joins(:death_reason).merge(Ref::MkbType.neoplasms)
+  scope :dr_endocryne_diseases,joins(:death_reason).merge(Ref::MkbType.endocryne_diseases)
+  scope :dr_blood_diseases, joins(:death_reason).merge(Ref::MkbType.blood_diseases)
+  scope :dr_nervous_diseases,joins(:death_reason).merge(Ref::MkbType.nervous_diseases)
+  scope :dr_ear_diseases, joins(:death_reason).merge(Ref::MkbType.ear_diseases)
+  scope :dr_eye_diseases, joins(:death_reason).merge(Ref::MkbType.eye_diseases)
+  scope :dr_circulatory_diseases, joins(:death_reason).merge(Ref::MkbType.circulatory_diseases)
+  scope :dr_respiratory_diseases,joins(:death_reason).merge(Ref::MkbType.respiratory_diseases)
+  scope :dr_digestive_diseases, joins(:death_reason).merge(Ref::MkbType.digestive_diseases)
+  scope :dr_genitourinary_diseases,joins(:death_reason).merge(Ref::MkbType.genitourinary_diseases)
+  scope :dr_skin_diseases, joins(:death_reason).merge(Ref::MkbType.skin_diseases)
+  scope :dr_musculskeletal_diseases,joins(:death_reason).merge(Ref::MkbType.musculskeletal_diseases)
+  scope :dr_injury_poisons, joins(:death_reason).merge(Ref::MkbType.injury_poisons)
 
+
+  #Льготники
   scope :war_invalids,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.war_invalids).merge(Benefit.primary)
   scope :war_participants,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.war_participants).merge(Benefit.primary)
   scope :conflict_participants,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.conflict_participants).merge(Benefit.primary)
@@ -77,6 +94,7 @@ class Client < ActiveRecord::Base
   scope :died, where("detach_reason in (2,3)")
   scope :moved, where("detach_reason = 1")
   scope :died_or_moved,where("detach_reason in (1,2,3)")
+  scope :died_between, lambda {|s,e| where("death_date between ? and ?",s,e) }
 
   scope :full_inspected,lambda { where("prof_inspections_count >= 12") } #Период не выбран ! Использовать только для выборки за определенный год
   scope :rested,lambda { where("sanatorium_notes_count > 0") } #Период не выбран ! Использовать только для выборки за определенный год
@@ -101,15 +119,18 @@ class Client < ActiveRecord::Base
   scope :mkbs_gone, lambda {|s,e| joins(:mkbs).merge(Mkb.gone(s,e) )}
 
 
-def death_reason
-"#{mkb_type.try(:code)}: #{mkb_type.try(:name)}" unless mkb_type.nil?
+def death_reason_info
+"#{death_reason.try(:code)}: #{death_reason.try(:name)}" unless death_reason.nil?
 end
 
-def death_reason=(name)
+def death_reason_info=(name)
  unless name.nil? or name.blank?
   code = name[0,name.index(":")]
-  self.mkb_type = Ref::MkbType.find_by_code(code)
- end 
+  self.death_reason = Ref::MkbType.find_by_code(code)
+ else
+  self.death_reason = nil
+ end
+
 end
 
 def mkb_type_name

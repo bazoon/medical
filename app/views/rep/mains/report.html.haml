@@ -1,9 +1,9 @@
-=#render :partial => "prof_desease_freq",:locals => {:sd => @sd,:ed => @ed, :years => @years}
-=#render :partial => "sickness_rate",:locals => {:sd => @sd,:ed => @ed, :years => @years}
+=#render :partial => "prof_desease_freq",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
+=#render :partial => "sickness_rate",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
 =#render :partial => "hosp",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
 =#render :partial => "hosp_therap_extra",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
 =#render :partial => "out_consult_count",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
-=render :partial => "people_structure",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
+=#render :partial => "people_structure",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
 =#render :partial => "disp_invalids",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
 =#render :partial => "disp_by_group",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
 =#render :partial => "disp_by_group_imobile",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
@@ -13,3 +13,5 @@
 =#render :partial => "imobile_hosp_report",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
 =#render :partial => "invalids_report",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
 =#render :partial => "death_reports",:locals => {:sd => @sd,:ed => @ed, :years => @years}
+=#render :partial => "deads_by_ages",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num }
+=render :partial => "deads_by_deseases",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num }

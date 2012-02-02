@@ -1,6 +1,6 @@
 %h3 Частота выявления ранних форм заболеваний на профилактических осмотрах
 - report "ProfDeseaseFreq" do |p|
-  - p.prepare(sd,ed,years)
+  - p.prepare_fixed_num_rows(sd,ed,years,4,sector_num)
 
   %table.condensed-table.zebra-striped
 
@@ -17,10 +17,10 @@
 
     %tbody
 
-      - {0 => "Туберкулез",
-         1 => "Онко",
-         2 => "Глаукома",
-         3 => "Сахарный диабет"}.each do |k,v|
+      - {1 => "Туберкулез",
+         2 => "Онко",
+         3 => "Глаукома",
+         4 => "Сахарный диабет"}.each do |k,v|
         %tr
           %td
             =v
