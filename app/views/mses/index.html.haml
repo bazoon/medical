@@ -4,7 +4,7 @@
   =p.client_header
 
   =p.table_or_empty do
-    %table.zebra-striped
+    %table{:class => "table table-bordered table-striped"}
       -@mses.each do |mse|
         %tr
           %td= link_to content_tag(:span,"",class: "ui-icon ui-icon-pencil"),edit_client_mse_path(@client,mse)

@@ -88,5 +88,4 @@ class AjaxController < ApplicationController
  end
 
 
-
 end

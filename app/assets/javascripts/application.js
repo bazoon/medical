@@ -37,7 +37,8 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){  
- $('.topbar').dropdown();
+$('.dropdown-toggle').dropdown()
+
 });  
 
 
