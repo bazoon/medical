@@ -1,27 +1,45 @@
 %h3 Структура смертности из числа маломобильных больных
 - report "ImobileDeathStructure" do |p|
-  - p.prepare(sd,ed,years)
+  - p.prepare_fixed_num_rows(sd,ed,years,14,sector_num)
 
-  %table.condensed-table.zebra-striped
+  %table.table.table-condensed.table-striped.table-bordered
 
     %thead
       %tr
-        %th Причина
+        %th Наименование
         -years.each do |k|
           %th{:colspan =>2}= k
-
       %tr
         %th 
         -years.each do |k|
           %th факт
           %th % 
+
     %tbody
 
-
-      -p.deaths.each_pair do |death_reason,gone|
+      - {1 => "Инфекционные и паразитарные болезни",
+         2 => "Новообразования",
+         3 => "Болезни эндокринной системы",
+         4 => "Болезни крови и кроветворной системы",
+         5 => "Болезни нервной системы",
+         6 => "Болезни уха и сосцевидного отростка",
+         7 => "Болезни глаза и его придатков",
+         8 => "Болезни системы кровообращения",
+         9 => "Болезни органов дыхания",
+         10 => "Болезни органов пищеварения",
+         11 => "Болезни мочеполовой системы",
+         12 => "Болезни кожи и подкожной клетчатки",
+         13 => "Болезни костно-мышечной системы",
+         14 => "Травмы и отравления"}.each do |k,v|
         %tr
-          %td=death_reason
+          %td
+            =v
+            -p.years.each do |year|
+              %td= p.observed(year,k)
+              %td= p.get_rel(p.observed(year,k),p.year_total(year))
+      %tr
+        %td
+          Всего
           -p.years.each do |year|
-            %td=p.value_or_zero(gone[year])
-            %td=p.get_rel(gone[year],p.death_total(year))
-
+            %td= p.year_total(year)
+            %td 100 %

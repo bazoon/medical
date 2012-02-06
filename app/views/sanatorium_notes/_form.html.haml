@@ -4,5 +4,5 @@
   =f.date_select :period_start,:label => "Дата заезда"
   =f.date_select :period_end, :label => "Дата выбытия" 
   =f.collection_select :sanatorium_id,Ref::Sanatorium.all,:id,:name,:label => "Санаторий"
-  .actions
+  .form-actions
     =f.submit "Сохранить",:class => "btn primary"

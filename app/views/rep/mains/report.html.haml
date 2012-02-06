@@ -9,9 +9,9 @@
 =#render :partial => "disp_by_group_imobile",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
 =#render :partial => "disp_by_mkb",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
 =#render :partial => "disp_efficency",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
-=#render :partial => "imobile_death_structure",:locals => {:sd => @sd,:ed => @ed, :years => @years}
+=#render :partial => "imobile_death_structure",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
 =#render :partial => "imobile_hosp_report",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
 =#render :partial => "invalids_report",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num}
-=#render :partial => "death_reports",:locals => {:sd => @sd,:ed => @ed, :years => @years}
 =#render :partial => "deads_by_ages",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num }
-=render :partial => "deads_by_deseases",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num }
+=#render :partial => "deads_by_deseases",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num }
+=render :partial => "inspected_disables",:locals => {:sd => @sd,:ed => @ed, :years => @years,:sector_num => @sector_num }

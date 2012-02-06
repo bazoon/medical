@@ -53,7 +53,7 @@ end
 
 
  def get_rel(value,total)
-  if total != 0
+  if total and value
    "#{((value.to_f / total.to_f)*100).round(2)} "
   else
    0

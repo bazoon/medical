@@ -1,7 +1,7 @@
-.clearfix
+.control-group
   =label_tag label 
-  .input
-    =text_field_tag field_name,"",:class => "span6 ui-datepicker"
-    %span.help-block
+  .controls
+    =text_field_tag field_name,"",:class => "span4 ui-datepicker"
+    %div.help-block
       дд.мм.гггг 
       =hint if hint

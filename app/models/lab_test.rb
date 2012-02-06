@@ -11,6 +11,10 @@ class LabTest < ActiveRecord::Base
   scope :this_year,lambda {current_year} #Анализы за текущий год
   scope :in_year, lambda {|sd,ed| where("test_date between ? and ?",sd,ed)}
 
+  scope :client_present,lambda {|e| joins(:client).merge(Client.present(e))}
+  scope :client_sector,lambda {|n| joins(:client).merge(Client.sector(n))}
+  scope :client_disabled,lambda { joins(:client).merge(Client.disables)}
+
 
 
   def self.current_year

@@ -1,5 +1,5 @@
 =form_for [@client, @ref_desease_type] do |f|
 
   =render :partial => "form_helpers/input",:locals => {:f => f,:label => "Наименование", :field_name => "name", :hint => "" }
-  .actions
+  .form-actions
     =f.submit "Сохранить",:class => "btn primary"

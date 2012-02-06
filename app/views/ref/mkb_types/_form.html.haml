@@ -3,5 +3,5 @@
   =f.text_field :name,:label => "Наименование", :field_name => "name"
   =f.text_field :code,:label => "Код", :field_name => "code"
   =f.collection_select :doctor_type_id, Ref::DoctorType.all,:id,:name,:label => "Специалист"
-  .actions
+  .form-actions
     =f.submit "Сохранить",:class => "btn primary"

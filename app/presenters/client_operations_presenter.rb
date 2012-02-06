@@ -28,8 +28,9 @@ private
 
 def flash_message
  unless flash.empty?
-  content = link_to('x','',:class => "close") + @notice
-  content_tag(:div,content,:class => "alert-message info",'data-alert' => "alert") 
+#  content = link_to('x','',:class => "close",'data-dissmiss' => "alert") + @notice
+  content = @notice
+  content_tag(:div,content,:class => "alert alert-success") 
  end
 end
 

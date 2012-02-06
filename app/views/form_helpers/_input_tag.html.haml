@@ -1,10 +1,10 @@
-.clearfix
+.control-group
   =label_tag label
-  .input
+  .controls
     -if defined?(class_name)
-      =text_field_tag field_name,value,:class => "span6 #{class_name}"
+      =text_field_tag field_name,value,:class => "span4 #{class_name}"
     -else
-      =text_field_tag field_name,value,:class => "span6"
+      =text_field_tag field_name,value,:class => "span4"
     -if hint
       %span.help-block
         =hint

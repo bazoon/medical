@@ -1,5 +1,5 @@
-%h3 Число получивших консультации за пределами госпиталя
-- report "OutConsultCount" do |p|
+%h3 Число обследованных маломобильных больных
+- report "InspectedDisablesCount" do |p|
   - p.prepare(sd,ed,years,sector_num)
   - p.fill
 
@@ -7,7 +7,7 @@
 
     %thead
       %tr
-        %th Название центра
+        %th Название 
         -years.each do |k|
           %th{:colspan =>2}= k
 
@@ -18,16 +18,15 @@
           %th % 
     %tbody
 
-
-      -p.out_places.each_pair do |place_name,sent|
+      -p.tests.each_pair do |place_name,sent|
         %tr
           %td=place_name
           -p.years.each do |year|
             %td=p.value_or_zero(sent[year])
-            %td=p.get_rel(sent[year],p.out_total(year))
+            %td=p.get_rel(sent[year],p.tests_total(year))
 
       %tr
         %td Всего
         -p.years.each do |year|
-          %td=p.out_total(year)
+          %td=p.tests_total(year)
           %td 100%

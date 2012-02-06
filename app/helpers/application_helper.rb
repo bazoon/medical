@@ -37,6 +37,15 @@ def bootstrap_form_for(*args, &block)
 end
 
 
+def bootstrap_form_tag(*args, &block)
+  options = args.extract_options!
+  options.merge!(:builder => BootstrapFormBuilder)
+ # options.merge!(:validate => true)
+  options.reverse_merge!(:html => {:class => "well form-horizontal"})
+
+  form_tag(*(args + [options]), &block)
+end
+
 def present(klass)
   klass ="#{klass}Presenter".constantize
   presenter = klass.new(self)
