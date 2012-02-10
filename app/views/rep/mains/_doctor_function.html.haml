@@ -1,0 +1,34 @@
+%h3 Функция врачебной должности
+- report "DoctorFunction" do |p|
+  - p.prepare_fixed_num_rows(sd,ed,years,2,sector_num)
+
+  %table.table.table-condensed.table-striped.table-bordered
+
+    %thead
+      %tr
+        %th Наименование
+        -years.each do |k|
+          %th{:colspan =>2}= k
+      %tr
+        %th 
+        -years.each do |k|
+          %th факт
+          %th % 
+
+    %tbody
+
+      - {1 => "Число врачебных посещений на амбулаторном приеме",
+         2 => "Среднее число посещений на 1 пациента"}.each do |k,v|
+        %tr
+          %td
+            =v
+            -p.years.each do |year|
+              %td= p.observed(year,k)
+              %td= p.get_rel(p.observed(year,k),p.year_total(year))
+      %tr
+        %td
+          Всего
+          -p.years.each do |year|
+            %td= p.year_total(year)
+            %td 100 %
+

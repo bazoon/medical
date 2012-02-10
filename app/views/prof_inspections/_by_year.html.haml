@@ -1,6 +1,6 @@
 %tr
   %td=best_in_place prof_inspection, :actual_date_local, :type => :input,:path => client_prof_inspection_path(@client,prof_inspection),:method => :put
-  %td= prof_inspection.prof_inspection? ? content_tag(:span,prof_inspection.inspection_type_info,:class => "label success") : content_tag(:span,prof_inspection.inspection_type_info,:class => "label default")
+  %td= prof_inspection.prof_inspection? ? content_tag(:span,prof_inspection.inspection_type_info,:class => "label label-success") : content_tag(:span,prof_inspection.inspection_type_info,:class => "label default")
   %td= prof_inspection.user.short_fio_with_doctor_type
   %td -
   %td= prof_inspection.conclusion

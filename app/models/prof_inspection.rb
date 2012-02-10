@@ -1,4 +1,8 @@
 class ProfInspection < ActiveRecord::Base
+  USIAL = 0
+  PROF = 1
+  MAX_PROF_INSPECIONS = 12
+
   belongs_to :client, :counter_cache => true
   belongs_to :user
   has_many :diagnoses,:dependent => :delete_all,:order => "id"
@@ -10,7 +14,6 @@ class ProfInspection < ActiveRecord::Base
 
   accepts_nested_attributes_for :diagnoses,:allow_destroy => true
 
-
   scope :disease_like,lambda {|n| joins(:diagnoses,:mkb_types).merge(Ref::MkbType.disease_like(n)) }
   scope :user_surname_like,lambda {|n| joins(:user).merge(User.surname_like(n)) }
   
@@ -21,10 +24,8 @@ class ProfInspection < ActiveRecord::Base
   scope :in_year, lambda {|sd,ed| where("actual_date between ? and ?",sd,ed)}
   scope :between, lambda {|sd,ed| where("actual_date between ? and ?",sd,ed)}
   scope :prof_only,lambda { where("prof_inspections.inspection_type = ?",PROF) }
+  scope :usial_only,lambda { where("prof_inspections.inspection_type = ?",USIAL) }
 
-  USIAL = 0
-  PROF = 1
-  MAX_PROF_INSPECIONS = 12
 
   def self.search(s)
       case s
