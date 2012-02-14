@@ -3,6 +3,15 @@
 
   =p.header
 
+  =form_tag ref_mkb_types_path, :id => "ref_mkb_types" , :method => 'get' do 
+    =text_field_tag :search_mkb_type, params[:search] 
+    =submit_tag "Поиск", :name => nil 
+    %br
+    %span{:class => "help-block"}
+      В поле поиска можно указать 
+
+
+
   =p.table_or_empty do
 
     %table{:class => "table table-bordered table-striped"}

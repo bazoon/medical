@@ -50,7 +50,17 @@
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
-            <p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>
+            <%-if logged_in? %>  
+             <p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>
+           <%- else%> 
+          <form action="" class="form-search pull-right">
+            <input class="input-small" type="text" placeholder="Username">
+            <input class="input-small" type="password" placeholder="Password">
+            <button class="btn-info" type="submit">Войти</button>
+          </form>
+        <%- end%>
+
+
           </div><!--/.nav-collapse -->
 
 
@@ -75,11 +85,6 @@
       </div>
 
 
-          <form action="" class="pull-right">
-            <input class="input-small" type="text" placeholder="Username">
-            <input class="input-small" type="password" placeholder="Password">
-            <button class="btn" type="submit">Sign in</button>
-          </form>
 
 
  </div>

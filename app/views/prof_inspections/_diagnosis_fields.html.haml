@@ -1,7 +1,6 @@
-%div.fields
+%div.fields.border
+  =link_to_function "X","remove_fields(this)"
   =b.check_box :first_detected,:label => "Выявлено впервые"
   =b.check_box :stat_card,:label => "Стат. талон выдан ?"
-  =b.text_field :mkb,:label => "Заболевание",:class => "mkb span6"
+  =b.text_field :mkb,:label => "",:hint => "Заболевание",:class => "mkb span6"
   =b.hidden_field :_destroy
-  =link_to_function "Удалить","remove_fields(this)"
-  %hr

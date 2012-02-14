@@ -1,8 +1,9 @@
 class Ref::MkbTypesController < ApplicationController
   # GET /ref/mkb_types
   # GET /ref/mkb_types.json
+
   def index
-    @ref_mkb_types =Ref::MkbType.order("code").page(params[:page]).per(10)
+    @ref_mkb_types =Ref::MkbType.search(params[:search_mkb_type]).order("code").page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb

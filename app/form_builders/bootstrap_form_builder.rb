@@ -11,7 +11,6 @@ def text_field(name, options = {})
  content = content + hint_field(options[:hint]) if defined?(options[:hint])
  content = @template.content_tag(:div,content,:class => "controls")
 
-
  label = label_field(options,required)
 
  label + content
@@ -94,7 +93,7 @@ def date_select(name, options = {})
 end
 
 def text_area(name, options = {})
- options.reverse_merge!(:class => "span6")
+ options.reverse_merge!(:class => "span4")
 
  required = required_field?(@object,name)
  options[:required] = required
@@ -104,10 +103,10 @@ def text_area(name, options = {})
 
  content = content + hint_field(options[:hint]) if defined?(options[:hint])
 
- content = @template.content_tag(:div,content,:class => "input")
+ content = @template.content_tag(:div,content,:class => "controls")
 
  label = label_field(options,required)
- @template.content_tag(:div,label + content,:class => "clearfix")
+ @template.content_tag(:div,label + content,:class => "control-group")
 end
 
 

@@ -37,6 +37,24 @@ scope :injury_poisons, lambda { where("code_i between ? and ? ",         cti("S0
 #scope :tisis, lambda { where("code = ? or code = ?","C","C1")}
 
 
+
+  def self.search(s)
+     case s
+       when /^[A-Z]/
+         result = where("code like ?","%#{s}%")
+       when "" 
+         result = scoped
+       when nil
+         result = scoped
+       else
+         result = where("name like ?","%#{s}%")
+     end
+    
+    result
+  end
+
+
+
 before_save :create_code_i
 
 def create_code_i
@@ -98,7 +116,6 @@ def can_be_deleted
 end
 
 
-
 def self.cti(code)
  code.strip!
  
@@ -111,9 +128,7 @@ def self.cti(code)
   numbers.each_with_index do |num,index|
 
     result |= num.to_i << (16-8*index)
-
   end
-
 
  end
 
