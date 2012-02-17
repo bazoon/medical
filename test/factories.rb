@@ -137,6 +137,15 @@ Factory.define(:lab_test_type,:class => Ref::LabTestType) do |obj|
   obj.name "d"
 end  
 
+Factory.define(:lab_test_group,:class => Ref::LabTestGroup) do |obj|
+  obj.name "d"
+end  
+
+Factory.define(:lab_test_type_group,:class => Ref::LabTestTypeGroup) do |obj|
+  obj.association :lab_test_type, :factory => :lab_test_type
+  obj.association :lab_test_group, :factory => :lab_test_group
+end  
+
 Factory.define(:med_diagnostic_test_type,:class => Ref::MedDiagnosticTestType) do |obj|
   obj.name "d"
 end  

@@ -1,5 +1,7 @@
 Then /^I should see "([^"]*)"$/ do |value|         #"
  value.split(",").each {|v| page.should have_content(v) }
+
+
 end
 
 Then /^I should not see "([^"]*)"$/ do |fio|         #"
@@ -11,6 +13,7 @@ Then /^I should see$/ do |table|
   table.hashes.each do |values| 
     page.should have_content(values[:string])
   end
+
 end
 
 Then /^I should not see$/ do |table|
@@ -49,11 +52,11 @@ When /^i enter "([^"]*)" in "([^"]*)"$/ do |values, fields|
  field_array = fields.split(",")
 
  values.split(",").each_with_index do |v,index|
-  binding.pry
-  fill_in(v,:with => field_array[index]) 
+  #binding.pry
+  fill_in(field_array[index],:with => v ) 
  end 
 
- fill_in(field,:with => value) 
+ #fill_in(field,:with => value) 
  
 
 end
@@ -73,6 +76,10 @@ When /^i enter$/ do |table|
 
 
   end
+
+#  binding.pry
+ # save
+
 
 end
 

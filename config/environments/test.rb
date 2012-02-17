@@ -38,7 +38,9 @@ Medical::Application.configure do
   # Allow pass debug_assets=true as a query parameter to load pages with unpackaged assets
   config.assets.allow_debugging = true
 
-
-  Capybara.save_and_open_page_path = "capybara_out"
+  config.i18n.default_locale = :ru
+  config.i18n.locale = :ru
+ 
+  Capybara.save_and_open_page_path = "/var/www/rails/medical/tmp/capybara_out"
 
 end

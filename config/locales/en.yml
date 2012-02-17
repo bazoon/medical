@@ -3,3 +3,90 @@
 
 en:
   hello: "Hello world"
+  patient_saved: "Пациент успешно сохранен"
+  lab_test_saved: "Лабораторный анализ успешно сохранен"
+  lab_test_deleted: "Лабораторный анализ удален"
+  dependent_records_exists: "Нельзя удалить эти данные. Есть зависимые записи"
+  record_created: "Данные были успешно внесены"
+  record_updated: "Данные были успешно изменены"
+  record_saved: "Данные были успешно сохранены"
+  login: "Логин"
+  sex_m: "М"
+  sex_w: "Ж"
+  no_records: "Здесь нет данных, нажмите ссылку чтобы их внести"
+
+  add: "Добавить"
+  new_record: "Новая запись"
+  y: "Да"
+  n: "Нет"
+  false: "Нет"
+  true: "Да"
+  federal: "Федеральный"
+  regional: "Областной"
+  seria: "серия"
+  num: "номер"
+  given_by: "выдан"
+  document: "документ"
+  prof_all: "пройден полностью"
+  prof_partial: "пройден частично"
+  prof_zero: "не пройден"
+
+  prof_tag_name: "prof"
+  plan_hospitalization: "Плановая"
+  extra_hospitalization: "Экстренная"
+
+  mse_refused: "отказано"
+  mse_init_first_group: "впервые первая группа"
+  mse_init_second_group: "впервые вторая группа"
+  mse_init_third_group: "в первые третья группа"
+  mse_unchanged: "без изменения"
+  mse_re_first: "переосвидетельствование первая группа"
+  mse_re_second: "переосвидетельствование вторая группа"
+  mse_re_third: "переосвидетельствование третья группа"
+  mse_re_third_to_one: "3 -> 1"
+  mse_re_second_to_one: "2 -> 1"
+  mse_re_third_to_second: "3 -> 2"
+  mse_indefinitely: "бессрочно"
+  mse_first_group: "первая группа"
+  mse_second_group: "вторая группа"
+  mse_third_group: "третья группа"
+
+  
+
+
+  invalid_date_format: "Дата должна быть в формате дд.мм.гггг !"
+
+
+  detach_reason_none: "Не переведен"
+  detach_reason_other_clinic: "Переведен в другую клинику"
+  detach_reason_died_at_home: "Умер дома"
+  detach_reason_died_at_clinic: "Умер в ЛПУ"
+
+
+  disp_plan: "Плановый"
+  disp_initial: "Первоначально"
+  disp_out: "Снятие"
+ 
+  disp_unchanged: "Без изменений"
+  disp_improvement: "Улучшение"
+  disp_degradation: "Ухудшение"
+
+  hosp_hospitilized: "Госпитализирован"
+  hosp_refused: "Отказался"
+  hosp_no_place: "Нет мест"
+  hosp_unprooved: "Диагноз не подтвержден"
+ 
+  prof_inspection_usial: "Прием"
+  prof_inspection_prof: "Профосмотр"
+
+  diagnostic_test_norm: "Норма"
+  diagnostic_test_better: "Без улучшения"
+  diagnostic_test_worse: "Ухудшение. Контроль"
+  
+
+  submit_form: "Сохранить"
+  #
+  clients: "Пациенты"  
+  new_client: "Новый пациент"   
+  c_female: "Ж"
+  c_ins_name: "Югория"
