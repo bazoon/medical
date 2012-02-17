@@ -11,9 +11,10 @@ def can_be_deleted
 end
 
  def self.prof_inspection_min
-   all.map {|dtt| dtt if dtt.tag_list.include?(I18n.t(:prof_tag_name))}.compact 
+   all.map {|dtt| dtt if dtt.tag_list and dtt.tag_list.include?(I18n.t(:prof_tag_name))}.compact 
  end
 
+ 
 
 
 end

@@ -24,14 +24,16 @@ class DiagnosticTest < ActiveRecord::Base
     where("test_date between ? and ?",start_date,end_date)
   end
 
-
   def self.prof_inspection_min
-    all.map {|lt| lt if lt.diagnostic_test_type.tag_list.include?(I18n.t(:prof_tag_name))}.compact 
+    all.map {|dt| dt if dt.diagnostic_type_tag_list_include?(I18n.t(:prof_tag_name))}.compact
   end
 
+  def diagnostic_type_tag_list_include?(tag_name)
+    diagnostic_test_type.tag_list.include?(tag_name) if diagnostic_test_type and diagnostic_test_type.tag_list
+  end
 
  def valid_test?
-  test_date+diagnostic_test_type.valid_period >= Date.parse(Time.now.to_s)
+    test_date+diagnostic_test_type.valid_period >= Date.parse(Time.now.to_s)
  end
 
   def total_info

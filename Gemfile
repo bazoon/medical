@@ -30,9 +30,9 @@ gem 'kaminari'
 
 gem 'acts-as-taggable-on', '~>2.1.0'
 gem "simple-navigation"
-gem 'apotomo'
+#gem 'apotomo'
 #gem 'russian'
-gem 'dynamic_form'
+#gem 'dynamic_form'
 #gem 'acts_as_reportable'
 #gem 'ruport'
 #gem 'ruport-util'
@@ -43,8 +43,8 @@ gem 'dynamic_form'
 #gem "prawn_rails"
 gem 'pry'
 
-gem 'simple_form'
-gem 'client_side_validations'
+#gem 'simple_form'
+#gem 'client_side_validations'
 gem "best_in_place"
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -69,7 +69,7 @@ group :test,:development do
   gem 'rb-inotify'
   gem 'libnotify'
   gem 'rails_best_practices'
-  gem 'launchy'
+ gem 'launchy'
   gem 'cucumber'
   gem 'cucumber-rails'
   gem 'database_cleaner'
@@ -81,9 +81,9 @@ end
 
 group :test do
   # Pretty printed test output
-  gem 'minitest'
+ # gem 'minitest'
 #  gem 'autotest-rails-pure'
-  gem 'autotest-standalone'
+ # gem 'autotest-standalone'
 end
 
 
