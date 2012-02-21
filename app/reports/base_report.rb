@@ -53,11 +53,12 @@ end
 
 
  def get_rel(value,total)
-  if total and value
-   "#{((value.to_f / total.to_f)*100).round(2)} "
+  unless value.nil? or total.nil? or total.zero?
+   result= "#{((value.to_f / total.to_f)*100).round(2)} "
   else
-   0
+   result = 0
   end  
+  result
  end
 
   def value_or_zero(value)

@@ -1,0 +1,1060 @@
+\documentclass[a4paper,12pt]{scrreprt} 
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{cellspace}
+\usepackage{warpcol}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{geometry}
+%\geometry{verbose,tmargin=1.9cm,bmargin=2.5cm,lmargin=1.4cm,rmargin=2.2cm}
+\usepackage{graphics}
+\usepackage{scrpage2}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{colortbl}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage[pageshow]{xtab}
+\usepackage{indentfirst} %устанавливает, что первый абзац тоже имеет отступ
+\usepackage{makeidx}
+
+
+\makeindex
+
+
+\righthyphenmin=2
+
+%\usepackage{concmath} %Шрифт
+%\usepackage{times} %Шрифт
+
+%\usepackage{oldgerm} %Шрифт
+%\gothfamily
+
+
+\frenchspacing
+%\raggedbottom % формирует укороченную страницу
+%\flushbottom % тянет абзацы
+
+\begin{document}
+
+%\fontfamily{wncyr}
+%\selectfont
+
+\renewcommand{\theadfont}{\bfseries}
+
+\renewcommand{\emph}{\textit}
+\newcommand{\temph}{\small \bfseries} % для выделения Итогошных строк
+\newcommand{\themph}{\bfseries \footnotesize} % для выделения Итогошных строк
+\newcommand{\midemph}{\itshape \bfseries} % для выделения Итогошных строк
+\newcommand{\throwemph}{\Large \bfseries} % для выделения Итогошных строк
+
+\newcommand{\themphn}{\normalsize \bfseries} % для выделения Итогошных строк
+\renewcommand{\theadfont}{\bfseries \footnotesize}
+
+\newcommand{\tablefont}{\sffamily}
+
+
+
+
+%\parindent=2.6cm
+
+\pagestyle{scrheadings}
+\lohead{Годовой отчет 2011 --- ООО <<ИК <<Фред>>}
+\cohead{}
+
+\setkomafont{pagehead}{\normalfont\ttfamily\bfseries}
+
+%\setkomafont{pagehead}{\fontfamily{cmtt} \selectfont}
+
+\setkomafont{pagenumber}{\large \ttfamily}
+
+
+
+%\setkomafont{chapter}{\huge \bfseries \sffamily}
+%\setkomafont{section}{\LARGE \bfseries \sffamily}
+%\setkomafont{subsection}{\large \bfseries \sffamily}
+
+\setheadsepline{1pt}
+
+%\title{Отчет о результатах деятельности Общества с ограниченной ответственностью  \tabularnewline <<Инвестиционная компания <<Фред>>}
+%\date{\huge{\oldstylenums{2011}}}
+%\maketitle
+
+%\renewcommand{\sfdefault}{pag}
+
+\begin{titlepage}
+
+\begin{tikzpicture}
+[yscale=1.5,xscale=2,line cap=round
+% Styles
+axes/.style=,
+important line/.style={very thick},
+information text/.style={rounded corners,fill=gray!10,inner sep=1ex}]
+
+ \draw[step=0.5cm,help lines] (-1.5,-1.5) grid (1.5,1.5);
+
+ \draw[very thick, ->](-1.4,-1.4) -- (-1.4,-1.4) -- (-1.2,-1.1) -- (-1.1,-0.9) -- (-1.0,-0.8) -- (-0.9,-0.9) -- (-0.8,-0.7) -- (-0.7,-1.0) -- (-0.6,-1.1) -- (-0.5,-1.2)
+ -- (-0.4,-0.8) -- (-0.3,-0.4) -- (-0.2,-0.2) -- (-0.1,-0.1) -- (0.0,0.5) -- (0.1,0.3) -- (0.2,0.2) -- (0.3,0.5) -- (0.4,0.4) 
+ -- (0.5,0.3) -- (0.6,0.7) -- (0.7,0.8) -- (0.8,0.9) -- (0.9,0.8) -- (1.0,0.9) -- (1.1,0.7) -- (1.2,0.9) -- (1.3,1.1) -- (1.4,1.3);
+
+ \draw(-1,1) node{\resizebox{2cm}{!}{$\Phi \rho \varepsilon \Delta$}};
+
+\draw[xshift=3.35cm,yshift=-2.3cm]
+  node[right,text width=12cm,information text]
+  {
+   \ttfamily \Huge \bfseries
+
+   \resizebox{6.9cm}{!}{Общество с ограниченной ответственностью} 
+  
+   \resizebox{7cm}{!}{Инвестиционная}
+
+   \resizebox{7cm}{!}{компания Фред}
+
+   \resizebox{7.5cm}{!}{Отчет }
+
+   \resizebox{7cm}{!}{о результатах}
+
+   \resizebox{7cm}{!}{деятельности за 2011 год}
+
+   
+  };
+
+
+
+\draw[xshift=3.35cm,yshift=-8.3cm]
+  node[right,text width=12cm,information text]
+  {
+   \ttfamily \Huge \bfseries
+
+   \resizebox{7cm}{!}{625014, г. Тюмень, ул. Республики, 252} 
+
+   \resizebox{4cm}{!}{e-mail: fred@wscb.ru}
+  };
+
+
+
+\draw[xshift=3.35cm,yshift=-11.5cm]
+  node[right,text width=12cm,information text]
+  {
+   \ttfamily \Huge \bfseries
+
+   \resizebox{7cm}{!}{Директор ООО <<ИК <<Фред>>} 
+
+   \resizebox{4cm}{!}{\_\_\_\_\_\_\_ В.В. Нестеренко}
+  };
+
+
+\end{tikzpicture}
+\end{titlepage}
+
+
+\tableofcontents
+
+\selectfont
+
+\chapter{Информация о компании}
+
+
+
+\section{Регистрационные данные }
+
+\begin{tabular}{|p{1\textwidth}} 
+Общество с ограниченной ответственностью <<Инвестиционная компания>> Фред (ООО <<ИК <<Фред>>) зарегестрировано 24 ноября 1995
+года Распоряжением №910 Администрации Центрального района г. Тюмени. 04 декабря 2002 года получено Свидетельство о внесении записи
+в Единый государственный реестр юридических лиц о юридическом лице, зарегестрированном до 01 июля 2002 года серии 72 №000630878.
+Присвоен основной государственный регистрационный номер (ОГРН) --- 1 027 200 836 508. 30 октября 2009 года общество прошло процедуру 
+перерегистрации согласно Федерального закона №312-ФЗ от 30.12.2008 г, о чем была внесена запись в Единый государственный реестр юридических
+лиц и выдано свидетельство серии 72 №001825898.
+\end{tabular}
+
+
+\section{Деятельность}
+\begin{tabular}{|p{1\textwidth}} 
+Освновной вид деятельности компании --- капиталовложения в ценные бумаги.Лицензия для осуществления данной деятельности не требуется.
+\end{tabular}
+
+
+\section{Местонахождение}
+
+
+\begin{tabular}{|p{1\textwidth}} 
+Юридический адрес --- \emph{625000, г. Тюмень, ул. 8 Марта, 1}, адрес фактического местонахождения --- \emph{625014, г. Тюмень, ул. Республики, 252}.
+ООО <<ИК <<Фред>> заключен договор субаренды \emph{№0109/08 от 01 сентября 2008 г.} на офисное помещение с \emph{ООО <<Запсиблизинг>>}. Площадь арендуемого помещения \emph{26} метров квадратных (с учетом коридора). С момента заключения договора субаренды, стоимость метра квадратного составляла \emph{767} рублей. Срок аренды был установлен --- \emph{по 31 декабря 2008 года (с последующей пролонгацией).} 
+30 декабря 2008 года срок субаренды был продлен на 11 месяцев. 21 мая 2011 года заключено дополнительное соглашение о снижении арендной платы до \emph{590} рублей за метр квадратный. 01 августа 2011 года дополнительным соглашением была изменена площадь передаваемого в субаренду помещения, которая составила \emph{16} квадратных метров. Таким образом, с 01.08.2011 года сумма месячной арендной платы составляет \emph{9 440} рублей.
+
+Оплата производится путем внесения \emph{предоплаты} в размере месячной арендной платы.
+
+
+\end{tabular}
+
+\pagebreak
+
+\section{Сотрудники}
+
+\subsection{Фактический состав}
+
+\footnotesize
+\tablefont
+\begin{longtable}{|p{0.34\textwidth}  p{0.35\textwidth}  p{0.3\textwidth} } 
+
+\normalsize{\textbf{Директор}}  & \normalsize{\textbf{Главный бухгалтер}}  & \normalsize{\textbf{Зам. Директора}}  \tabularnewline
+
+ & & \tabularnewline
+
+\emph{Нестеренко}
+
+\emph{Виталий}
+
+\emph{Васильевич} 
+
+&
+
+\emph{Британчук}
+
+\emph{Наталья}
+
+\emph{Сергеевна}
+
+& 
+
+\emph{Герасимова}
+
+\emph{Вера}
+
+\emph{Борисовна}
+
+
+\tabularnewline
+
+
+\emph{Образование высшее} 
+
+1) ТГУ 2000 г. --- <<Финансы и кредит>>
+
+2) ТГНГУ 2006 --- <<Управление и информатика в технических  системах>>. 
+
+3) \emph{ Квалификационный атестат} серии АА \No030312 выдан Решением Аттестационной комиссии  03 июля 2003 года. Присвоена квалификация соответствующая должности руководителя или контроллера или специалиста организаций, осуществляющих брокерскую или дилерскую деятельность. 
+
+\emph{Опыт работы:}
+
+1) Июль, 1997 г. --- Март, 2008 г. 
+
+--- Индустриальный филиал <<Запсибкомбанк>> ОАО
+
+2) Март, 2008 г. по настоящее время 
+
+--- ООО <<ИК <<Фред>>.
+
+& \emph{Образование высшее} 
+
+1) ТГУ 1997 г. --- <<Бухучет и аудит>>
+
+\emph{Квалификационный аттестат} серии АV-001 №002427 выдан Решением Аттестационной комиссии 13 июля 2007 года. Присвоена квалификация специалиста финансового рынка по управлению инвестиционными фондами, паевыми инвестиционными фондами и негосударственными пенсионными фондами.
+
+\emph{Опыт работы:} 
+
+1) Июль, 1997 г. --- Март, 2008 г. --- ООО <<ЮФ <<Лекс>>, Тюменская областная нотариальная палата, ООО <<ЮФ <<Астрея>>, ООО <<Аптеки <<36.6>>.
+
+2) Март, 2008 г. по настоящее время --- ООО <<ИК <<Фред>>. 
+
+& \emph{Образование высшее:} 
+
+1) ТГУ 1983 г. --- <<Финансы и кредит>>. 
+
+\emph{Опыт работы} 
+
+1) Апрель, 1995 г. --- Сентябрь, 1998 г. --- АО <<Дирекция высотного здания>>, ИЧП <<Мастер>>, ЗАО <<Стройзаказсервис>>, ООО <<Прометей>>; 
+
+2) Январь, 1999 г. --- по настоящее время --- ООО <<ИК <<Фред>>.
+\end{longtable}
+
+\normalsize
+\rm
+
+\subsection{Движение по штатам}
+\begin{tabular}{|p{1\textwidth}} 
+В течение 2011 кадровый состав общества не изменялся.
+\end{tabular}
+
+\section{Основные средства}
+\begin{tabular}{|p{1\textwidth}} 
+На балансе предприятия на 01.01.2011 г. находится 1 принтер. Остаточная стоимость основных средств на начало отчетного периода --- \emph{1~767.94} руб.,  на конец отчетного периода --- \emph{519,70} руб. (В балансе общества по строке 120 формы №1 данная сумма не отражена в силу округления)
+\end{tabular}
+
+\chapter{Финансовые показатели деятельности компании за отчетный год}
+
+%\renewcommand{\arraystretch}{1.2}
+
+\section{Финансовая отчетность}
+
+Для целей анализа финансовых показателей ООО <<ИК <<Фред>> использованы данные форм бухгалтерского учета №1 <<Баланс>>, №2 <<Отчет о прибылях и убытках>>. Информация представлена в таблице \ref{t:/fin}
+
+\renewcommand{\arraystretch}{1.2}
+
+\tablefont
+\small
+
+\begin{longtable}{|S{p{4.3cm}} >{\raggedleft}p{1.1cm} >{\raggedleft}p{2.0cm} >{\raggedleft}p{2.0cm} >{\raggedleft}p{1.7cm} r|} 
+\caption{Финансовые показатели деятельности компании за 2011 год (тыс. руб.) \label{t:/fin}} \tabularnewline
+
+ \hline \themph{Показатель} & \themph{Строка формы}  & \themph{На 01.01.12~г.} & \themph{На 31.12.10~г.} & \multicolumn{2}{c|}{\themph{Изменение}}  
+ \tabularnewline \cline{5-6} 
+  &  &  &  & \themph{в сумме} & \themph{\%}   \tabularnewline \hline \endfirsthead
+
+  \hline \themph{Показатель} & \themph{Строка формы}  & \themph{На 01.01.12~г.} & \themph{На 31.12.10~г.} & \multicolumn{2}{c|}{\themph{Изменение}}  
+ \tabularnewline \cline{5-6} 
+  &  &  &  & \themph{в сумме} & \themph{\%}   \tabularnewline \hline \endhead
+
+\multicolumn{6}{|c|}{\themph{Отчет о прибылях и убытках --- Форма №2}} \tabularnewline \hline 
+
+\hline
+
+Выручка                                 & 2110 & 3764148 & 2517860 & -1246288 & \textbf{-33\%} \tabularnewline \hline
+Себестоимость услуг                     & 2120 & 3759964 & 2514199 & -1245765 & \textbf{-33\%} \tabularnewline \hline
+Валовая прибыль                         & 2100 & 4184    & 3661    & -523     & \textbf{-13\%} \tabularnewline \hline
+Коммерческие расходы                    & 2210 & 0       & 0       & 0        & \textbf{0\%} \tabularnewline \hline
+Управленческие расходы                  & 2220 & 1819    & 1854    & 35       & \textbf{2\%} \tabularnewline \hline
+Прибыль от продаж                       & 2200 & 2365    & 1807    & -558     & \textbf{-24\%} \tabularnewline \hline
+Проценты к получению                    & 2320 & 8640    & 512     & -8128    & \textbf{-94\%} \tabularnewline \hline
+Проценты к уплате                       & 2330 & 8007    & 33      & -7974    & \textbf{-100\%} \tabularnewline \hline
+Доходы от участия в других организациях & 2310 & 0       & 0       & 0        & \textbf{0\%} \tabularnewline \hline
+Прочие доходы                           & 2340 & 626     & 311     & -315     & \textbf{-50\%} \tabularnewline \hline
+Прочие расходы                          & 2350 & 140     & 174     & 34       & \textbf{24\%} \tabularnewline \hline
+Текущий налог на прибыль                & 2410 & 196     & 89      & -107     & \textbf{-55\%} \tabularnewline \hline
+Чистая прибыль                          & 2400 & 3288    & 2335    & -953     & \textbf{-29\%} \tabularnewline \hline
+
+\multicolumn{6}{|c|}{\themph{Баланс --- Форма №1}} \tabularnewline \hline 
+
+\textbf{Актив} & \textbf{} & \multicolumn{1}{l|}{\textbf{}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \tabularnewline \hline
+Финансовые вложения                      & 1150          & 39613          & 39613                          & 0    & \textbf{0\%} \tabularnewline \hline
+Отложенные налоговые активы              & 1160          & 0              & 1                              & 1    & \textbf{0\%} \tabularnewline \hline
+Прочие внеоборотные активы               & 1170          & 0              & 5                              & 5    & \textbf{0\%} \tabularnewline \hline
+\textbf{Итого по разделу I}              & \textbf{}     & \textbf{39613} & \textbf{39619}                 & 6    & \textbf{0\%} \tabularnewline \hline
+Дебиторская задолженность                & 1230          & 301            & 42                             & -259 & \textbf{-86\%} \tabularnewline \hline
+Финансовые вложения                      & 1240          & 164            & 1                              & -163 & \textbf{-99\%} \tabularnewline \hline
+Денежные средства и денежные эквиваленты & 1250          & 533            & 3206                           & 2673 & \textbf{502\%} \tabularnewline \hline
+Прочие оборотные активы                  & 1260          & 0              & 0                              & 0    & \textbf{0\%} \tabularnewline \hline
+\textbf{Итого по разделу II}             & \textbf{1200} & \textbf{998}   & \textbf{3249}                  & 2251 & \textbf{226\%} \tabularnewline \hline
+\textbf{БАЛАНС}                          & \textbf{1600} & \textbf{40611} & \textbf{42868}                 & 2257 & \textbf{6\%} \tabularnewline \hline
+Уставный капитал                         & 1310          & 4369           & 4369                           & 0    & \textbf{0\%} \tabularnewline \hline
+Резервный капитал                        & 1360          & 656            & 656                            & 0    & \textbf{0\%} \tabularnewline \hline
+Нераспределенная прибыль                 & 1370          & 29557          & 31892                          & 2335 & \textbf{8\%} \tabularnewline \hline
+\textbf{Итого по разделу III}            & \textbf{1300} & \textbf{34582} & \textbf{36917}                 & 2335 & \textbf{7\%} \tabularnewline \hline
+\textbf{Итого по разделу IV}             & \textbf{1400} & \textbf{0}     & \multicolumn{1}{l|}{\textbf{}} & 0    & \textbf{0\%} \tabularnewline \hline
+Кредиторская задолженность, в том числе: & 1520          & 6029           & 5951                           & -78  & \textbf{-1\%} \tabularnewline \hline
+- Постащики и подрядчики                 & 15201         & 5951           & 5951                           & 0    & \textbf{0\%} \tabularnewline \hline
+- Задолженность по налогам и сборам      & 15202         & 78             & 0                              & -78  & \textbf{-100\%} \tabularnewline \hline
+\textbf{Итого по разделу V}              & 1500          & 6029           & 5951                           & -78  & \textbf{-1\%} \tabularnewline \hline
+\textbf{БАЛАНС}                          &               & 40611          & 42868                          & 2257 & \textbf{6\%} \tabularnewline \hline
+
+\end{longtable}
+
+\normalsize
+\rm
+
+Стоимость имущества (валюта баланса) по состоянию на 01.01.2012 г. составила~\emph{42~868} тыс. руб., т.е. увеличилась по сравнению с 2010 годом на \emph{2~257} тыс. руб. (или на 6\%). Увеличение в пассивной части баланса связано с увеличением нераспределенной прибыли на \emph{2~335} тыс. руб. Увеличение в активной части баланса произошло за счет увеличения денежных средств на \emph{2~673} тыс. руб., и при этом произошло снижение дебиторской задолженности на \emph{259} тыс. руб., финансовых вложений на \emph{163} тыс. руб.
+
+
+\section{Доходы--Расходы}
+Для анализа данных о доходах и расходах общества была использована бухгалтерская отчетность за 2011 год, а также иные регистры бухгалтерского учета (оборотная ведомость).
+Расшифровка доходов и расходов приведены в таблице~\ref{t:/in_out}
+
+\tablefont
+\small
+
+\begin{longtable}{p{5.2cm}r|p{5.3cm}r|}
+\caption{Доходы -- расходы \label{t:/in_out}} \tabularnewline
+ 
+ \multicolumn{2}{c}{\thead{\large{Доходы, тыс. руб.}}} & \multicolumn{2}{c}{\thead{\large{Расходы, тыс. руб.}}} \tabularnewline 
+ \thead[l]{Статья} & \thead[r]{Сумма \tabularnewline тыс. руб.} & \thead[l]{Статья} & \thead[r]{Сумма \tabularnewline тыс. руб.} \tabularnewline  \endfirsthead
+
+ 
+ \multicolumn{2}{c}{\thead{\large{Доходы, тыс. руб.}}} & \multicolumn{2}{c}{\thead{\large{Расходы, тыс. руб.}}} \tabularnewline 
+ \thead[l]{Статья} & \thead[r]{Сумма \tabularnewline тыс. руб.} & \thead[l]{Статья} & \thead[r]{Сумма \tabularnewline тыс. руб.} \tabularnewline  \hline \endhead
+
+\hline
+
+\makecell[tl]{\midemph{Выручка от продажи} \tabularnewline \midemph{ценных бумаг}} & \makecell[tr]{\midemph{2 517 860}} & 
+\makecell[tl]{\midemph{Себестоимость проданных} \tabularnewline \midemph{ценных бумаг}} & \makecell[tr]{\midemph{2 514 199}} \tabularnewline 
+
+\midemph{Прочие доходы, в том числе:} & \midemph{824}   & \midemph{Управленческие расходы} & \midemph{1 854}   \tabularnewline
+Проценты к получению в том числе:     & 512               & Проценты к уплате                & 33              \tabularnewline
+ - депозиты в <<Запсибкомбанк>> ОАО   & 512               & Прочие расходы                   & 174      \tabularnewline
+Совместная деятельность               & 311               & - комиссии банка                 & 32           \tabularnewline
+Отложенные налоговые активы           & 1                 & - операционные расходы           & 139 \tabularnewline
+                                      &                   & - убыток прошлых лет             & 3\tabularnewline
+                                      &                   & Налог на прибыль                 & 89\tabularnewline
+\temph{Итого}                         & \temph{2 518 684} &                                  & \temph{2 516 349} \tabularnewline \cline{2-2} \cline{4-4}
+
+\end{longtable}
+\rm
+
+Доходы за 2011 год составили \emph{2 518 684} тыс. руб., что ниже объема доходов за 2010 г. на \emph{1 254 716} тыс. руб. (или на 33\%), в том числе выручка от основной деятельности (от реализации ценных бумаг) за 2011 год составила \emph{} тыс. руб., что выше выручки за 2009 год на~\emph{1 746 086} тыс. руб. (или на 33\%). 
+
+Расходы за 2011 год составили \emph{2 516 349} тыс. руб., что ниже суммы расходов за 2010 год на \emph{1 253 567} тыс. руб. (или на 33\%), в том числе себестоимось (покупная стоимость продаваемых бумаг) за 2011 год составила~\emph{2 514 199} тыс. руб., что выше соответствующего показателя за 2010 год на~\emph{1 245 765} тыс. руб. (или на 33\%).
+
+Валовая прибыль ($ \textit{выручка} - \textit{себестоимость} $) в 2011 году уменьшилась по сравнению с 2010 годом на \emph{523} тыс. руб. (или на 13\%) и составила \emph{3 661} тыс. руб.
+
+Прибыль от продаж ($ \textit{валовая прибыль} - \textit{коммерческие расходы} - \textit{управленческие расходы} $) за 2011 год составила \emph{1 807} тыс. руб., тогда как в 2010 году аналогичный показатель составил \emph{2 365} тыс. руб.
+
+Уменьшение валовой прибыли и прибыли от продаж в первую очередь связаны со  снижением объема операций с ценными бумагами и, соответственно меньшей выручкой от их реализации (см. таблица. ~\ref{t:/q} )
+
+В 2011 году основную часть доходов общества составили поступления от основной деятельности (операций с ценными бумагами, полученные дивиденды), а также проценты от размещенных депозитов.
+Расходная часть преимущественно состоит из себестоимости приобретенных ценных бумаг и процентов уплаченных за пользование денежными средствами. 
+
+%\setlength{\extrarowheight}{10pt}
+
+
+\vspace{0.5cm}
+
+\normalsize
+\rm
+
+Управленческие расходы выросли на \emph{35} тыс. руб. Что в большой степени связано с ростом отчислений на социальные нужды \emph{+ 92} тыс. руб. (ставка отчислений выросла на 8.2 \%), а также увеличением стоимости обслуживания информационных систем: Консультант на \emph{+ 12} тыс. руб. и 1С на \emph{16} тыс. руб. Одновременно с этим, расходы на оплату труда выросли на \emph{25} тыс. руб. Существенное снижение расходов произошло по статье <<Аудит>> на \emph{125} тыс. руб. Подробная расшифровка управленческих расходов  представлена в таблице \ref{t:/mcosts}.
+
+\vspace{-0.5cm}
+
+\tablefont
+\small
+
+\begin{longtable}{|p{7cm}rrrr|}
+\caption{Управленческие расходы \label{t:/mcosts}} \tabularnewline
+\hline
+\thead[l]{Наименование \tabularnewlineстатьи} & \thead[r]{за 2009 г. \tabularnewlineтыс. руб.} & \thead[r]{за 2011 г.\tabularnewline тыс. руб.} & \multicolumn{2}{l|}{\thead[c]{Изменение}} \tabularnewline \hline 
+\multicolumn{3}{|l}{} & \thead{сумма, \tabularnewlineтыс.~руб.} & \thead{\%} \tabularnewline
+\hline \endfirsthead
+
+\hline
+\thead[l]{Наименование \tabularnewlineстатьи} & \thead[r]{за 2009 г. \tabularnewlineтыс. руб.} & \thead[r]{за 2011 г.\tabularnewline тыс. руб.} & \multicolumn{2}{l|}{\thead[c]{Изменение}} \tabularnewline \hline 
+\multicolumn{3}{|l}{} & \thead{сумма, \tabularnewlineтыс.~руб.} & \thead{\%} \tabularnewline
+\hline \endhead
+
+
+Затраты на оплату труда                                     & 1124           & 1148          & 25          & 2\% \tabularnewline \hline
+Отчисления на соц. нужды                                    & 240            & 332           & 92          & 38\% \tabularnewline \hline
+Аудит                                                       & 165            & 40            & -125        & -76\% \tabularnewline \hline
+Аренда офиса                                                & 113            & 113           & 0           & 0\% \tabularnewline \hline
+Аренда архива                                               & 54             & 71            & 18          & 33\% \tabularnewline \hline
+Услуги связи: (Интернет, сибтел отчетность, телефон, почта) & 43             & 44            & 2           & 4\% \tabularnewline \hline
+Информационные услуги (Консультант+, семинары+)             & 37             & 49            & 12          & 32\% \tabularnewline \hline
+1с бухгалтерия (ИТС, обслуживание)                          & 18             & 34            & 16          & 88\% \tabularnewline \hline
+Материалы, канц, хоз. расходы                               & 10             & 12            & 2           & 19\% \tabularnewline \hline
+Ремонт орг. техники                                         & 4              & 5             & 0           & 2\% \tabularnewline \hline
+Приобретение воды                                           & 4              & 2             & -2          & -49\% \tabularnewline \hline
+СВЧ печь                                                    & 3              & 0             & -3          & -100\% \tabularnewline \hline
+Прочие (ФСС НС, амортизация, нотариус)                      & 4              & 3             & -1          & -34\% \tabularnewline \hline
+\textbf{Итого}                                              & \textbf{1 819} & \textbf{1854} & \textbf{35} & \textbf{2\%} \tabularnewline \hline
+
+
+\end{longtable}
+\vspace{-0.2cm}
+
+\rm
+\normalsize
+
+
+\section{Прибыль}
+
+Чистая прибыль компании за 2011 год составила \emph{2 335} тыс. руб., что на \emph{953} тыс. руб. ниже аналогичного показателя предыдущего года. Изменение показателя чистой прибыли произошло за счет уменьшения доходов от основной деятельности -- прибыль от продаж снизилась на \emph{523} тыс. руб. и доходов от совместной деятельности на \emph{315} тыс. руб. 
+
+Капитал общества по состоянию на 01.01.2012 г. составил \emph{36 917} тыс. руб., изменение по сравнению с 2010 годом составило +\emph{2 335} тыс. руб. или +\emph{6.7\%}. Структура капитала представлена в таблице~\ref{t:/capital}
+
+\tablefont
+\small
+
+\begin{longtable}{|p{5cm}rrr|}
+\caption{Структура капитала \label{t:/capital}} \tabularnewline
+\hline \thead{Наименование \tabularnewline статьи} & \thead{На 01.01.11 г.\tabularnewline тыс. руб.} & \thead{На 01.01.12 г., \tabularnewlineтыс. руб.} &  \thead{Изменение, \tabularnewlineтыс. руб.}\tabularnewline \hline \endfirsthead
+
+Уставный капитал & 4 369 & 4 369 & 0  \tabularnewline \hline
+Резервный капитал & 656 & 656 & 0 \tabularnewline \hline 
+Нераспределенная прибыль & 29 557 & 31 892 & +2 335  \tabularnewline \hline
+\temph{Собственный капитал} & \temph{34 582} & \temph{36917} & \temph{+2 335} \tabularnewline \hline
+\end{longtable}
+\normalsize
+\rm
+
+
+\section{Дебиторская и кредиторская задолженность}
+
+Компания в своей деятельности взаимодействует с небольшим кругом контрагентов. Основными из них являются: <<Запсибкомбанк>> ОАО и дочерние компании банка, бюджет и внебюджетные фонды, ОАО <<Уралсвязьинформ>>, ООО <<Полное право>>, ООО <<Внедренческий центр Теодор>>, <<Акватель>>, ООО ПК Меридиан, ООО ФК Альфа, ООО Сибальянс. О состоянии и динамике расчетов с дебиторами - кредиторами компании можно узнать из  таблицы~\ref{t:/debet-credet} :
+
+%\vspace{1cm}
+
+\tablefont
+\small
+
+\begin{longtable}{|p{5cm} >{\raggedleft}p{2.5cm} >{\raggedleft}p{2.5cm} >{\raggedleft}p{1.5cm} r|} 
+\caption{Дебиторская-кредиторская задолженность \label{t:/debet-credet}} \tabularnewline
+\hline
+
+\thead[l]{Наименование} & \thead[r]{на 01.01.11 г.\tabularnewline тыс. руб.} & \thead[r]{на 01.01.12 г.\tabularnewline тыс. руб.} & \multicolumn{2}{l|}{\thead[c]{Изменение}} \tabularnewline \hline 
+\multicolumn{3}{|l}{} & \thead[r]{сумма, \tabularnewlineтыс. руб} & \thead[r]{\%} \tabularnewline
+\endfirsthead
+\hline
+\multicolumn{5}{|c|}{\temph{Дебиторы}} \tabularnewline \hline
+
+\hline
+
+Ростелеком                                                     & 0             & 2             & 2             & 100,00\% \tabularnewline \hline
+Акватель (доставка воды)                                       & 1             & 1             & 0             & 0,00\% \tabularnewline \hline
+Расчеты с бюджетом                                             & 0             & 23            & 23            & 100,00\% \tabularnewline \hline
+Расчеты с внебюджетными фондами                                & 2             & 16            & 14            & 700,00\% \tabularnewline \hline
+«Фред» СД на сумму распределенной, не перечисленной прибыли    & 250           & 0             & -250          & -100,00\% \tabularnewline \hline
+\textbf{Итого}                                                 & \textbf{253}  & \textbf{42}   & \textbf{-211} & \textbf{-83,40\%} \tabularnewline \hline
+
+\multicolumn{5}{|c|}{\temph{Кредиторы}} \tabularnewline \hline
+Расчеты с бюджетом (НДС)                                       & 78            & 0             & -78           & -100,00\% \tabularnewline \hline
+Ростелеком                                                     & 1             & 1             & 0             & 0,00\% \tabularnewline \hline
+ОАО Винодел (за долю)                                          & 5950          & 5950          & 0             & 0,00\% \tabularnewline \hline
+\textbf{Итого}                                                 & \textbf{6029} & \textbf{5951} & \textbf{-78}  & \textbf{-100,00\%} \tabularnewline \hline
+
+\end{longtable}
+
+\rm
+\normalsize
+
+
+\section{Анализ движения по расчетному счету}
+Остаток на расчетном счете компании по состоянию на 01.01.2011 г. --- \emph{532} тыс. руб. За 2011 год поступления на расчетный счет компании составили \emph{2~520~106} тыс. руб. Расходы за этот же период составили \emph{2~517~432} тыс. руб.
+Остаток на расчетном счете компании по состоянию на 01.01.2011 г. --- \emph{3 206} тыс. руб. Более подробная информация о движении денежных средств по расчетному счету компании представлена в таблице~\ref{t:/bank_account} (Анализ расчетного счета выполнен на основе формы №4 <<Отчет о движении денежных средств>>, поэтому цифры в таблице округлены до целых чисел).
+
+\tablefont
+\small
+\renewcommand{\theadfont}{\bfseries}
+
+\begin{longtable}{|p{0.5cm} p{0.6\textwidth}r|}
+\caption{Расчетный счет \label{t:/bank_account}} \tabularnewline
+\hline
+\thead[l]{№} & \thead[l]{Наименование статьи} & \thead[r]{Сумма \tabularnewline тыс. руб.} \tabularnewline \hline \endfirsthead
+\hline
+\thead[l]{№} & \thead[l]{Наименование статьи} & \thead[r]{Сумма \tabularnewline тыс. руб.} \tabularnewline \hline  \endhead
+
+\multicolumn{3}{|c|}{\temph{Поступило на расчетный счет}} \tabularnewline \hline
+
+
+\hline
+
+1 & Средства, поступившие от покупателей, заказчиков & 2 177 049 \tabularnewline \hline
+2 & Возврат вклада в СД                              & 512 \tabularnewline \hline
+3 & Дивиденды                                        & 2 109 \tabularnewline \hline
+4 & Доход от СД                                      & 173 \tabularnewline \hline
+5 & Займы полученные                                 & 339 700 \tabularnewline \hline
+6 & Проценты                                         & 562 \tabularnewline \hline
+7 & Прочие                                           & 1 \tabularnewline \hline
+  & \textbf{Итого}                                   & \textbf{2 520 106} \tabularnewline \hline
+
+\multicolumn{3}{|c|}{}       \tabularnewline \hline
+
+\multicolumn{3}{|c|}{\temph{Списано с расчетного счета}} \tabularnewline \hline
+
+1 & Благотворительность          & 50 \tabularnewline \hline
+2 & Вклад в СД                   & 10 \tabularnewline \hline
+3 & Внебюджетные фонды           & 344 \tabularnewline \hline
+4 & Заработная плата             & 1 068 \tabularnewline \hline
+5 & Налоги                       & 345 \tabularnewline \hline
+6 & На приобретение ценных бумаг & 2 175 498 \tabularnewline \hline
+7 & Оплата товаров, работ, услуг & 347 \tabularnewline \hline
+8 & Погашены займы               & 339 700 \tabularnewline \hline
+9 & Проценты уплаченные          & 33 \tabularnewline \hline
+10 & Прочие                       & 38 \tabularnewline \hline
+  & \textbf{Итого}               & \textbf{2 517 432} \tabularnewline \hline
+
+
+\end{longtable}
+
+\normalsize
+\rm
+
+\chapter{Забалансовые обязательства} 
+
+
+По счету 008 «Обеспечения обязательств и платежей полученные» –  на 31.12.2009г. и на 31.12.2010г. числилась сумма 5950 тыс. руб. –  сумма полученного права требования денежных средств от ОАО «Винодел» в случае перехода к ООО «ИК «Фред» прав «Запсибкомбанка» ОАО по договору кредитования №9900348/09К от 17.04.2009г. (договор о предоставлении поручительства от 17.04.2009г.). 18.10.2011г. указанная сумма обеспечения списана со счета в связи с исполнением заемщиком обязательств по договору кредитования. 
+По счету 009 «Обеспечения обязательств и платежей выданные» 3 800 тыс. руб. на 31.12.2009г.,  9750 тыс. руб.- на 31.12.2010г.,  в том числе:
+- 5950 тыс. руб. – сумма предоставленного «Запсибкомбанк» ОАО поручительства за заемщика ООО «Ишимский ВВЗ» по договору кредитования  № 9900348/09К от 17.04.2009г. (договор  поручительства № 990034809/П-1 к договору кредитования №9900348/09К от 17.04.2008г.). Соглашение о поручительстве расторгнуто 18.10.2011г.
+- 3800 тыс. руб. – средства на субординированном депозите №22/56 от 11.05.2005 г. переданы в обеспечение исполнения обязательств ООО «ФК «Альфа» по договору займа №1/2ПТ от 11.09.2008 г., заключенного с ООО «Запсиб-Финанс» (договор о залоге №01/4 имущественного права (требования) по договору субординированного депозита №22/56 от 11.05.2005г.). Сумма обеспечения списана со счета в связи с исполнением заемщиком обязательств по договору займа.
+На 31.12.2011г. у предприятия отсутствуют поручительства и гарантии выданные и полученные.
+На счете 001 «Арендованные основные средства» на 31.12.2011г. числится сумма 1642 тыс. руб. – стоимость арендованных нежилых помещений (договор субаренды №0109/08 от 01.09.2008г., договор аренды б/н от 01.04.2010г.)
+
+
+
+\chapter{Финансовые вложения}
+
+\section{Портфель ценных бумаг}
+
+По состоянию на 01.01.2012 года портфель ценных бумаг компании состоит из акций <<Запсибкомбанк>> ОАО (балансовой стоимостью \emph{27~362.51 } тыс. руб.) и акции Сибирской фондовой биржи (1 шт. номиналом 0,3 тыс. руб.). Развернутая информация по портфелю акций <<Запсибкомбанк>> ОАО представлена в таблице \ref{t:/wscb_share_case}.
+
+%\vspace{1cm}
+\renewcommand{\theadfont}{\bfseries}
+
+\renewcommand{\arraystretch}{1.2}
+
+\tablefont
+\footnotesize
+
+\begin{longtable}{|p{2cm} >{\raggedleft}p{1.1cm} >{\raggedleft}p{1.3cm} >{\raggedleft}p{1.1cm} >{\raggedleft}p{1.1cm} >{\raggedleft}p{1cm} >{\raggedleft}p{1cm} >{\raggedleft}p{1.4cm} r|}
+\caption{Портфель акций <<Запсибкомбанк>> ОАО \label{t:/wscb_share_case}} \tabularnewline
+
+  \hline 
+  \thead{Эмиссия \tabularnewline выпуск} &
+  \multicolumn{2}{c}{\thead{На 01.01.12 г. \tabularnewline тыс. руб.}} & \multicolumn{2}{c}{\thead{Приход \tabularnewline тыс. руб.}} &
+  \multicolumn{2}{c}{\thead{Расход \tabularnewline тыс. руб.}} & \multicolumn{2}{c|}{\thead{На 01.01.12 г. \tabularnewline тыс. руб.}}  \tabularnewline \hline
+   & \thead[r]{шт.} & \thead[r]{тыс.\tabularnewline руб.} & \thead[r]{шт.} & \thead[r]{тыс. \tabularnewlineруб.} & \thead[r]{шт.} & \thead[r]{тыс. \tabularnewlineруб.} & \thead[r]{шт.} & \thead[r]{тыс. \tabularnewlineруб.} \tabularnewline \hline \endfirsthead
+
+  \hline 
+  \thead{Эмиссия \tabularnewline выпуск} &
+  \multicolumn{2}{c}{\thead{На 01.01.12 г. \tabularnewline тыс. руб.}} & \multicolumn{2}{c}{\thead{Приход \tabularnewline тыс. руб.}} &
+  \multicolumn{2}{c}{\thead{Расход \tabularnewline тыс. руб.}} & \multicolumn{2}{c|}{\thead{На 01.01.12 г. \tabularnewline тыс. руб.}}  \tabularnewline \hline
+   & \thead[r]{шт.} & \thead[r]{тыс.\tabularnewline руб.} & \thead[r]{шт.} & \thead[r]{тыс. \tabularnewlineруб.} & \thead[r]{шт.} & \thead[r]{тыс. \tabularnewlineруб.} & \thead[r]{шт.} & \thead[r]{тыс. \tabularnewlineруб.} \tabularnewline \hline \endhead
+  
+\makecell[l]{10 эмиссия об.}  & 144000    & 1542.24  & - & -   & - & - & 144000  & 1542.24 \tabularnewline \hline
+\makecell[l]{13 эмиссия}  & 29218     & 292.18   & - & -   & - & - & 29218   & 292.18 \tabularnewline \hline
+\makecell[l]{14 эмиссия}  & 70670     & 706.70   & - & -   & - & - & 70670   & 706.70 \tabularnewline \hline
+\makecell[l]{16 эмиссия}  & 119943    & 1227.36  & - & -   & - & - & 119943  & 1227.36 \tabularnewline \hline
+\makecell[l]{17 эмиссия}  & 153572    & 3839.30  & - & -   & - & - & 153572  & 3839.30 \tabularnewline \hline
+\makecell[l]{18 эмиссия}  & 215284    & 5853.57  & - & -   & - & - & 215284  & 5853.57 \tabularnewline \hline
+\makecell[l]{19 эмиссия}  & 220302    & 3786.03  & - & -   & - & - & 220302  & 3786.03 \tabularnewline \hline
+\makecell[l]{1 эмиссия}   & 1040      & 12.79    & - & -   & - & - & 1040    & 12.79 \tabularnewline \hline
+\makecell[l]{20 эмиссия}  & 200931    & 3616.76  & - & -   & - & - & 200931  & 3616.76 \tabularnewline \hline
+\makecell[l]{2 эмиссия}   & 112       & 1.38     & - & -   & - & - & 112     & 1.38 \tabularnewline \hline
+\makecell[l]{3 эмиссия}   & 4725      & 58.12    & - & -   & - & - & 4725    & 58.12 \tabularnewline \hline
+\makecell[l]{4 эмиссия}   & 18430     & 226.69   & - & -   & - & - & 18430   & 226.69 \tabularnewline \hline
+\makecell[l]{5 эмиссия}   & 37095     & 456.27   & - & -   & - & - & 37095   & 456.27 \tabularnewline \hline
+\makecell[l]{6 эмиссия}   & 11236     & 138.20   & - & -   & - & - & 11236   & 138.20 \tabularnewline \hline
+\makecell[l]{7 эмиссия}   & 686       & 8.44     & - & -   & - & - & 686     & 8.44 \tabularnewline \hline
+\makecell[l]{8 эмиссия}   & 19768     & 243.16   & - & -   & - & - & 19768   & 243.16 \tabularnewline \hline
+\makecell[l]{9 эмиссия}   & 17050     & 209.71   & - & -   & - & - & 17050   & 209.71 \tabularnewline \hline
+\makecell[l]{2 эмиссия пр}   & 561       & 5.75     & - & -   & - & - & 561     & 5.75 \tabularnewline \hline
+\makecell[l]{3 эмиссия пр}   & 3696      & 37.86    & - & -   & - & - & 3696    & 37.86 \tabularnewline \hline
+\makecell[l]{21 эмиссия}  & 0         & 0.0      &  425000   & 5100   & - & - & 425000 & 5100 \tabularnewline \hline
+\makecell[l]{\temph{Итого}} & 1268319 & 22262.51  & 425000    &  5100  & - & - & 1693319 & 27362,51 \tabularnewline \hline
+\end{longtable}
+
+\normalsize
+\rm
+
+
+В течение 2011 года компанией совершались операции с векселями сторонних эмитентов, которые, однако, не нашли отражения в портфелях ценных бумаг на начало и конец отчетного периода. Информацию об осуществленных операциях можно получить из таблицы \ref{t:/q}:
+
+\tablefont
+\small
+
+
+%\renewcommand\theadalign{l}
+
+%Используем пакет xtabular для построения длинных таблиц, для разбивки длинных ячеек пользуем пакет makecell (\thead)
+
+\begin{longtable}{|p{2.5cm} >{\raggedleft}p{1.9cm} >{\raggedleft}p{2.5cm} >{\raggedleft}p{2.5cm} >{\raggedleft}p{2.5cm} |}
+\caption{Операции с ценными бумагами сторонних эмитентов в 2011 г. \label{t:/q}} \tabularnewline
+
+\hline
+\themph{Эмитент} &  \themph{Количество,  шт.} & \themph{Себестоимость, тыс. руб.} & \themph{Сумма реализации, тыс. руб.} & \themph{Прибыль,  тыс. руб.} \tabularnewline \hline \endfirsthead
+
+\hline
+\themph{Эмитент} &  \themph{Количество,  шт.} & \themph{Себестоимость, тыс. руб.} & \themph{Сумма реализации, тыс. руб.} & \themph{Прибыль,  тыс. руб.}  \tabularnewline \hline \endhead
+
+\hline
+
+\multicolumn{5}{|l|}{\emph{Векселя сторонних эмитентов}}  \tabularnewline \hline
+
+
+\textbf{"Запсибкомбанк" ОАО}    & 16 & 1 132 424,46 & 1 132 452,45 & 27,99 \tabularnewline \hline
+Облигации Запсибкомбанк ОАО 01  & 8  & 8,01         & 8,45         & 0,44 \tabularnewline \hline
+            Меридиан            & 1  & 74 298,00    & 74 300,00    & 2,00 \tabularnewline \hline
+            Сбербанк            & 4  & 792 723,45   & 792 744,00   & 20,55 \tabularnewline \hline
+            Форум               & 1  & 114 898,00   & 114 900,00   & 2,00 \tabularnewline \hline
+            Форум               & 1  & 122 898,00   & 122 900,00   & 2,00 \tabularnewline \hline
+            Форум               & 1  & 27 599,00    & 27 600,00    & 1,00 \tabularnewline \hline
+\textbf{ВЕЛЕС Капитал г.Москва} & 25 & 295 308,00   & 295 818,00   & 510,00 \tabularnewline \hline
+            ХМБ                 & 5  & 98 436,00    & 98 606,00    & 170,00 \tabularnewline \hline
+            ХМБ                 & 8  & 78 748,80    & 78 884,80    & 136,00 \tabularnewline \hline
+            ХМБ                 & 12 & 118 123,20   & 118 327,20   & 204,00 \tabularnewline \hline
+\textbf{Меридиан ПК ООО}        & 7  & 109 137,40   & 109 199,30   & 61,90 \tabularnewline \hline
+            Сибальянс           & 1  & 74 290,00    & 74 298,00    & 8,00 \tabularnewline \hline
+            ХМБ                 & 1  & 9 956,40     & 9 971,80     & 15,40 \tabularnewline \hline
+            ХМБ                 & 5  & 24 891,00    & 24 929,50    & 38,50 \tabularnewline \hline
+\textbf{ПРОФФ ООО ЮК}           & 8  & 104 610,30   & 104 798,79   & 188,49 \tabularnewline \hline
+            Сбербанк            & 3  & 59 806,50    & 59 925,69    & 119,19 \tabularnewline \hline
+            ХМБ                 & 4  & 39 825,60    & 39 887,20    & 61,60 \tabularnewline \hline
+            ХМБ                 & 1  & 4 978,20     & 4 985,90     & 7,70 \tabularnewline \hline
+\textbf{ПТ ЦСР и ФТ}            & 7  & 229 448,00   & 229 797,60   & 349,60 \tabularnewline \hline
+            Сбербанк            & 4  & 79 808,00    & 79 929,60    & 121,60 \tabularnewline \hline
+            Сбербанк            & 3  & 149 640,00   & 149 868,00   & 228,00 \tabularnewline \hline
+\textbf{Регион}                 & 11 & 138 780,00   & 138 793,95   & 13,95 \tabularnewline \hline
+            Альфа Банк          & 2  & 18 983,00    & 18 984,76    & 1,76 \tabularnewline \hline
+            Альфа Банк          & 4  & 75 932,00    & 75 939,04    & 7,04 \tabularnewline \hline
+            ООО ЮТэйр-Лизинг    & 5  & 43 865,00    & 43 870,15    & 5,15 \tabularnewline \hline
+\textbf{Сибальянс ООО}          & 10 & 199 300,00   & 199 608,00   & 308,00 \tabularnewline \hline
+            ОАО "АБ "Россия"    & 10 & 199 300,00   & 199 608,00   & 308,00 \tabularnewline \hline
+\textbf{ФОРУМ ТК ООО}           & 7  & 305 190,60   & 305 282,20   & 91,60 \tabularnewline \hline
+            Сибальянс           & 1  & 114 885,00   & 114 898,00   & 13,00 \tabularnewline \hline
+            Сибальянс           & 1  & 122 884,00   & 122 898,00   & 14,00 \tabularnewline \hline
+            Сибальянс           & 1  & 27 596,00    & 27 599,00    & 3,00 \tabularnewline \hline
+            ХМБ                 & 4  & 39 825,60    & 39 887,20    & 61,60 \tabularnewline \hline
+\multicolumn{1}{|c|}{\textbf{Итого}} & \textbf{91} & \textbf{2 514 198,76} & \textbf{2 515 750,29} & \textbf{1 551,53} \tabularnewline \hline
+
+
+
+
+
+\end{longtable}
+\normalsize
+\rm
+
+
+\section{Вложения в уставные капиталы}
+По состоянию на 01.01.2012 года компания имеет вклад в уставный капитал  <<Запсибкомбанк>> ОАО. (\emph{1~693~319} штук акций, номинальной стоимостью 10 рублей за акцию и балансовой стоимостью \emph{27~362} тыс. руб.). Из них 425 000 штук было приобретено в рамках эмиссии в 2011 году.
+Доля участия компании в уставном капитале <<Запсибкомбанк>> ОАО составляет 1.51\% 
+Также компания учавствует в уставном капитале АО Сибирская фондовая биржа (1 акция номиалом 0,3 тыс. руб.) и 
+имеет долю в уставном капитале ООО <<Ишимский ВВЗ>> в размере \emph{5~950} тыс.руб.
+
+В течение 2011 года компанией были получены дивиденды по акциям <<Запсибкомбанк>> ОАО. Данные о полученных дивидендах приведены в таблице~\ref{t:/dividents}.
+
+\tablefont
+\small
+\begin{longtable}{|p{0.5cm} p{5cm} l r|}
+\caption{Полученные дивиденды \label{t:/dividents}} \tabularnewline
+\hline
+\thead[l]{№} & \thead[l]{Эмитент} & \thead[l]{Дата  фактического \tabularnewlineпоступления} & \thead[r]{Сумма \tabularnewlineтыс. руб.} \tabularnewline \hline \endfirsthead
+1 & <<Запсибкомбанк>> ОАО  & 19.04.2011 & 2109.35  \tabularnewline \hline
+\end{longtable}
+\normalsize
+\rm
+
+\section{Депозиты}
+ООО <<ИК <<Фред>> размещает свободные денежные средства в депозиты <<Запсибкомбанк>> ОАО. Информация об осуществленных вложениях представлена в таблице \ref{t:/deposits}. В 2011 году обществом был получен доход от размещенных в депозитов в размере \emph{512} тыс. руб. \vspace{3mm} 
+\tablefont
+\small
+
+\begin{longtable}{|>{\raggedright}p{3.2cm} >{\raggedright}p{2.2cm} >{\raggedright}p{1.7cm} >{\raggedright}p{2cm} >{\raggedright}p{2.2cm} p{2cm}|}
+\caption{Операции с депозитами в 2011 г. \label{t:/deposits}} \tabularnewline
+\hline 
+\themph{Номер договора} & \themph{Срок погашения} & \themph{Остаток на 01.01.11 г. тыс. руб.} & \themph{Перечислено в депозит, тыс. руб.}  & \themph{Перечислено с депозита на р/с, тыс. руб.} & \themph{Остаток на 01.01.12 г. тыс. руб.} \tabularnewline \hline \endfirsthead
+
+\hline 
+\themph{Номер договора} & \themph{Срок погашения} & \themph{Остаток на 01.01.11 г. тыс. руб.} & \themph{Перечислено в депозит, тыс. руб.}  & \themph{Перечислено с депозита на р/с, тыс. руб.} & \themph{Остаток на 01.01.12 г. тыс. руб.} \tabularnewline \hline \endhead
+
+22/56 от 11.05.05 г.         & 7 лет       & 3800 & 0        & 0       & 3800 \tabularnewline \hline
+22/48 от 16.04.07 г.         & 7 лет       & 2500 & 0        & 0       & 2500 \tabularnewline \hline
+\textbf{Итого} & \textbf{-} & \textbf{6300} & \textbf{0} & \textbf{0} & \textbf{6300} \tabularnewline \hline
+
+\end{longtable}
+
+\normalsize
+\rm
+
+\chapter{Социальная поддержка коллектива}
+
+Решением №1 от 22.04.2011 г. единственного участника общества --- <<Запсибкомбанк>> ОАО были утверждены затраты по смете расходования средств на социальную поддержку коллектива, спонсорскую и благотворительную помощь в размере 140 тыс. руб. В течение 2012 года часть средств данного фонда была использована по целевому назначению. Отчет об использовании представлен в таблице \ref{t:/cfunds}.
+Остаток неиспользованных средств по состоянию на 01.01.2012 г. составил \emph{18.75}~тыс. руб.
+
+\xentrystretch{0.05}
+\renewcommand{\arraystretch}{0.9}
+
+\tablefont
+\small
+
+\begin{longtable}{|p{0.5cm}p{5.2cm}rrr|}
+\caption{Использование средств на социальную поддержку коллектива \label{t:/cfunds}} \tabularnewline
+
+\hline \thead{№} & \thead{Направление} & \thead[r]{План на 2011 г.\tabularnewline тыс. руб.} & \thead[r]{Фактически \tabularnewline использовано \tabularnewlineтыс. руб.}  & \thead[r]{Остаток на\tabularnewline
+ 01.01.2012 г. \tabularnewline  тыс. руб. } \tabularnewline \hline \endfirsthead
+
+\hline \thead{№} & \thead{Направление} & \thead[r]{План на 2011 г.\tabularnewline тыс. руб.} & \thead[r]{Фактически \tabularnewline использовано \tabularnewline тыс. руб.}  & \thead[r]{Остаток на\tabularnewline 01.01.2012 г. \tabularnewline  тыс. руб. } \tabularnewline \hline \endhead
+
+
+\textbf{1} & \multicolumn{ 4}{l|}{\textbf{Единовременная материальная помощь работникам, в том числе:}} \tabularnewline \cline{ 1- 1}
+1.1 & В связи со смертью работника, близких родственников & 15 & 0 & 15 \tabularnewline \hline
+1.2 & В связи с лечением заболевания, связанного с угрозой для жизни работника & 0 & 0 & 0 \tabularnewline \hline
+1.3 & В связи с первичной регистрацией брака, рождением ребенка, уход на пенсию & 10 & 10 & 0 \tabularnewline \hline
+1.4 & Материальная помощь к отпуску на оздоровление & 42 & 42 & 0 \tabularnewline \hline
+\textbf{2} & \textbf{Проведение оздоровительных мероприятий оплата учреждениям здравоохранения услуг, оказываемых членам трудового коллектива} & \textbf{4,5} & \textbf{4,5} & \textbf{0} \tabularnewline \hline
+\textbf{3} & \textbf{Прочие (в т.ч. отчисления ФСС, стоимость подарков приобретенных для работников (Новогодние подарки работникам для детей} & \textbf{7,25} & \textbf{7,25} & \textbf{0} \tabularnewline \hline
+\textbf{4} & \textbf{Прочие материальные затраты для работников, в т. ч.} & \textbf{11,25} & \textbf{7,5} & \textbf{3,75} \tabularnewline \hline
+4.1 & Расходы на 1 корпоративное мероприятие & 7,5 & 7,5 & 0 \tabularnewline \hline
+4.2 & Прочие затраты (обучение работников, прочие по работникам, переезд до ПМЖ) & 3,75 & 0 & 3,75 \tabularnewline \hline
+ & \textbf{Итого по разделу I} & \textbf{90} & \textbf{71,25} & \textbf{18,75} \tabularnewline \hline
+
+
+\end{longtable}
+
+
+\normalsize
+\rm
+
+\chapter{Предложения по распределению прибыли} 
+
+Показатель нераспределенной прибыли прошлых лет по состоянию на 01.01.2012~г. составляет \emph{31~892} тыс. руб., в том числе чистая прибыль за 2012 год ---~\emph{2~335}~тыс. руб.
+
+Решением №1 Единственного участнкиа ООО <<ИК <<Фред>> от 22.04.2011 года была утверждена смета расходования средств на социальную поддержку коллектива, спонсорскую, благотворительную помощь на 2011 год в размере \emph{140} тыс. руб. По истечении 2011 года остаток неиспользованных средств сметы составил  \emph{18.75} тыс. руб. 
+
+В соответствии с положением <<О распределении прибыли участников консолидированной группы <<Запсибкомбанк>> ОАО --- некредитных организаций>>, предлагаем распределить прибыль ООО <<ИК <<Фред>> согласно следующей таблицы:
+
+\begin{longtable}[l]{|p{7cm}r|}
+\hline \thead{Наименование статьи} & \thead{Сумма\tabularnewline тыс. руб.} \tabularnewline \hline \endfirsthead
+Средства на социальную поддержку & 140.0 \tabularnewline \hline
+Резервный фонд                   & 00.0 \tabularnewline \hline
+Фонд накопления                  & 00.0 \tabularnewline \hline
+\end{longtable}
+
+\normalsize
+\rm
+
+Средства на социальную поддержку коллектива предлагаем распределить по статьям следующим образом:
+
+\renewcommand{\arraystretch}{1.1}
+
+\begin{longtable}{|p{0.5cm}p{8cm}r|}
+\hline \thead{№} & \thead{Наименование статьи} & \thead{Сумма\tabularnewline тыс. руб.} \tabularnewline \hline \endfirsthead
+\hline \thead{№} & \thead{Наименование статьи} & \thead{Сумма\tabularnewline тыс. руб.} \tabularnewline \hline \endhead
+
+\textbf{1} & \textbf{Единовременная материальная помощь работникам, в том числе:} & \textbf{67} \tabularnewline \hline
+1.1 & В связи со смертью работника, близких родственников & 15 \tabularnewline \hline
+1.2 & В связи с лечением заболевания, связанного с угрозой для жизни работника & 0 \tabularnewline \hline
+1.3 & В связи с первичной регистрацией брака, рождением ребенка, уход на пенсию & 10 \tabularnewline \hline
+1.4 & Материальная помощь к отпуску на оздоровление & 42 \tabularnewline \hline
+\textbf{2} & \textbf{Проведение оздоровительных мероприятий оплата учреждениям здравоохранения услуг, оказываемых членам трудового коллектива} & \textbf{4,5} \tabularnewline \hline
+\textbf{3} & \textbf{Прочие (в т.ч. отчисления ФСС, стоимость подарков приобретенных для работников (Новогодние подарки работникам для детей} & \textbf{7,25} \tabularnewline \hline
+\textbf{4} & \textbf{Прочие материальные затраты для работников, в т. ч.} & \textbf{11,25} \tabularnewline \hline
+4.1 & Расходы на 1 корпоративное мероприятие & 7,5 \tabularnewline \hline
+4.2 & Прочие затраты (обучение работников, прочие по работникам, переезд до ПМЖ) & 3,75 \tabularnewline \hline
+ & \textbf{Итого по разделу I} & \textbf{90} \tabularnewline \hline
+ &  & \multicolumn{1}{l|}{} \tabularnewline \hline
+2 & Прочие (подарки клиентам) & 0 \tabularnewline \hline
+ & \textbf{Итого по разделу II} & \textbf{50} \tabularnewline \hline
+ & \textbf{Итого} & \textbf{140} \tabularnewline \hline
+
+
+\end{longtable}
+
+
+\chapter{Информация о проведенных проверках за отчетный период}
+
+В 2012 году была проведена аудиторская проверка компании. В качестве аудитора выступило ЗАО <<Екатеринбургский Аудит-Центр>>. В ходе проверки проведен аудит финансовой (бухгалтерской) отчетности ООО <<ИК <<Фред>> за период с 01 января по 31 декабря 2011 года. Выводы аудитора изложены в следующей выдержке из аудиторского заключения:
+
+\vspace{0.5em}
+
+\sl
+\footnotesize
+
+\begin{tabular}{|p{0.7\textwidth}}
+<<По нашему мнению, бухгалтерская отчетность отражает достоверно во всех существенных отношениях финансовое положение организации - Общество с ограниченной ответственностью <<Инвестиционная компания <<Фред>> >> по состоянию на 31 декабря 2011 года, результаты ее финансово-хозяйственной деятельности и движение денежных средств за 2011 год в соответствии с установленными правилами составления бухгалтерской отчетности.
+\end{tabular}
+\normalsize
+\rm
+
+
+\chapter{Совместная деятельность}
+
+\section{Краткая справка}
+ООО <<ИК <<Фред>> совместно с <<Запсибкомбанк>> ОАО 05 февраля 2007 года заключили договор простого товарищества №1ПТ о совместной деятельности. Данным договором определены размеры вкладов участников размер и порядок распределения прибыли. В ходе деятельности данные параметры изменялись и заключались дополнительные соглашения. На 01.01.2012 года вклад банка составлял 100 тыс. руб., вклад общества -- 1 тыс. руб.
+
+Основным направлением деятельности товарищества являются операции с ценными бумагами и размещением свободных денежных средств в процентные займы.
+
+\section{Активы}
+
+Источником формирования активов товарищества выступают только вклады банка и общества. Структура и динамика изменения активов товарищества представлена в таблице~\ref{t:/friend_fin}.
+
+\tablefont
+\small
+
+\begin{longtable}{|S{p{3.5cm}} l r r r|} 
+\caption{Активы товарищества\label{t:/friend_fin}} \tabularnewline
+
+ \hline \themph{Показатель} &  \themph{На 01.01.11 г.} & \themph{На 01.01.12 г.} & \multicolumn{2}{c|}{\themph{Изменение}}
+ \tabularnewline \cline{4-5}
+  &  &  &   \themph{в сумме} & \themph{\%}   \tabularnewline \hline \endfirsthead
+
+ \hline \themph{Показатель} & \themph{На 01.01.11 г.} & \themph{На 01.01.12 г.} & \multicolumn{2}{c|}{\themph{Изменение}}
+ \tabularnewline \cline{4-5}
+  &  &  &   \themph{в сумме} & \themph{\%}   \tabularnewline \hline \endhead
+
+\hline 
+
+Финансовые вложения & 647 988,64 & 0,00 & -647 988,64 & -100,00\% \\ \hline
+Дебиторская задолженность & 27 008,66 & 0,00 & -27 008,66 & -100,00\% \\ \hline
+Денежные средства & 214,69 & 101,00 & -113,69 & -52,96\% \\ \hline
+\textbf{Итого актив} & 675 211,99 & 101,00 & -675 110,99 & -99,99\% \\ \hline
+Уставный капитал & 650 164,06 & 101,00 & -650 063,06 & -99,98\% \\ \hline
+Задолженность перед участниками & 25 047,93 & 0,00 & -25 047,93 & -100,00\% \\ \hline
+\textbf{Итого пассив} & 675 211,99 & 101,00 & -675 110,99 & -99,99\% \\ \hline
+
+
+\end{longtable}
+
+\normalsize
+\rm
+
+\section{Доходы--расходы}
+
+В 2011 году основную часть доходов товарищества составили: выручка от реализованных ценных бумаг, проценты по выданным займам, начисленные дисконты по приобретенным векселям и полученные дивиденды по акциям.
+
+Расшифровка доходов и расходов приведена в таблице~\ref{t:/friend_in_out}
+
+\tablefont
+\small
+
+
+\begin{longtable}{p{5.5cm}r|p{4cm}r|}
+\caption{Доходы -- расходы \label{t:/friend_in_out}} \tabularnewline
+ 
+ \multicolumn{2}{c}{\thead{\throwemph{Доходы}}} & \multicolumn{2}{c}{\thead{\throwemph{Расходы}}} \tabularnewline 
+ \thead[l]{Статья} & \thead[r]{Сумма \tabularnewline тыс. руб.} & \thead[l]{Статья} & \thead[r]{Сумма \tabularnewline тыс. руб.} \tabularnewline  \endfirsthead
+
+\multicolumn{2}{c}{\thead{\throwemph{Доходы}}} & \multicolumn{2}{c}{\thead{\throwemph{Расходы}}} \tabularnewline 
+ \thead[l]{Статья} & \thead[r]{Сумма \tabularnewline тыс. руб.} & \thead[l]{Статья} & \thead[r]{Сумма \tabularnewline тыс. руб.} \tabularnewline  \endhead
+
+\hline
+
+\midemph{Выручка от продажи ценных бумаг} & \midemph{72 588}              & \midemph{Себестоимость ценных бумаг}       & \midemph{72 588} \tabularnewline
+\midemph{Проценты к получению}            & 30 138                        & \makecell[l]{\midemph{Расходы на продажу}} & \midemph{2}  \tabularnewline
+\midemph{Вексельный дисконт}              & 489                           & \tabularnewline
+\makecell[l]{\temph{Итого}}               & \makecell[r]{\temph{103 215}} & \makecell[l]{\temph{Итого}}                & \makecell[r]{\temph{72 590}} \tabularnewline \cline{2-2} \cline{4-4}
+\end{longtable}
+
+\normalsize
+\rm
+
+Таким образом, прибыль товарищества за 2011 год составила \emph{30 625}~тыс. руб.
+
+
+\section{Финансовые вложения}
+
+\subsection{Ценные бумаги}
+
+В 2011 году товарищество осуществляло операции купли--продажи с векселями авиакомпании <<Ютэйр>> ООО. Было приобретено и реализовано 8 простых векселей компании на общую сумму 72 588 тыс. руб.
+
+
+%\renewcommand{\arraystretch}{1}
+
+\section{Денежные средства}
+
+Остаток на расчетном счете товарищества (включая фондовую секцию) по состоянию на 01.01.2011 г. --- \emph{50164.06} тыс. руб.
+За 2011 год поступления на расчетный счет товарищества составили \emph{771 332.97} тыс. руб. Отток средств за этот же период составил \emph{821 282.34} тыс. руб.
+Остаток на расчетном счете товарищества по состоянию на 01.01.2011 г. --- \emph{214.69} тыс. руб. Остаток средств на счете брокера <<Запсибкомбанк>> ОАО (фондовая секция) отсутствует.
+Развернутая информация о движении денежных средств представлена в таблице~\ref{t:/friend_bank_account}
+
+\tablefont
+\small
+
+\begin{longtable}{|p{0.5cm} p{0.7\textwidth}r|}
+\caption{Расчетный счет (товарищество) \label{t:/friend_bank_account}} \tabularnewline
+
+\hline
+\thead[l]{№} & \thead[l]{Наименование статьи} & \thead[r]{тыс. руб.} \tabularnewline \hline \endfirsthead
+\hline
+\thead[l]{№} & \thead[l]{Наименование статьи} & \thead[r]{тыс. руб.} \tabularnewline \hline  \endhead
+
+\hline
+\multicolumn{3}{|c|}{\temph{Поступило на расчетный счет}} \tabularnewline \hline
+\hline
+
+1 & Займы погашенные & 575 880 \\ \hline
+2 & Поступления от покупателей цб & 72 588 \\ \hline
+3 & Дисконт полученный & 7 412 \\ \hline
+4 & Проценты от выданных займов & 50 224 \\ \hline
+\multicolumn{1}{|l|}{} & \textbf{Итого} & \textbf{706 104} \\ \hline
+\multicolumn{1}{|l|}{} &  & \multicolumn{1}{l|}{} \\ \hline
+1 & Займы выданные & 480 \\ \hline
+2 & Прочие & 1 \\ \hline
+3 & Распределение дохода от СД & 55 673 \\ \hline
+4 & Возврат вклада СД & 650 063 \\ \hline
+\multicolumn{1}{|l|}{} & \textbf{Итого} & \textbf{706 217} \\ \hline
+
+
+\end{longtable}
+
+\normalsize
+\rm
+
+
+\renewcommand{\arraystretch}{0.9}
+
+
+\appendix
+
+%\large
+%\sc
+
+%Приложение №1 --- Годовой отчет о финансовом результате
+
+\chapter{Приложения}
+
+
+\section{Приложение №1 --- Годовой отчет о финансовом результате}
+
+%\renewcommand{\arraystretch}{1}
+
+\footnotesize
+\sf
+\vspace{1.5em}
+\begin{longtable}{|p{0.5cm} p{0.73\textwidth} r| }
+
+
+
+\hline
+ & \temph{Доходная часть} &  \temph{руб.} \tabularnewline \hline
+
+\hline
+1 & Выручка от оказываемых компанией услуг по основной деятельности, в том числе в разрезе организаций & \textbf{3 764 134 357,82} \tabularnewline \hline
+1.1 & «Запсибкомбанк» ОАО & 1 189 495 960,87 \tabularnewline \hline
+1.2 & Альфа ООО ФК & 151 586 100,00 \tabularnewline \hline
+1.3 & ВЕЛЕС Капитал г.Москва & 100 704 960,00 \tabularnewline \hline
+1.4 & Регион & 194 070 050,68 \tabularnewline \hline
+1.5 & Сбербанк & 301 948 878,27 \tabularnewline \hline
+1.6 & Запсиб-Финанс & 1 384 408 664,00 \tabularnewline \hline
+1.7 & Сибальянс ООО & 259 346 400,00 \tabularnewline \hline
+1.8 & ХМБ & 174 993 831,60 \tabularnewline \hline
+1.9 & Центр Лизинг Инвест & 4 987 500,00 \tabularnewline \hline
+1.10 & ЗСКБ (дивиденды) & 2 592 012,40 \tabularnewline \hline
+2 & Проценты к получению в разрезе организаций & \textbf{8 640 379,27} \tabularnewline \hline
+2.1 & Депозиты в «Запсибкомбанк» ОАО & 959654,13 \tabularnewline \hline
+2.2 & Депозиты в ХМ банк & 7 666 438,35 \tabularnewline \hline
+2.3 & Начисленный дисконт (Запсибкомбанк) & 7 681,59 \tabularnewline \hline
+2.4 & Начисленный дисконт (ХМ банк) & 6 168,40 \tabularnewline \hline
+2.5 & Начисленный дисконт (Сбербанк) & 436,80 \tabularnewline \hline
+3 & Прочие операционные доходы, в том числе в разрезе других организаций & \textbf{625 866,83} \tabularnewline \hline
+3.1 & Доходы от совместной деятельности & 625 866,83 \tabularnewline \hline
+4 & Прочие доходы & 30,98 \tabularnewline \hline
+ & \textbf{Всего доходов} & \textbf{3 773 400 634,90} \tabularnewline \hline
+5 & Себестоимость, в том числе в разрезе статей & \textbf{3 759 964 690,76} \tabularnewline \hline
+5.1 & Себестоимость реализованных ценных бумаг & 3 759 964 690,76 \tabularnewline \hline
+6 & Коммерческие расходы & ,00 \tabularnewline \hline
+7 & Управленческие расходы, в том числе в разрезе статей & \textbf{1 818 736,06} \tabularnewline \hline
+7.1 & Затраты на оплату труда & 1 123 918,00 \tabularnewline \hline
+7.2 & Отчисления на соц. Нужды & 240 014,97 \tabularnewline \hline
+7.3 & Аренда помещения и архива & 166 893,00 \tabularnewline \hline
+7.4 & Материалы, канц. Товары, хоз. Нужды & 17 263,41 \tabularnewline \hline
+7.5 & Информационные услуги (гарант, консультант, 1С) & 54 834,00 \tabularnewline \hline
+ & Аудит & 164 822,00 \tabularnewline \hline
+7.6 & Прочие (связь, нотариус, госпошлина) & 50 990,68 \tabularnewline \hline
+8 & Проценты к уплате & \textbf{7 992 834,33} \tabularnewline \hline
+9 & Прочие операционные расходы & \textbf{139 906,89} \tabularnewline \hline
+9.1 & Услуги банка & 35 057,35 \tabularnewline \hline
+9.2 & Комиссия за бланки веселей СБ РФ & 11 500,00 \tabularnewline \hline
+9.3 & Социальные выплаты & 81 880,00 \tabularnewline \hline
+9.4 & Прочие расходы & 11 469,54 \tabularnewline \hline
+ & \textbf{Всего расходов} & \textbf{3 769 916 168,04} \tabularnewline \hline
+ & \textbf{Прибыль} & \textbf{3 484 466,86} \tabularnewline \hline
+ & \textbf{Налог на прибыль} & \textbf{196871,92} \tabularnewline \hline
+ & Отложенные налоговые активы & 0 \tabularnewline \hline
+ & \textbf{Чистая прибыль} & \textbf{3 287 594,94} \tabularnewline \hline
+\end{longtable}
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
