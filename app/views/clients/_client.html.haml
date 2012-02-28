@@ -2,7 +2,10 @@
   -p.prepare(client)
 
   %div{:id => tab_id}
-    = link_to content_tag(:div,"",class: "ui-icon ui-icon-pencil size_32x32"), edit_client_path(client)
+    = link_to "[Редактировать]", edit_client_path(client)
+    = link_to "[Лист оказанных услуг]", edit_rep_service_path(client), :target => "_blank"
+
+
     %table{:width => "100%",:style => "table-layout: fixed", :id => "client_table"}
       = render :partial => "table_sep", :locals => {:header =>"Личные данные"}
       = render :partial => "client_field", :locals => {:field_name =>"Номер амбулаторной карты", :field_value => client.num_card}

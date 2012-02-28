@@ -30,6 +30,7 @@ class Client < ActiveRecord::Base
 
   validates :name,:surname,:birth_date,:ins_company_id,:client_sex_id, :presence => true
     
+  accepts_nested_attributes_for :benefits,:allow_destroy => true
 
  # validates :birth_date, :format => {:with => /\d{2}\.\d{2}\.\d{4}/, :message => I18n.t(:invalid_date_format)}
 
@@ -119,6 +120,15 @@ class Client < ActiveRecord::Base
   scope :mkbs_gone, lambda {|s,e| joins(:mkbs).merge(Mkb.gone(s,e) )}
 
 
+
+def primary_benefit_code
+  b = benefits.select {|b| b.prim = true} 
+  result = b.first unless b.nil?
+  result ||= benefits.first
+  "0"+result.benefit_category.code.to_s
+end
+
+
 def death_reason_info
 "#{death_reason.try(:code)}: #{death_reason.try(:name)}" unless death_reason.nil?
 end
@@ -148,6 +158,7 @@ def sex
     I18n.t(:sex_w)
   end
 end
+
 
 def prof_inspection_years
   prof_inspections.prof_only.group_by {|p| p.actual_date.year}
@@ -301,56 +312,55 @@ end
 
 
 
-#  def convert_d(b)
-#   res=b[0,2]+'.'+b[2,2]+'.'+b[4,4] unless (b.nil? or b.length < 8)
-#   res=' ' if res.nil?
-#   res
-#  end
-#
-#  def sex(s)
-#   
-#
-#
-#    res=2
-#    if (s==I18n.t(:sex_m))
-#     res=1    
-#    end
-#
-#
-#    res
-#  end
-#
-#  def import_csv
-#
-#   s="hello" 
-#
-#  @clients=[]
-#  CSV.foreach("/home/bazoon/form2_fios.csv")  do |row|
-#  
-#   unless (row.nil? or row[1].nil? or row[2].nil? or row[3].nil? or row[11].nil? or row[5].nil?) 
-#
-#     @client=Client.new
-#     @client.num_card=row[0]
-#     @client.father_name=row[3].mb_chars.capitalize unless row[1].nil?
-#     @client.name=row[2].mb_chars.capitalize unless row[2].nil?
-#     @client.surname=row[1].mb_chars.capitalize unless row[3].nil?
-#     sex=row[11]
-#     @client.client_sex_id=sex
-#     @client.birth_date=convert_d(row[5])
-#     @client.ins_seria=row[6]
-#     @client.ins_num=row[7]
-#     @client.reg_address=row[9]
-#     @client.snils=row[10]
-#
-#     @client.ins_company_id=1
-#     @client.save! unless (@client.name.nil? or @client.birth_date.nil? or @client.client_sex_id.nil?)
-#   end
-#   
-#    end
-#
-##  render :text => @client.num_card
-#    @clients
-#  end
+  def convert_d(b)
+   res=b[0,2]+'.'+b[2,2]+'.'+b[4,4] unless (b.nil? or b.length < 8)
+   res=' ' if res.nil?
+   res
+  end
+
+  def sexc(s)
+    res=2
+    if (s==I18n.t(:sex_m))
+     res=1    
+    end
+    res
+  end
+
+
+  def import_csv
+  @clients=[]
+  CSV.foreach("/var/www/rails/fio.csv")  do |row|
+
+   unless (row.nil? or row[0].nil? or row[1].nil? or row[2].nil? or row[3].nil? or row[4].nil?)
+     @client=Client.new
+     @client.num_card=row[0]
+     @client.surname=row[1].mb_chars.capitalize unless row[1].nil?
+     @client.name=row[2].mb_chars.capitalize unless row[2].nil?
+     @client.father_name=row[3].mb_chars.capitalize unless row[3].nil?
+     @client.client_sex_id=sexc(row[4])
+     @client.birth_date=convert_d(row[5])
+     @client.ins_seria=row[6]
+     @client.ins_num=row[7]
+
+
+     @client.ins_company_id= Ref::InsCompany.find_or_create_by_name(row[8].mb_chars.capitalize.to_s).id unless row[8].nil? or row[8].blank?
+
+     @client.reg_address=row[9]
+     @client.real_address=@client.reg_address
+     @client.snils=row[10]
+
+     @client.save! unless (@client.name.nil? or @client.birth_date.nil? or @client.client_sex_id.nil?)
+   end
+   
+    end
+
+  #  render :text => @client.num_card
+  #  @clients
+  end
+
+
+
+
 
 end
 # == Schema Information

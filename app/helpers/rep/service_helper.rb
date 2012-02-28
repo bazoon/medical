@@ -1,0 +1,2 @@
+module Rep::ServiceHelper
+end

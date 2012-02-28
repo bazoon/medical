@@ -36,11 +36,13 @@
 
   <body>
 
-  <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-fixed-top">
+
       <div class="navbar-inner">
        
         
         <div class="container-fluid">
+
 
 
           <a class="brand" href="#">Госпиталь ветеранов</a>
@@ -50,15 +52,19 @@
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
+
+
             <%-if logged_in? %>  
              <p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>
            <%- else%> 
-          <form action="" class="form-search pull-right">
-            <input class="input-small" type="text" placeholder="Username">
-            <input class="input-small" type="password" placeholder="Password">
+          <form action="" class="navbar-search pull-right">
+            <input class="search-query span2" type="text" placeholder="Логин">
+            <input class="search-query span2" type="password" placeholder="Пароль">
             <button class="btn-info" type="submit">Войти</button>
           </form>
         <%- end%>
+
+      
 
 
           </div><!--/.nav-collapse -->
@@ -78,6 +84,10 @@
   </li>
 </ul>
 
+          <form action="/clients" class="navbar-search pull-left">
+            <input name="search" id="client_search" class="search-query span3" type="text" placeholder="Фамилия">
+            <button class="btn-primary" type="submit">Искать</button>
+          </form>
 
 
 
@@ -96,8 +106,9 @@
 
       <div class="content">
         <div class="page-header">
+
+          <%= render :partial => "current_client", :locals => {:current_client => current_client} %>
           
-            <%= render :partial => "current_client", :locals => {:current_client => current_client} %>
            
           </div>
 

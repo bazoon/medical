@@ -1,0 +1,5 @@
+=form_tag rep_service_path,:class => "well form-horizontal " do |f|
+  =render :partial => "form_helpers/input_tag",:locals => {:label => "сумма",  :field_name => "summa", :value => "",:hint =>""}
+  =hidden_field_tag :client_id, @client_id
+  .form-actions
+    =submit_tag "Сохранить",:class => "btn primary"

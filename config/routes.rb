@@ -35,6 +35,10 @@ Medical::Application.routes.draw do
     end
 
 
+    resources :service, :only => [:edit,:create] 
+
+
+
   end
 
 

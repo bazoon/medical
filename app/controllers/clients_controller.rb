@@ -58,9 +58,7 @@ class ClientsController < ApplicationController
     @client.attach_date=Date.parse(Time.now.to_s)
    # @client.detach_date=Date.parse(Time.now.to_s)
     @client.client_sex_id=1
-
-
-
+    @client.benefits.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -73,6 +71,8 @@ class ClientsController < ApplicationController
   # GET /clients/1/edit
   def edit
     @client = Client.find(params[:id])
+    @client.benefits.build if @client.benefits.empty?
+
   #  render :text => @client.phones
   end
 
@@ -80,6 +80,7 @@ class ClientsController < ApplicationController
   # POST /clients.json
   def create
     @client = Client.new(params[:client])
+
 
     respond_to do |format|
       if @client.save

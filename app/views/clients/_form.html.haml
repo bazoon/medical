@@ -15,6 +15,14 @@
     =f.date_select :birth_date, :label => "Дата рождения" 
     =f.text_field :pasp_seria,:label => "Серия паспорта"
     =f.text_field :pasp_num,:label => "Номер паспорта"
+
+  %fieldset
+    %legend 
+      Льготы
+    =f.fields_for :benefits do |b|
+      =render :partial => "benefits/benefit_fields", :locals => {:f => b}
+
+
   %fieldset
     %legend 
       Контактная информация
