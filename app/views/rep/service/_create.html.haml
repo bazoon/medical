@@ -1,0 +1,72 @@
+!!! 5
+%html
+  = stylesheet_link_tag    "application"
+  %body
+  
+    
+    %div{:style => "border: 1px silver dotted; width: 100%;"}
+      .div{:style => "font-size: small"}
+        %h3 Лист учета оказанных медицинских услуг
+
+        Наименование организации здравоохранения:
+        %br
+        %b
+          ГЛПУ ТО "Госпиталь ветеранов войн"
+        %br  
+        Отчетный период: с ____________ по ________________
+        %br
+        ФИО пациента: 
+        %b
+          = @client.fio
+        %br
+        Дата рождения: 
+        =ldate @client.birth_date
+        Стоимость лечения (тариф): 
+        %b
+          = @summa  
+        %br
+        Наименование страховой медицинской организации: 
+        %b
+          = @client.ins_company.name
+        %br
+        Страховой полис: серия 
+        %b
+          = @client.ins_seria
+        №
+        %b
+          = @client.ins_num
+        %br
+        %br
+        Оказанные медицинские услуги:
+        
+        %table{:class => "table table-bordered",:cellspacing => "0"}
+          %tr
+            %td{:style => "border: solid; border-width: 1px"} Специальность врача (полностью)
+            %td{:style => "border: solid; border-width: 1px"}  Код специальности
+            %td{:style => "border: solid; border-width: 1px"}  Даты посещений, УЕТ (для поликлиники)
+            %td{:style => "border: solid; border-width: 1px"}  Период нахождения в стационаре
+            %td{:style => "border: solid; border-width: 1px"}  Качеством оказанной мед. услуги удовлетворен (да / нет)
+            %td{:style => "border: solid; border-width: 1px"}  Подпись пациента
+          %tr
+            %td{:style => "border: solid; border-width: 1px"}  &nbsp
+            %td{:style => "border: solid; border-width: 1px"} 
+            %td{:style => "border: solid; border-width: 1px"} 
+            %td{:style => "border: solid; border-width: 1px"} 
+            %td{:style => "border: solid; border-width: 1px"} 
+            %td{:style => "border: solid; border-width: 1px"} 
+        
+        Особое мнение пациента: _________________________________________
+        %br
+        _________________________________________________________________
+
+
+        %br
+        СНИЛС: 
+        %b
+          = @client.snils
+        %br  
+        код врача _____ диагноз _________ код льготы _________  
+        =@client.primary_benefit_code
+        %br
+        номер карты:
+        = @client.num_card

@@ -17,7 +17,7 @@ group :assets do
 #  gem 'coffee-rails', "~> 3.2.1"
   gem 'uglifier'
   gem 'therubyracer'
-
+  gem "twitter-bootstrap-rails"
 end
 
 gem 'haml-rails'
@@ -39,7 +39,8 @@ gem 'dynamic_form'
 # Use unicorn as the web server
 # gem 'unicorn'
 #
-#gem 'prawn'
+gem 'prawn'
+gem 'prawnto'
 #gem "prawn_rails"
 gem 'pry'
 
@@ -60,6 +61,9 @@ group :development do
   gem "rails-erd"
 end
 
+
+
+gem 'acts_as_flying_saucer'
 
 group :test,:development do
   gem 'rspec-rails'

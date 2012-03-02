@@ -122,10 +122,12 @@ class Client < ActiveRecord::Base
 
 
 def primary_benefit_code
-  b = benefits.select {|b| b.prim = true} 
-  result = b.first unless b.nil?
-  result ||= benefits.first
-  "0"+result.benefit_category.code.to_s
+  unless benefits.nil? or benefits.empty?
+    b = benefits.select {|b| b.prim = true} 
+    result = b.first unless b.nil?
+    result ||= benefits.first
+    "0"+result.benefit_category.code.to_s
+  end 
 end
 
 

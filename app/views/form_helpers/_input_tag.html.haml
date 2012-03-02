@@ -1,5 +1,5 @@
 .control-group
-  =label_tag label
+  =label_tag label, nil, :class => "control-label"
   .controls
     -if defined?(class_name)
       =text_field_tag field_name,value,:class => "span4 #{class_name}"
