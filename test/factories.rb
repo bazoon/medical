@@ -13,27 +13,28 @@ Factory.define(:client,:class => Client) do |client|
   client.association :ins_company, :factory => :ins_company
   client.birth_date '01.01.2004'
   client.client_sex_id  1
-end  
+end
 
 Factory.define(:hospitalization) do |hosp|
  hosp.hospitalization_type_id  1
-end  
+end
 
 Factory.define(:diagnostic_test) do |obj|
  obj.diagnostic_test_type_id 1
  obj.test_date '01.01.2011'
  obj.result "ok"
-end  
+ obj.total DiagnosticTest::NORM
+end
 
 
 Factory.define(:disp) do |obj|
  obj.actual_date '01.01.2011'
-end  
+end
 
 Factory.define(:htm_help_note) do |obj|
  obj.actual_date '01.01.2011'
  obj.association :htm_help_type,:factory => :htm_help_type
-end  
+end
 
 
 Factory.define(:lab_test) do |obj|
@@ -41,41 +42,41 @@ Factory.define(:lab_test) do |obj|
  obj.test_date '01.01.2011'
  obj.result "ok"
  obj.client_id 1
-end  
+end
 
 Factory.define(:med_diagnostic_test) do |obj|
  obj.association :hospitalization_type, :factory => :hospitalization_type
  obj.test_date '01.01.2011'
  obj.result "ok"
  obj.client_id 1
-end  
+end
 
 Factory.define(:doctor_type, :class => "Ref::DoctorType") do |obj|
  obj.name "doctor"
 
-end  
+end
 
 Factory.define(:user) do |obj|
  obj.association :doctor_type, :factory => :doctor_type
  obj.name "doctor"
  obj.surname "ivanov"
-end  
+end
 
 
 
 Factory.define(:mkb_type, :class => "Ref::MkbType") do |obj|
- obj.sequence(:code) {|n| "A#{n+1}"} 
+ obj.sequence(:code) {|n| "A#{n+1}"}
  obj.name "mkbtype"
  obj.association :doctor_type,:factory => :doctor_type
  #obj.code_i 0
-end  
+end
 
 Factory.define(:mkb) do |obj|
  obj.association :mkb_type, :factory => :mkb_type
  obj.actual_date '01.01.2011'
  obj.association :client, :factory => :client
  obj.association :user,:factory => :user
-end  
+end
 
 Factory.define(:mse) do |obj|
  obj.association :mkb_type, :factory => :mkb_type
@@ -83,15 +84,15 @@ Factory.define(:mse) do |obj|
  obj.send_date '01.01.2011'
  obj.association :client, :factory => :client
  obj.association :user,:factory => :user
-end  
+end
 
 Factory.define(:prof_inspection) do |obj|
  obj.actual_date "01.01.2011"
- obj.inspection_type 1  
+ obj.inspection_type 1
 
  obj.association :client, :factory => :client
  obj.association :user,:factory => :user
-end  
+end
 
 Factory.define(:sanatorium_note) do |obj|
  obj.neediness_ref_date '01.01.2011'
@@ -99,12 +100,12 @@ Factory.define(:sanatorium_note) do |obj|
  obj.period_start '01.01.2011'
  obj.period_end '01.01.2011'
  obj.association :client, :factory => :client
-end  
+end
 
 Factory.define(:diagnosis) do |obj|
  obj.association :mkb_type, :factory => :mkb_type
  obj.association :prof_inspection, :factory => :prof_inspection
-end  
+end
 
 
 #Ref Factories
@@ -115,41 +116,41 @@ end
 
 Factory.define(:desease_type,:class => Ref::DeseaseType) do |obj|
   obj.name "d"
-end  
+end
 
 Factory.define(:diagnostic_test_type,:class => Ref::DiagnosticTestType) do |obj|
   obj.name "d"
-end  
+end
 
 Factory.define(:hospitalization_type,:class => Ref::HospitalizationType) do |obj|
   obj.name "d"
-end  
+end
 
 Factory.define(:htm_help_type,:class => Ref::HtmHelpType) do |obj|
   obj.name "d"
-end  
+end
 
 Factory.define(:ins_company,:class => Ref::InsCompany) do |obj|
   obj.name "Ugoria mine gmbx"
-end  
+end
 
 Factory.define(:lab_test_type,:class => Ref::LabTestType) do |obj|
   obj.name "d"
-end  
+end
 
 Factory.define(:lab_test_group,:class => Ref::LabTestGroup) do |obj|
   obj.name "d"
-end  
+end
 
 Factory.define(:lab_test_type_group,:class => Ref::LabTestTypeGroup) do |obj|
   obj.association :lab_test_type, :factory => :lab_test_type
   obj.association :lab_test_group, :factory => :lab_test_group
-end  
+end
 
 Factory.define(:med_diagnostic_test_type,:class => Ref::MedDiagnosticTestType) do |obj|
   obj.name "d"
-end  
+end
 
 Factory.define(:sanatorium,:class => Ref::Sanatorium) do |obj|
   obj.name "d"
-end  
+end

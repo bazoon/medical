@@ -13,11 +13,11 @@ describe Ref::DiagnosticTestType do
 
   it 'can be deleted if no child records' do
     @diagnostic_test_type.can_be_deleted.should == true
-     
-    diagnostic_test = FactoryGirl.create(:diagnostic_test,:diagnostic_test_type_id => @diagnostic_test_type.id)
+
+    diagnostic_test = FactoryGirl.create(:diagnostic_test,:diagnostic_test_type_id => @diagnostic_test_type.id,:total => DiagnosticTest::NORM)
     @diagnostic_test_type.can_be_deleted.should == false
 
     diagnostic_test.destroy
   end
 
-end  
+end

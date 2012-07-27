@@ -10,7 +10,7 @@ class Mse < ActiveRecord::Base
   REASON_RE_3_1 = 5
   REASON_RE_2_1 = 6
   REASON_RE_3_2 = 7
- 
+
   C_REFUSED = 0
   C_FIRST = 1
   C_SECOND = 2
@@ -25,7 +25,7 @@ class Mse < ActiveRecord::Base
   scope :after, lambda {|start_time| {:conditions => ["indefinitely=false and conclusion_till > ?", Mse.format_date(start_time)] }}
 
   scope :between, lambda {|s,e| where("send_date between ? and ?",s,e)}
-  scope :group_increase,  where("reason in (#{REASON_RE_3_1},#{REASON_RE_3_2},#{REASON_RE_2_1} )") 
+  scope :group_increase,  where("reason in (#{REASON_RE_3_1},#{REASON_RE_3_2},#{REASON_RE_2_1} )")
   scope :group_increase_2_1, lambda {where("reason = #{REASON_RE_2_1}")}
   scope :group_increase_3_2, where("reason = #{REASON_RE_3_2}")
   scope :iprs, where("ipr = true")
@@ -68,7 +68,7 @@ class Mse < ActiveRecord::Base
            when Mse::REASON_RE_3_1 then I18n.t(:mse_re_third_to_one)
            when Mse::REASON_RE_2_1 then I18n.t(:mse_re_second_to_one)
            when Mse::REASON_RE_3_2 then I18n.t(:mse_re_third_to_second)
-          end 
+          end
    result
   end
 
@@ -81,7 +81,7 @@ class Mse < ActiveRecord::Base
            when Mse::C_FIRST then I18n.t(:mse_first_group)
            when Mse::C_SECOND then I18n.t(:mse_second_group)
            when Mse::C_THIRD then I18n.t(:mse_third_group)
-          end 
+          end
    result
   end
 
@@ -94,12 +94,12 @@ class Mse < ActiveRecord::Base
     end
   end
 
- 
+
   def self.format_date(date_time)
     Time.at(date_time.to_i).to_formatted_s(:db)
   end
 
-  
+
  def as_json(options = {})
     {
       :id => self.id,

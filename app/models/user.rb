@@ -21,21 +21,44 @@ def to_s
 end
 
 def short_fio
- res = name 
+ res = name
  unless (surname.nil? or name.nil? or father_name.nil?)
   res = "#{surname} #{name[0]}. #{father_name[0]}."
  end
 end
 
 def short_fio_with_doctor_type
- res = name 
+ res = name
  unless (surname.nil? or name.nil? or father_name.nil? or doctor_type.nil?)
   res = "#{surname} #{name[0]}. #{father_name[0]}. & #{doctor_type.name}"
  end
 end
 
 
+  def self.import_csv
+
+  @users=[]
+  CSV.foreach("/var/www/rails/doctors.csv")  do |row|
+
+   unless (row.nil? or row[0].nil? or row[1].nil? or row[2].nil? or row[3].nil?)
+     @user=User.new
+     @user.surname=row[0].mb_chars.capitalize unless row[0].nil?
+     @user.name=row[1].mb_chars.capitalize unless row[1].nil?
+     @user.father_name=row[2].mb_chars.capitalize unless row[2].nil?
+     @user.doctor_type_id = row[4]
+
+
+     @user.save! unless (@user.name.nil?)
+   end
+
+    end
+
+  #  render :text => @user.num_card
+  #  @users
+  end
+
 end
+
 # == Schema Information
 #
 # Table name: users

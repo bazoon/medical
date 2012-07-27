@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DiagnosticTest do
   before(:all) do
-    @diagnostic_test = FactoryGirl.create(:diagnostic_test,:test_date => '01.01.2011',:diagnostic_test_type => FactoryGirl.create(:diagnostic_test_type,:name =>"test"))
+    @diagnostic_test = FactoryGirl.create(:diagnostic_test,:test_date => Time.now,:diagnostic_test_type => FactoryGirl.create(:diagnostic_test_type,:name =>"test"),:total => DiagnosticTest::NORM)
   end
 
   after(:all) do

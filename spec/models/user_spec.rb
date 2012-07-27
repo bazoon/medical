@@ -25,10 +25,10 @@ describe User do
   end
 
   it 'returns short_fio with doctor type' do
-    @user.doctor_type.name.should == "surgeon" 
-    @user.short_fio_with_doctor_type.should == "#{@user.surname} #{@user.name[0]}. #{@user.father_name[0]}. | #{@user.doctor_type.name}" 
+    @user.doctor_type.name.should == "surgeon"
+    @user.short_fio_with_doctor_type.should == "#{@user.surname} #{@user.name[0]}. #{@user.father_name[0]}. & #{@user.doctor_type.name}"
     @empty_user = User.new
     @empty_user.short_fio_with_doctor_type.should == nil
   end
 
-end  
+end

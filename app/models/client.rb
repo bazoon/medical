@@ -1,4 +1,5 @@
 class Client < ActiveRecord::Base
+
   DETACH_REASON_NONE = 0
   DETACH_REASON_OTHER_CLINIC = 1
   DETACH_REASON_DIED_AT_HOME =2
@@ -10,7 +11,7 @@ class Client < ActiveRecord::Base
 #  belongs_to :client_sex
   belongs_to :ins_company, :class_name => 'Ref::InsCompany'
   belongs_to :mkb_type, :class_name => 'Ref::MkbType',:foreign_key => "death_reason_id"
- 
+
   belongs_to :death_reason, :class_name => 'Ref::MkbType',:foreign_key => "death_reason_id"
 
   has_many :lab_tests, :dependent => :delete_all,:order =>"test_date DESC"
@@ -20,7 +21,7 @@ class Client < ActiveRecord::Base
   has_many :sanatorium_notes,:dependent => :delete_all,:order =>"neediness_ref_date DESC"
   has_many :med_diagnostic_tests,:dependent => :delete_all,:order =>"test_date DESC"
   has_many :prof_inspections,:dependent => :delete_all
-  
+
   has_many :benefits,:dependent => :delete_all,:order => "prim DESC"
   has_many :benefit_categories, :through => :benefits
 
@@ -29,7 +30,7 @@ class Client < ActiveRecord::Base
   has_many :disps,:dependent => :delete_all,:order => "id DESC"
 
   validates :name,:surname,:birth_date,:ins_company_id,:client_sex_id, :presence => true
-    
+
   accepts_nested_attributes_for :benefits,:allow_destroy => true
 
  # validates :birth_date, :format => {:with => /\d{2}\.\d{2}\.\d{4}/, :message => I18n.t(:invalid_date_format)}
@@ -37,12 +38,12 @@ class Client < ActiveRecord::Base
   #Инвалиды войны
   #scope :war_invalids,includes(:benefits).where("benefits.benefit_category_id=?",Ref::BenefitCategory.war_invalid_id)
  # scope :war_participants,includes(:benefits).where("benefits.benefit_category_id IN (?)",Ref::BenefitCategory.war_participants_ids)
-  
+
  # scope :war_invalids,lambda { joins(:benefits).merge(Benefit.war_invalids )  }
- 
+
   #Возможна ошибка, если ищется id несуществующей льготы
   scope :benefit_category, lambda { |code| includes(:benefits).where("benefits.benefit_category_id = ?",Ref::BenefitCategory.id_by_code(code) ) }
- 
+
   #Причины смерти
   scope :dr_infections_parasits,joins(:death_reason).merge(Ref::MkbType.infections_parasits)
   scope :dr_neoplasms, joins(:death_reason).merge(Ref::MkbType.neoplasms)
@@ -70,25 +71,25 @@ class Client < ActiveRecord::Base
   scope :front_workers,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.front_workers).merge(Benefit.primary)
   scope :repressed,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.repressed).merge(Benefit.primary)
   scope :chernobil,joins(:benefits,:benefit_categories).merge(Ref::BenefitCategory.chernobil).merge(Benefit.primary)
- 
+
 
   #Участок пациента
   scope :sector,lambda {|sector_num|  where("num_card like ?",sector_num.to_s+"%") }
-  
+
   #Пациенты не снятые с учета до даты e
   scope :present, lambda {|e| where("attach_date <= ? and (detach_date is null or detach_date > ?) ",e,e)}
 
   scope :work_veterans,lambda {where("is_work_veteran = true")}
   scope :pensioners,where("pensioner = true")
-  scope :disables, where("disabled = true") 
+  scope :disables, where("disabled = true")
 
   #Hospitalization scopes
 
   scope :hosp_between, lambda {|s,e| joins(:hospitalizations).merge(Hospitalization.between(s,e))  }
-  scope :hosp_planned, joins(:hospitalizations).merge(Hospitalization.planned)  
-  scope :hosp_extra, joins(:hospitalizations).merge(Hospitalization.extra)  
+  scope :hosp_planned, joins(:hospitalizations).merge(Hospitalization.planned)
+  scope :hosp_extra, joins(:hospitalizations).merge(Hospitalization.extra)
 
-  #Disp scopes 
+  #Disp scopes
   scope :disp_before, lambda {|d| joins(:disps).merge(Disp.before(d) )}
   scope :disp_between, lambda {|s,e| joins(:disps).merge(Disp.between(s,e) )}
 
@@ -123,11 +124,11 @@ class Client < ActiveRecord::Base
 
 def primary_benefit_code
   unless benefits.nil? or benefits.empty?
-    b = benefits.select {|b| b.prim = true} 
+    b = benefits.select {|b| b.prim = true}
     result = b.first unless b.nil?
     result ||= benefits.first
     "0"+result.benefit_category.code.to_s
-  end 
+  end
 end
 
 
@@ -147,11 +148,11 @@ end
 
 def mkb_type_name
   mkb_type.name unless mkb_type.nil?
-end  
+end
 
 def mkb_type_code
   mkb_type.code unless mkb_type.nil?
-end  
+end
 
 def sex
   if client_sex_id == MALE
@@ -178,7 +179,7 @@ def detach_reason_info
          when Client::DETACH_REASON_OTHER_CLINIC then I18n.t(:detach_reason_other_clinic)
          when Client::DETACH_REASON_DIED_AT_HOME then I18n.t(:detach_reason_died_at_home)
          when Client::DETACH_REASON_DIED_AT_CLINIC then I18n.t(:detach_reason_died_at_clinic)
-        end 
+        end
  result
 end
 
@@ -191,7 +192,7 @@ end
 
 # Функции для получения информации об пройденых врачах, анализах, диагностике
 def prof_inspections_info
- prof_inspections.prof_only.this_year.map {|p| p.user.doctor_type.name}.uniq  
+ prof_inspections.prof_only.this_year.map {|p| p.user.doctor_type.name}.uniq
 end
 
 def lab_tests_info
@@ -204,11 +205,11 @@ end
 
 def ungiven_lab_tests_info
  Ref::LabTestType.prof_inspection_minimum.map {|ltt| ltt.lab_test_group_names }.uniq.flatten - lab_tests_info
-end  
+end
 
 def ungiven_diagnostic_tests_info
  Ref::DiagnosticTestType.prof_inspection_minimum.map {|dtt| dtt.name} - diagnostic_tests_info
-end  
+end
 
 def ungiven_prof_inspections_info
   (Ref::DoctorType.all.map {|dt| dt.name } - prof_inspections_info)
@@ -233,15 +234,15 @@ def have_full_prof_inspection_in_year(sd,ed)
    if client_sex_id == MALE
      result = case count
         when ProfInspection::MAX_PROF_INSPECIONS then :prof_all
-        when 1..ProfInspection::MAX_PROF_INSPECIONS-1 then :prof_partial    
+        when 1..ProfInspection::MAX_PROF_INSPECIONS-1 then :prof_partial
      end
    else
      result = case count
         when ProfInspection::MAX_PROF_INSPECIONS+1 then :prof_all
-        when 1..ProfInspection::MAX_PROF_INSPECIONS then :prof_partial    
+        when 1..ProfInspection::MAX_PROF_INSPECIONS then :prof_partial
      end
    end
- else 
+ else
   result = :prof_zero
  end
 
@@ -279,30 +280,30 @@ end
   if search
     s=search.scan(/\S+/)
     case s.size
-      when 1  
-         where('surname LIKE ?', "%#{s[0]}%")  
+      when 1
+         where('surname LIKE ?', "%#{s[0]}%")
       when 2
-        where('surname LIKE ? and name LIKE ?',"#{s[0]}","#{s[1]}")  
+        where('surname LIKE ? and name LIKE ?',"#{s[0]}","#{s[1]}")
       when 3
-        where('surname LIKE ? and name LIKE ? and father_name LIKE ?',"#{s[0]}","#{s[1]}","#{s[2]}")  
+        where('surname LIKE ? and name LIKE ? and father_name LIKE ?',"#{s[0]}","#{s[1]}","#{s[2]}")
       else
         scoped
     end
   else
    scoped
-  end  
-   
- end 
+  end
+
+ end
 
 
 def has_some_records?(record_class)
- self.send(record_class).count>0 unless self.send(record_class).nil?
+ self.send(record_class).count > 0 unless self.send(record_class).nil?
 end
 
 def fio
   "#{surname} #{name} #{father_name}"
 end
- 
+
 
 def short_fio
  res=surname
@@ -314,51 +315,51 @@ end
 
 
 
-  def convert_d(b)
-   res=b[0,2]+'.'+b[2,2]+'.'+b[4,4] unless (b.nil? or b.length < 8)
-   res=' ' if res.nil?
-   res
-  end
+  # def convert_d(b)
+  #  res=b[0,2]+'.'+b[2,2]+'.'+b[4,4] unless (b.nil? or b.length < 8)
+  #  res=' ' if res.nil?
+  #  res
+  # end
 
-  def sexc(s)
-    res=2
-    if (s==I18n.t(:sex_m))
-     res=1    
-    end
-    res
-  end
-
-
-  def import_csv
-  @clients=[]
-  CSV.foreach("/var/www/rails/fio.csv")  do |row|
-
-   unless (row.nil? or row[0].nil? or row[1].nil? or row[2].nil? or row[3].nil? or row[4].nil?)
-     @client=Client.new
-     @client.num_card=row[0]
-     @client.surname=row[1].mb_chars.capitalize unless row[1].nil?
-     @client.name=row[2].mb_chars.capitalize unless row[2].nil?
-     @client.father_name=row[3].mb_chars.capitalize unless row[3].nil?
-     @client.client_sex_id=sexc(row[4])
-     @client.birth_date=convert_d(row[5])
-     @client.ins_seria=row[6]
-     @client.ins_num=row[7]
+  # def sexc(s)
+  #   res=2
+  #   if (s==I18n.t(:sex_m))
+  #    res=1
+  #   end
+  #   res
+  # end
 
 
-     @client.ins_company_id= Ref::InsCompany.find_or_create_by_name(row[8].mb_chars.capitalize.to_s).id unless row[8].nil? or row[8].blank?
+  # def import_csv
+  # @clients=[]
+  # CSV.foreach("/var/www/rails/fio.csv")  do |row|
 
-     @client.reg_address=row[9]
-     @client.real_address=@client.reg_address
-     @client.snils=row[10]
+  #  unless (row.nil? or row[0].nil? or row[1].nil? or row[2].nil? or row[3].nil? or row[4].nil?)
+  #    @client=Client.new
+  #    @client.num_card=row[0]
+  #    @client.surname=row[1].mb_chars.capitalize unless row[1].nil?
+  #    @client.name=row[2].mb_chars.capitalize unless row[2].nil?
+  #    @client.father_name=row[3].mb_chars.capitalize unless row[3].nil?
+  #    @client.client_sex_id=sexc(row[4])
+  #    @client.birth_date=convert_d(row[5])
+  #    @client.ins_seria=row[6]
+  #    @client.ins_num=row[7]
 
-     @client.save! unless (@client.name.nil? or @client.birth_date.nil? or @client.client_sex_id.nil?)
-   end
-   
-    end
+
+  #    @client.ins_company_id= Ref::InsCompany.find_or_create_by_name(row[8].mb_chars.capitalize.to_s).id unless row[8].nil? or row[8].blank?
+
+  #    @client.reg_address=row[9]
+  #    @client.real_address=@client.reg_address
+  #    @client.snils=row[10]
+
+  #    @client.save! unless (@client.name.nil? or @client.birth_date.nil? or @client.client_sex_id.nil?)
+  #  end
+
+  #   end
 
   #  render :text => @client.num_card
   #  @clients
-  end
+  # end
 
 
 

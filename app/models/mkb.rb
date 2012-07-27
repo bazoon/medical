@@ -3,8 +3,8 @@ class Mkb < ActiveRecord::Base
   belongs_to :mkb_type, :class_name => 'Ref::MkbType'
   belongs_to :user
   validates :client_id,:mkb_type_id,:actual_date,:user_id,:presence => true
-  
-  
+
+
   scope :before, lambda {|d| where("actual_date < ?",d)}
   scope :between, lambda {|s,e| where("actual_date between ? and ?",s,e)}
   scope :present, lambda {|e| where("out_date is null or out_date > ?",e)}
@@ -29,7 +29,7 @@ class Mkb < ActiveRecord::Base
  end
 
 
-    
+
 end
 # == Schema Information
 #

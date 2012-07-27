@@ -3,7 +3,7 @@ require 'spec_helper'
 describe LabTest do
   before(:all) do
    @lab_test_type = FactoryGirl.create(:lab_test_type,:name =>"test")
-   @lab_test = FactoryGirl.create(:lab_test,:test_date => '01.01.2011',:result => "ok",:lab_test_type => @lab_test_type )
+   @lab_test = FactoryGirl.create(:lab_test,:test_date => Time.now,:result => "ok",:lab_test_type => @lab_test_type )
   end
 
   after(:all) do
@@ -36,4 +36,4 @@ describe LabTest do
  end
 
 
-end 
+end

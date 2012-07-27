@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe Client do
   before(:each) do
-   Client.delete_all 
+   Client.delete_all
    @client_2 = FactoryGirl.create(:client,:name => "Miacel",:surname => "Peov",:father_name => "Potrovich")
    @client = FactoryGirl.create(:client,:name => "Ivan",:surname => "Petrov",:father_name => "Petrovich")
   end
@@ -23,7 +23,7 @@ describe Client do
 
  it "should get detach_reson_info" do
   @client.detach_reason = Client::DETACH_REASON_NONE
-  @client.detach_reason_info.should == I18n.t(:detach_reason_none)
+  @client.detach_reason_info.should == ""
   @client.detach_reason = Client::DETACH_REASON_OTHER_CLINIC
   @client.detach_reason_info.should == I18n.t(:detach_reason_other_clinic)
   @client.detach_reason = Client::DETACH_REASON_DIED_AT_HOME
@@ -33,18 +33,18 @@ describe Client do
  end
 
  it "should_test_have_full_prof_inspections_in_year_male" do
-  
+
   @client.client_sex_id = Client::MALE
   @client.prof_inspections.count.should == 0
   @client.have_full_prof_inspection_in_year('01.01.2011','31.12.2011').should == :prof_zero
 
   (1..11).each { |i|  FactoryGirl.create(:prof_inspection,:client_id => @client.id,:actual_date => '01.01.2011',:inspection_type => ProfInspection::PROF) }
-  
+
   @client.prof_inspections.count.should == 11
   @client.have_full_prof_inspection_in_year('01.01.2011','31.12.2011').should == :prof_partial
 
   FactoryGirl.create(:prof_inspection,:client_id => @client.id,:actual_date => '01.01.2011',:inspection_type => ProfInspection::PROF)
-  
+
   @client.prof_inspections.count.should == 12
   @client.have_full_prof_inspection_in_year('01.01.2011','31.12.2011').should == :prof_all
  end
@@ -69,14 +69,14 @@ describe Client do
   @client.have_full_prof_inspection_this_year?.should == :prof_zero
 
   (1..11).each { |i|  FactoryGirl.create(:prof_inspection,:client_id => @client.id,:actual_date => sd,:inspection_type => ProfInspection::PROF) }
-  
+
   ProfInspection.count.should == 11
 
   @client.prof_inspections.count.should == 11
   @client.have_full_prof_inspection_this_year?.should == :prof_partial
 
   FactoryGirl.create(:prof_inspection,:client_id => @client.id,:actual_date => sd,:inspection_type => ProfInspection::PROF)
-  
+
   @client.prof_inspections.count.should == 12
   @client.have_full_prof_inspection_this_year?.should == :prof_all
  end
@@ -92,7 +92,7 @@ describe Client do
    @client.pasp_num = "654789"
    @client.passport.should == "71 03 654789"
  end
-  
+
 
  it "should make work_info" do
    @client.work_place = "OOO ERTY"
@@ -104,7 +104,7 @@ describe Client do
    @client.name = "Ivan"
    @client.surname = "Petrov"
    @client.father_name = "Petrovich"
- 
+
    @client_2.name = "Smirn"
    @client_2.surname = "Opopv"
    @client_2.father_name = "dff"
@@ -112,7 +112,7 @@ describe Client do
    @client_2.save
 
    Client.search("Petr").count.should == 1
-                         
+
 
    Client.search("Petrov Ivan Petrovich").count.should == 1
 
@@ -121,7 +121,7 @@ describe Client do
    Client.search("Petrov").count.should == 2
 
    Client.search("Petrov Ivan").count.should == 1
-   
+
    Client.search("abracadabra").count.should == 0
 
    Client.search("").count.should == 2
@@ -141,13 +141,13 @@ describe Client do
    @client.father_name = "Olegovich"
    @client.fio.should == "Petrov Ivan Olegovich"
  end
- 
+
  it "should make short fio" do
    @client.name = nil
    @client.father_name = nil
    @client.surname = "Petrov"
    @client.short_fio.should == "Petrov"
- 
+
    @client.name ="Ivan"
    @client.father_name = "Olegovich"
    @client.short_fio.should == "Petrov I. O."

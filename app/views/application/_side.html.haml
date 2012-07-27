@@ -3,10 +3,10 @@
 %h3
   %a{:href => "#"} Разделы
 %div
-  %ul      
-    %li= link_to "Пациенты",clients_path
+  %ul
+    %li= link_to I18n.t(:clients),clients_path
     %li= link_to "Врачи",users_path
 %h3
   %a{:href => "#"} Справочники
-%div 
+%div
   =render_navigation :context => :dict

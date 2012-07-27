@@ -18,22 +18,25 @@ describe "ListAllClients" do
       click_link I18n.t(:clients)
       page.should have_content I18n.t(:clients)
       page.should have_link I18n.t(:new_client)
-      page.should have_table("clients_table")
-    end  
+     end
 
   context "it creates ins_company in db" do
-    
+
     before(:all) do
-     @ins = FactoryGirl.create(:ins_company,:name =>"Ugoria") 
+     @ins = FactoryGirl.create(:ins_company,:name =>"Ugoria")
+     FactoryGirl.create(:benefit_category)
     end
-  
+
 
     it 'creates new clients' do
       visit clients_path
       click_link I18n.t(:new_client)
-      fill_in("client_surname",:with => "Capybara") 
-      fill_in("client_name",:with => "Tester") 
-      fill_in("client_birth_date",:with => "01.01.2001") 
+      fill_in("client_surname",:with => "Capybara")
+      fill_in("client_name",:with => "Tester")
+      fill_in("client_birth_date",:with => "01.01.2001")
+      fill_in("client_benefits_attributes_0_doc_name",:with => "doc")
+
+
       select(I18n.t(:c_female),:from => "client_client_sex_id")
       select(@ins.name,:from => "client_ins_company_id")
       click_button("submit")
@@ -44,7 +47,7 @@ describe "ListAllClients" do
       page.should have_content(@ins.name)
   end
 
- 
+
     context 'it creates client in db' do
       before(:all) do
        @client = FactoryGirl.create(:client,:name => "Ivan",:surname => "Petrov",:father_name => "Ivanovich",:ins_company_id => @ins.id)
@@ -63,6 +66,7 @@ describe "ListAllClients" do
 
       it 'visit edit client path and saves changes ' do
         visit edit_client_path(@client)
+        fill_in("client_benefits_attributes_0_doc_name",:with => "doc")
         click_button("submit")
         page.should have_content(@client.local_date(:birth_date))
         page.should have_content(@client.num_card)
